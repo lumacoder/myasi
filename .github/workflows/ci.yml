@@ -1,0 +1,95 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+env:
+  PYTHONDONTWRITEBYTECODE: "1"
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: validate (frontmatter, names, registry, secrets)
+        run: python scripts/validate.py
+      - name: unit + end-to-end tests
+        run: python -m unittest discover -s tests -v
+      - name: gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  py38:
+    # oldest supported Python; ubuntu-22.04 still has 3.8 builds for setup-python
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.8"
+      - run: python scripts/validate.py
+      - run: python -m unittest discover -s tests
+
+  smoke:
+    needs: validate
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: tests (macOS)
+        if: runner.os == 'macOS'
+        run: python -m unittest discover -s tests
+      - name: get / list / update / remove in a throwaway HOME (link + copy)
+        shell: bash
+        run: |
+          set -eux
+          T="$RUNNER_TEMP/home"; mkdir -p "$T"
+          export HOME="$T" USERPROFILE="$T" MYASI_HOME="$T/.myasi"
+          python scripts/myasi.py --version
+          python scripts/myasi.py list --source .
+          python scripts/myasi.py get hello --agent codex --source .
+          python scripts/myasi.py get hello-myasi --agent claude --copy --source .
+          python scripts/myasi.py get hello-myasi --agent claude --copy --source .
+          test -f "$T/.agents/skills/hello-myasi/SKILL.md"
+          test -f "$T/.claude/skills/hello-myasi/SKILL.md"
+          python scripts/myasi.py update
+          python scripts/myasi.py doctor --strict --source .
+          python scripts/myasi.py remove hello-myasi --source .
+          test ! -e "$T/.agents/skills/hello-myasi"
+          test ! -e "$T/.claude/skills/hello-myasi"
+          test -f skills/hello-myasi/SKILL.md
+          python scripts/myasi.py sync --source .
+          test -f "$T/.agents/skills/myasi/SKILL.md"
+          python scripts/myasi.py mcp apply --agent all --source . > /dev/null
+          python scripts/myasi.py cli --source . > /dev/null
+      - name: git sparse path from a local bare repo
+        shell: bash
+        run: |
+          set -eux
+          T="$RUNNER_TEMP/home2"; mkdir -p "$T"
+          export HOME="$T" USERPROFILE="$T" MYASI_HOME="$T/.myasi"
+          git clone -q --bare . "$RUNNER_TEMP/myasi.git"
+          python scripts/myasi.py get hello-myasi --agent claude --source "$RUNNER_TEMP/myasi.git"
+          test -f "$T/.claude/skills/hello-myasi/SKILL.md"
+          python scripts/myasi.py remove hello-myasi
+          test ! -e "$T/.claude/skills/hello-myasi"
+      - name: wrapper (myasi.cmd)
+        if: runner.os == 'Windows'
+        shell: cmd
+        run: bin\myasi.cmd --version
+      - name: wrapper (bin/myasi)
+        if: runner.os != 'Windows'
+        run: bin/myasi --version
