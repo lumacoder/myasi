@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+# myasi wrapper (Linux / macOS / Git Bash). Uses python3, falls back to python.
+DIR="$(cd "$(dirname "$0")" && pwd)"
+SCRIPT="$DIR/../scripts/myasi.py"
+[ -f "$SCRIPT" ] || SCRIPT="$DIR/myasi.py"
+PY="$(command -v python3 || command -v python)"
+[ -n "$PY" ] || { echo "myasi: python3 not found" >&2; exit 1; }
+PYTHONDONTWRITEBYTECODE=1 exec "$PY" "$SCRIPT" "$@"
