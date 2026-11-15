@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+# Node / builds
+node_modules/
+dist/
+build/
+.cache/
+# archives, backups (history lives in git)
+*.zip
+*.7z
+*.rar
+*.bak
+*.orig
+*~
+# secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
