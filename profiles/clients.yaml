@@ -1,0 +1,13 @@
+# 每个端装哪些 profile（myasi sync 读取），extra 可再加单个裸名。
+# codex / pi / dsh / deepseek 共用 ~/.agents/skills，所以它们的并集只装一份。
+clients:
+  codex:
+    profiles: [core]
+  claude:
+    profiles: [core]
+  pi:
+    profiles: [core]
+  dsh:
+    profiles: [core]
+  deepseek:
+    profiles: [core]

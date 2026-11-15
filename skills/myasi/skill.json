@@ -1,0 +1,15 @@
+{
+  "version": "0.1.0",
+  "tags": [
+    "meta",
+    "skills",
+    "mcp",
+    "sync",
+    "同步",
+    "安装"
+  ],
+  "clients": [
+    "*"
+  ],
+  "license": "MIT"
+}

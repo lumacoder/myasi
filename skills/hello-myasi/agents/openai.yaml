@@ -1,0 +1,6 @@
+# Codex 界面元数据（可选）。示例 skill 不允许隐式触发，只在用户点名时使用。
+interface:
+  display_name: "hello-myasi（示例）"
+  short_description: "myasi 示例 skill：演示按名安装"
+policy:
+  allow_implicit_invocation: false

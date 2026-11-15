@@ -1,0 +1,13 @@
+# 第三方 skill：只记来源，不拷贝进仓库。`myasi get <name> --yes` 按需从上游只拉这一个目录。
+# 字段：name repo path ref license description install tags
+# 添加前先确认上游 <repo>/<path>/SKILL.md 存在，并写明许可证。示例（去掉 # 即生效）：
+#
+#   - name: some-skill
+#     repo: some-owner/some-skills-repo
+#     path: skills/some-skill
+#     ref: main
+#     license: MIT
+#     description: 一句话说明什么时候用它。
+#     install: npx skills add some-owner/some-skills-repo --skill some-skill -g -y
+#     tags: [example]
+sources: []

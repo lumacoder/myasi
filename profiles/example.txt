@@ -1,0 +1,2 @@
+# 示例 profile：演示批量安装（myasi get --profile example）。添加自己的 skill 后可删除或改写。
+hello-myasi

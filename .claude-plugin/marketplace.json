@@ -1,0 +1,32 @@
+{
+  "name": "myasi",
+  "owner": {
+    "name": "lumacoder"
+  },
+  "metadata": {
+    "description": "myasi（我的超级人工智能）：按名安装的个人 skills 工具集",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "hello-myasi",
+      "description": "示例 / 模板 skill（不是真实工具）。只在用户明确说 hello-myasi、要演示或测试 myasi 的 get / update / remove 流程时使用；新建自己的 skill 时可以照着它的结构写，或直接运行 myasi new <name>。",
+      "version": "0.1.0",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/hello-myasi"
+      ]
+    },
+    {
+      "name": "myasi",
+      "description": "当用户按名字提到一个本机没有的 skill（如“用 xxx skill”“装上 xxx”“有没有做某事的 skill”），或要同步、更新、删除 skill，或要把 MCP/CLI 配置同步到 Codex、Claude Code、pi、DeepSeek（dsh / deepseek TUI）时使用；通过 myasi 仓库的 registry.json 按裸名解析并安装，然后加载对应 SKILL.md。",
+      "version": "0.1.0",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/myasi"
+      ]
+    }
+  ]
+}
