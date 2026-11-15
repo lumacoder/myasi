@@ -12,6 +12,7 @@ import json
 import os
 import re
 import shutil
+import stat
 import subprocess
 import sys
 import tarfile
@@ -372,6 +373,19 @@ def git(args, cwd=None, url="", check=True):
     return p
 
 
+def rmtree(path, ignore_errors=False):
+    """shutil.rmtree that also removes read-only files (git packs on Windows)."""
+    def onerr(func, target, _exc):
+        try:
+            os.chmod(target, stat.S_IWRITE)
+            func(target)
+        except OSError:
+            if not ignore_errors:
+                raise
+    if os.path.lexists(str(path)):
+        shutil.rmtree(str(path), onerror=onerr)
+
+
 # ---------------------------------------------------------------- sources
 def slug(s):
     return re.sub(r"[^A-Za-z0-9._-]+", "_", s).strip("_")[-80:]
@@ -417,14 +431,16 @@ class GitSource:
 
     def ensure(self):
         if (self.cache / ".git").exists():
-            return
+            if (self.cache / "registry.json").exists():
+                return
+            rmtree(self.cache, ignore_errors=True)  # half-deleted cache: start over
         self.cache.parent.mkdir(parents=True, exist_ok=True)
         args = ["clone", "--quiet", "--depth", "1", "--filter=blob:none", "--sparse"]
         if self.ref:
             args += ["--branch", self.ref]
         p = git(args + [self.url, str(self.cache)], url=self.url, check=False)
         if p.returncode != 0:
-            shutil.rmtree(self.cache, ignore_errors=True)
+            rmtree(self.cache, ignore_errors=True)
             die("git clone failed for %s: %s\n  private repo? use git credentials, or set GITHUB_TOKEN/GH_TOKEN"
                 % (self.url, p.stderr.strip()[-300:]))
 
@@ -453,7 +469,7 @@ class GitSource:
             return
         keep = [x for x in self.sparse_list() if x != path]
         if not [x for x in keep if x.startswith("skills/")]:
-            shutil.rmtree(str(self.cache), ignore_errors=True)  # nothing left: drop the cache (hygiene)
+            rmtree(str(self.cache), ignore_errors=True)  # nothing left: drop the cache (hygiene)
             return
         git(["sparse-checkout", "set"] + keep, cwd=self.cache, url=self.url)
 
@@ -510,20 +526,20 @@ class TarSource:
             if not found:
                 die("%s not found in %s" % (path, self.label))
             if dest.exists():
-                shutil.rmtree(dest)
+                rmtree(dest)
             dest.parent.mkdir(parents=True, exist_ok=True)
             shutil.move(str(tmp / path), str(dest))
         finally:
-            shutil.rmtree(tmp, ignore_errors=True)
+            rmtree(tmp, ignore_errors=True)
         return dest
 
     def download(self):
         return http_get("https://codeload.github.com/%s/tar.gz/%s" % (self.repo, self.ref))
 
     def drop(self, path):
-        shutil.rmtree(self.cache / path, ignore_errors=True)
+        rmtree(self.cache / path, ignore_errors=True)
         if self.cache.exists() and not any(p.is_file() for p in self.cache.rglob("*")):
-            shutil.rmtree(str(self.cache), ignore_errors=True)
+            rmtree(str(self.cache), ignore_errors=True)
 
     def update(self):
         self._tar = None
@@ -678,7 +694,7 @@ def remove_path(p, mode, name):
         return
     fm, _ = parse_frontmatter((p / "SKILL.md").read_text(encoding="utf-8")) if (p / "SKILL.md").exists() else ({}, "")
     if mode == "copy" and fm.get("name") == name:
-        shutil.rmtree(str(p))
+        rmtree(str(p))
     else:
         info("  ! skipped %s: not a myasi link/copy of %s" % (p, name))
 
@@ -697,7 +713,7 @@ def install_one(name, entry, src_dir, dirs, mode, st, force=False, label="", spe
                 if is_link(dest):
                     remove_path(dest, "link", name)
                 else:
-                    shutil.rmtree(str(dest))
+                    rmtree(str(dest))
             else:
                 die("%s exists and was not installed by myasi; remove it or pass --force" % dest)
         used = mode
@@ -820,7 +836,7 @@ def cmd_remove(args):
             if s is not None:
                 s.drop(rec["path"])  # shrink the sparse checkout / tarball cache (never touches a local tree)
         if isinstance(src, GitSource) and not any(r.get("source_spec") == src.spec for r in st["installs"].values()):
-            shutil.rmtree(str(src.cache), ignore_errors=True)  # registry-only clone is no longer needed
+            rmtree(str(src.cache), ignore_errors=True)  # registry-only clone is no longer needed
     finally:
         save_state(st)
 
