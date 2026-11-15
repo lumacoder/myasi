@@ -1,0 +1,2 @@
+# uv 全局工具：每行一个（myasi cli 会执行 uv tool install <行>），# 为注释。示例：
+# ruff

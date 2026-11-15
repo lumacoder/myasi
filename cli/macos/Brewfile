@@ -1,0 +1,5 @@
+# brew bundle --file cli/macos/Brewfile （示例，按需增删）
+brew "git"
+brew "python@3.13"
+brew "uv"
+brew "node"

@@ -1,0 +1,28 @@
+# MCP 唯一真源。只放结构，密钥一律写成 ${ENV_VAR} 引用，真实值放系统环境变量（不入库）。
+# 生成：myasi mcp apply --agent codex|claude|deepseek|cursor|gemini   （默认只打印，--write 才写入）
+# 字段：transport(stdio|http) command args env url headers clients verified note startup_timeout_sec
+#   clients: ["*"] 表示所有端；verified: false 的条目默认跳过（--include-unverified 才输出）。
+# 下面是示例条目，换成你自己的 server 即可。
+servers:
+  everything:
+    transport: stdio
+    command: npx
+    args: ["-y", "@modelcontextprotocol/server-everything"]
+    clients: ["*"]
+    verified: true
+    note: MCP 官方参考 server，用来测试连通性
+  example-api:
+    transport: stdio
+    command: npx
+    args: ["-y", "example-mcp-server"]   # 示例：换成真实包名
+    env:
+      EXAMPLE_API_KEY: "${EXAMPLE_API_KEY}"
+    clients: [codex, claude, deepseek, cursor]
+    verified: false
+  example-http:
+    transport: http
+    url: https://mcp.example.com/mcp
+    headers:
+      Authorization: "Bearer ${EXAMPLE_TOKEN}"
+    clients: ["*"]
+    verified: false
