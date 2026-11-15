@@ -8,7 +8,7 @@
 - **零依赖**：`myasi` 是 Python 3.8+ 标准库单文件，Windows（`py`）、Linux、macOS 都能跑。
 - **不碰密钥**：MCP 配置只写 `${ENV}` 引用；myasi 只删除自己装的东西。
 
-> 现在仓库里只有两个 skill：`myasi`（教 agent 按名找 skill 的元 skill）和 `hello-myasi`（示例 / 模板）。自己的 skill 按下面「如何添加你自己的 skill」加进来。
+> 现在仓库里有三个 skill：`myasi`（教 agent 按名找 skill 的元 skill）、`hello-myasi`（最小示例 / 模板）和 `mano-asi`（真实案例：全栈研发，别名 `devasi`，在 example profile 里）。自己的 skill 按下面「如何添加你自己的 skill」加进来。
 
 ## 快速开始
 
@@ -78,7 +78,7 @@ Windows 上链接用目录 junction（`mklink /J`，无需管理员），失败�
    git clone https://github.com/lumacoder/myasi && cd myasi
    python scripts/myasi.py new my-skill -d "什么时候用它（agent 只看这句话决定是否加载）" --tags dev --alias old-name
    ```
-   生成 `skills/my-skill/SKILL.md`、`skill.json`（version / tags / aliases / clients / license）和 `agents/openai.yaml`（Codex 界面元数据）。也可以手动照着 `skills/hello-myasi` 写：目录名用 kebab-case，frontmatter 的 `name` 必须等于目录名，`description` ≤ 1024 字符。
+   生成 `skills/my-skill/SKILL.md`、`skill.json`（version / tags / aliases / clients / license）和 `agents/openai.yaml`（Codex 界面元数据）。也可以手动照着 `skills/hello-myasi`（最小模板）或 `skills/mano-asi`（真实案例，含 rules / scripts / 案例库）写：目录名用 kebab-case，frontmatter 的 `name` 必须等于目录名，`description` ≤ 1024 字符。
 2. 编辑 `SKILL.md` 正文；需要默认安装就把名字加进 `profiles/<profile>.txt`（`clients.yaml` 决定每个端装哪些 profile）。第三方 skill 不拷贝，写进 `catalog/external.yaml`。
 3. 重新生成索引、校验、跑测试：
    ```bash

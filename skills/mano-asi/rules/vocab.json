@@ -1,0 +1,357 @@
+[
+  {
+    "term": "美观",
+    "domain": "UI",
+    "concrete_spec": "无既定栈时选 shadcn/ui + Tailwind semantic tokens + Radix primitives；同屏同类组件只保留一种variant，覆盖hover/focus/disabled。",
+    "model_known_keywords": [
+      "shadcn/ui",
+      "Tailwind CSS",
+      "Radix UI",
+      "semantic tokens"
+    ],
+    "example": "把“页面美观”改为“复用Button/Card/Dialog，主按钮同尺寸同色，键盘focus可见”。"
+  },
+  {
+    "term": "高级感",
+    "domain": "UI",
+    "concrete_spec": "只设1个accent、3层surface、1套radius；避免无语义渐变和装饰；先验证信息层级。",
+    "model_known_keywords": [
+      "semantic color",
+      "surface",
+      "visual hierarchy"
+    ],
+    "example": "页面仅主操作用accent；卡片按surface层级区分，不给所有元素加glow。"
+  },
+  {
+    "term": "专业",
+    "domain": "UI",
+    "concrete_spec": "统一组件variants和密度；Lucide同系列图标20px、stroke 1.75或2；交互目标优先44×44px。",
+    "model_known_keywords": [
+      "Lucide",
+      "component variants",
+      "WCAG 2.2"
+    ],
+    "example": "工具栏图标20px，点击区域44px；既有品牌图标另列例外。"
+  },
+  {
+    "term": "丝滑",
+    "domain": "动效",
+    "concrete_spec": "motion（framer-motion）spring stiffness:300 damping:30；只动画transform/opacity；尊重prefers-reduced-motion。",
+    "model_known_keywords": [
+      "motion",
+      "framer-motion",
+      "spring",
+      "transform",
+      "prefers-reduced-motion"
+    ],
+    "example": "抽屉从x:24到0，opacity:0到1；reduced motion时取消位移。"
+  },
+  {
+    "term": "流畅",
+    "domain": "动效",
+    "concrete_spec": "普通反馈duration:200ms ease-out；目标60fps时单帧预算约16.7ms，在目标设备profile，不以参数代替实测。",
+    "model_known_keywords": [
+      "ease-out",
+      "requestAnimationFrame",
+      "Performance panel",
+      "60fps"
+    ],
+    "example": "hover透明度200ms；滚动卡顿先定位long task，不先换动画库。"
+  },
+  {
+    "term": "有弹性",
+    "domain": "动效",
+    "concrete_spec": "spring stiffness:300 damping:30作为起点；质量/阻尼按目标设备调节，数值型状态避免多段互相打断。",
+    "model_known_keywords": [
+      "spring",
+      "stiffness",
+      "damping",
+      "mass"
+    ],
+    "example": "切换tab指示条使用layout动画；不让正文跟随弹跳。"
+  },
+  {
+    "term": "呼吸感",
+    "domain": "布局",
+    "concrete_spec": "8pt grid；页面padding 24/32px、区块gap 24/32px、控件内部gap 8/16px；窄屏padding降到16px。",
+    "model_known_keywords": [
+      "8pt grid",
+      "gap",
+      "padding",
+      "responsive"
+    ],
+    "example": "主容器max-width:1200px；小屏单列；不通过随意空行制造留白。"
+  },
+  {
+    "term": "整齐",
+    "domain": "布局",
+    "concrete_spec": "CSS Grid/Flex对齐；固定容器与列gap；数值右对齐，文本左对齐；长文案溢出策略明确。",
+    "model_known_keywords": [
+      "CSS Grid",
+      "Flexbox",
+      "alignment",
+      "tabular-nums"
+    ],
+    "example": "统计卡4列→2列→1列；表格金额右对齐并用tabular-nums。"
+  },
+  {
+    "term": "自适应",
+    "domain": "布局",
+    "concrete_spec": "先测320/768/1280px视口；内容决定断点，minmax/min-width:0；不得横向溢出，必要数据表独立滚动。",
+    "model_known_keywords": [
+      "mobile-first",
+      "minmax",
+      "min-width",
+      "overflow"
+    ],
+    "example": "侧栏在窄屏变Drawer；业务动作仍可键盘访问。"
+  },
+  {
+    "term": "配色舒服",
+    "domain": "颜色",
+    "concrete_spec": "语义色background/foreground/muted/border/accent/danger；正文对比度≥4.5:1，大字≥3:1；状态不可仅靠颜色。",
+    "model_known_keywords": [
+      "OKLCH",
+      "semantic tokens",
+      "WCAG contrast"
+    ],
+    "example": "错误用danger+图标+文字，不只把边框变红。"
+  },
+  {
+    "term": "有层次",
+    "domain": "颜色",
+    "concrete_spec": "surface三层以亮度区分；边框与shadow只辅助分组；dark mode单独测对比度。",
+    "model_known_keywords": [
+      "surface elevation",
+      "OKLCH",
+      "contrast"
+    ],
+    "example": "页面surface-0，卡片surface-1，弹层surface-2；不用不透明蒙层掩盖文字。"
+  },
+  {
+    "term": "排版精致",
+    "domain": "字体排版",
+    "concrete_spec": "Inter/思源黑体或已有品牌字体；正文16px/1.5，标题24/32px配1.2行高；层级最多4级，正文行长45—75字符按语言调整。",
+    "model_known_keywords": [
+      "Inter",
+      "Noto Sans SC",
+      "type scale",
+      "line-height"
+    ],
+    "example": "中英混排字体回退明确；中文正文不套用英文大letter-spacing。"
+  },
+  {
+    "term": "字体统一",
+    "domain": "字体排版",
+    "concrete_spec": "用font-family与type-scale tokens；只取实际加载的400/500/600字重，数字用tabular-nums，禁伪粗体。",
+    "model_known_keywords": [
+      "font fallback",
+      "font-weight",
+      "tabular-nums",
+      "font-display"
+    ],
+    "example": "font-display:swap；检查中文回退，不假定Inter包含中文字形。"
+  },
+  {
+    "term": "去AI味",
+    "domain": "文案",
+    "concrete_spec": "动作+对象+结果；删除“赋能/全方位/极致/无缝/综上所述”；事实和用户收益代替空洞修饰，保留必要风险。",
+    "model_known_keywords": [
+      "UX writing",
+      "plain language",
+      "active voice"
+    ],
+    "example": "“开启智能化高效协作之旅”→“邀请成员，共同编辑”。"
+  },
+  {
+    "term": "简洁",
+    "domain": "文案",
+    "concrete_spec": "一句一个信息；按钮2—6个中文字为起点；错误文案=发生什么+如何恢复，不编造原因。",
+    "model_known_keywords": [
+      "microcopy",
+      "progressive disclosure",
+      "error recovery"
+    ],
+    "example": "“操作失败”→“保存失败。内容已保留，请重试。”仅在内容确实保留时使用。"
+  },
+  {
+    "term": "易维护",
+    "domain": "架构",
+    "concrete_spec": "按业务边界分模块；core不依赖具体vendor；外部SDK封装adapter，显式输入输出、timeout与错误类型。",
+    "model_known_keywords": [
+      "ports and adapters",
+      "dependency inversion",
+      "typed interface"
+    ],
+    "example": "业务层调用PaymentPort，不直接散落某厂商SDK。"
+  },
+  {
+    "term": "可扩展",
+    "domain": "架构",
+    "concrete_spec": "configure > compose > extend > write；先一个纵向闭环；仅在两个真实变化点出现后抽象公共接口。",
+    "model_known_keywords": [
+      "configuration",
+      "composition",
+      "adapter",
+      "YAGNI"
+    ],
+    "example": "新增模型走provider adapter；没有实际多租户需求不先拆微服务。"
+  },
+  {
+    "term": "稳定可靠",
+    "domain": "测试",
+    "concrete_spec": "为主流程、失败路径、边界/权限各设断言；核心缺陷先复现失败测试；Mock与真实集成测试分开。",
+    "model_known_keywords": [
+      "unit test",
+      "integration test",
+      "E2E",
+      "TDD"
+    ],
+    "example": "重复提交只创建一个订单；无权限请求返回明确拒绝；记录实际执行结果。"
+  },
+  {
+    "term": "测试充分",
+    "domain": "测试",
+    "concrete_spec": "按风险选用lint/typecheck/unit/integration/E2E；每条验收对应检查与证据；coverage不替代业务断言。",
+    "model_known_keywords": [
+      "test matrix",
+      "typecheck",
+      "Playwright",
+      "regression"
+    ],
+    "example": "登录→创建→刷新后仍存在；网络失败可重试且不重复写入。"
+  },
+  {
+    "term": "性能好",
+    "domain": "测试",
+    "concrete_spec": "先定目标设备、数据规模和指标，再profile；报告p50/p95、样本量及测试条件；不得虚构数字。",
+    "model_known_keywords": [
+      "profiling",
+      "p95",
+      "benchmark",
+      "performance budget"
+    ],
+    "example": "在目标设备测列表1000项滚动；只在测量证明需要时引入virtualization。"
+  },
+  {
+    "term": "动画有节奏",
+    "domain": "视频动画",
+    "concrete_spec": "写时间轴表：镜头/起止秒/主体/运动属性/字幕/转场；关键姿态先静帧，再约30秒样片，最后全片。",
+    "model_known_keywords": [
+      "storyboard",
+      "timeline",
+      "keyframe",
+      "Remotion"
+    ],
+    "example": "0—3秒标题淡入，3—7秒展示主体，7—10秒拆解；先确认总时长再写动画。"
+  },
+  {
+    "term": "电影感",
+    "domain": "视频动画",
+    "concrete_spec": "指定shot scale、camera path、key/fill/rim light、palette、fps和转场，不用一个形容词代替分镜。",
+    "model_known_keywords": [
+      "shot scale",
+      "camera path",
+      "key light",
+      "rim light",
+      "color script"
+    ],
+    "example": "10秒示例：wide→medium；相机沿z轴缓推；主光暖、背景冷，字幕保持安全区。"
+  },
+  {
+    "term": "风格统一",
+    "domain": "视频动画",
+    "concrete_spec": "固定palette/type/shape/line-weight/motion曲线；同一角色锚点和比例锁定；3层景深，不混贴不兼容资产。",
+    "model_known_keywords": [
+      "style frame",
+      "design tokens",
+      "shape language",
+      "depth layers"
+    ],
+    "example": "先选一张style frame；后续镜头复用角色比例和色板，不逐镜随机换画风。"
+  },
+  {
+    "term": "像素风",
+    "domain": "视频动画",
+    "concrete_spec": "低分辨率逻辑画布+整数倍放大；imageSmoothingEnabled:false；有限palette与固定像素网格。",
+    "model_known_keywords": [
+      "Canvas2D",
+      "nearest-neighbor",
+      "pixel grid",
+      "palette"
+    ],
+    "example": "320×180逻辑画布放大至1280×720；像素位置取整，先渲染观察边缘。"
+  },
+  {
+    "term": "动画自然",
+    "domain": "视频动画",
+    "concrete_spec": "姿态关键帧+明确pivot与easing；脚底锚定、关节范围限制、前后肢明暗区分；逐帧检查遮挡与接触点。",
+    "model_known_keywords": [
+      "key pose",
+      "pivot",
+      "ease-in-out",
+      "occlusion"
+    ],
+    "example": "弯弓先检查站姿、拉弓极限、放箭三张静帧，避免肢体穿模后才全片渲染。"
+  },
+  {
+    "term": "错峰入场",
+    "domain": "动效",
+    "concrete_spec": "列表/卡片用 anime.js stagger(60ms) 或 GSAP timeline stagger:0.06；单元素 opacity 0→1 + translateY 12px→0，总时长≤600ms。",
+    "model_known_keywords": [
+      "anime.js",
+      "stagger",
+      "GSAP timeline",
+      "translateY"
+    ],
+    "example": "8张卡片依次入场，间隔60ms，最后一张在600ms内结束；reduced motion时直接显示。"
+  },
+  {
+    "term": "数学讲解动画",
+    "domain": "视频动画",
+    "concrete_spec": "公式/几何推导用 Manim（Scene、Transform、MathTex）；网页内讲解用 Motion Canvas（generator 时间轴）；每步一个变换，配字幕。",
+    "model_known_keywords": [
+      "Manim",
+      "MathTex",
+      "Transform",
+      "Motion Canvas"
+    ],
+    "example": "勾股定理：画三角形→三边方块淡入→面积Transform合并，每步2秒。"
+  },
+  {
+    "term": "矢量动效播放",
+    "domain": "动效",
+    "concrete_spec": "设计师AE动效导出 Bodymovin JSON，用 lottie-web loadAnimation 播放（renderer:'svg'，loop/autoplay 显式设置）；不手写复杂路径动画。",
+    "model_known_keywords": [
+      "lottie-web",
+      "Bodymovin",
+      "loadAnimation",
+      "SVG renderer"
+    ],
+    "example": "空状态插画用 Lottie JSON 循环播放，体积>200KB时改用静态SVG。"
+  },
+  {
+    "term": "粒子感",
+    "domain": "视频动画",
+    "concrete_spec": "Proton 发射器（Emitter + Rate + Life + Alpha/Scale behaviour）；简单发光用 Canvas2D globalCompositeOperation:'lighter'；粒子数按设备设上限。",
+    "model_known_keywords": [
+      "Proton",
+      "emitter",
+      "particle behaviour",
+      "additive blending"
+    ],
+    "example": "火花：Rate 每帧10—20个，Life 0.5—1s，Alpha 1→0，桌面上限800粒。"
+  },
+  {
+    "term": "3D质感展示",
+    "domain": "视频动画",
+    "concrete_spec": "three.js PerspectiveCamera + 环境贴图(PMREM) + 三点光；相机缓推用 GSAP/anime 驱动；需要物理/检查器时选 Babylon.js。",
+    "model_known_keywords": [
+      "three.js",
+      "PMREMGenerator",
+      "three-point lighting",
+      "Babylon.js"
+    ],
+    "example": "产品转台：环境光+主光+轮廓光，相机6秒绕Y轴30°，60fps实测。"
+  }
+]

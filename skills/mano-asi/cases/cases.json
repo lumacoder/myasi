@@ -1,0 +1,2632 @@
+[
+  {
+    "id": "mano-wheresryan22-anatomy",
+    "name": "anatomy",
+    "requested_repo_url": "https://github.com/wheresryan22/anatomy",
+    "repo_url": "https://github.com/wheresryan22/anatomy",
+    "api_description": "An agent skill for creating detailed, interactive isometric illustrations of real-world machines and complex systems. Generates polished SVGs with optional WebGL shaders and 3D effects.",
+    "one_liner_zh": "将机器与复杂系统做成可交互的等轴测SVG解释图，可加入WebGL与3D效果。",
+    "category": "交互可视化",
+    "tags": [
+      "SVG",
+      "WebGL",
+      "3D",
+      "isometric",
+      "交互讲解"
+    ],
+    "use_when": [
+      "需要解释机器结构、原理或复杂系统"
+    ],
+    "avoid_when": [
+      "需要精确工程仿真或未经验证的物理精度"
+    ],
+    "borrow": "pattern",
+    "key_technique": "用可交互等轴测图把复杂系统拆成可定位的部件与关系。",
+    "workflow_tip": "先确认系统层级和一个交互部件，再扩展整张解释图。",
+    "technique_basis": "用户帖子/原资料的提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 26282,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-10-19T04:20:24+08:00",
+    "primary_language": "JavaScript",
+    "archived": false,
+    "source": [
+      "https://x.com/daaihq/status/2117446567284367459",
+      "https://x.com/Y0urDumble/status/2119793194435027220",
+      "用户提供的《AI 全栈交付工程师》资料（2026-11-10）",
+      "https://api.github.com/repos/wheresryan22/anatomy"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-lemomo-ai-lemo-opuscar",
+    "name": "lemo-opuscar",
+    "requested_repo_url": "https://github.com/lemomo-ai/lemo-opuscar",
+    "repo_url": "https://github.com/lemomo-ai/lemo-opuscar",
+    "api_description": "A toolbox of film styles made in code for Claude Code: 66 ready to use, and your own. Each style is a style prompt plus a demo film made entirely in code by Claude Opus 5.5, with no video model. By Lemomo. · 一套用代码做片的风格工具箱：66 种现成风格，也能做出你自己的",
+    "one_liner_zh": "用于代码制片的风格工具箱，API描述列有66种现成风格及可编辑示例。",
+    "category": "视频动画",
+    "tags": [
+      "canvas",
+      "style",
+      "短片",
+      "口播",
+      "skill"
+    ],
+    "use_when": [
+      "需要口播、短片的视觉风格起点和制作指南"
+    ],
+    "avoid_when": [
+      "尚未确定内容节奏却只想堆叠风格，或把示例当成自动质量保证"
+    ],
+    "borrow": "reference",
+    "key_technique": "复用风格提示词、示例片和制作约束；数量仅为当前描述快照。",
+    "workflow_tip": "先挑一个风格跑通样片，再替换内容；不同时组合多套skill。",
+    "technique_basis": "用户帖子/原资料的提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 14116,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-10T09:28:42+08:00",
+    "primary_language": "JavaScript",
+    "archived": false,
+    "source": [
+      "https://x.com/daaihq/status/2117446567284367459",
+      "https://api.github.com/repos/lemomo-ai/lemo-opuscar"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-patch-gg-pixelfx",
+    "name": "pixelfx",
+    "requested_repo_url": "https://github.com/patch-gg/pixelfx",
+    "repo_url": "https://github.com/patch-gg/pixelfx",
+    "api_description": "244 pixel art effects, every one a small piece of code. Plus a Claude Code skill to make your own.",
+    "one_liner_zh": "提供244个小代码像素特效与用于制作新特效的Claude Code skill。",
+    "category": "视频动画",
+    "tags": [
+      "canvas",
+      "pixel-art",
+      "effects",
+      "skill"
+    ],
+    "use_when": [
+      "需要像素风特效和可修改的小代码示例"
+    ],
+    "avoid_when": [
+      "需要写实画面，或目标设备性能尚未评估却大量叠加特效"
+    ],
+    "borrow": "reference",
+    "key_technique": "有限palette与小代码特效，便于逐帧观察和局部修改。",
+    "workflow_tip": "先画→渲染→观察→修改；先验证单个特效再组合。",
+    "technique_basis": "用户帖子/原资料的提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 6371,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-09T17:51:43+08:00",
+    "primary_language": "JavaScript",
+    "archived": false,
+    "source": [
+      "https://x.com/daaihq/status/2117446567284367459",
+      "https://x.com/Y0urDumble/status/2119793194435027220",
+      "https://api.github.com/repos/patch-gg/pixelfx"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-alchaincyf-huashu-motion",
+    "name": "huashu-motion",
+    "requested_repo_url": "https://github.com/alchaincyf/huashu-motion",
+    "repo_url": "https://github.com/alchaincyf/huashu-motion",
+    "api_description": "让你的agent一键直出商业级产品宣传片：会作曲，能指着画面改。Commercial-grade launch films by your coding agent — point at the frame to change it.",
+    "one_liner_zh": "面向代码Agent的产品宣传片工具，强调配乐与指向画面的局部反馈。",
+    "category": "视频动画",
+    "tags": [
+      "产品宣传",
+      "motion",
+      "预览反馈",
+      "时间点"
+    ],
+    "use_when": [
+      "产品发布片、产品宣传动效和可定位的审片反馈"
+    ],
+    "avoid_when": [
+      "需求只是静态UI，或没有条件检查真实渲染效果"
+    ],
+    "borrow": "pattern",
+    "key_technique": "先给创意方向，再让反馈携带时间点和元素信息定位修改。",
+    "workflow_tip": "先选创意方向；预览反馈记timecode、element、expected、actual。",
+    "technique_basis": "用户帖子/原资料的提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 2574,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-10T08:15:11+08:00",
+    "primary_language": "JavaScript",
+    "archived": false,
+    "source": [
+      "https://x.com/daaihq/status/2117446567284367459",
+      "https://api.github.com/repos/alchaincyf/huashu-motion"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-cth9191-animate",
+    "name": "animate",
+    "requested_repo_url": "https://github.com/cth9191/animate",
+    "repo_url": "https://github.com/cth9191/animate",
+    "api_description": "Procedural animation in any style for Claude Code: short single-file canvas videos with story, look and storyboard check-ins. 7 built-in styles or one matched from your references, your own music (beat-mapped), real product screenshots, every format from one piece.",
+    "one_liner_zh": "制作单文件Canvas短片，内置风格并在故事、视觉与分镜阶段设确认点。",
+    "category": "视频动画",
+    "tags": [
+      "canvas",
+      "storyboard",
+      "分镜",
+      "历史故事",
+      "讲解"
+    ],
+    "use_when": [
+      "讲解短片、历史故事或需要分阶段确认的程序化动画"
+    ],
+    "avoid_when": [
+      "未经确认就一次性批量全片，或需要未核实的角色表演能力"
+    ],
+    "borrow": "pattern",
+    "key_technique": "故事节奏→风格图→分镜→动画，把审美决策前置。",
+    "workflow_tip": "先出时间轴表；确认故事和静帧后再写动画。",
+    "technique_basis": "用户帖子/原资料的提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 1710,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-10-06T04:31:48+08:00",
+    "primary_language": "JavaScript",
+    "archived": false,
+    "source": [
+      "https://x.com/daaihq/status/2117446567284367459",
+      "https://api.github.com/repos/cth9191/animate"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-elvarofficial-teardown",
+    "name": "teardown",
+    "requested_repo_url": "https://github.com/elvarofficial/teardown",
+    "repo_url": "https://github.com/elvarofficial/teardown",
+    "api_description": "A Claude Code skill that turns any machine into a 3D simulator you can take apart",
+    "one_liner_zh": "将机器做成可拆解的3D模拟器的Claude Code skill。",
+    "category": "交互可视化",
+    "tags": [
+      "3D",
+      "拆解",
+      "offline",
+      "60fps",
+      "机器"
+    ],
+    "use_when": [
+      "机器旋转拆解、交互原理演示及离线网页交付"
+    ],
+    "avoid_when": [
+      "要求真实CAD精度、物理验证或未经许可的资产复制"
+    ],
+    "borrow": "pattern",
+    "key_technique": "以部件层级组织拆解状态；离线网页与逐帧录制是用户帖子提炼的工作流。",
+    "workflow_tip": "先验证一个拆解动作；再核对离线可用性和目标60fps逐帧录制。",
+    "technique_basis": "用户帖子/原资料的提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 2823,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-10-31T22:01:06+08:00",
+    "primary_language": "JavaScript",
+    "archived": false,
+    "source": [
+      "https://x.com/daaihq/status/2117446567284367459",
+      "https://api.github.com/repos/elvarofficial/teardown"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-heychengc-vibe-knowledge-film",
+    "name": "vibe-knowledge-film",
+    "requested_repo_url": "https://github.com/HeyChengC/vibe-knowledge-film",
+    "repo_url": "https://github.com/HeyChengC/vibe-knowledge-film",
+    "api_description": "抖音爆款Vibe知识大赏知识短片skill，深度拆解爆款视频，复刻画风，导演分镜表，自动配音效，一键出片",
+    "one_liner_zh": "用于知识短片的skill，仓库描述强调画风、导演分镜、音效与制片。",
+    "category": "视频动画",
+    "tags": [
+      "知识短片",
+      "样片",
+      "分镜",
+      "sound"
+    ],
+    "use_when": [
+      "需要知识短片及分镜、声音协同的制作流程"
+    ],
+    "avoid_when": [
+      "不能核对事实/素材授权，或不愿先审样片就要求全片"
+    ],
+    "borrow": "pattern",
+    "key_technique": "把内容、画风、分镜和音效拆成可审查阶段。",
+    "workflow_tip": "先做约30秒样片确认；短于30秒的片子先做关键镜头。",
+    "technique_basis": "用户帖子/原资料的提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 1195,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "other",
+      "name": "Other",
+      "spdx_id": "NOASSERTION"
+    },
+    "license_note": "API为Other/NOASSERTION；须阅读LICENSE及适用条款，不能推断免费商用。",
+    "pushed_at": "2026-10-13T14:12:35+08:00",
+    "primary_language": "JavaScript",
+    "archived": false,
+    "source": [
+      "https://x.com/daaihq/status/2117446567284367459",
+      "https://api.github.com/repos/HeyChengC/vibe-knowledge-film"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-showheyohtaki-motion-prompt",
+    "name": "motion-prompt",
+    "requested_repo_url": "https://github.com/showheyohtaki/motion-prompt",
+    "repo_url": "https://github.com/showheyohtaki/motion-prompt",
+    "api_description": null,
+    "one_liner_zh": "MG动态设计风格参考库；用户帖子称含15种风格与每种10秒示例，API未提供description。",
+    "category": "视频动画",
+    "tags": [
+      "MG",
+      "motion",
+      "style",
+      "10秒"
+    ],
+    "use_when": [
+      "需要短MG动效的风格对照与提示词参考"
+    ],
+    "avoid_when": [
+      "把风格数量视为永久事实，或无需验证就承诺可直接制片"
+    ],
+    "borrow": "reference",
+    "key_technique": "借鉴短成片的时间分配和风格词，而不是复制所有提示词。",
+    "workflow_tip": "先用10秒测试镜头核对风格；数量与细节使用前再查仓库。",
+    "technique_basis": "用户帖子/原资料的提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 1671,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-10-29T20:52:08+08:00",
+    "primary_language": "JavaScript",
+    "archived": false,
+    "source": [
+      "https://x.com/daaihq/status/2117446567284367459",
+      "https://api.github.com/repos/showheyohtaki/motion-prompt"
+    ],
+    "notes": [
+      "API description为null；中文介绍依据用户帖子，不伪造API描述。"
+    ]
+  },
+  {
+    "id": "mano-satnaing-shadcn-admin",
+    "name": "shadcn-admin",
+    "requested_repo_url": "https://github.com/satnaing/shadcn-admin",
+    "repo_url": "https://github.com/satnaing/shadcn-admin",
+    "api_description": "Admin Dashboard UI built with Shadcn and Vite.",
+    "one_liner_zh": "基于Shadcn与Vite构建的后台Dashboard UI。",
+    "category": "UI组件",
+    "tags": [
+      "shadcn/ui",
+      "Vite",
+      "dashboard",
+      "后台"
+    ],
+    "use_when": [
+      "需要后台界面、表格、导航等UI底座"
+    ],
+    "avoid_when": [
+      "误把UI模板当作含鉴权、业务API、数据库的完整后台"
+    ],
+    "borrow": "direct-dep",
+    "key_technique": "保留UI底座，以adapter接入业务接口与权限。",
+    "workflow_tip": "先跑通一个列表→详情→保存闭环，再做品牌与业务扩展。",
+    "technique_basis": "用户帖子/原资料的提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 16634,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-09-11T06:30:37+08:00",
+    "primary_language": "TypeScript",
+    "archived": false,
+    "source": [
+      "用户提供的《AI 全栈交付工程师》资料（2026-11-10）",
+      "https://api.github.com/repos/satnaing/shadcn-admin"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-obra-superpowers",
+    "name": "superpowers",
+    "requested_repo_url": "https://github.com/obra/superpowers",
+    "repo_url": "https://github.com/obra/superpowers",
+    "api_description": "An agentic skills framework & software development methodology that works.",
+    "one_liner_zh": "面向Agent的skill框架与软件研发方法库。",
+    "category": "工程方法",
+    "tags": [
+      "TDD",
+      "review",
+      "skill",
+      "任务拆解"
+    ],
+    "use_when": [
+      "需要需求拆解、测试驱动、审查和验证门禁"
+    ],
+    "avoid_when": [
+      "仅改一行文案却引入整套重型流程，或默认全部skill都可用"
+    ],
+    "borrow": "pattern",
+    "key_technique": "借鉴需求澄清、拆解、失败测试和验证交付的闭环。",
+    "workflow_tip": "按风险加载单个步骤；不要把整个skill库塞进上下文。",
+    "technique_basis": "用户帖子/原资料的提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 315216,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-04T07:24:58+08:00",
+    "primary_language": "Shell",
+    "archived": false,
+    "source": [
+      "用户提供的《AI 全栈交付工程师》资料（2026-11-10）",
+      "https://api.github.com/repos/obra/superpowers"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-facebook-stylex",
+    "name": "stylex",
+    "requested_repo_url": "https://github.com/facebook/stylex",
+    "repo_url": "https://github.com/meta/stylex",
+    "api_description": "StyleX is the styling system for ambitious user interfaces.",
+    "one_liner_zh": "面向复杂UI的StyleX样式系统；原facebook/stylex链接已由API解析到meta/stylex。",
+    "category": "样式系统",
+    "tags": [
+      "StyleX",
+      "CSS",
+      "tokens"
+    ],
+    "use_when": [
+      "需要评估样式体系与可组合的样式约束"
+    ],
+    "avoid_when": [
+      "已有稳定Tailwind/shadcn体系且没有可测迁移收益"
+    ],
+    "borrow": "direct-dep",
+    "key_technique": "用统一样式与tokens约束组件；是否采用取决于现有构建兼容性。",
+    "workflow_tip": "先核对当前官方集成方式和一个组件的构建，不为新颖而换栈。",
+    "technique_basis": "用户帖子/原资料的提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 10467,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-10T03:09:41+08:00",
+    "primary_language": "JavaScript",
+    "archived": false,
+    "source": [
+      "用户提供的《AI 全栈交付工程师》资料（2026-11-10）",
+      "https://api.github.com/repos/facebook/stylex"
+    ],
+    "notes": [
+      "原facebook/stylex链接由GitHub API解析为meta/stylex；保留原URL便于查重。"
+    ]
+  },
+  {
+    "id": "mano-dqev-reicon",
+    "name": "reicon",
+    "requested_repo_url": "https://github.com/dqev/reicon",
+    "repo_url": "https://github.com/dqev/reicon",
+    "api_description": "Reicon - Open-Source Icon Library for Designers & Developers",
+    "one_liner_zh": "面向设计师与开发者的开源图标库；API主语言为Kotlin，不能据此假定有React SDK。",
+    "category": "图标",
+    "tags": [
+      "icons",
+      "design",
+      "reicon"
+    ],
+    "use_when": [
+      "需要评估统一图标风格和可用资源格式"
+    ],
+    "avoid_when": [
+      "没有核实平台/分发格式就当成Web直接依赖"
+    ],
+    "borrow": "reference",
+    "key_technique": "复用统一图标语言；平台兼容与导出格式需另查文档。",
+    "workflow_tip": "先验证一个图标在目标栈的导入方式，再确定是否采用。",
+    "technique_basis": "用户帖子/原资料的提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 1767,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-09T23:32:18+08:00",
+    "primary_language": "Kotlin",
+    "archived": false,
+    "source": [
+      "用户提供的《AI 全栈交付工程师》资料（2026-11-10）",
+      "https://api.github.com/repos/dqev/reicon"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-lucide-icons-lucide",
+    "name": "lucide",
+    "requested_repo_url": "https://github.com/lucide-icons/lucide",
+    "repo_url": "https://github.com/lucide-icons/lucide",
+    "api_description": "Beautiful & consistent icon toolkit made by the community. Lucide is an open-source icon library that provides 2000+ vector (svg) files for displaying icons and symbols in digital and non-digital projects. ",
+    "one_liner_zh": "社区维护的一致性SVG图标工具包。",
+    "category": "图标",
+    "tags": [
+      "Lucide",
+      "SVG",
+      "icons",
+      "UI"
+    ],
+    "use_when": [
+      "需要通用UI图标且希望维持统一线条与尺寸"
+    ],
+    "avoid_when": [
+      "把多套图标混用，或没核对图标/包许可就复制分发"
+    ],
+    "borrow": "direct-dep",
+    "key_technique": "统一stroke、viewBox、尺寸与语义命名。",
+    "workflow_tip": "选一个实际可用的目标框架包，检查许可与无障碍标签。",
+    "technique_basis": "用户帖子/原资料的提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 25671,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "other",
+      "name": "Other",
+      "spdx_id": "NOASSERTION"
+    },
+    "license_note": "API为Other/NOASSERTION；须阅读LICENSE及适用条款，不能推断免费商用。",
+    "pushed_at": "2026-11-09T22:01:57+08:00",
+    "primary_language": "TypeScript",
+    "archived": false,
+    "source": [
+      "用户提供的《AI 全栈交付工程师》资料（2026-11-10）",
+      "https://api.github.com/repos/lucide-icons/lucide"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-guillermolg00-morphicons",
+    "name": "morphicons",
+    "requested_repo_url": "https://github.com/guillermolg00/morphicons",
+    "repo_url": "https://github.com/guillermolg00/morphicons",
+    "api_description": "Any icon morphs into any other — universal morphing for stroke-based icons with spring physics. Zero dependencies, ~7 KB gzip.",
+    "one_liner_zh": "基于spring物理的线条图标形变工具，用于图标之间的状态变换。",
+    "category": "图标",
+    "tags": [
+      "SVG",
+      "spring",
+      "morph",
+      "motion"
+    ],
+    "use_when": [
+      "图标有明确状态切换与过渡需求"
+    ],
+    "avoid_when": [
+      "只是静态图标却增加形变成本，或忽略reduced motion"
+    ],
+    "borrow": "direct-dep",
+    "key_technique": "用stroke图标的形变表达状态，保持状态终点可辨认。",
+    "workflow_tip": "先检查两端静态可读性，再调spring并验证减少动效设置。",
+    "technique_basis": "用户帖子/原资料的提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 3168,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-08T06:03:41+08:00",
+    "primary_language": "TypeScript",
+    "archived": false,
+    "source": [
+      "用户提供的《AI 全栈交付工程师》资料（2026-11-10）",
+      "https://api.github.com/repos/guillermolg00/morphicons"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-lobehub-lobe-icons",
+    "name": "lobe-icons",
+    "requested_repo_url": "https://github.com/lobehub/lobe-icons",
+    "repo_url": "https://github.com/lobehub/lobe-icons",
+    "api_description": "🥨 Lobe Icons - Brings AI/LLM brand logos to your React & React Native apps — static SVG/PNG/WebP, no dependencies.",
+    "one_liner_zh": "为React和React Native等场景提供AI/LLM品牌图标及静态资源。",
+    "category": "图标",
+    "tags": [
+      "AI",
+      "brand",
+      "React",
+      "SVG"
+    ],
+    "use_when": [
+      "需要模型或服务商的品牌图标"
+    ],
+    "avoid_when": [
+      "忽略品牌商标规则，或将品牌图标当通用UI符号"
+    ],
+    "borrow": "direct-dep",
+    "key_technique": "将厂商品牌资源与通用操作图标分开管理。",
+    "workflow_tip": "核查实际资源格式、品牌使用条件和包体积，再按需引入。",
+    "technique_basis": "用户帖子/原资料的提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 2686,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-09T17:18:28+08:00",
+    "primary_language": "TypeScript",
+    "archived": false,
+    "source": [
+      "用户提供的《AI 全栈交付工程师》资料（2026-11-10）",
+      "https://api.github.com/repos/lobehub/lobe-icons"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-remotion-dev-remotion",
+    "name": "remotion",
+    "requested_repo_url": "https://github.com/remotion-dev/remotion",
+    "repo_url": "https://github.com/remotion-dev/remotion",
+    "api_description": "🎥      Make videos programmatically with React",
+    "one_liner_zh": "通过React以编程方式生成视频的工具。",
+    "category": "视频动画",
+    "tags": [
+      "React",
+      "Remotion",
+      "timeline",
+      "render"
+    ],
+    "use_when": [
+      "需要可复用时间轴、React组件驱动的视频渲染"
+    ],
+    "avoid_when": [
+      "未核对适用许可、渲染成本，或需要未经实现的实时视频编辑器"
+    ],
+    "borrow": "direct-dep",
+    "key_technique": "将时间、画面和组件参数化，逐帧确定性渲染。",
+    "workflow_tip": "先时间轴与静帧，再样片；核对LICENSE和组织/用途要求，不假定免费商用。",
+    "technique_basis": "用户帖子/原资料的提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 72046,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "other",
+      "name": "Other",
+      "spdx_id": "NOASSERTION"
+    },
+    "license_note": "API为Other/NOASSERTION；须阅读LICENSE及适用条款，不能推断免费商用。",
+    "pushed_at": "2026-11-10T01:52:44+08:00",
+    "primary_language": "TypeScript",
+    "archived": false,
+    "source": [
+      "用户提供的《AI 全栈交付工程师》资料（2026-11-10）",
+      "https://api.github.com/repos/remotion-dev/remotion"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-img2threejs-img2threejs",
+    "name": "img2threejs",
+    "requested_repo_url": "https://github.com/img2threejs/img2threejs",
+    "repo_url": "https://github.com/img2threejs/img2threejs",
+    "api_description": "Rebuild the object in a reference image as a code-only, procedural, quality-gated, animation-ready Three.js model. Token-efficient image-to-3D.",
+    "one_liner_zh": "将参考图中的物体重建为代码生成、可动画且带质量门禁的Three.js模型。",
+    "category": "3D与游戏",
+    "tags": [
+      "Three.js",
+      "procedural",
+      "image-to-3D",
+      "quality-gate"
+    ],
+    "use_when": [
+      "希望用参数化代码重建参考物体并迭代观察"
+    ],
+    "avoid_when": [
+      "要求像素级复刻、精确CAD或把概念参考当可运行模型交付"
+    ],
+    "borrow": "pattern",
+    "key_technique": "参考图→程序化几何→渲染检查→修正比例与细节。",
+    "workflow_tip": "先确认坐标、比例、材质和性能预算；一次验证一个关键视角。",
+    "technique_basis": "用户帖子/原资料的提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 21085,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "apache-2.0",
+      "name": "Apache License 2.0",
+      "spdx_id": "Apache-2.0"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-05T16:38:00+08:00",
+    "primary_language": "Python",
+    "archived": false,
+    "source": [
+      "用户提供的《AI 全栈交付工程师》资料（2026-11-10）",
+      "https://api.github.com/repos/img2threejs/img2threejs"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-sandromaglione-inkline-town",
+    "name": "inkline-town",
+    "requested_repo_url": "https://github.com/SandroMaglione/inkline-town",
+    "repo_url": "https://github.com/SandroMaglione/inkline-town",
+    "api_description": "A town simulation in pale isometric line art, implemented with Ritmo ECS and ThreeJs",
+    "one_liner_zh": "以淡色等轴测线稿呈现、使用Ritmo ECS与Three.js实现的小镇模拟。",
+    "category": "3D与游戏",
+    "tags": [
+      "ECS",
+      "Three.js",
+      "isometric",
+      "simulation"
+    ],
+    "use_when": [
+      "研究小镇模拟、ECS组织方式与一致程序化美术"
+    ],
+    "avoid_when": [
+      "无LICENSE时直接复制代码/资产，或需要现成生产级城建系统"
+    ],
+    "borrow": "reference",
+    "key_technique": "按实体/组件/系统理解模拟逻辑与渲染分离。",
+    "workflow_tip": "先观察状态更新与渲染的边界；代码复用先解决许可，不把示例当底座承诺。",
+    "technique_basis": "用户帖子/原资料的提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 79,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": null,
+    "license_note": "API未识别LICENSE；不等于获得复制、修改或商用授权。",
+    "pushed_at": "2026-11-08T18:02:13+08:00",
+    "primary_language": "TypeScript",
+    "archived": false,
+    "source": [
+      "用户提供的《AI 全栈交付工程师》资料（2026-11-10）",
+      "https://api.github.com/repos/SandroMaglione/inkline-town"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-gamedev-skills-awesome-gamedev-agent-skills",
+    "name": "awesome-gamedev-agent-skills",
+    "requested_repo_url": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills",
+    "repo_url": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills",
+    "api_description": "77 game-dev skills for AI coding agents — Godot, Unity, Unreal, Phaser, PixiJS, three.js, Bevy, pygame, LÖVE, Roblox. Portable SKILL.md Agent Skills (the format Anthropic launched as Claude Skills), with a router that loads the right skill for your engine and task. Runs in Claude Code, Cursor, Kiro, Codex, Copilot, Gemini CLI and more.",
+    "one_liner_zh": "按引擎和任务路由的可移植游戏开发Agent skill集合。",
+    "category": "3D与游戏",
+    "tags": [
+      "game-dev",
+      "skill",
+      "router",
+      "Godot",
+      "Unity",
+      "Three.js"
+    ],
+    "use_when": [
+      "需要针对特定引擎/任务加载研发知识"
+    ],
+    "avoid_when": [
+      "一次性载入全部skill，或未核对引擎版本就照搬API"
+    ],
+    "borrow": "pattern",
+    "key_technique": "按engine+task选择最小技能，减少无关上下文。",
+    "workflow_tip": "先跑一个引擎任务再组合；skill数量是描述快照而非稳定接口。",
+    "technique_basis": "用户帖子/原资料的提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 8052,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "apache-2.0",
+      "name": "Apache License 2.0",
+      "spdx_id": "Apache-2.0"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-10T00:00:44+08:00",
+    "primary_language": "Python",
+    "archived": false,
+    "source": [
+      "用户提供的《AI 全栈交付工程师》资料（2026-11-10）",
+      "https://api.github.com/repos/gamedev-skills/awesome-gamedev-agent-skills"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-xaidan777-arcengine",
+    "name": "ArcEngine",
+    "requested_repo_url": "https://github.com/xaidan777/ArcEngine",
+    "repo_url": "https://github.com/xaidan777/ArcEngine",
+    "api_description": "LLM Native 3D engine",
+    "one_liner_zh": "面向LLM的原生3D引擎项目。",
+    "category": "3D与游戏",
+    "tags": [
+      "LLM",
+      "3D",
+      "engine",
+      "game-dev"
+    ],
+    "use_when": [
+      "研究AI辅助3D开发的工程组织与接口"
+    ],
+    "avoid_when": [
+      "需要未核实的成熟引擎功能、稳定性或生产级保障"
+    ],
+    "borrow": "reference",
+    "key_technique": "借鉴面向Agent可读的场景/引擎接口组织。",
+    "workflow_tip": "先以最小场景验证当前API和限制，再决定是否引入。",
+    "technique_basis": "用户帖子/原资料的提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 249,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-10-02T20:42:02+08:00",
+    "primary_language": "JavaScript",
+    "archived": false,
+    "source": [
+      "用户提供的《AI 全栈交付工程师》资料（2026-11-10）",
+      "https://api.github.com/repos/xaidan777/ArcEngine"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-alibaba-page-agent",
+    "name": "page-agent",
+    "requested_repo_url": "https://github.com/alibaba/page-agent",
+    "repo_url": "https://github.com/alibaba/page-agent",
+    "api_description": "JavaScript in-page GUI agent. Control web interfaces with natural language.",
+    "one_liner_zh": "以自然语言控制网页界面的页面内JavaScript GUI Agent。",
+    "category": "Agent自动化",
+    "tags": [
+      "JavaScript",
+      "GUI",
+      "DOM",
+      "copilot"
+    ],
+    "use_when": [
+      "页面操作、表单自动化或产品内Copilot评估"
+    ],
+    "avoid_when": [
+      "未经授权操作账户、付款/发布，或把页面文本当成可信指令"
+    ],
+    "borrow": "direct-dep",
+    "key_technique": "页面内Agent与业务权限、确认边界分离。",
+    "workflow_tip": "先只读/低风险流程，确认状态和权限；敏感动作必须按宿主授权规则执行。",
+    "technique_basis": "用户帖子/原资料的提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 29655,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-10T03:09:55+08:00",
+    "primary_language": "TypeScript",
+    "archived": false,
+    "source": [
+      "用户提供的《AI 全栈交付工程师》资料（2026-11-10）",
+      "https://api.github.com/repos/alibaba/page-agent"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-morluto-rea",
+    "name": "rea",
+    "requested_repo_url": "https://github.com/morluto/rea",
+    "repo_url": "https://github.com/morluto/rea",
+    "api_description": "Reverse engineer anything with agents, from app behavior down to native binaries.",
+    "one_liner_zh": "使用Agent分析应用行为到原生二进制的逆向工程工具。",
+    "category": "工程方法",
+    "tags": [
+      "reverse-engineering",
+      "Agent",
+      "binary",
+      "analysis"
+    ],
+    "use_when": [
+      "在明确授权范围内理解应用或二进制行为"
+    ],
+    "avoid_when": [
+      "没有授权，或目标是绕过访问控制/泄露凭证/破坏数据"
+    ],
+    "borrow": "reference",
+    "key_technique": "从可观察行为到更深实现逐层定位，保留证据链。",
+    "workflow_tip": "先列授权目标、允许操作和停止条件；隔离分析环境，静态只读优先。",
+    "technique_basis": "用户帖子/原资料的提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 447325,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-10T11:09:00+08:00",
+    "primary_language": "TypeScript",
+    "archived": false,
+    "source": [
+      "用户提供的《AI 全栈交付工程师》资料（2026-11-10）",
+      "https://api.github.com/repos/morluto/rea"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-guanmo-ai-design-style",
+    "name": "design-style",
+    "requested_repo_url": "https://github.com/guanmo-ai/design-style",
+    "repo_url": "https://github.com/guanmo-ai/design-style",
+    "api_description": "每天一个设计风格：动效短片、风格图与制作指南，完整源码全部开放。 Design styles, motion films, visual guides & editable source code.",
+    "one_liner_zh": "包含设计风格、动效短片、风格图、制作指南及可编辑源码的参考库。",
+    "category": "设计参考",
+    "tags": [
+      "design",
+      "motion",
+      "style-frame",
+      "源码"
+    ],
+    "use_when": [
+      "提取风格词汇、画面基线与代码化视觉方法"
+    ],
+    "avoid_when": [
+      "把开放源码视为已获任意商用许可，或照抄整站而非提炼约束"
+    ],
+    "borrow": "reference",
+    "key_technique": "从风格图提取palette/shape/type/motion约束，再落到代码。",
+    "workflow_tip": "先对齐一张风格静帧；API无LICENSE识别，复制前核查授权。",
+    "technique_basis": "用户帖子/原资料的提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 207,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": null,
+    "license_note": "API未识别LICENSE；不等于获得复制、修改或商用授权。",
+    "pushed_at": "2026-11-09T23:37:11+08:00",
+    "primary_language": "TypeScript",
+    "archived": false,
+    "source": [
+      "用户明确提供的参考仓库链接",
+      "https://api.github.com/repos/guanmo-ai/design-style"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-lumacoder-open-skills",
+    "name": "open-skills",
+    "requested_repo_url": "https://github.com/lumacoder/open-skills",
+    "repo_url": "https://github.com/lumacoder/open-skills",
+    "api_description": "一个面向多 IDE/AI 编辑器的 Skill 分发与同步引擎。",
+    "one_liner_zh": "面向多IDE/AI编辑器的Skill分发与同步引擎。",
+    "category": "工程方法",
+    "tags": [
+      "skill",
+      "portability",
+      "IDE",
+      "sync"
+    ],
+    "use_when": [
+      "研究跨Agent的skill分发、引用与同步"
+    ],
+    "avoid_when": [
+      "未核对版本就声称各Agent原生支持，或无许可直接复制实现"
+    ],
+    "borrow": "reference",
+    "key_technique": "使用共享Markdown+JSON内容，宿主只做轻量adapter。",
+    "workflow_tip": "先在一个Agent完整跑通，再验证其他宿主；同步不是授权或安装成功的证明。",
+    "technique_basis": "用户帖子/原资料的提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 0,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": null,
+    "license_note": "API未识别LICENSE；不等于获得复制、修改或商用授权。",
+    "pushed_at": "2026-04-23T18:27:41+08:00",
+    "primary_language": "TypeScript",
+    "archived": false,
+    "source": [
+      "用户明确提供的参考仓库链接",
+      "https://api.github.com/repos/lumacoder/open-skills"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-heygen-com-hyperframes",
+    "name": "hyperframes",
+    "requested_repo_url": "https://github.com/heygen-com/hyperframes",
+    "repo_url": "https://github.com/heygen-com/hyperframes",
+    "api_description": "Write HTML. Render video. Built for agents.",
+    "one_liner_zh": "写HTML即可渲染成视频，专为Agent设计。",
+    "category": "视频动画",
+    "tags": [
+      "HTML",
+      "video",
+      "render",
+      "agent"
+    ],
+    "use_when": [
+      "想用网页技术栈直接出视频"
+    ],
+    "avoid_when": [
+      "需要专业非编精剪"
+    ],
+    "borrow": "direct-dep",
+    "key_technique": "HTML/CSS/JS 作为视频画面描述语言，渲染器逐帧输出。",
+    "workflow_tip": "先做一帧静态HTML定风格，再加时间轴。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 81933,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "apache-2.0",
+      "name": "Apache License 2.0",
+      "spdx_id": "Apache-2.0"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-10T17:13:49+08:00",
+    "primary_language": "TypeScript",
+    "archived": false,
+    "source": [
+      "https://x.com/Y0urDumble/status/2119793194435027220",
+      "https://api.github.com/repos/heygen-com/hyperframes"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-openmontageinc-openmontage",
+    "name": "OpenMontage",
+    "requested_repo_url": "https://github.com/OpenMontageInc/OpenMontage",
+    "repo_url": "https://github.com/OpenMontageInc/OpenMontage",
+    "api_description": "World's first open-source, agentic video production system. 12 production pipelines, 100+ tools, 700+ agent skill and production-knowledge files. Turn your AI coding assistant into a full video production studio.",
+    "one_liner_zh": "开源Agent化视频制作系统，12条生产管线、100+工具。",
+    "category": "视频动画",
+    "tags": [
+      "agentic",
+      "video pipeline",
+      "production"
+    ],
+    "use_when": [
+      "需要从脚本到成片的完整自动化管线"
+    ],
+    "avoid_when": [
+      "只做单个短动效（太重）"
+    ],
+    "borrow": "pattern",
+    "key_technique": "把视频生产拆成可组合的管线与知识文件。",
+    "workflow_tip": "只借用一条与需求最接近的管线，别全量引入。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 79264,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "agpl-3.0",
+      "name": "GNU Affero General Public License v3.0",
+      "spdx_id": "AGPL-3.0"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-09T14:23:55+08:00",
+    "primary_language": "Python",
+    "archived": false,
+    "source": [
+      "https://x.com/Y0urDumble/status/2119793194435027220",
+      "https://api.github.com/repos/OpenMontageInc/OpenMontage"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-vincentwei1021-video-shotcraft",
+    "name": "video-shotcraft",
+    "requested_repo_url": "https://github.com/Vincentwei1021/video-shotcraft",
+    "repo_url": "https://github.com/Vincentwei1021/video-shotcraft",
+    "api_description": "AI video skill for Claude Code & Codex — cinematic, editable product promos with Remotion: 124 shot recipe cards, 150 motion previews, beat sync, sound design, Motion Workbench & JianYing (CapCut CN) export.",
+    "one_liner_zh": "基于Remotion的电影感产品宣传片技能，含124张镜头配方卡。",
+    "category": "视频动画",
+    "tags": [
+      "Remotion",
+      "product promo",
+      "shot recipe",
+      "beat sync"
+    ],
+    "use_when": [
+      "做产品宣传片、发布视频"
+    ],
+    "avoid_when": [
+      "叙事长片"
+    ],
+    "borrow": "pattern",
+    "key_technique": "镜头配方卡+节拍同步，把“电影感”翻译成具体镜头参数。",
+    "workflow_tip": "先选3-5张镜头卡拼分镜表，再渲染样片。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 18323,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "apache-2.0",
+      "name": "Apache License 2.0",
+      "spdx_id": "Apache-2.0"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-09T23:59:44+08:00",
+    "primary_language": "TypeScript",
+    "archived": false,
+    "source": [
+      "https://x.com/Y0urDumble/status/2119793194435027220",
+      "https://api.github.com/repos/Vincentwei1021/video-shotcraft"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-remotion-dev-skills",
+    "name": "remotion skills",
+    "requested_repo_url": "https://github.com/remotion-dev/skills",
+    "repo_url": "https://github.com/remotion-dev/skills",
+    "api_description": "Agent Skills",
+    "one_liner_zh": "Remotion官方Agent技能，用React写视频。",
+    "category": "视频动画",
+    "tags": [
+      "Remotion",
+      "React",
+      "video"
+    ],
+    "use_when": [
+      "项目已用或准备用Remotion"
+    ],
+    "avoid_when": [
+      "不熟React或只需GIF级动效"
+    ],
+    "borrow": "reference",
+    "key_technique": "官方最佳实践约束Agent正确使用Remotion API。",
+    "workflow_tip": "Remotion项目开工前先加载。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 6759,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": null,
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-09T17:11:07+08:00",
+    "primary_language": "TypeScript",
+    "archived": false,
+    "source": [
+      "https://x.com/Y0urDumble/status/2119793194435027220",
+      "https://x.com/e1genqq/status/2121340063254556890",
+      "https://api.github.com/repos/remotion-dev/skills"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-anthropics-skills",
+    "name": "anthropic skills",
+    "requested_repo_url": "https://github.com/anthropics/skills",
+    "repo_url": "https://github.com/anthropics/skills",
+    "api_description": "Public repository for Agent Skills",
+    "one_liner_zh": "Anthropic官方技能库：frontend-design、canvas、算法艺术等。",
+    "category": "设计参考",
+    "tags": [
+      "frontend-design",
+      "canvas",
+      "algorithmic art",
+      "official"
+    ],
+    "use_when": [
+      "需要标准化技能写法或前端设计范式"
+    ],
+    "avoid_when": [
+      "只需一次性小改动，无需引入技能体系"
+    ],
+    "borrow": "reference",
+    "key_technique": "官方SKILL.md结构与前端设计约束。",
+    "workflow_tip": "写新skill时参考其目录结构。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 191574,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": null,
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-07T06:32:32+08:00",
+    "primary_language": "Python",
+    "archived": false,
+    "source": [
+      "https://x.com/Y0urDumble/status/2119793194435027220",
+      "https://api.github.com/repos/anthropics/skills"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-pbakaus-impeccable",
+    "name": "impeccable",
+    "requested_repo_url": "https://github.com/pbakaus/impeccable",
+    "repo_url": "https://github.com/pbakaus/impeccable",
+    "api_description": "The design vocabulary for your coding agent. Steer with polish and bolder, review with critique and audit, catch AI slop before it ships.",
+    "one_liner_zh": "给编程Agent的设计词汇表：/polish /bolder /critique，消除AI味。",
+    "category": "设计参考",
+    "tags": [
+      "design vocabulary",
+      "anti-AI-slop",
+      "critique",
+      "polish"
+    ],
+    "use_when": [
+      "把“好看/高级”翻译成可执行设计指令；设计评审"
+    ],
+    "avoid_when": [
+      "已有成熟品牌设计系统且不允许风格调整"
+    ],
+    "borrow": "reference",
+    "key_technique": "用命名指令（polish、bolder、critique、audit）代替模糊审美词。",
+    "workflow_tip": "交付前跑一遍critique/audit。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 107155,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "apache-2.0",
+      "name": "Apache License 2.0",
+      "spdx_id": "Apache-2.0"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-10T17:14:20+08:00",
+    "primary_language": "Rust",
+    "archived": false,
+    "source": [
+      "https://x.com/Y0urDumble/status/2119793194435027220",
+      "https://api.github.com/repos/pbakaus/impeccable"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-nexu-io-open-design",
+    "name": "open-design",
+    "requested_repo_url": "https://github.com/nexu-io/open-design",
+    "repo_url": "https://github.com/nexu-io/open-design",
+    "api_description": "The 1st Collaborative AI Design Agent Workspace. Local-first and open source. Create motion, prototypes, websites, apps, dashboards, presentations, images, and videos with your team and AI agents. Share work, exchange feedback, and iterate together in one workspace.",
+    "one_liner_zh": "本地优先的开源AI设计协作工作区，可做动效、原型、网站、看板等。",
+    "category": "设计参考",
+    "tags": [
+      "design workspace",
+      "prototype",
+      "local-first"
+    ],
+    "use_when": [
+      "需要一个可视化设计工作台"
+    ],
+    "avoid_when": [
+      "只需改一个组件"
+    ],
+    "borrow": "direct-dep",
+    "key_technique": "本地AI设计工作区，多产物类型统一生成。",
+    "workflow_tip": "评估成本较高，先看示例是否贴合。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 106930,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "apache-2.0",
+      "name": "Apache License 2.0",
+      "spdx_id": "Apache-2.0"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-10T17:18:05+08:00",
+    "primary_language": "TypeScript",
+    "archived": false,
+    "source": [
+      "https://x.com/Y0urDumble/status/2119793194435027220",
+      "https://api.github.com/repos/nexu-io/open-design"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-nutlope-hallmark",
+    "name": "hallmark",
+    "requested_repo_url": "https://github.com/Nutlope/hallmark",
+    "repo_url": "https://github.com/Nutlope/hallmark",
+    "api_description": "Anti-AI-slop design skill for Claude Code, Cursor, and Codex.",
+    "one_liner_zh": "反AI味设计技能，适配Claude Code/Cursor/Codex。",
+    "category": "设计参考",
+    "tags": [
+      "anti-AI-slop",
+      "design skill",
+      "CSS"
+    ],
+    "use_when": [
+      "界面看起来模板化、AI味重"
+    ],
+    "avoid_when": [
+      "已有成熟品牌设计系统且不允许风格调整"
+    ],
+    "borrow": "reference",
+    "key_technique": "用明确的反模式清单避免AI式默认设计。",
+    "workflow_tip": "与impeccable二选一作为设计门禁。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 52066,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-05T21:16:31+08:00",
+    "primary_language": "CSS",
+    "archived": false,
+    "source": [
+      "https://x.com/Y0urDumble/status/2119793194435027220",
+      "https://api.github.com/repos/Nutlope/hallmark"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-ahujasid-mcp-for-blender",
+    "name": "blender mcp",
+    "requested_repo_url": "https://github.com/ahujasid/mcp-for-blender",
+    "repo_url": "https://github.com/ahujasid/mcp-for-blender",
+    "api_description": "Community plugin to control Blender 3D with any LLM of your choice. Not affiliated with the official Blender Foundation.",
+    "one_liner_zh": "让LLM通过MCP控制Blender，搭建整场景。",
+    "category": "3D与游戏",
+    "tags": [
+      "Blender",
+      "MCP",
+      "3D scene"
+    ],
+    "use_when": [
+      "需要Agent直接操作Blender"
+    ],
+    "avoid_when": [
+      "网页实时3D（用three.js）"
+    ],
+    "borrow": "direct-dep",
+    "key_technique": "MCP把Blender操作暴露为工具调用。",
+    "workflow_tip": "已作为连接器接入，可直接用。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 33836,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-04T21:04:08+08:00",
+    "primary_language": "Python",
+    "archived": false,
+    "source": [
+      "https://x.com/Y0urDumble/status/2119793194435027220",
+      "https://api.github.com/repos/ahujasid/mcp-for-blender"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-coplaydev-unity-mcp",
+    "name": "unity mcp",
+    "requested_repo_url": "https://github.com/CoplayDev/unity-mcp",
+    "repo_url": "https://github.com/CoplayDev/unity-mcp",
+    "api_description": "Unity MCP acts as a bridge between AI assistants and your Unity Editor. Give your LLM tools to manage assets, control scenes, edit scripts, and automate tasks within Unity.",
+    "one_liner_zh": "连接AI助手与Unity编辑器，管理资源、场景与脚本。",
+    "category": "3D与游戏",
+    "tags": [
+      "Unity",
+      "MCP",
+      "game engine"
+    ],
+    "use_when": [
+      "Unity项目自动化"
+    ],
+    "avoid_when": [
+      "非Unity项目"
+    ],
+    "borrow": "direct-dep",
+    "key_technique": "MCP桥接Unity Editor。",
+    "workflow_tip": "需要本机安装 Unity；无图形界面或未安装 Unity 的环境不适用。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 15852,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-10-31T02:15:23+08:00",
+    "primary_language": "C#",
+    "archived": false,
+    "source": [
+      "https://x.com/Y0urDumble/status/2119793194435027220",
+      "https://api.github.com/repos/CoplayDev/unity-mcp"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-arjun988-blender-skills",
+    "name": "blender-skills",
+    "requested_repo_url": "https://github.com/arjun988/blender-skills",
+    "repo_url": "https://github.com/arjun988/blender-skills",
+    "api_description": "94 specialist Blender skills for Cursor, Claude Code, Kiro & Codex -> MCP-powered production pipeline from blockout to engine export.",
+    "one_liner_zh": "94个Blender专项技能，从白模到引擎导出。",
+    "category": "3D与游戏",
+    "tags": [
+      "Blender",
+      "pipeline",
+      "blockout",
+      "export"
+    ],
+    "use_when": [
+      "Blender全流程生产"
+    ],
+    "avoid_when": [
+      "简单单物体建模"
+    ],
+    "borrow": "reference",
+    "key_technique": "按生产阶段拆分技能，配合MCP执行。",
+    "workflow_tip": "只加载当前阶段相关技能。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 2377,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-06T16:42:41+08:00",
+    "primary_language": "TypeScript",
+    "archived": false,
+    "source": [
+      "https://x.com/Y0urDumble/status/2119793194435027220",
+      "https://api.github.com/repos/arjun988/blender-skills"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-greensock-gsap-skills",
+    "name": "gsap skills",
+    "requested_repo_url": "https://github.com/greensock/gsap-skills",
+    "repo_url": "https://github.com/greensock/gsap-skills",
+    "api_description": "Official AI skills for GSAP. These skills teach AI coding agents how to correctly use GSAP (GreenSock Animation Platform), including best practices, common animation patterns, and plugin usage.",
+    "one_liner_zh": "GSAP官方技能：缓动、时间轴、滚动动画最佳实践。",
+    "category": "交互可视化",
+    "tags": [
+      "GSAP",
+      "easing",
+      "timeline",
+      "ScrollTrigger"
+    ],
+    "use_when": [
+      "网页动效、滚动叙事"
+    ],
+    "avoid_when": [
+      "React项目已统一用motion"
+    ],
+    "borrow": "reference",
+    "key_technique": "官方约束让Agent正确用GSAP时间轴与缓动。",
+    "workflow_tip": "“丝滑”翻译为具体ease+duration。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 18210,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-07-30T01:36:08+08:00",
+    "primary_language": null,
+    "archived": false,
+    "source": [
+      "https://x.com/Y0urDumble/status/2119793194435027220",
+      "https://api.github.com/repos/greensock/gsap-skills"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-vincentwei1021-anything2explainer",
+    "name": "anything2explainer",
+    "requested_repo_url": "https://github.com/Vincentwei1021/anything2explainer",
+    "repo_url": "https://github.com/Vincentwei1021/anything2explainer",
+    "api_description": "Topic in, narrated explainer video out. A Claude Code / Codex skill that turns any topic into a black-canvas motion-graphics explainer video with TTS voiceover, subtitles and a chapter progress bar. Chinese or English; every frame drawn in code with Remotion.",
+    "one_liner_zh": "输入主题，输出带配音的黑底动态图形讲解视频。",
+    "category": "视频动画",
+    "tags": [
+      "explainer",
+      "TTS",
+      "motion graphics"
+    ],
+    "use_when": [
+      "知识讲解短视频"
+    ],
+    "avoid_when": [
+      "品牌化强视觉需求"
+    ],
+    "borrow": "pattern",
+    "key_technique": "主题→脚本→配音→动态图形的固定流水线。",
+    "workflow_tip": "先锁脚本与时长再出画面。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 3183,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "other",
+      "name": "Other",
+      "spdx_id": "NOASSERTION"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-09T23:26:15+08:00",
+    "primary_language": "TypeScript",
+    "archived": false,
+    "source": [
+      "https://x.com/Y0urDumble/status/2119793194435027220",
+      "https://api.github.com/repos/Vincentwei1021/anything2explainer"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-oil-oil-oil-motion",
+    "name": "oil-motion",
+    "requested_repo_url": "https://github.com/oil-oil/oil-motion",
+    "repo_url": "https://github.com/oil-oil/oil-motion",
+    "api_description": "Web animation skill for Claude Code & Codex. 帮你做跟着滚动和鼠标动的网页动画。",
+    "one_liner_zh": "跟随滚动和鼠标的网页动画技能。",
+    "category": "交互可视化",
+    "tags": [
+      "scroll",
+      "mouse",
+      "web animation"
+    ],
+    "use_when": [
+      "落地页交互动效"
+    ],
+    "avoid_when": [
+      "后台/工具类界面"
+    ],
+    "borrow": "pattern",
+    "key_technique": "滚动与指针驱动的动画模式。",
+    "workflow_tip": "动效限定在首屏与关键转场。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 2860,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-10-04T22:54:13+08:00",
+    "primary_language": "Python",
+    "archived": false,
+    "source": [
+      "https://x.com/Y0urDumble/status/2119793194435027220",
+      "https://api.github.com/repos/oil-oil/oil-motion"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-nateherkai-herk-edit-kit",
+    "name": "herk edit kit",
+    "requested_repo_url": "https://github.com/nateherkai/herk-edit-kit",
+    "repo_url": "https://github.com/nateherkai/herk-edit-kit",
+    "api_description": "Herk Edit Kit by Nate Herk: edit videos, reels, and YouTube Shorts with Codex or Claude Code. 15 skills, transcript-driven cuts, storytelling, 406 motion-graphics cards, and HyperFrames templates.",
+    "one_liner_zh": "用Agent剪视频：去空白、剪Reels与Shorts，15个技能。",
+    "category": "视频动画",
+    "tags": [
+      "editing",
+      "shorts",
+      "transcript cuts"
+    ],
+    "use_when": [
+      "口播素材剪辑成短视频"
+    ],
+    "avoid_when": [
+      "纯生成类动画"
+    ],
+    "borrow": "pattern",
+    "key_technique": "基于转写稿驱动剪辑决策。",
+    "workflow_tip": "先出转写和剪辑点表，再执行剪切。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 2708,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "other",
+      "name": "Other",
+      "spdx_id": "NOASSERTION"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-10-14T20:51:12+08:00",
+    "primary_language": "HTML",
+    "archived": false,
+    "source": [
+      "https://x.com/Y0urDumble/status/2119793194435027220",
+      "https://api.github.com/repos/nateherkai/herk-edit-kit"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-rehan-remade-universal-modder",
+    "name": "universal-modder",
+    "requested_repo_url": "https://github.com/rehan-remade/universal-modder",
+    "repo_url": "https://github.com/rehan-remade/universal-modder",
+    "api_description": "Point Claude at any game. Skills, tools and the fal MCP that let Claude Code mod almost any PC game you own: recon, reverse engineering, fal-generated art/3D/audio, in-game testing, showcase videos.",
+    "one_liner_zh": "让Claude Code给你拥有的PC游戏做Mod：侦察、逆向、生成资源。",
+    "category": "3D与游戏",
+    "tags": [
+      "game modding",
+      "reverse engineering",
+      "fal MCP"
+    ],
+    "use_when": [
+      "给自有游戏做Mod"
+    ],
+    "avoid_when": [
+      "在线/反作弊游戏或未授权内容"
+    ],
+    "borrow": "pattern",
+    "key_technique": "侦察→逆向→资源生成→注入的分阶段流程。",
+    "workflow_tip": "仅限自有游戏，注意EULA。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 9570,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-10T14:26:57+08:00",
+    "primary_language": "Python",
+    "archived": false,
+    "source": [
+      "https://x.com/Y0urDumble/status/2119793194435027220",
+      "https://api.github.com/repos/rehan-remade/universal-modder"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-aldegad-sprite-gen",
+    "name": "sprite-gen",
+    "requested_repo_url": "https://github.com/aldegad/sprite-gen",
+    "repo_url": "https://github.com/aldegad/sprite-gen",
+    "api_description": "Generate clean 2D game sprites & animation atlases — component-row pipeline: state rows, alpha cleanup, frame extraction, runtime atlases. Codex/Claude skill.",
+    "one_liner_zh": "生成干净的2D游戏精灵与动画图集。",
+    "category": "3D与游戏",
+    "tags": [
+      "sprite",
+      "atlas",
+      "2D",
+      "alpha cleanup"
+    ],
+    "use_when": [
+      "需要2D角色帧动画素材"
+    ],
+    "avoid_when": [
+      "3D资产"
+    ],
+    "borrow": "pattern",
+    "key_technique": "按状态行生成→去底→抽帧→打图集的流水线。",
+    "workflow_tip": "先定尺寸与状态列表再生成。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 3964,
+    "snapshot_date": "2026-11-10",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "apache-2.0",
+      "name": "Apache License 2.0",
+      "spdx_id": "Apache-2.0"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-08T01:40:51+08:00",
+    "primary_language": "Python",
+    "archived": false,
+    "source": [
+      "https://x.com/Y0urDumble/status/2119793194435027220",
+      "https://api.github.com/repos/aldegad/sprite-gen"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-motion-canvas-motion-canvas",
+    "name": "motion-canvas",
+    "requested_repo_url": "https://github.com/motion-canvas/motion-canvas",
+    "repo_url": "https://github.com/motion-canvas/motion-canvas",
+    "api_description": "Visualize Your Ideas With Code",
+    "one_liner_zh": "用TypeScript生成器代码编排动画讲解视频，带实时预览编辑器。",
+    "category": "视频动画",
+    "tags": [
+      "explainer",
+      "timeline",
+      "TypeScript",
+      "generator"
+    ],
+    "use_when": [
+      "代码驱动的技术/概念讲解视频",
+      "需要可视化时间轴预览"
+    ],
+    "avoid_when": [
+      "React组件视频（用Remotion）",
+      "网页内实时交互动效"
+    ],
+    "borrow": "direct-dep",
+    "key_technique": "用generator函数yield串联动画步骤，时间轴即代码。",
+    "workflow_tip": "先按旁白分段写scene，每段一个generator再串联。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 19889,
+    "snapshot_date": "2026-11-15",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-07-03T04:01:32+08:00",
+    "primary_language": "TypeScript",
+    "archived": false,
+    "source": [
+      "https://x.com/e1genqq/status/2121340063254556890",
+      "https://api.github.com/repos/motion-canvas/motion-canvas"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-motiondivision-motion",
+    "name": "motion",
+    "requested_repo_url": "https://github.com/motiondivision/motion",
+    "repo_url": "https://github.com/motiondivision/motion",
+    "api_description": "A modern animation library for React and JavaScript",
+    "one_liner_zh": "React与原生JS的现代动画库，擅长布局过渡与手势。",
+    "category": "交互可视化",
+    "tags": [
+      "motion",
+      "framer-motion",
+      "layout animation",
+      "spring",
+      "React"
+    ],
+    "use_when": [
+      "UI状态切换、布局/共享元素过渡",
+      "需要spring物理与手势"
+    ],
+    "avoid_when": [
+      "长时间轴视频渲染",
+      "非JS环境"
+    ],
+    "borrow": "direct-dep",
+    "key_technique": "layout/layoutId自动做FLIP布局过渡，AnimatePresence管理退场。",
+    "workflow_tip": "先确定状态集合，再给变化元素加layout；只动transform/opacity。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 35179,
+    "snapshot_date": "2026-11-15",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-14T01:56:54+08:00",
+    "primary_language": "TypeScript",
+    "archived": false,
+    "source": [
+      "https://x.com/e1genqq/status/2121340063254556890",
+      "https://api.github.com/repos/motiondivision/motion"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-franciscop-ola",
+    "name": "ola",
+    "requested_repo_url": "https://github.com/franciscop/ola",
+    "repo_url": "https://github.com/franciscop/ola",
+    "api_description": "🌊 Smooth animation library for interpolating numbers",
+    "one_liner_zh": "极小的数值平滑插值库，赋值即过渡。",
+    "category": "交互可视化",
+    "tags": [
+      "interpolation",
+      "tween",
+      "numbers",
+      "tiny"
+    ],
+    "use_when": [
+      "数值读数、坐标等需平滑变化的小场景"
+    ],
+    "avoid_when": [
+      "多元素编排与时间轴",
+      "DOM布局过渡"
+    ],
+    "borrow": "pattern",
+    "key_technique": "把目标值赋给代理对象，读取时按时间插值得到当前值。",
+    "workflow_tip": "在rAF循环中读取插值结果绘制，避免自建缓动状态机。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 1835,
+    "snapshot_date": "2026-11-15",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-10-25T02:23:41+08:00",
+    "primary_language": "JavaScript",
+    "archived": false,
+    "source": [
+      "https://x.com/e1genqq/status/2121340063254556890",
+      "https://api.github.com/repos/franciscop/ola"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-juliangarnier-anime",
+    "name": "anime",
+    "requested_repo_url": "https://github.com/juliangarnier/anime",
+    "repo_url": "https://github.com/juliangarnier/anime",
+    "api_description": "JavaScript animation engine",
+    "one_liner_zh": "轻量JS动画引擎，时间轴与stagger错峰见长。",
+    "category": "交互可视化",
+    "tags": [
+      "anime.js",
+      "timeline",
+      "stagger",
+      "SVG",
+      "easing"
+    ],
+    "use_when": [
+      "列表错峰入场、SVG描边/形变",
+      "需要可组合时间轴的网页动效"
+    ],
+    "avoid_when": [
+      "React声明式布局过渡（用motion）",
+      "离线视频渲染"
+    ],
+    "borrow": "direct-dep",
+    "key_technique": "stagger按索引/网格/距离分配延迟；timeline用相对偏移串联。",
+    "workflow_tip": "先定总时长与错峰间隔，再细调easing。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 74687,
+    "snapshot_date": "2026-11-15",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-03T06:25:55+08:00",
+    "primary_language": "JavaScript",
+    "archived": false,
+    "source": [
+      "https://x.com/e1genqq/status/2121340063254556890",
+      "https://api.github.com/repos/juliangarnier/anime"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-manimcommunity-manim",
+    "name": "manim",
+    "requested_repo_url": "https://github.com/ManimCommunity/manim",
+    "repo_url": "https://github.com/ManimCommunity/manim",
+    "api_description": "A community-maintained Python framework for creating mathematical animations. ",
+    "one_liner_zh": "社区维护的Python数学动画框架，做公式与几何推导视频。",
+    "category": "视频动画",
+    "tags": [
+      "manim",
+      "math",
+      "explainer",
+      "Python",
+      "LaTeX"
+    ],
+    "use_when": [
+      "数学/算法/物理推导讲解视频"
+    ],
+    "avoid_when": [
+      "网页实时交互",
+      "不需要公式的产品宣传片"
+    ],
+    "borrow": "direct-dep",
+    "key_technique": "Scene中以Transform/ReplacementTransform在对象间变形，MathTex渲染公式。",
+    "workflow_tip": "每个推导步骤一个play调用，先低质量预览(-ql)再高质量渲染。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 42531,
+    "snapshot_date": "2026-11-15",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-14T11:37:47+08:00",
+    "primary_language": "Python",
+    "archived": false,
+    "source": [
+      "https://x.com/e1genqq/status/2121340063254556890",
+      "https://api.github.com/repos/ManimCommunity/manim"
+    ],
+    "notes": [
+      "需本地LaTeX与FFmpeg环境；渲染中间文件位于media/，交付后清理。"
+    ]
+  },
+  {
+    "id": "mano-jeremyckahn-shifty",
+    "name": "shifty",
+    "requested_repo_url": "https://github.com/jeremyckahn/shifty",
+    "repo_url": "https://github.com/jeremyckahn/shifty",
+    "api_description": "The fastest TypeScript animation engine on the web",
+    "one_liner_zh": "高性能TypeScript补间引擎，控制tween播放与缓动。",
+    "category": "交互可视化",
+    "tags": [
+      "tween",
+      "easing",
+      "TypeScript",
+      "playback"
+    ],
+    "use_when": [
+      "需要暂停/跳转/倒放等底层补间控制",
+      "自建动画工具的内核"
+    ],
+    "avoid_when": [
+      "只需普通UI过渡（用motion/CSS）"
+    ],
+    "borrow": "pattern",
+    "key_technique": "Tweenable对象统一管理from/to、easing与播放控制。",
+    "workflow_tip": "把补间当可控对象，播放状态由业务显式驱动。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 1571,
+    "snapshot_date": "2026-11-15",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-15T07:05:50+08:00",
+    "primary_language": "TypeScript",
+    "archived": false,
+    "source": [
+      "https://x.com/e1genqq/status/2121340063254556890",
+      "https://api.github.com/repos/jeremyckahn/shifty"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-jonobr1-two-js",
+    "name": "two.js",
+    "requested_repo_url": "https://github.com/jonobr1/two.js",
+    "repo_url": "https://github.com/jonobr1/two.js",
+    "api_description": "A renderer agnostic two-dimensional drawing api for the web",
+    "one_liner_zh": "渲染器无关的2D矢量绘图API，可输出SVG/Canvas/WebGL。",
+    "category": "交互可视化",
+    "tags": [
+      "2D",
+      "vector",
+      "SVG",
+      "Canvas",
+      "WebGL"
+    ],
+    "use_when": [
+      "程序化2D矢量动画场景",
+      "同一场景需切换渲染器"
+    ],
+    "avoid_when": [
+      "需要拖拽编辑器交互（用Konva）",
+      "3D场景"
+    ],
+    "borrow": "direct-dep",
+    "key_technique": "场景图+update循环，同一套形状可选SVG/Canvas/WebGL渲染。",
+    "workflow_tip": "先用SVG渲染便于调试，性能不足再切WebGL。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 8728,
+    "snapshot_date": "2026-11-15",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-13T11:42:23+08:00",
+    "primary_language": "JavaScript",
+    "archived": false,
+    "source": [
+      "https://x.com/e1genqq/status/2121340063254556890",
+      "https://api.github.com/repos/jonobr1/two.js"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-airbnb-lottie-web",
+    "name": "lottie-web",
+    "requested_repo_url": "https://github.com/airbnb/lottie-web",
+    "repo_url": "https://github.com/airbnb/lottie-web",
+    "api_description": "Render After Effects animations natively on Web, Android and iOS, and React Native. http://airbnb.io/lottie/",
+    "one_liner_zh": "在网页原生播放After Effects导出的矢量动画。",
+    "category": "交互可视化",
+    "tags": [
+      "lottie",
+      "After Effects",
+      "Bodymovin",
+      "vector",
+      "SVG"
+    ],
+    "use_when": [
+      "设计师已在AE做好动效，需要网页还原"
+    ],
+    "avoid_when": [
+      "需要代码实时驱动的交互动画",
+      "动画JSON过大影响首屏"
+    ],
+    "borrow": "direct-dep",
+    "key_technique": "loadAnimation加载Bodymovin JSON，svg/canvas渲染器可选，可分段播放。",
+    "workflow_tip": "先检查JSON体积与所用AE特性是否被支持，再接入。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 32444,
+    "snapshot_date": "2026-11-15",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2025-09-01T17:01:31+08:00",
+    "primary_language": "JavaScript",
+    "archived": false,
+    "source": [
+      "https://x.com/e1genqq/status/2121340063254556890",
+      "https://api.github.com/repos/airbnb/lottie-web"
+    ],
+    "notes": [
+      "仓库最近推送为2025-09，维护节奏放缓；采用前确认问题跟踪状态。"
+    ]
+  },
+  {
+    "id": "mano-createjs-tweenjs",
+    "name": "TweenJS",
+    "requested_repo_url": "https://github.com/CreateJS/TweenJS",
+    "repo_url": "https://github.com/CreateJS/TweenJS",
+    "api_description": "A simple but powerful tweening / animation library for Javascript. Part of the CreateJS suite of libraries.",
+    "one_liner_zh": "CreateJS套件中的属性补间与序列动画库。",
+    "category": "交互可视化",
+    "tags": [
+      "tween",
+      "CreateJS",
+      "sequence",
+      "legacy"
+    ],
+    "use_when": [
+      "维护已有CreateJS/EaselJS项目"
+    ],
+    "avoid_when": [
+      "新项目（优先anime.js/GSAP/motion）"
+    ],
+    "borrow": "reference",
+    "key_technique": "链式to().wait().call()描述属性序列动画。",
+    "workflow_tip": "仅在旧CreateJS项目中沿用；新项目借鉴其链式序列思路。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 3554,
+    "snapshot_date": "2026-11-15",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2023-12-18T15:44:25+08:00",
+    "primary_language": "JavaScript",
+    "archived": false,
+    "source": [
+      "https://x.com/e1genqq/status/2121340063254556890",
+      "https://api.github.com/repos/CreateJS/TweenJS"
+    ],
+    "notes": [
+      "最近推送为2023-12，基本停止维护。"
+    ]
+  },
+  {
+    "id": "mano-lume-lume",
+    "name": "lume",
+    "requested_repo_url": "https://github.com/lume/lume",
+    "repo_url": "https://github.com/lume/lume",
+    "api_description": "GPU-powered 3D HTML. ✨🧊 <lume-box size=\"1 2 3\">",
+    "one_liner_zh": "用HTML自定义元素声明GPU加速的3D场景。",
+    "category": "3D与游戏",
+    "tags": [
+      "3D",
+      "HTML",
+      "custom elements",
+      "WebGL"
+    ],
+    "use_when": [
+      "想用HTML标签声明式搭建简单3D场景"
+    ],
+    "avoid_when": [
+      "复杂游戏/物理（用Babylon.js或引擎）",
+      "需要大型生态插件"
+    ],
+    "borrow": "pattern",
+    "key_technique": "以<lume-*>自定义元素描述3D节点，属性即变换。",
+    "workflow_tip": "原型验证可用；生产前对比three.js生态与维护度。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 1541,
+    "snapshot_date": "2026-11-15",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-09-08T14:27:20+08:00",
+    "primary_language": "TypeScript",
+    "archived": false,
+    "source": [
+      "https://x.com/e1genqq/status/2121340063254556890",
+      "https://api.github.com/repos/lume/lume"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-mattdesl-gifenc",
+    "name": "gifenc",
+    "requested_repo_url": "https://github.com/mattdesl/gifenc",
+    "repo_url": "https://github.com/mattdesl/gifenc",
+    "api_description": "fast GIF encoding",
+    "one_liner_zh": "快速的JS动画GIF编码器，支持调色板量化。",
+    "category": "视频动画",
+    "tags": [
+      "GIF",
+      "encoding",
+      "quantize",
+      "export"
+    ],
+    "use_when": [
+      "把Canvas帧导出为短GIF预览或贴图"
+    ],
+    "avoid_when": [
+      "长视频或高画质（用MP4/WebM）"
+    ],
+    "borrow": "direct-dep",
+    "key_technique": "quantize生成调色板→applyPalette映射→逐帧writeFrame。",
+    "workflow_tip": "控制尺寸、帧率与色数；超过数秒改出MP4。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 357,
+    "snapshot_date": "2026-11-15",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2024-09-20T00:55:38+08:00",
+    "primary_language": "JavaScript",
+    "archived": false,
+    "source": [
+      "https://x.com/e1genqq/status/2121340063254556890",
+      "https://api.github.com/repos/mattdesl/gifenc"
+    ],
+    "notes": [
+      "最近推送为2024-09，功能小而稳定。"
+    ]
+  },
+  {
+    "id": "mano-konvajs-konva",
+    "name": "konva",
+    "requested_repo_url": "https://github.com/konvajs/konva",
+    "repo_url": "https://github.com/konvajs/konva",
+    "api_description": "Konva.js is an HTML5 Canvas JavaScript framework for interactive graphics, design editors, whiteboards, and diagrams. Scene graph with events, drag and drop, transforms, animations, and export.",
+    "one_liner_zh": "HTML5 Canvas交互图形框架，带场景图、事件、拖拽与动画。",
+    "category": "交互可视化",
+    "tags": [
+      "canvas",
+      "scene graph",
+      "drag and drop",
+      "editor",
+      "animation"
+    ],
+    "use_when": [
+      "白板、设计编辑器、可交互Canvas动画"
+    ],
+    "avoid_when": [
+      "纯展示型视频渲染",
+      "3D场景"
+    ],
+    "borrow": "direct-dep",
+    "key_technique": "Stage/Layer/Shape场景图，分层重绘，Tween与Animation驱动属性。",
+    "workflow_tip": "静态与动态元素分到不同Layer，减少重绘。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 14962,
+    "snapshot_date": "2026-11-15",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "other",
+      "name": "Other",
+      "spdx_id": "NOASSERTION"
+    },
+    "license_note": "API返回NOASSERTION，许可未被自动识别；不可视为可任意商用，采用前阅读仓库LICENSE原文。",
+    "pushed_at": "2026-11-10T23:20:40+08:00",
+    "primary_language": "TypeScript",
+    "archived": false,
+    "source": [
+      "https://x.com/e1genqq/status/2121340063254556890",
+      "https://api.github.com/repos/konvajs/konva"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-blender-blender",
+    "name": "blender",
+    "requested_repo_url": "https://github.com/blender/blender",
+    "repo_url": "https://github.com/blender/blender",
+    "api_description": "Official mirror of Blender",
+    "one_liner_zh": "开源3D创作套件官方镜像，覆盖建模、绑定、角色动画与渲染。",
+    "category": "3D与游戏",
+    "tags": [
+      "Blender",
+      "rigging",
+      "character animation",
+      "rendering",
+      "bpy"
+    ],
+    "use_when": [
+      "角色绑定与骨骼动画",
+      "离线高质量渲染与资产制作"
+    ],
+    "avoid_when": [
+      "作为应用运行时依赖",
+      "网页实时渲染"
+    ],
+    "borrow": "reference",
+    "key_technique": "骨骼绑定+动作(Action)/NLA编排，bpy脚本自动化。",
+    "workflow_tip": "当作工具链使用，导出glTF给three.js/Babylon.js；自动化可配合Blender MCP案例。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 22014,
+    "snapshot_date": "2026-11-15",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "other",
+      "name": "Other",
+      "spdx_id": "NOASSERTION"
+    },
+    "license_note": "API返回NOASSERTION，许可未被自动识别；不可视为可任意商用，采用前阅读仓库LICENSE原文。",
+    "pushed_at": "2026-11-15T11:39:52+08:00",
+    "primary_language": "C++",
+    "archived": false,
+    "source": [
+      "https://x.com/e1genqq/status/2121340063254556890",
+      "https://api.github.com/repos/blender/blender"
+    ],
+    "notes": [
+      "API许可证为NOASSERTION；Blender本体为GPL，作为工具使用一般无碍，嵌入或分发代码前须核查。"
+    ]
+  },
+  {
+    "id": "mano-mrdoob-three-js",
+    "name": "three.js",
+    "requested_repo_url": "https://github.com/mrdoob/three.js",
+    "repo_url": "https://github.com/mrdoob/three.js",
+    "api_description": "JavaScript 3D Library.",
+    "one_liner_zh": "最流行的JavaScript 3D库，用于网页3D场景与动画。",
+    "category": "3D与游戏",
+    "tags": [
+      "three.js",
+      "WebGL",
+      "3D",
+      "animation mixer",
+      "glTF"
+    ],
+    "use_when": [
+      "网页3D展示、产品转台、3D动画场景"
+    ],
+    "avoid_when": [
+      "需要完整游戏引擎编辑器",
+      "纯2D界面"
+    ],
+    "borrow": "direct-dep",
+    "key_technique": "Scene/Camera/Renderer + AnimationMixer播放glTF动画。",
+    "workflow_tip": "先定相机与光照静帧，再加动画；用stats实测帧率。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 118441,
+    "snapshot_date": "2026-11-15",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-15T11:48:54+08:00",
+    "primary_language": "JavaScript",
+    "archived": false,
+    "source": [
+      "https://x.com/e1genqq/status/2121340063254556890",
+      "https://api.github.com/repos/mrdoob/three.js"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-godotengine-godot",
+    "name": "godot",
+    "requested_repo_url": "https://github.com/godotengine/godot",
+    "repo_url": "https://github.com/godotengine/godot",
+    "api_description": "Godot Engine – Multi-platform 2D and 3D game engine",
+    "one_liner_zh": "多平台2D/3D开源游戏引擎，动画系统完善。",
+    "category": "3D与游戏",
+    "tags": [
+      "Godot",
+      "game engine",
+      "AnimationTree",
+      "state machine"
+    ],
+    "use_when": [
+      "游戏角色动画状态机",
+      "需要导出多平台的游戏"
+    ],
+    "avoid_when": [
+      "网页UI动效",
+      "只需一段渲染视频"
+    ],
+    "borrow": "reference",
+    "key_technique": "AnimationPlayer录制属性轨，AnimationTree状态机混合动画。",
+    "workflow_tip": "先画状态图（idle/run/jump）再建AnimationTree。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 120165,
+    "snapshot_date": "2026-11-15",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-15T04:14:50+08:00",
+    "primary_language": "C++",
+    "archived": false,
+    "source": [
+      "https://x.com/e1genqq/status/2121340063254556890",
+      "https://api.github.com/repos/godotengine/godot"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-babylonjs-babylon-js",
+    "name": "Babylon.js",
+    "requested_repo_url": "https://github.com/BabylonJS/Babylon.js",
+    "repo_url": "https://github.com/BabylonJS/Babylon.js",
+    "api_description": "Babylon.js is a powerful, beautiful, simple, and open game and rendering engine packed into a friendly JavaScript framework.",
+    "one_liner_zh": "功能完整的JavaScript游戏与渲染引擎。",
+    "category": "3D与游戏",
+    "tags": [
+      "Babylon.js",
+      "WebGL",
+      "WebGPU",
+      "3D",
+      "physics"
+    ],
+    "use_when": [
+      "网页3D需要物理、检查器、引擎级特性"
+    ],
+    "avoid_when": [
+      "只需轻量3D展示（three.js更轻）"
+    ],
+    "borrow": "direct-dep",
+    "key_technique": "Scene+Animation/AnimationGroup，Inspector实时调试。",
+    "workflow_tip": "用Playground快速验证片段，再移入项目。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 26360,
+    "snapshot_date": "2026-11-15",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "apache-2.0",
+      "name": "Apache License 2.0",
+      "spdx_id": "Apache-2.0"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-11-14T08:22:01+08:00",
+    "primary_language": "TypeScript",
+    "archived": false,
+    "source": [
+      "https://x.com/e1genqq/status/2121340063254556890",
+      "https://api.github.com/repos/BabylonJS/Babylon.js"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-drawcall-proton",
+    "name": "Proton",
+    "requested_repo_url": "https://github.com/drawcall/Proton",
+    "repo_url": "https://github.com/drawcall/Proton",
+    "api_description": "Javascript particle animation library",
+    "one_liner_zh": "JavaScript粒子动画库，提供发射器与行为组合。",
+    "category": "交互可视化",
+    "tags": [
+      "particles",
+      "emitter",
+      "canvas",
+      "WebGL"
+    ],
+    "use_when": [
+      "火花、烟雾、星尘等粒子效果"
+    ],
+    "avoid_when": [
+      "粒子量极大需GPU计算（用shader）"
+    ],
+    "borrow": "direct-dep",
+    "key_technique": "Emitter + Rate/Life/Velocity初始化 + Alpha/Scale/Color行为组合。",
+    "workflow_tip": "先设粒子上限与生命周期，再调行为参数。",
+    "technique_basis": "用户帖子提炼与Mano-ASI工程建议；未做功能运行验证。",
+    "stars_snapshot": 2500,
+    "snapshot_date": "2026-11-15",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": true,
+    "verification_scope": "仅核实GitHub API仓库元数据；未安装或验证功能、性能、许可适用性。",
+    "verification_error": null,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT"
+    },
+    "license_note": "API许可证标识仅为发现线索；采用前核查LICENSE、依赖/资产许可与商标要求。",
+    "pushed_at": "2026-03-06T16:19:03+08:00",
+    "primary_language": "JavaScript",
+    "archived": false,
+    "source": [
+      "https://x.com/e1genqq/status/2121340063254556890",
+      "https://api.github.com/repos/drawcall/Proton"
+    ],
+    "notes": []
+  }
+]

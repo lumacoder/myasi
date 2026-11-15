@@ -1,0 +1,274 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Mano-ASI案例库",
+  "description": "仓库元数据与复用建议分开；verified不代表功能或许可验收。ID与规范URL唯一性另由查询脚本检查。",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "id",
+      "name",
+      "requested_repo_url",
+      "repo_url",
+      "api_description",
+      "one_liner_zh",
+      "category",
+      "tags",
+      "use_when",
+      "avoid_when",
+      "borrow",
+      "key_technique",
+      "workflow_tip",
+      "technique_basis",
+      "stars_snapshot",
+      "snapshot_date",
+      "snapshot_timezone",
+      "verified",
+      "verification_scope",
+      "verification_error",
+      "license",
+      "license_note",
+      "pushed_at",
+      "primary_language",
+      "archived",
+      "source",
+      "notes"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "^mano-[a-z0-9-]+$"
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1
+      },
+      "requested_repo_url": {
+        "type": "string",
+        "minLength": 1,
+        "format": "uri",
+        "pattern": "^https://github\\.com/[^/]+/[^/]+$"
+      },
+      "repo_url": {
+        "type": "string",
+        "minLength": 1,
+        "format": "uri",
+        "pattern": "^https://github\\.com/[^/]+/[^/]+$"
+      },
+      "api_description": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "GitHub API description原文，未提供则null，禁止用中文摘要冒充。"
+      },
+      "one_liner_zh": {
+        "type": "string",
+        "minLength": 1
+      },
+      "category": {
+        "type": "string",
+        "enum": [
+          "3D与游戏",
+          "Agent自动化",
+          "UI组件",
+          "交互可视化",
+          "图标",
+          "工程方法",
+          "样式系统",
+          "视频动画",
+          "设计参考"
+        ]
+      },
+      "tags": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "use_when": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "avoid_when": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "borrow": {
+        "type": "string",
+        "enum": [
+          "direct-dep",
+          "pattern",
+          "reference"
+        ]
+      },
+      "key_technique": {
+        "type": "string",
+        "minLength": 1
+      },
+      "workflow_tip": {
+        "type": "string",
+        "minLength": 1
+      },
+      "technique_basis": {
+        "type": "string",
+        "minLength": 1
+      },
+      "stars_snapshot": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "minimum": 0
+      },
+      "snapshot_date": {
+        "type": "string",
+        "format": "date",
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+      },
+      "snapshot_timezone": {
+        "const": "Asia/Shanghai"
+      },
+      "verified": {
+        "type": "boolean"
+      },
+      "verification_scope": {
+        "type": "string",
+        "minLength": 1
+      },
+      "verification_error": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "license": {
+        "anyOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "required": [
+              "key",
+              "name",
+              "spdx_id"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "key": {
+                "type": "string",
+                "minLength": 1
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "spdx_id": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        ]
+      },
+      "license_note": {
+        "type": "string",
+        "minLength": 1
+      },
+      "pushed_at": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "format": "date-time",
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\+08:00$"
+      },
+      "primary_language": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "archived": {
+        "type": [
+          "boolean",
+          "null"
+        ]
+      },
+      "source": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "notes": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "verified": {
+              "const": true
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "stars_snapshot": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "verification_error": {
+              "type": "null"
+            },
+            "archived": {
+              "type": "boolean"
+            }
+          }
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "verified": {
+              "const": false
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "verification_error": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    ]
+  }
+}

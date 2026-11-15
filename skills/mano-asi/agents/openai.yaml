@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mano-ASI"
+  short_description: "全栈研发：模糊审美转技术规格，提取产品逻辑、UI规范与架构"
+  default_prompt: "Use $mano-asi to turn this requirement into a minimal, verified full-stack deliverable with concrete specs and a clean-up report."

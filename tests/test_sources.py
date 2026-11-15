@@ -86,6 +86,21 @@ class GitSourceTest(Base):
         self.assertIn("git clone failed", err)
         self.assertFalse((self.home / ".myasi" / "cache").exists() and any((self.home / ".myasi" / "cache").iterdir()))
 
+    def test_mano_asi_from_bare_repo_and_devasi_alias(self):
+        """Real example skill: get by alias from a local bare repo, only that skill dir is checked out."""
+        os.environ.pop("MYASI_SOURCE", None)
+        out, _ = self.run_cli("get", "devasi", "--agent", "claude", "--source", str(self.bare))
+        self.assertIn("alias of mano-asi", out)
+        self.assertTrue((self.claude_dir / "mano-asi" / "SKILL.md").exists())
+        self.assertFalse((self.claude_dir / "devasi").exists())
+        c = self.cache()
+        files = files_under(c)
+        skill_files = [f for f in files if f.startswith("skills/")]
+        self.assertTrue(skill_files and all(f.startswith("skills/mano-asi/") for f in skill_files), files)
+        self.assertIn("skills/mano-asi/SKILL.md", files)
+        self.assertFalse([f for f in files if f.startswith(("skills/hello-myasi/", "skills/myasi/", "skills/big-"))], files)
+        self.assertEqual(self.state()["installs"]["mano-asi"]["path"], "skills/mano-asi")
+
 
 @unittest.skipUnless(HAS_GIT, "git not installed")
 class ExternalSkillTest(Base):

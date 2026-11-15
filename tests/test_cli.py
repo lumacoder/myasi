@@ -97,7 +97,7 @@ class GetRemoveTest(Base):
 
     def test_profile_get(self):
         self.run_cli("get", "--profile", "core,example", "--agent", "claude", "--source", str(ROOT))
-        self.assertEqual(sorted(self.state()["installs"]), ["hello-myasi", "myasi"])
+        self.assertEqual(sorted(self.state()["installs"]), ["hello-myasi", "mano-asi", "myasi"])
         self.run_cli("get", "--profile", "nope", "--source", str(ROOT), code=1)
 
     def test_remove_all_and_partial(self):
@@ -155,7 +155,7 @@ class ListSearchInfoTest(Base):
     def test_list_json_and_filters(self):
         out, _ = self.run_cli("list", "--json", "--source", str(ROOT))
         rows = {r["name"]: r for r in json.loads(out)}
-        self.assertEqual(set(rows), {"myasi", "hello-myasi"})
+        self.assertEqual(set(rows), {"myasi", "hello-myasi", "mano-asi"})
         self.assertEqual(rows["hello-myasi"]["kind"], "own")
         out, _ = self.run_cli("list", "--tag", "example", "--json", "--source", str(ROOT))
         self.assertEqual([r["name"] for r in json.loads(out)], ["hello-myasi"])

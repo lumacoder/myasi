@@ -29,6 +29,27 @@
       "license": "MIT",
       "size_kb": 1
     },
+    "mano-asi": {
+      "description": "当需要全栈研发、修复或重构代码、做UI/动效/视频/3D交付，从PRD/页面/仓库提取产品逻辑，从截图/网站/Figma提取UI规范，解读仓库架构，或要把“流畅、丝滑、美观、高级感”等模糊审美要求翻译成具体技术词、参数与验收标准时使用；以词汇翻译表、成熟方案组合（Glue Code）、结构化JSON产物、质量门禁与资源卫生，降低对高级模型的依赖。",
+      "tags": [
+        "dev",
+        "fullstack",
+        "ui",
+        "motion",
+        "video",
+        "3d"
+      ],
+      "version": "0.1.0",
+      "path": "skills/mano-asi",
+      "clients": [
+        "*"
+      ],
+      "profiles": [
+        "example"
+      ],
+      "license": "MIT",
+      "size_kb": 153
+    },
     "myasi": {
       "description": "当用户按名字提到一个本机没有的 skill（如“用 xxx skill”“装上 xxx”“有没有做某事的 skill”），或要同步、更新、删除 skill，或要把 MCP/CLI 配置同步到 Codex、Claude Code、pi、DeepSeek（dsh / deepseek TUI）时使用；通过 myasi 仓库的 registry.json 按裸名解析并安装，然后加载对应 SKILL.md。",
       "tags": [
@@ -52,6 +73,7 @@
     }
   },
   "aliases": {
+    "devasi": "mano-asi",
     "hello": "hello-myasi"
   },
   "external": {},
@@ -60,7 +82,8 @@
       "myasi"
     ],
     "example": [
-      "hello-myasi"
+      "hello-myasi",
+      "mano-asi"
     ]
   },
   "clients": {

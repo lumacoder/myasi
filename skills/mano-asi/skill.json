@@ -1,0 +1,18 @@
+{
+  "version": "0.1.0",
+  "tags": [
+    "dev",
+    "fullstack",
+    "ui",
+    "motion",
+    "video",
+    "3d"
+  ],
+  "aliases": [
+    "devasi"
+  ],
+  "clients": [
+    "*"
+  ],
+  "license": "MIT"
+}

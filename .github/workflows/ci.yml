@@ -86,6 +86,11 @@ jobs:
           test -f "$T/.claude/skills/hello-myasi/SKILL.md"
           python scripts/myasi.py remove hello-myasi
           test ! -e "$T/.claude/skills/hello-myasi"
+          python scripts/myasi.py get devasi --agent claude --source "$RUNNER_TEMP/myasi.git"
+          test -f "$T/.claude/skills/mano-asi/SKILL.md"
+          test ! -e "$T/.claude/skills/devasi"
+          python scripts/myasi.py remove mano-asi
+          test ! -e "$T/.claude/skills/mano-asi"
       - name: wrapper (myasi.cmd)
         if: runner.os == 'Windows'
         shell: cmd
