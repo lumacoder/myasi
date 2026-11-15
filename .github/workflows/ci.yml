@@ -21,10 +21,13 @@ jobs:
         run: python scripts/validate.py
       - name: unit + end-to-end tests
         run: python -m unittest discover -s tests -v
-      - name: gitleaks
-        uses: gitleaks/gitleaks-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: gitleaks (full history)
+        # run the CLI directly: gitleaks-action scans `<first>^..<last>`,
+        # which fails when a push contains the root commit
+        run: |
+          v=8.24.3
+          curl -sSfL "https://github.com/gitleaks/gitleaks/releases/download/v${v}/gitleaks_${v}_linux_x64.tar.gz" | tar xz -C /tmp gitleaks
+          /tmp/gitleaks git --redact -v --exit-code 1 .
 
   py38:
     # oldest supported Python; ubuntu-22.04 still has 3.8 builds for setup-python
