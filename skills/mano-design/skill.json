@@ -1,0 +1,16 @@
+{
+  "version": "0.1.1",
+  "tags": [
+    "ui",
+    "ux",
+    "design",
+    "a11y",
+    "lint",
+    "rsi"
+  ],
+  "aliases": [],
+  "clients": [
+    "*"
+  ],
+  "license": "MIT"
+}

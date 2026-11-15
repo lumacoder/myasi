@@ -8,7 +8,7 @@
 - **零依赖**：`myasi` 是 Python 3.8+ 标准库单文件，Windows（`py`）、Linux、macOS 都能跑。
 - **不碰密钥**：MCP 配置只写 `${ENV}` 引用；myasi 只删除自己装的东西。
 
-> 现在仓库里有三个 skill：`myasi`（教 agent 按名找 skill 的元 skill）、`hello-myasi`（最小示例 / 模板）和 `mano-asi`（真实案例：全栈研发，别名 `devasi`，在 example profile 里）。自己的 skill 按下面「如何添加你自己的 skill」加进来。
+> 现在仓库里有四个 skill：`myasi`（教 agent 按名找 skill 的元 skill）、`hello-myasi`（最小示例 / 模板）、`mano-asi`（真实案例：全栈研发，别名 `devasi`）和 `mano-design`（真实案例：AI 生成 UI 的交互体验把关，含组件选型规则、ui_lint 检查器、76 个自测用例与 RSI 回归门禁）；后两个在 example profile 里。自己的 skill 按下面「如何添加你自己的 skill」加进来。
 
 ## 快速开始
 

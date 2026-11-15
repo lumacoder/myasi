@@ -1,0 +1,4 @@
+<style>button{background:#1d4ed8;color:#fff;border:0;border-radius:8px;padding:10px 16px;min-height:44px}button:hover{background:#1e40af}button:focus-visible{outline:2px solid #1e3a8a;outline-offset:2px}</style>
+<form id="f"><label>邮箱 <input type="email" name="email"></label><button type="submit" id="b">订阅</button></form>
+<script>f.onsubmit = async (e) => { e.preventDefault(); b.disabled = true; b.setAttribute('aria-busy','true'); b.textContent = '订阅中…';
+  try { await fetch('/api/subscribe', {method:'POST'}); } finally { b.disabled = false; b.removeAttribute('aria-busy'); b.textContent = '订阅'; } };</script>

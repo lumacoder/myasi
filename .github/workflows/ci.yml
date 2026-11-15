@@ -21,6 +21,10 @@ jobs:
         run: python scripts/validate.py
       - name: unit + end-to-end tests
         run: python -m unittest discover -s tests -v
+      - name: mano-design self-eval (UI/UX lint regression)
+        run: |
+          python skills/mano-design/scripts/validate.py
+          python skills/mano-design/scripts/eval.py
       - name: gitleaks (full history)
         # run the CLI directly: gitleaks-action scans `<first>^..<last>`,
         # which fails when a push contains the root commit

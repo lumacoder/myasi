@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mano-Design"
+  short_description: "交互体验把关：组件选型、状态、对比度、去AI味，含自测与RSI"
+  default_prompt: "Use $mano-design to pick the right components, build or review this UI, run ui_lint, and fix every critical/major finding before delivery."

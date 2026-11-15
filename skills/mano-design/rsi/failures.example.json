@@ -1,0 +1,31 @@
+[
+ {
+  "id": "rsi-example-theme-onoff",
+  "category": "component",
+  "verdict": "FAIL",
+  "rules": ["cs.binary-select"],
+  "html": "<label>深色模式 <select name=\"dark\"><option>打开</option><option>关闭</option></select></label>",
+  "note": "示例：生成的设置页把深色模式做成 打开/关闭 下拉",
+  "source": "example / llm-rubric",
+  "observed": {"verdict": "FAIL", "rules": ["cs.binary-select"]}
+ },
+ {
+  "id": "rsi-example-wizard-ok",
+  "category": "component",
+  "verdict": "PASS",
+  "rules": [],
+  "html": "<ol aria-label=\"开户进度\"><li aria-current=\"step\">填写资料</li><li>上传证件</li><li>完成</li></ol>",
+  "note": "示例：分步向导是正确用法，不应误报",
+  "source": "example / human",
+  "split": "holdout"
+ },
+ {
+  "id": "rsi-example-modal-success",
+  "category": "component",
+  "verdict": "FAIL",
+  "rules": ["cs.modal-for-info"],
+  "html": "<dialog open><p>保存成功</p><button>知道了</button></dialog>",
+  "note": "示例：rubric-only 规则，进入 rsi/rubric_cases.json 而非 lint 用例",
+  "source": "example / llm-rubric"
+ }
+]

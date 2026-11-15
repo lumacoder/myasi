@@ -1,0 +1,23 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "mano-design RSI failure log",
+ "description": "一次生成/评审中发现的问题。每条要么变成 lint 回归用例（tests/fixtures），要么变成 rubric 回归用例（rsi/rubric_cases.json）。",
+ "type": "array",
+ "items": {
+  "type": "object",
+  "required": ["id", "category", "verdict", "rules", "html", "note", "source"],
+  "additionalProperties": false,
+  "properties": {
+   "id": {"type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$", "maxLength": 60},
+   "category": {"enum": ["component", "state", "a11y", "color", "copy", "layout"]},
+   "verdict": {"enum": ["PASS", "FAIL"], "description": "这段 UI 应有的判定（不是检查器当前给的）"},
+   "rules": {"type": "array", "items": {"type": "string"}, "description": "这段 UI 真正违反的规则 id；PASS 用例可为空"},
+   "html": {"type": "string", "minLength": 10, "maxLength": 20000, "description": "最小复现片段（HTML 或 JSX），去掉无关代码与隐私"},
+   "ext": {"enum": ["html", "jsx"], "default": "html"},
+   "note": {"type": "string", "minLength": 2},
+   "source": {"type": "string", "description": "来源：生成任务、模型、评审者（llm-rubric / human / browser_check）"},
+   "observed": {"type": "object", "description": "检查器当时的输出（verdict、rules），用于判断是漏报还是误报"},
+   "split": {"enum": ["train", "holdout"], "default": "train"}
+  }
+ }
+}

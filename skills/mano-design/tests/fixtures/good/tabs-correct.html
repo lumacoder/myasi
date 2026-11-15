@@ -1,0 +1,12 @@
+<style>button{background:#1d4ed8;color:#fff;border:0;border-radius:8px;padding:10px 16px;min-height:44px}button:hover{background:#1e40af}button:focus-visible{outline:2px solid #1e3a8a;outline-offset:2px}</style>
+<div class="project">
+  <h1>项目 Atlas</h1>
+  <div role="tablist" aria-label="项目视图">
+    <button role="tab" aria-selected="true" aria-controls="p1" id="t1">概览</button>
+    <button role="tab" aria-selected="false" aria-controls="p2" id="t2" tabindex="-1">成员</button>
+    <button role="tab" aria-selected="false" aria-controls="p3" id="t3" tabindex="-1">设置</button>
+  </div>
+  <div role="tabpanel" id="p1" aria-labelledby="t1"><p>本周完成 12 项任务。</p></div>
+  <div role="tabpanel" id="p2" aria-labelledby="t2" hidden><p>共 8 人。</p></div>
+  <div role="tabpanel" id="p3" aria-labelledby="t3" hidden><p>可见范围：团队。</p></div>
+</div>

@@ -1,0 +1,192 @@
+[
+ {
+  "term": "流畅",
+  "domain": "交互",
+  "concrete_spec": "状态切换 150—200ms ease-out，退出比进入快 20—30%；只动 transform/opacity；首屏可交互 <2.5s；输入响应 <100ms。",
+  "acceptance": "hover/展开/切换无 >300ms 过渡；无 transition: all；reduced-motion 下无动画。",
+  "rule_ids": [
+   "st.slow-transition",
+   "st.transition-all",
+   "st.no-reduced-motion"
+  ],
+  "model_known_keywords": [
+   "transform/opacity",
+   "ease-out",
+   "INP"
+  ]
+ },
+ {
+  "term": "丝滑",
+  "domain": "动效",
+  "concrete_spec": "motion spring stiffness 300 / damping 30，或 cubic-bezier(.2,.8,.2,1) 200ms；列表错峰 30—50ms。",
+  "acceptance": "录屏逐帧无跳变；60fps；reduced-motion 关闭。",
+  "rule_ids": [
+   "st.slow-transition",
+   "st.no-reduced-motion"
+  ],
+  "model_known_keywords": [
+   "spring",
+   "stagger",
+   "prefers-reduced-motion"
+  ]
+ },
+ {
+  "term": "好用",
+  "domain": "交互",
+  "concrete_spec": "组件按语义选型（开关=Switch，同级视图=Tabs，少量单选=Radio/Segmented）；每个操作有反馈；危险操作可确认或撤销。",
+  "acceptance": "ui_lint 无 critical/major；关键流程 ≤3 步；每个按钮有 hover/focus/disabled/loading。",
+  "rule_ids": [
+   "cs.binary-select",
+   "cs.peer-views-accordion",
+   "cs.destructive-no-confirm",
+   "st.missing-loading"
+  ],
+  "model_known_keywords": [
+   "Switch",
+   "Tabs",
+   "Segmented Control",
+   "AlertDialog"
+  ]
+ },
+ {
+  "term": "简洁",
+  "domain": "布局",
+  "concrete_spec": "每屏 1 个主操作；同类组件 1 种 variant；间距用 4/8pt 阶梯；一层卡片。",
+  "acceptance": "主按钮唯一；无卡片嵌套；有彩色相 ≤4。",
+  "rule_ids": [
+   "ly.hierarchy",
+   "ly.nested-card",
+   "co.palette-sprawl"
+  ],
+  "model_known_keywords": [
+   "visual hierarchy",
+   "8pt grid",
+   "primary action"
+  ]
+ },
+ {
+  "term": "高级感",
+  "domain": "视觉",
+  "concrete_spec": "1 个主色 + 中性灰阶 + 语义色；大留白；字号阶梯 12/14/16/20/24/32；去掉无语义渐变、glow、emoji 装饰。",
+  "acceptance": "无紫蓝渐变、无 emoji 标题；正文对比 ≥4.5:1；同屏字号 ≤5 级。",
+  "rule_ids": [
+   "co.ai-gradient",
+   "cp.emoji-heading",
+   "co.low-contrast",
+   "co.palette-sprawl"
+  ],
+  "model_known_keywords": [
+   "neutral scale",
+   "type scale",
+   "OKLCH"
+  ]
+ },
+ {
+  "term": "不像AI做的",
+  "domain": "视觉/文案",
+  "concrete_spec": "参考真实产品（styles.refero.design 的 DESIGN.md）而非模型默认；禁紫蓝渐变、Inter 一统、卡片套卡片、标题上方小标签、✨🚀；文案写具体事实。",
+  "acceptance": "ui_lint 无 co.ai-gradient / cp.ai-cliche / cp.emoji-heading / ly.nested-card；遮住品牌名后仍能看出是哪个产品。",
+  "rule_ids": [
+   "co.ai-gradient",
+   "cp.ai-cliche",
+   "cp.emoji-heading",
+   "ly.nested-card"
+  ],
+  "model_known_keywords": [
+   "anti-slop",
+   "impeccable detect",
+   "DESIGN.md"
+  ]
+ },
+ {
+  "term": "有温度",
+  "domain": "文案",
+  "concrete_spec": "第二人称、动词开头、说清下一步；空状态给引导；错误说原因和办法；不用感叹号堆砌。",
+  "acceptance": "空/错/成功三态文案齐全；无「出错了」「操作失败」裸文案。",
+  "rule_ids": [
+   "st.missing-empty",
+   "cp.vague-error"
+  ],
+  "model_known_keywords": [
+   "empty state",
+   "microcopy"
+  ]
+ },
+ {
+  "term": "专业",
+  "domain": "视觉",
+  "concrete_spec": "统一组件库（shadcn/ui + Radix）；Lucide 同系列图标 20px；点击区 ≥44px；数字右对齐、等宽数字。",
+  "acceptance": "无 <24px 点击区；图标按钮有 aria-label；表格数字 tabular-nums。",
+  "rule_ids": [
+   "tt.small-target",
+   "a11y.icon-button-no-name"
+  ],
+  "model_known_keywords": [
+   "shadcn/ui",
+   "Radix",
+   "tabular-nums"
+  ]
+ },
+ {
+  "term": "清晰",
+  "domain": "信息",
+  "concrete_spec": "状态可见：当前 Tab 高亮、当前步骤、结果数、加载中；标签代替占位符。",
+  "acceptance": "每个输入有 label；筛选有结果数；Tab aria-selected。",
+  "rule_ids": [
+   "a11y.input-no-label",
+   "cs.search-filter-feedback"
+  ],
+  "model_known_keywords": [
+   "aria-selected",
+   "label"
+  ]
+ },
+ {
+  "term": "配色和谐",
+  "domain": "配色",
+  "concrete_spec": "主色 1 个，用 Leonardo/OKLCH 生成 50—900 色阶；语义色 3 个；暗色模式用深灰 #0B0B0F—#18181B，主色提亮降饱和。",
+  "acceptance": "有彩色相 ≤4；正文 ≥4.5:1，大字/图标 ≥3:1；暗色无纯黑纯白。",
+  "rule_ids": [
+   "co.palette-sprawl",
+   "co.low-contrast",
+   "co.dark-mode-pure"
+  ],
+  "model_known_keywords": [
+   "OKLCH",
+   "Leonardo",
+   "semantic tokens"
+  ]
+ },
+ {
+  "term": "人性化",
+  "domain": "交互",
+  "concrete_spec": "容错：可撤销、可返回、保留输入；默认值合理；不阻断（成功用 toast 不用弹窗）；键盘可完成全部操作。",
+  "acceptance": "危险操作有确认/撤销；表单错误内联且不清空输入；Tab 可达所有控件。",
+  "rule_ids": [
+   "cs.destructive-no-confirm",
+   "cs.modal-for-info",
+   "st.missing-error",
+   "a11y.keyboard-trap"
+  ],
+  "model_known_keywords": [
+   "undo",
+   "inline validation",
+   "focus management"
+  ]
+ },
+ {
+  "term": "响应式",
+  "domain": "布局",
+  "concrete_spec": "移动优先；断点 640/768/1024/1280；容器 max-width + width:100%；触控 44px。",
+  "acceptance": "390px 宽无横向滚动；有 viewport meta。",
+  "rule_ids": [
+   "ly.fixed-wide",
+   "ly.no-viewport",
+   "tt.small-target"
+  ],
+  "model_known_keywords": [
+   "container query",
+   "max-width"
+  ]
+ }
+]

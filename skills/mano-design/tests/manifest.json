@@ -1,0 +1,864 @@
+[
+ {
+  "id": "switch-as-select",
+  "category": "component",
+  "verdict": "FAIL",
+  "rules": [
+   "cs.binary-select"
+  ],
+  "note": "用户示例：应该是开关的做成了下拉",
+  "split": "train",
+  "file": "bad/switch-as-select.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "switch-correct",
+  "category": "component",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "开关正确实现：role=switch + aria-checked，立即生效",
+  "split": "train",
+  "file": "good/switch-correct.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "switch-as-select-jsx",
+  "category": "component",
+  "verdict": "FAIL",
+  "rules": [
+   "cs.binary-select"
+  ],
+  "note": "JSX 版：shadcn Select 只有 启用/禁用",
+  "split": "train",
+  "file": "bad/switch-as-select-jsx.jsx",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "switch-correct-jsx",
+  "category": "component",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "JSX 版正确：Switch",
+  "split": "train",
+  "file": "good/switch-correct-jsx.jsx",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "tabs-as-accordion",
+  "category": "component",
+  "verdict": "FAIL",
+  "rules": [
+   "cs.peer-views-accordion"
+  ],
+  "note": "用户示例：应该左右 tab 的做成了高度展开",
+  "split": "train",
+  "file": "bad/tabs-as-accordion.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "tabs-correct",
+  "category": "component",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "水平 Tabs 正确实现（APG tabs 模式）",
+  "split": "train",
+  "file": "good/tabs-correct.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "report-period-expand",
+  "category": "component",
+  "verdict": "FAIL",
+  "rules": [
+   "cs.peer-views-accordion"
+  ],
+  "note": "日/周/月同级视图用 aria-expanded 纵向展开",
+  "split": "train",
+  "file": "bad/report-period-expand.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "faq-accordion",
+  "category": "component",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "FAQ 问句手风琴是正确用法",
+  "split": "train",
+  "file": "good/faq-accordion.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "filter-facets-accordion",
+  "category": "component",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "筛选分面可同时展开，手风琴合理",
+  "split": "train",
+  "file": "good/filter-facets-accordion.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "accordion-jsx-peer",
+  "category": "component",
+  "verdict": "FAIL",
+  "rules": [
+   "cs.peer-views-accordion"
+  ],
+  "note": "客户详情三个同级视图用 Accordion",
+  "split": "train",
+  "file": "bad/accordion-jsx-peer.jsx",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "few-options-select",
+  "category": "component",
+  "verdict": "PASS",
+  "rules": [
+   "cs.few-options-select"
+  ],
+  "note": "3 个选项建议平铺 radio（minor，不阻断）",
+  "split": "train",
+  "file": "bad/few-options-select.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "radio-group-correct",
+  "category": "component",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "少量互斥选项平铺",
+  "split": "train",
+  "file": "good/radio-group-correct.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "many-radios",
+  "category": "component",
+  "verdict": "FAIL",
+  "rules": [
+   "cs.many-radios"
+  ],
+  "note": "10 个单选平铺，应改下拉/搜索",
+  "split": "train",
+  "file": "bad/many-radios.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "multi-select-native",
+  "category": "component",
+  "verdict": "FAIL",
+  "rules": [
+   "cs.multi-select-native"
+  ],
+  "note": "少量多选用 select multiple",
+  "split": "train",
+  "file": "bad/multi-select-native.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "checkbox-group-correct",
+  "category": "component",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "复选框组",
+  "split": "train",
+  "file": "good/checkbox-group-correct.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "date-as-text",
+  "category": "component",
+  "verdict": "FAIL",
+  "rules": [
+   "cs.date-as-text"
+  ],
+  "note": "日期用纯文本",
+  "split": "train",
+  "file": "bad/date-as-text.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "date-correct",
+  "category": "component",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "原生日期选择器",
+  "split": "train",
+  "file": "good/date-correct.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "numeric-select",
+  "category": "component",
+  "verdict": "PASS",
+  "rules": [
+   "cs.numeric-select"
+  ],
+  "note": "连续数值用下拉（minor）",
+  "split": "train",
+  "file": "bad/numeric-select.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "slider-correct",
+  "category": "component",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "Slider + 数字输入",
+  "split": "train",
+  "file": "good/slider-correct.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "delete-no-confirm",
+  "category": "component",
+  "verdict": "FAIL",
+  "rules": [
+   "cs.destructive-no-confirm"
+  ],
+  "note": "删除直接执行",
+  "split": "train",
+  "file": "bad/delete-no-confirm.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "delete-confirm-correct",
+  "category": "component",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "确认框标题说后果，按钮写动作",
+  "split": "train",
+  "file": "good/delete-confirm-correct.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "dialog-vague-buttons",
+  "category": "component",
+  "verdict": "FAIL",
+  "rules": [
+   "cs.dialog-vague-buttons"
+  ],
+  "note": "危险确认框只写「确定」",
+  "split": "train",
+  "file": "bad/dialog-vague-buttons.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "long-form-ungrouped",
+  "category": "component",
+  "verdict": "PASS",
+  "rules": [
+   "cs.long-form-ungrouped"
+  ],
+  "note": "13 个字段平铺（minor）",
+  "split": "train",
+  "file": "bad/long-form-ungrouped.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "clickable-div",
+  "category": "component",
+  "verdict": "FAIL",
+  "rules": [
+   "cs.clickable-div"
+  ],
+  "note": "div 当按钮",
+  "split": "train",
+  "file": "bad/clickable-div.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "long-select-no-search",
+  "category": "component",
+  "verdict": "PASS",
+  "rules": [
+   "cs.long-select-no-search"
+  ],
+  "note": "20 项下拉无搜索（minor）",
+  "split": "train",
+  "file": "bad/long-select-no-search.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "button-as-link",
+  "category": "component",
+  "verdict": "PASS",
+  "rules": [
+   "cs.button-as-link"
+  ],
+  "note": "导航用按钮跳转（minor）",
+  "split": "train",
+  "file": "bad/button-as-link.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "focus-removed",
+  "category": "state",
+  "verdict": "FAIL",
+  "rules": [
+   "st.focus-removed"
+  ],
+  "note": "去掉焦点框且无替代",
+  "split": "train",
+  "file": "bad/focus-removed.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "focus-visible-correct",
+  "category": "state",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "有 :focus-visible",
+  "split": "train",
+  "file": "good/focus-visible-correct.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "no-hover-focus",
+  "category": "state",
+  "verdict": "PASS",
+  "rules": [
+   "st.no-hover-focus"
+  ],
+  "note": "只有默认态（minor）",
+  "split": "train",
+  "file": "bad/no-hover-focus.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "missing-loading",
+  "category": "state",
+  "verdict": "FAIL",
+  "rules": [
+   "st.missing-loading"
+  ],
+  "note": "异步提交无加载态",
+  "split": "train",
+  "file": "bad/missing-loading.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "loading-correct",
+  "category": "state",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "请求中禁用并改文案",
+  "split": "train",
+  "file": "good/loading-correct.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "empty-table",
+  "category": "state",
+  "verdict": "FAIL",
+  "rules": [
+   "st.missing-empty"
+  ],
+  "note": "空表格无空状态",
+  "split": "train",
+  "file": "bad/empty-table.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "empty-state-correct",
+  "category": "state",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "空状态说明+下一步",
+  "split": "train",
+  "file": "good/empty-state-correct.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "motion-bad",
+  "category": "state",
+  "verdict": "PASS",
+  "rules": [
+   "st.no-reduced-motion",
+   "st.slow-transition",
+   "st.transition-all"
+  ],
+  "note": "过慢、all、无 reduced-motion（均 minor）",
+  "split": "train",
+  "file": "bad/motion-bad.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "motion-correct",
+  "category": "state",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "160ms + reduced-motion",
+  "split": "train",
+  "file": "good/motion-correct.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "tiny-icon-button",
+  "category": "a11y",
+  "verdict": "FAIL",
+  "rules": [
+   "a11y.icon-button-no-name",
+   "tt.small-target"
+  ],
+  "note": "16px 无名称关闭按钮",
+  "split": "train",
+  "file": "bad/tiny-icon-button.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "icon-button-correct",
+  "category": "a11y",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "44px + aria-label",
+  "split": "train",
+  "file": "good/icon-button-correct.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "placeholder-only",
+  "category": "a11y",
+  "verdict": "FAIL",
+  "rules": [
+   "a11y.input-no-label"
+  ],
+  "note": "只有占位符",
+  "split": "train",
+  "file": "bad/placeholder-only.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "low-contrast-gray",
+  "category": "color",
+  "verdict": "FAIL",
+  "rules": [
+   "co.low-contrast"
+  ],
+  "note": "#aaa on #fff = 2.3:1",
+  "split": "train",
+  "file": "bad/low-contrast-gray.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "contrast-correct",
+  "category": "color",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "#4b5563 on #fff ≈ 7.6:1",
+  "split": "train",
+  "file": "good/contrast-correct.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "white-on-light-button",
+  "category": "color",
+  "verdict": "FAIL",
+  "rules": [
+   "co.low-contrast"
+  ],
+  "note": "白字浅蓝底 1.7:1",
+  "split": "train",
+  "file": "bad/white-on-light-button.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "ai-slop-hero",
+  "category": "color",
+  "verdict": "FAIL",
+  "rules": [
+   "co.ai-gradient",
+   "co.low-contrast",
+   "cp.ai-cliche",
+   "cp.emoji-heading"
+  ],
+  "note": "紫蓝渐变 + 套话 + emoji：典型 AI 味；白字在 #a855f7 上约 4:1，也是低对比",
+  "split": "train",
+  "file": "bad/ai-slop-hero.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "palette-sprawl",
+  "category": "color",
+  "verdict": "PASS",
+  "rules": [
+   "co.palette-sprawl"
+  ],
+  "note": "6 种色相（minor）",
+  "split": "train",
+  "file": "bad/palette-sprawl.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "vague-link",
+  "category": "copy",
+  "verdict": "PASS",
+  "rules": [
+   "cp.vague-link"
+  ],
+  "note": "点击这里（minor）",
+  "split": "train",
+  "file": "bad/vague-link.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "vague-error",
+  "category": "copy",
+  "verdict": "PASS",
+  "rules": [
+   "cp.vague-error"
+  ],
+  "note": "错误无原因（minor）",
+  "split": "train",
+  "file": "bad/vague-error.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "error-correct",
+  "category": "copy",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "原因+办法",
+  "split": "train",
+  "file": "good/error-correct.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "nested-card",
+  "category": "layout",
+  "verdict": "PASS",
+  "rules": [
+   "ly.nested-card"
+  ],
+  "note": "卡片套卡片（minor）",
+  "split": "train",
+  "file": "bad/nested-card.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "page-no-viewport",
+  "category": "layout",
+  "verdict": "PASS",
+  "rules": [
+   "ly.fixed-wide",
+   "ly.no-viewport"
+  ],
+  "note": "无 viewport + 固定宽（minor）",
+  "split": "train",
+  "file": "bad/page-no-viewport.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "page-correct",
+  "category": "layout",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "响应式",
+  "split": "train",
+  "file": "good/page-correct.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "centered-paragraph",
+  "category": "layout",
+  "verdict": "PASS",
+  "rules": [
+   "ly.centered-paragraph"
+  ],
+  "note": "长段落居中（minor）",
+  "split": "train",
+  "file": "bad/centered-paragraph.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "h-autorenew-yesno",
+  "category": "component",
+  "verdict": "FAIL",
+  "rules": [
+   "cs.binary-select"
+  ],
+  "note": "是/否 下拉",
+  "split": "holdout",
+  "file": "bad/h-autorenew-yesno.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "h-vue-collapse-views",
+  "category": "component",
+  "verdict": "FAIL",
+  "rules": [
+   "cs.peer-views-accordion"
+  ],
+  "note": "Element 折叠面板做同级视图",
+  "split": "holdout",
+  "file": "bad/h-vue-collapse-views.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "h-segmented-view",
+  "category": "component",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "segmented 正确",
+  "split": "holdout",
+  "file": "good/h-segmented-view.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "h-clear-cart",
+  "category": "component",
+  "verdict": "FAIL",
+  "rules": [
+   "cs.destructive-no-confirm"
+  ],
+  "note": "清空无确认",
+  "split": "holdout",
+  "file": "bad/h-clear-cart.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "h-grouped-long-form",
+  "category": "component",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "14 字段已分组",
+  "split": "holdout",
+  "file": "good/h-grouped-long-form.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "h-search-bar",
+  "category": "a11y",
+  "verdict": "FAIL",
+  "rules": [
+   "a11y.icon-button-no-name",
+   "a11y.input-no-label"
+  ],
+  "note": "搜索框与图标按钮均无名称",
+  "split": "holdout",
+  "file": "bad/h-search-bar.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "h-faint-text",
+  "category": "color",
+  "verdict": "FAIL",
+  "rules": [
+   "co.low-contrast"
+  ],
+  "note": "半透明黑 30% ≈ 2.4:1（默认白底）",
+  "split": "holdout",
+  "file": "bad/h-faint-text.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "h-custom-listbox",
+  "category": "component",
+  "verdict": "FAIL",
+  "rules": [
+   "cs.binary-select"
+  ],
+  "note": "自定义下拉 显示/隐藏",
+  "split": "holdout",
+  "file": "bad/h-custom-listbox.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "h-faq",
+  "category": "component",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "FAQ",
+  "split": "holdout",
+  "file": "good/h-faq.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "h-english-slop",
+  "category": "copy",
+  "verdict": "FAIL",
+  "rules": [
+   "cp.ai-cliche",
+   "cp.vague-link"
+  ],
+  "note": "英文套话",
+  "split": "holdout",
+  "file": "bad/h-english-slop.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "h-dark-muted",
+  "category": "color",
+  "verdict": "FAIL",
+  "rules": [
+   "co.low-contrast"
+  ],
+  "note": "暗色低对比",
+  "split": "holdout",
+  "file": "bad/h-dark-muted.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "h-dialog-correct",
+  "category": "component",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "对话框动词明确",
+  "split": "holdout",
+  "file": "good/h-dialog-correct.html",
+  "source": "mano-design 0.1.0 手写"
+ },
+ {
+  "id": "h2-gender-select",
+  "category": "component",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "两个非二值语义选项，不应误判为开关",
+  "split": "holdout",
+  "file": "good/h2-gender-select.html",
+  "source": "mano-design 0.1.0 手写（第二批留出）"
+ },
+ {
+  "id": "h2-lang-select",
+  "category": "component",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "语言切换 2 项不是开关",
+  "split": "holdout",
+  "file": "good/h2-lang-select.html",
+  "source": "mano-design 0.1.0 手写（第二批留出）"
+ },
+ {
+  "id": "h2-settings-mixed",
+  "category": "component",
+  "verdict": "FAIL",
+  "rules": [
+   "cs.binary-select",
+   "cs.few-options-select"
+  ],
+  "note": "真实设置页：一处严重、一处建议",
+  "split": "holdout",
+  "file": "bad/h2-settings-mixed.html",
+  "source": "mano-design 0.1.0 手写（第二批留出）"
+ },
+ {
+  "id": "h2-en-enabled",
+  "category": "component",
+  "verdict": "FAIL",
+  "rules": [
+   "cs.binary-select"
+  ],
+  "note": "英文 Enabled/Disabled",
+  "split": "holdout",
+  "file": "bad/h2-en-enabled.html",
+  "source": "mano-design 0.1.0 手写（第二批留出）"
+ },
+ {
+  "id": "h2-nav-groups",
+  "category": "component",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "7 个导航分组的侧栏折叠（超出同级视图上限）",
+  "split": "holdout",
+  "file": "good/h2-nav-groups.html",
+  "source": "mano-design 0.1.0 手写（第二批留出）"
+ },
+ {
+  "id": "h2-img-no-alt",
+  "category": "a11y",
+  "verdict": "PASS",
+  "rules": [
+   "a11y.img-no-alt"
+  ],
+  "note": "img 缺 alt（minor）",
+  "split": "holdout",
+  "file": "bad/h2-img-no-alt.html",
+  "source": "mano-design 0.1.0 手写（第二批留出）"
+ },
+ {
+  "id": "h2-confirm-onclick",
+  "category": "component",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "有 confirm 确认",
+  "split": "holdout",
+  "file": "good/h2-confirm-onclick.html",
+  "source": "mano-design 0.1.0 手写（第二批留出）"
+ },
+ {
+  "id": "h2-muted-class",
+  "category": "color",
+  "verdict": "FAIL",
+  "rules": [
+   "co.low-contrast"
+  ],
+  "note": "样式表类名定义的浅灰字",
+  "split": "holdout",
+  "file": "bad/h2-muted-class.html",
+  "source": "mano-design 0.1.0 手写（第二批留出）"
+ },
+ {
+  "id": "h2-large-heading-ok",
+  "category": "color",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "大字 #6b7280 ≈4.8:1，大字阈值 3:1",
+  "split": "holdout",
+  "file": "good/h2-large-heading-ok.html",
+  "source": "mano-design 0.1.0 手写（第二批留出）"
+ },
+ {
+  "id": "h2-span-onclick-role",
+  "category": "component",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "有 role/tabindex 的自定义按钮",
+  "split": "holdout",
+  "file": "good/h2-span-onclick-role.html",
+  "source": "mano-design 0.1.0 手写（第二批留出）"
+ },
+ {
+  "id": "rsi-radio-onoff-setting",
+  "category": "component",
+  "verdict": "FAIL",
+  "rules": [
+   "cs.binary-select"
+  ],
+  "note": "RSI 第 1 轮：模拟生成的设置页把即时生效的二值设置做成 开启/关闭 两个单选，检查器漏报",
+  "split": "train",
+  "file": "bad/rsi-radio-onoff-setting.html",
+  "source": "rsi-cycle-1 / llm-rubric"
+ },
+ {
+  "id": "rsi-pressed-onoff-group",
+  "category": "component",
+  "verdict": "FAIL",
+  "rules": [
+   "cs.binary-select"
+  ],
+  "note": "RSI 第 1 轮：开/关做成两个 aria-pressed 按钮组，检查器漏报",
+  "split": "holdout",
+  "file": "bad/rsi-pressed-onoff-group.html",
+  "source": "rsi-cycle-1 / llm-rubric"
+ },
+ {
+  "id": "rsi-radio-gender-ok",
+  "category": "component",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "RSI 第 1 轮正确对照：两个非二值语义的单选不应误报",
+  "split": "train",
+  "file": "good/rsi-radio-gender-ok.html",
+  "source": "rsi-cycle-1 / human"
+ },
+ {
+  "id": "rsi-radio-yesno-survey-ok",
+  "category": "component",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "RSI 第 1 轮正确对照：问卷里的是/否问题需要显式回答（不能有默认值），用单选合理，不是设置开关",
+  "split": "holdout",
+  "file": "good/rsi-radio-yesno-survey-ok.html",
+  "source": "rsi-cycle-1 / human"
+ }
+]

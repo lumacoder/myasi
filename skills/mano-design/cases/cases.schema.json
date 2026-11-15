@@ -1,0 +1,33 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "mano-design open-source catalog",
+ "type": "array",
+ "items": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id","name","repo_url","stars_snapshot","pushed_at","license","api_description","category","combine_role","borrow","pick","one_liner_zh","how_to_combine","avoid_when","tags","found_via","snapshot_date","snapshot_timezone","verified","verification_scope"],
+  "properties": {
+   "id": {"type": "string", "pattern": "^mano-[a-z0-9-]+$"},
+   "name": {"type": "string", "minLength": 1},
+   "repo_url": {"type": "string", "pattern": "^https://github\\.com/[^/]+/[^/]+$"},
+   "stars_snapshot": {"type": "integer", "minimum": 0},
+   "pushed_at": {"type": "string", "pattern": "\\+08:00$"},
+   "license": {"type": "string"},
+   "language": {"type": ["string", "null"]},
+   "api_description": {"type": "string"},
+   "category": {"enum": ["反AI味与审查","设计系统与选型","交互规范","可访问性与浏览器验证","组件实现","配色","评测与基准"]},
+   "combine_role": {"type": "string", "minLength": 1},
+   "borrow": {"enum": ["direct-dep","pattern","reference"]},
+   "pick": {"type": "boolean"},
+   "one_liner_zh": {"type": "string", "minLength": 4},
+   "how_to_combine": {"type": "string", "minLength": 4},
+   "avoid_when": {"type": "array", "items": {"type": "string"}},
+   "tags": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+   "found_via": {"type": "string"},
+   "snapshot_date": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+   "snapshot_timezone": {"const": "Asia/Shanghai"},
+   "verified": {"type": "boolean"},
+   "verification_scope": {"type": "string"}
+  }
+ }
+}

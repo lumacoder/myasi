@@ -1,0 +1,1104 @@
+{
+ "version": "0.1.1",
+ "severity_levels": {
+  "critical": "不合格，阻断交付",
+  "major": "不合格，需修复",
+  "minor": "建议优化，不阻断"
+ },
+ "verdict_rule": "存在 critical 或 major → FAIL；否则 PASS",
+ "sources": {
+  "nng-switch": "https://www.nngroup.com/articles/toggle-switch-guidelines/",
+  "nng-tabs": "https://www.nngroup.com/articles/tabs-used-right/",
+  "nng-accordion": "https://www.nngroup.com/articles/accordions-on-desktop/",
+  "nng-dropdown": "https://www.nngroup.com/articles/drop-down-menus/",
+  "nng-heuristics": "https://www.nngroup.com/articles/ten-usability-heuristics/",
+  "nng-confirm": "https://www.nngroup.com/articles/confirmation-dialog/",
+  "nng-empty": "https://www.nngroup.com/articles/empty-state-interface-design/",
+  "nng-forms": "https://www.nngroup.com/articles/web-form-design/",
+  "nng-anim": "https://www.nngroup.com/articles/animation-duration/",
+  "nng-error": "https://www.nngroup.com/articles/error-message-guidelines/",
+  "wcag22": "https://www.w3.org/TR/WCAG22/",
+  "wcag-target": "https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html",
+  "wcag-contrast": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+  "apg-tabs": "https://www.w3.org/WAI/ARIA/apg/patterns/tabs/",
+  "apg-switch": "https://www.w3.org/WAI/ARIA/apg/patterns/switch/",
+  "apple-hig-a11y": "https://developer.apple.com/design/human-interface-guidelines/accessibility",
+  "vercel-guidelines": "https://vercel.com/design/guidelines",
+  "impeccable": "https://github.com/pbakaus/impeccable",
+  "hallmark": "https://github.com/Nutlope/hallmark",
+  "taste-skill": "https://github.com/Leonxlnx/taste-skill"
+ },
+ "rules": [
+  {
+   "id": "cs.binary-select",
+   "category": "component",
+   "severity": "critical",
+   "detect": "lint",
+   "title_zh": "二值开关做成了下拉",
+   "signal": "设置项只有两个互斥状态（开/关、启用/禁用、是/否），且改动立即生效",
+   "correct": "Switch（role=switch，aria-checked）；需点「保存」才生效时用 Checkbox",
+   "anti_patterns": [
+    "<select> 只有 开/关 两项",
+    "自定义 Dropdown 里两个 option",
+    "开启/关闭 两个单选（有默认选中）",
+    "开/关 两个 aria-pressed 按钮"
+   ],
+   "rationale": "下拉需两次点击且隐藏当前状态；开关一眼可见、一次完成。",
+   "fix_zh": "把 select 改成 Switch：<button role=\"switch\" aria-checked=\"true\">，标签写设置名而非状态。",
+   "detection_hints": [
+    "select/role=listbox 去掉占位项后恰好 2 项且构成开/关语义对",
+    "同名 radio 恰好 2 个、构成二值对、已有选中项、组标题不是问句（问卷是/否题除外）",
+    "同一父级恰好 2 个 aria-pressed 按钮且构成二值对"
+   ],
+   "sources": [
+    "https://www.nngroup.com/articles/toggle-switch-guidelines/",
+    "https://www.w3.org/WAI/ARIA/apg/patterns/switch/"
+   ]
+  },
+  {
+   "id": "cs.peer-views-accordion",
+   "category": "component",
+   "severity": "critical",
+   "detect": "lint",
+   "title_zh": "同级视图做成了高度展开",
+   "signal": "2—6 个同级、互斥查看的内容视图（概览/详情/日志、日/周/月）",
+   "correct": "水平 Tabs（role=tablist/tab/tabpanel）或 Segmented Control；移动端可横向滚动 Tabs",
+   "anti_patterns": [
+    "多个 <details>/Accordion 纵向堆叠",
+    "点标题把内容在下方撑开"
+   ],
+   "rationale": "同级视图一次只看一个，Tabs 保留位置与上下文；纵向展开改变页面高度、迫使滚动、看不出并列关系。",
+   "fix_zh": "改为 Tabs：标签横排，键盘左右键切换，当前项 aria-selected=true。",
+   "detection_hints": [
+    "同一父级下 2—6 个折叠项，标题短（名词）且不是问句，面板内不是筛选控件"
+   ],
+   "sources": [
+    "https://www.nngroup.com/articles/tabs-used-right/",
+    "https://www.nngroup.com/articles/accordions-on-desktop/",
+    "https://www.w3.org/WAI/ARIA/apg/patterns/tabs/"
+   ]
+  },
+  {
+   "id": "cs.few-options-select",
+   "category": "component",
+   "severity": "minor",
+   "detect": "lint",
+   "title_zh": "少量互斥选项藏进下拉",
+   "signal": "3—5 个互斥选项且空间允许",
+   "correct": "Radio 组（表单）或 Segmented Control（视图/模式切换）",
+   "anti_patterns": [
+    "<select> 只有 3—5 项"
+   ],
+   "rationale": "选项全部可见，减少一次点击与记忆负担。",
+   "fix_zh": "选项 ≤5 时平铺为 radio/segmented；空间不足时才保留 select。",
+   "detection_hints": [
+    "select 有效选项 3—5 且非数字序列"
+   ],
+   "sources": [
+    "https://www.nngroup.com/articles/drop-down-menus/"
+   ]
+  },
+  {
+   "id": "cs.many-radios",
+   "category": "component",
+   "severity": "major",
+   "detect": "lint",
+   "title_zh": "大量选项平铺成单选",
+   "signal": "互斥选项 >7 个",
+   "correct": "Select；>15 项用带搜索的 Combobox",
+   "anti_patterns": [
+    "8 个以上同名 radio 平铺"
+   ],
+   "rationale": "长列表平铺占空间、难扫描。",
+   "fix_zh": "改用 Select/Combobox，常用项置顶。",
+   "detection_hints": [
+    "同 name 的 radio 数量 >7"
+   ],
+   "sources": [
+    "https://www.nngroup.com/articles/drop-down-menus/"
+   ]
+  },
+  {
+   "id": "cs.long-select-no-search",
+   "category": "component",
+   "severity": "minor",
+   "detect": "lint",
+   "title_zh": "超长下拉没有搜索",
+   "signal": "选项 >15（国家、城市、人员）",
+   "correct": "可搜索 Combobox（输入即筛选），或 input+datalist",
+   "anti_patterns": [
+    "200 项原生 select 只能滚动找"
+   ],
+   "rationale": "长列表需要输入筛选，滚动查找效率低。",
+   "fix_zh": "换 Combobox（如 shadcn/ui Command + Popover）。",
+   "detection_hints": [
+    "select 选项 >15 且无 datalist/搜索"
+   ],
+   "sources": [
+    "https://www.nngroup.com/articles/drop-down-menus/"
+   ]
+  },
+  {
+   "id": "cs.multi-select-native",
+   "category": "component",
+   "severity": "major",
+   "detect": "lint",
+   "title_zh": "少量多选用了原生 multiple 下拉",
+   "signal": "可多选且选项 ≤7",
+   "correct": "Checkbox 组；选项多时用带标签（chips）的多选 Combobox",
+   "anti_patterns": [
+    "<select multiple>"
+   ],
+   "rationale": "原生多选要 Ctrl/⌘ 点选，用户不知道且易误清空。",
+   "fix_zh": "改为 checkbox 组，每项有可点击标签。",
+   "detection_hints": [
+    "select[multiple]"
+   ],
+   "sources": [
+    "https://www.nngroup.com/articles/drop-down-menus/"
+   ]
+  },
+  {
+   "id": "cs.date-as-text",
+   "category": "component",
+   "severity": "major",
+   "detect": "lint",
+   "title_zh": "日期用纯文本输入",
+   "signal": "需要输入日期/生日/时间",
+   "correct": "Date Picker（<input type=date> 或组件库 DatePicker），允许键盘输入",
+   "anti_patterns": [
+    "<input type=text placeholder=YYYY-MM-DD>"
+   ],
+   "rationale": "文本框易格式错、无日历参照。",
+   "fix_zh": "改 type=date 或 DatePicker；保留键盘输入和格式提示。",
+   "detection_hints": [
+    "text 输入的 name/placeholder/label 含 日期/生日/date/YYYY"
+   ],
+   "sources": [
+    "https://www.nngroup.com/articles/web-form-design/"
+   ]
+  },
+  {
+   "id": "cs.numeric-select",
+   "category": "component",
+   "severity": "minor",
+   "detect": "lint",
+   "title_zh": "连续数值做成长下拉",
+   "signal": "选择连续数值或范围（音量、价格、百分比）",
+   "correct": "Slider + 数字输入框联动；精确值用 number input/stepper",
+   "anti_patterns": [
+    "select 里 0%、10%…100%"
+   ],
+   "rationale": "连续量用滑块直观，配输入框保证精确。",
+   "fix_zh": "改 Slider+Input，显示当前值与单位。",
+   "detection_hints": [
+    "select 有效选项 ≥8 且全为数字"
+   ],
+   "sources": [
+    "https://www.nngroup.com/articles/web-form-design/"
+   ]
+  },
+  {
+   "id": "cs.destructive-no-confirm",
+   "category": "component",
+   "severity": "major",
+   "detect": "lint",
+   "title_zh": "危险操作没有确认或撤销",
+   "signal": "删除、清空、注销等不可逆操作",
+   "correct": "确认对话框（标题说后果，按钮写明动作如「删除项目」）或执行后提供「撤销」",
+   "anti_patterns": [
+    "点「删除」直接执行"
+   ],
+   "rationale": "不可逆操作需要防误触（Nielsen：错误预防）。",
+   "fix_zh": "加 AlertDialog 或 Undo toast；按钮用危险色与明确动词。",
+   "detection_hints": [
+    "按钮文字含 删除/清空/注销/delete/remove，且无 confirm/dialog/撤销 线索"
+   ],
+   "sources": [
+    "https://www.nngroup.com/articles/confirmation-dialog/",
+    "https://www.nngroup.com/articles/ten-usability-heuristics/",
+    "https://vercel.com/design/guidelines"
+   ]
+  },
+  {
+   "id": "cs.dialog-vague-buttons",
+   "category": "component",
+   "severity": "major",
+   "detect": "lint",
+   "title_zh": "确认框按钮只写「确定/取消」",
+   "signal": "对话框确认危险或重要动作",
+   "correct": "按钮写明动作：「删除 3 个文件」/「保留」",
+   "anti_patterns": [
+    "危险确认框里只有 确定/是/OK"
+   ],
+   "rationale": "用户常不读正文，按钮本身必须说明后果。",
+   "fix_zh": "主按钮改为「动词+对象」，次按钮「取消」或「保留」。",
+   "detection_hints": [
+    "dialog/alertdialog 内含危险词且按钮为 确定/是/OK/Yes"
+   ],
+   "sources": [
+    "https://www.nngroup.com/articles/confirmation-dialog/"
+   ]
+  },
+  {
+   "id": "cs.long-form-ungrouped",
+   "category": "component",
+   "severity": "minor",
+   "detect": "lint",
+   "title_zh": "长表单不分组不分步",
+   "signal": "字段 >12 个",
+   "correct": "按主题 fieldset 分组，或分步向导（Stepper）显示进度",
+   "anti_patterns": [
+    "一屏 20 个输入框平铺"
+   ],
+   "rationale": "分块降低认知负荷。",
+   "fix_zh": "按含义分组（账户/联系/偏好），或拆 3—5 步。",
+   "detection_hints": [
+    "form 内 ≥12 个字段且无 fieldset/小标题/步骤"
+   ],
+   "sources": [
+    "https://www.nngroup.com/articles/web-form-design/"
+   ]
+  },
+  {
+   "id": "cs.clickable-div",
+   "category": "component",
+   "severity": "major",
+   "detect": "lint",
+   "title_zh": "用 div/span 做可点击控件",
+   "signal": "任何可点击元素",
+   "correct": "动作用 <button>，导航用 <a href>",
+   "anti_patterns": [
+    "<div onclick>",
+    "<span onClick>"
+   ],
+   "rationale": "div 无焦点、无键盘、读屏不识别。",
+   "fix_zh": "改 button/a；不得已时加 role、tabindex=0 和键盘处理。",
+   "detection_hints": [
+    "div/span/li/img 有 onclick 但无 role 与 tabindex"
+   ],
+   "sources": [
+    "https://vercel.com/design/guidelines",
+    "https://www.w3.org/TR/WCAG22/"
+   ]
+  },
+  {
+   "id": "cs.button-as-link",
+   "category": "component",
+   "severity": "minor",
+   "detect": "lint",
+   "title_zh": "导航用按钮+脚本跳转",
+   "signal": "点击后跳到另一页面",
+   "correct": "<a href>（支持新标签打开、复制链接）",
+   "anti_patterns": [
+    "<button onclick=\"location.href=...\">"
+   ],
+   "rationale": "链接就是链接，保留浏览器原生行为。",
+   "fix_zh": "改为 <a href>，样式可做成按钮。",
+   "detection_hints": [
+    "button 的 onclick 含 location/router.push"
+   ],
+   "sources": [
+    "https://vercel.com/design/guidelines"
+   ]
+  },
+  {
+   "id": "cs.toggle-deferred",
+   "category": "component",
+   "severity": "major",
+   "detect": "rubric",
+   "title_zh": "需保存才生效的设置用了开关",
+   "signal": "设置项在点「保存」后才生效",
+   "correct": "Checkbox；开关只用于立即生效",
+   "anti_patterns": [
+    "表单里开关 + 底部保存按钮"
+   ],
+   "rationale": "开关暗示立即生效，混用会让用户以为已保存。",
+   "fix_zh": "延迟生效改 checkbox；或去掉保存按钮改即时保存并给反馈。",
+   "detection_hints": [
+    "同一表单同时有 role=switch 与提交按钮"
+   ],
+   "sources": [
+    "https://www.nngroup.com/articles/toggle-switch-guidelines/"
+   ]
+  },
+  {
+   "id": "cs.tabs-for-sequence",
+   "category": "component",
+   "severity": "major",
+   "detect": "rubric",
+   "title_zh": "有先后顺序的步骤用了 Tabs",
+   "signal": "步骤有依赖顺序（下单→支付→完成）",
+   "correct": "Stepper/向导，显示当前步与进度",
+   "anti_patterns": [
+    "用 Tabs 让用户随意跳步"
+   ],
+   "rationale": "Tabs 表示并列、可随意切换，顺序流程需要引导。",
+   "fix_zh": "改 Stepper，未完成步骤禁用跳转。",
+   "detection_hints": [
+    "Tab 文案含 第一步/Step 1"
+   ],
+   "sources": [
+    "https://www.nngroup.com/articles/tabs-used-right/"
+   ]
+  },
+  {
+   "id": "cs.tabs-too-many",
+   "category": "component",
+   "severity": "minor",
+   "detect": "rubric",
+   "title_zh": "Tabs 过多或标签过长",
+   "signal": "同级视图 >7 个或标签换行",
+   "correct": "侧边导航/下拉更多；标签 1—2 个词",
+   "anti_patterns": [
+    "12 个 tab 挤一排"
+   ],
+   "rationale": "Tabs 只适合少量同级视图。",
+   "fix_zh": "收敛到 ≤6 个，其余放「更多」或二级导航。",
+   "detection_hints": [
+    "tab 数 >7"
+   ],
+   "sources": [
+    "https://www.nngroup.com/articles/tabs-used-right/"
+   ]
+  },
+  {
+   "id": "cs.modal-for-info",
+   "category": "component",
+   "severity": "major",
+   "detect": "rubric",
+   "title_zh": "非阻断信息用了模态框",
+   "signal": "保存成功、提示、非关键通知",
+   "correct": "Toast/Inline 提示（aria-live=polite），自动消失",
+   "anti_patterns": [
+    "每次保存弹窗要求点「知道了」"
+   ],
+   "rationale": "模态打断流程，只用于需要决定的场景。",
+   "fix_zh": "成功反馈用 toast；错误靠近出错位置内联显示。",
+   "detection_hints": [
+    "dialog 内只有成功文案和单个按钮"
+   ],
+   "sources": [
+    "https://www.nngroup.com/articles/ten-usability-heuristics/",
+    "https://vercel.com/design/guidelines"
+   ]
+  },
+  {
+   "id": "cs.tooltip-essential",
+   "category": "component",
+   "severity": "major",
+   "detect": "rubric",
+   "title_zh": "必要信息只藏在 tooltip",
+   "signal": "字段说明、错误原因、价格规则等关键信息",
+   "correct": "内联辅助文字；tooltip 只放补充信息",
+   "anti_patterns": [
+    "必填格式要求只在悬停 ? 图标出现"
+   ],
+   "rationale": "移动端无悬停，读屏易漏。",
+   "fix_zh": "把关键说明放到字段下方。",
+   "detection_hints": [
+    "title/tooltip 内含 必填/格式/规则"
+   ],
+   "sources": [
+    "https://vercel.com/design/guidelines"
+   ]
+  },
+  {
+   "id": "cs.search-filter-feedback",
+   "category": "component",
+   "severity": "minor",
+   "detect": "rubric",
+   "title_zh": "筛选/搜索无结果反馈",
+   "signal": "搜索、筛选列表",
+   "correct": "显示结果数、无结果空状态与清除筛选入口",
+   "anti_patterns": [
+    "筛选后列表空白无提示"
+   ],
+   "rationale": "系统状态可见（Nielsen #1）。",
+   "fix_zh": "加「找到 N 条」和「清除筛选」。",
+   "detection_hints": [],
+   "sources": [
+    "https://www.nngroup.com/articles/ten-usability-heuristics/",
+    "https://www.nngroup.com/articles/empty-state-interface-design/"
+   ]
+  },
+  {
+   "id": "cs.pagination-vs-infinite",
+   "category": "component",
+   "severity": "minor",
+   "detect": "rubric",
+   "title_zh": "需要定位的列表用了无限滚动",
+   "signal": "表格、搜索结果需要回到某处或到达页脚",
+   "correct": "分页或「加载更多」按钮；保留滚动位置",
+   "anti_patterns": [
+    "后台表格无限滚动、页脚永远到不了"
+   ],
+   "rationale": "无限滚动适合浏览流，不适合查找与比较。",
+   "fix_zh": "改分页/加载更多，返回时恢复位置。",
+   "detection_hints": [],
+   "sources": [
+    "https://vercel.com/design/guidelines"
+   ]
+  },
+  {
+   "id": "cs.segmented-for-mode",
+   "category": "component",
+   "severity": "minor",
+   "detect": "rubric",
+   "title_zh": "视图模式切换用了下拉或多个按钮",
+   "signal": "列表/网格、日/周/月等 2—5 种模式",
+   "correct": "Segmented Control，当前项高亮",
+   "anti_patterns": [
+    "「视图：下拉选择」"
+   ],
+   "rationale": "模式少且常切换，平铺可一次点击。",
+   "fix_zh": "改 segmented（role=radiogroup 或 tablist）。",
+   "detection_hints": [],
+   "sources": [
+    "https://www.nngroup.com/articles/tabs-used-right/"
+   ]
+  },
+  {
+   "id": "cs.stepper-for-number",
+   "category": "component",
+   "severity": "minor",
+   "detect": "rubric",
+   "title_zh": "小范围整数用了文本框或下拉",
+   "signal": "数量 1—10（购物车数量、人数）",
+   "correct": "Stepper（−/+ 与可输入数字）",
+   "anti_patterns": [
+    "数量用 select 1..99"
+   ],
+   "rationale": "小范围加减最快，且可直接输入。",
+   "fix_zh": "改 Stepper，限制 min/max。",
+   "detection_hints": [],
+   "sources": [
+    "https://www.nngroup.com/articles/web-form-design/"
+   ]
+  },
+  {
+   "id": "cs.inline-edit-confirm",
+   "category": "component",
+   "severity": "minor",
+   "detect": "rubric",
+   "title_zh": "重要字段原地编辑无保存/取消",
+   "signal": "表格单元或标题原地编辑",
+   "correct": "明确的保存/取消或 Enter/Esc 约定并给反馈",
+   "anti_patterns": [
+    "失焦即静默保存"
+   ],
+   "rationale": "用户不确定是否已保存。",
+   "fix_zh": "显示保存状态（保存中/已保存），提供撤销。",
+   "detection_hints": [],
+   "sources": [
+    "https://www.nngroup.com/articles/ten-usability-heuristics/"
+   ]
+  },
+  {
+   "id": "st.focus-removed",
+   "category": "state",
+   "severity": "major",
+   "detect": "lint",
+   "title_zh": "去掉焦点轮廓且无替代",
+   "signal": "任何可聚焦元素",
+   "correct": "保留或自定义 :focus-visible（outline/ring ≥2px，对比 ≥3:1）",
+   "anti_patterns": [
+    "outline:none 全局清除"
+   ],
+   "rationale": "键盘用户看不到焦点位置（WCAG 2.4.7）。",
+   "fix_zh": "删掉 outline:none，或补 :focus-visible{outline:2px solid ...;outline-offset:2px}。",
+   "detection_hints": [
+    "CSS 有 outline:none/0 而无 :focus-visible 样式"
+   ],
+   "sources": [
+    "https://www.w3.org/TR/WCAG22/",
+    "https://vercel.com/design/guidelines"
+   ]
+  },
+  {
+   "id": "st.no-hover-focus",
+   "category": "state",
+   "severity": "minor",
+   "detect": "lint",
+   "title_zh": "自定义按钮没有悬停/焦点态",
+   "signal": "自定义样式的按钮、链接",
+   "correct": "hover / focus-visible / active / disabled 四态齐全",
+   "anti_patterns": [
+    "只写了默认态样式"
+   ],
+   "rationale": "状态反馈告诉用户「可以点、已经点了」。",
+   "fix_zh": "补 :hover、:focus-visible、:active、:disabled。",
+   "detection_hints": [
+    "样式表给 button/.btn/a 设了颜色背景，但全局没有 :hover 与 :focus"
+   ],
+   "sources": [
+    "https://vercel.com/design/guidelines",
+    "https://github.com/pbakaus/impeccable"
+   ]
+  },
+  {
+   "id": "st.missing-loading",
+   "category": "state",
+   "severity": "major",
+   "detect": "lint",
+   "title_zh": "异步操作没有加载态",
+   "signal": "提交、请求数据等异步操作",
+   "correct": "按钮请求中禁用并显示「提交中…」，区域用骨架屏；>150ms 再出现、至少显示 300ms",
+   "anti_patterns": [
+    "点了没反应，可重复提交"
+   ],
+   "rationale": "系统状态可见；防重复提交。",
+   "fix_zh": "请求开始时 disabled+aria-busy，文案改「保存中…」，结束恢复。",
+   "detection_hints": [
+    "脚本有 fetch/axios/await，页面无 disabled/aria-busy/loading/加载 线索"
+   ],
+   "sources": [
+    "https://vercel.com/design/guidelines",
+    "https://www.nngroup.com/articles/ten-usability-heuristics/"
+   ]
+  },
+  {
+   "id": "st.missing-empty",
+   "category": "state",
+   "severity": "major",
+   "detect": "lint",
+   "title_zh": "列表/表格没有空状态",
+   "signal": "可能为空的列表、表格、搜索结果",
+   "correct": "空状态：说明原因 + 下一步动作（「还没有项目，新建一个」）",
+   "anti_patterns": [
+    "空白 tbody",
+    "空 ul"
+   ],
+   "rationale": "空白让人以为出错或加载中。",
+   "fix_zh": "加空状态文案和主操作按钮。",
+   "detection_hints": [
+    "空 tbody/ul/ol 且页面无 暂无/还没有/empty/No … 文案"
+   ],
+   "sources": [
+    "https://www.nngroup.com/articles/empty-state-interface-design/"
+   ]
+  },
+  {
+   "id": "st.missing-error",
+   "category": "state",
+   "severity": "major",
+   "detect": "rubric",
+   "title_zh": "缺少错误态或错误不靠近字段",
+   "signal": "表单校验、请求失败",
+   "correct": "字段下方内联错误（aria-describedby），提交后聚焦第一个错误",
+   "anti_patterns": [
+    "顶部一行红字「提交失败」"
+   ],
+   "rationale": "错误需要定位到具体字段并给出修复方法。",
+   "fix_zh": "每个字段内联错误，aria-invalid=true。",
+   "detection_hints": [],
+   "sources": [
+    "https://www.nngroup.com/articles/error-message-guidelines/",
+    "https://vercel.com/design/guidelines"
+   ]
+  },
+  {
+   "id": "st.disabled-no-reason",
+   "category": "state",
+   "severity": "minor",
+   "detect": "rubric",
+   "title_zh": "禁用按钮不说明原因",
+   "signal": "按钮因条件未满足而禁用",
+   "correct": "保持可点并在点击时提示缺什么，或旁边写明条件",
+   "anti_patterns": [
+    "灰色按钮不知为何不能点"
+   ],
+   "rationale": "减少猜测。",
+   "fix_zh": "加辅助文字「请先勾选同意条款」。",
+   "detection_hints": [],
+   "sources": [
+    "https://www.nngroup.com/articles/ten-usability-heuristics/"
+   ]
+  },
+  {
+   "id": "st.transition-all",
+   "category": "state",
+   "severity": "minor",
+   "detect": "lint",
+   "title_zh": "transition: all",
+   "signal": "任何过渡",
+   "correct": "只列出需要的属性，优先 transform/opacity",
+   "anti_patterns": [
+    "transition: all .3s"
+   ],
+   "rationale": "all 会动画布局属性，造成卡顿与意外动画。",
+   "fix_zh": "改 transition: transform 200ms ease-out, opacity 200ms。",
+   "detection_hints": [
+    "transition(-property) 含 all"
+   ],
+   "sources": [
+    "https://vercel.com/design/guidelines"
+   ]
+  },
+  {
+   "id": "st.slow-transition",
+   "category": "state",
+   "severity": "minor",
+   "detect": "lint",
+   "title_zh": "界面过渡过慢",
+   "signal": "悬停、开关、展开等微交互",
+   "correct": "100—300ms（微交互 150—200ms），进入 ease-out，退出更快",
+   "anti_patterns": [
+    "hover 动画 800ms"
+   ],
+   "rationale": "超过约 400ms 用户感到拖沓。",
+   "fix_zh": "把 transition-duration 降到 ≤300ms。",
+   "detection_hints": [
+    "transition 时长 >500ms"
+   ],
+   "sources": [
+    "https://www.nngroup.com/articles/animation-duration/"
+   ]
+  },
+  {
+   "id": "st.no-reduced-motion",
+   "category": "state",
+   "severity": "minor",
+   "detect": "lint",
+   "title_zh": "动画未适配减少动态效果",
+   "signal": "有 @keyframes/animation",
+   "correct": "@media (prefers-reduced-motion: reduce) 关闭或减弱动画",
+   "anti_patterns": [
+    "无限循环动画无开关"
+   ],
+   "rationale": "前庭障碍用户会不适（WCAG 2.3.3）。",
+   "fix_zh": "加 reduced-motion 媒体查询。",
+   "detection_hints": [
+    "有 @keyframes 或 animation 而无 prefers-reduced-motion"
+   ],
+   "sources": [
+    "https://www.w3.org/TR/WCAG22/",
+    "https://vercel.com/design/guidelines"
+   ]
+  },
+  {
+   "id": "tt.small-target",
+   "category": "a11y",
+   "severity": "major",
+   "detect": "lint",
+   "title_zh": "点击目标过小",
+   "signal": "按钮、图标按钮、复选框等",
+   "correct": "最小 24×24 CSS px（WCAG 2.5.8），移动端建议 44×44（Apple HIG）",
+   "anti_patterns": [
+    "16px 关闭图标没有额外点击区域"
+   ],
+   "rationale": "小目标误触率高。",
+   "fix_zh": "min-width/min-height:44px，或用 padding 扩大点击区。",
+   "detection_hints": [
+    "交互元素显式 width/height <24px"
+   ],
+   "sources": [
+    "https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html",
+    "https://developer.apple.com/design/human-interface-guidelines/accessibility"
+   ]
+  },
+  {
+   "id": "a11y.input-no-label",
+   "category": "a11y",
+   "severity": "major",
+   "detect": "lint",
+   "title_zh": "输入框没有标签",
+   "signal": "任何表单控件",
+   "correct": "可见 <label for>；只用占位符不算标签",
+   "anti_patterns": [
+    "只有 placeholder 的输入框"
+   ],
+   "rationale": "输入后占位符消失，读屏无名称。",
+   "fix_zh": "加 <label>；视觉隐藏时用 aria-label。",
+   "detection_hints": [
+    "input/select/textarea 无 label/aria-label/aria-labelledby/title"
+   ],
+   "sources": [
+    "https://www.w3.org/TR/WCAG22/",
+    "https://vercel.com/design/guidelines"
+   ]
+  },
+  {
+   "id": "a11y.icon-button-no-name",
+   "category": "a11y",
+   "severity": "major",
+   "detect": "lint",
+   "title_zh": "图标按钮没有可访问名称",
+   "signal": "只有图标的按钮",
+   "correct": "aria-label 写动作（「关闭」「搜索」）",
+   "anti_patterns": [
+    "<button><svg/></button>",
+    "<button>×</button>"
+   ],
+   "rationale": "读屏只读到「按钮」。",
+   "fix_zh": "加 aria-label，图标 aria-hidden=true。",
+   "detection_hints": [
+    "button 无文字或仅 1—2 个符号，且无 aria-label/title"
+   ],
+   "sources": [
+    "https://www.w3.org/TR/WCAG22/",
+    "https://vercel.com/design/guidelines"
+   ]
+  },
+  {
+   "id": "a11y.img-no-alt",
+   "category": "a11y",
+   "severity": "minor",
+   "detect": "lint",
+   "title_zh": "图片缺少 alt",
+   "signal": "任何 <img>",
+   "correct": "有意义图片写 alt，装饰图 alt=\"\"",
+   "anti_patterns": [
+    "<img src=...> 无 alt"
+   ],
+   "rationale": "读屏会读出文件名。",
+   "fix_zh": "补 alt。",
+   "detection_hints": [
+    "img 无 alt 属性"
+   ],
+   "sources": [
+    "https://www.w3.org/TR/WCAG22/"
+   ]
+  },
+  {
+   "id": "a11y.keyboard-trap",
+   "category": "a11y",
+   "severity": "critical",
+   "detect": "browser",
+   "title_zh": "键盘焦点被困或顺序错乱",
+   "signal": "对话框、抽屉、菜单",
+   "correct": "对话框内循环焦点、Esc 关闭、关闭后焦点回到触发按钮",
+   "anti_patterns": [
+    "打开弹窗后 Tab 跑到背后页面"
+   ],
+   "rationale": "键盘用户无法完成任务。",
+   "fix_zh": "用 Radix/原生 <dialog> 的焦点管理。",
+   "detection_hints": [
+    "Playwright 连续 Tab 记录 document.activeElement"
+   ],
+   "sources": [
+    "https://www.w3.org/TR/WCAG22/"
+   ]
+  },
+  {
+   "id": "co.low-contrast",
+   "category": "color",
+   "severity": "major",
+   "detect": "lint",
+   "title_zh": "文字对比度不足",
+   "signal": "正文与背景",
+   "correct": "正文 ≥4.5:1；大字（≥24px 或 ≥18.66px 粗体）≥3:1；图标/边框 ≥3:1",
+   "anti_patterns": [
+    "浅灰字在白底",
+    "白字在浅色按钮"
+   ],
+   "rationale": "低对比在户外/低视力下不可读（WCAG 1.4.3）。",
+   "fix_zh": "加深前景或背景；用 tokens 生成满足对比的色阶（如 Leonardo）。",
+   "detection_hints": [
+    "计算内联/样式表中文字色与最近背景色的对比度"
+   ],
+   "sources": [
+    "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
+   ]
+  },
+  {
+   "id": "co.palette-sprawl",
+   "category": "color",
+   "severity": "minor",
+   "detect": "lint",
+   "title_zh": "色相过多、配色杂乱",
+   "signal": "整页配色",
+   "correct": "1 个主色 + 中性色阶 + 语义色（成功/警告/错误）；有彩色相 ≤4",
+   "anti_patterns": [
+    "每个卡片一种颜色"
+   ],
+   "rationale": "颜色无语义会稀释层级。",
+   "fix_zh": "收敛到 tokens：primary/neutral/success/warning/danger。",
+   "detection_hints": [
+    "有彩色（饱和度>0.25）色相按 30° 分桶，桶数 ≥5"
+   ],
+   "sources": [
+    "https://github.com/pbakaus/impeccable",
+    "https://github.com/Nutlope/hallmark"
+   ]
+  },
+  {
+   "id": "co.ai-gradient",
+   "category": "color",
+   "severity": "minor",
+   "detect": "lint",
+   "title_zh": "AI 味紫蓝渐变",
+   "signal": "大面积背景、标题、按钮",
+   "correct": "品牌色纯色或同色相明度渐变；渐变需有语义",
+   "anti_patterns": [
+    "linear-gradient(紫→蓝/粉)"
+   ],
+   "rationale": "紫蓝渐变是模型默认审美的典型标志。",
+   "fix_zh": "改单一主色或同色相渐变，或去掉渐变。",
+   "detection_hints": [
+    "gradient 内含紫色（色相 255—300°）且另有不同色相"
+   ],
+   "sources": [
+    "https://github.com/pbakaus/impeccable",
+    "https://github.com/Nutlope/hallmark",
+    "https://github.com/Leonxlnx/taste-skill"
+   ]
+  },
+  {
+   "id": "co.dark-mode-pure",
+   "category": "color",
+   "severity": "minor",
+   "detect": "rubric",
+   "title_zh": "暗色模式用纯黑纯白",
+   "signal": "暗色主题",
+   "correct": "背景用 #0B0B0F—#18181B 一类深灰，文字 #E4E4E7 左右；饱和色降饱和",
+   "anti_patterns": [
+    "#000 背景 + #FFF 文字 + 高饱和按钮"
+   ],
+   "rationale": "纯黑纯白对比刺眼、产生光晕。",
+   "fix_zh": "用中性深灰色阶，主色提高明度降低饱和。",
+   "detection_hints": [],
+   "sources": [
+    "https://github.com/pbakaus/impeccable"
+   ]
+  },
+  {
+   "id": "co.color-only-status",
+   "category": "color",
+   "severity": "major",
+   "detect": "rubric",
+   "title_zh": "只用颜色区分状态",
+   "signal": "成功/失败、必填、图表系列",
+   "correct": "颜色 + 图标/文字双编码",
+   "anti_patterns": [
+    "只靠红绿区分"
+   ],
+   "rationale": "色盲用户无法区分（WCAG 1.4.1）。",
+   "fix_zh": "加图标与文字标签。",
+   "detection_hints": [],
+   "sources": [
+    "https://www.w3.org/TR/WCAG22/"
+   ]
+  },
+  {
+   "id": "cp.ai-cliche",
+   "category": "copy",
+   "severity": "minor",
+   "detect": "lint",
+   "title_zh": "AI 味套话",
+   "signal": "标题、介绍、按钮文案",
+   "correct": "具体：动作+对象+结果，用数字和事实",
+   "anti_patterns": [
+    "赋能、一站式、全方位、开启…之旅、释放潜力、Unlock、Seamless"
+   ],
+   "rationale": "空洞修饰降低信任，一眼像模板。",
+   "fix_zh": "删形容词，写用户能做什么、得到什么。出现 ≥2 处升级为 major。",
+   "detection_hints": [
+    "命中套话词表；≥2 处为 major"
+   ],
+   "sources": [
+    "https://github.com/pbakaus/impeccable",
+    "https://github.com/Nutlope/hallmark"
+   ]
+  },
+  {
+   "id": "cp.vague-link",
+   "category": "copy",
+   "severity": "minor",
+   "detect": "lint",
+   "title_zh": "「点击这里」式链接文案",
+   "signal": "链接、按钮",
+   "correct": "文案本身说明去向或动作（「下载发票 PDF」）",
+   "anti_patterns": [
+    "点击这里",
+    "Click here"
+   ],
+   "rationale": "脱离上下文无法理解，读屏链接列表无意义。",
+   "fix_zh": "改为描述性文案。",
+   "detection_hints": [
+    "a/button 文字为 点击这里/这里/点此/click here/here"
+   ],
+   "sources": [
+    "https://www.w3.org/TR/WCAG22/"
+   ]
+  },
+  {
+   "id": "cp.emoji-heading",
+   "category": "copy",
+   "severity": "minor",
+   "detect": "lint",
+   "title_zh": "标题/按钮堆 emoji",
+   "signal": "标题、按钮、标签",
+   "correct": "用一致的图标库（Lucide 等）或纯文字",
+   "anti_patterns": [
+    "✨ 全新体验 🚀"
+   ],
+   "rationale": "emoji 装饰是 AI 生成页的典型痕迹。",
+   "fix_zh": "删除 emoji，必要时换线性图标。",
+   "detection_hints": [
+    "h1-h3/button/label 含 emoji"
+   ],
+   "sources": [
+    "https://github.com/Nutlope/hallmark",
+    "https://github.com/pbakaus/impeccable"
+   ]
+  },
+  {
+   "id": "cp.vague-error",
+   "category": "copy",
+   "severity": "minor",
+   "detect": "lint",
+   "title_zh": "错误提示不说原因和办法",
+   "signal": "错误提示",
+   "correct": "说明发生了什么 + 怎么办（「网络已断开，检查连接后重试」+ 重试按钮）",
+   "anti_patterns": [
+    "「出错了」",
+    "Something went wrong"
+   ],
+   "rationale": "用户无法自救（Nielsen #9）。",
+   "fix_zh": "写原因与下一步，附重试/联系入口。",
+   "detection_hints": [
+    "role=alert/错误类元素文字只有 出错了/错误/失败"
+   ],
+   "sources": [
+    "https://www.nngroup.com/articles/error-message-guidelines/",
+    "https://www.nngroup.com/articles/ten-usability-heuristics/"
+   ]
+  },
+  {
+   "id": "cp.zh-punctuation",
+   "category": "copy",
+   "severity": "minor",
+   "detect": "rubric",
+   "title_zh": "中文文案标点与语气不统一",
+   "signal": "中文界面",
+   "correct": "全角标点、中英文间空格统一；按钮用动词；不用「您」「你」混用",
+   "anti_patterns": [
+    "Hello,欢迎使用!"
+   ],
+   "rationale": "细节不一致显得粗糙。",
+   "fix_zh": "统一术语表与标点规范。",
+   "detection_hints": [],
+   "sources": [
+    "https://github.com/pbakaus/impeccable"
+   ]
+  },
+  {
+   "id": "ly.nested-card",
+   "category": "layout",
+   "severity": "minor",
+   "detect": "lint",
+   "title_zh": "卡片套卡片",
+   "signal": "内容分组",
+   "correct": "一层卡片，内部用间距/分隔线区分",
+   "anti_patterns": [
+    ".card 里再放 .card"
+   ],
+   "rationale": "多层边框阴影制造噪音，是 AI 页常见痕迹。",
+   "fix_zh": "去掉内层卡片，用标题+间距分组。",
+   "detection_hints": [
+    "class 含 card 的元素祖先也含 card"
+   ],
+   "sources": [
+    "https://github.com/pbakaus/impeccable",
+    "https://github.com/Nutlope/hallmark"
+   ]
+  },
+  {
+   "id": "ly.no-viewport",
+   "category": "layout",
+   "severity": "minor",
+   "detect": "lint",
+   "title_zh": "完整页面缺少 viewport",
+   "signal": "完整 HTML 页面",
+   "correct": "<meta name=viewport content=\"width=device-width, initial-scale=1\">",
+   "anti_patterns": [
+    "无 viewport，手机端缩成一团"
+   ],
+   "rationale": "移动端布局失效。",
+   "fix_zh": "在 head 加 viewport meta。",
+   "detection_hints": [
+    "有 <html>/<head> 但无 meta viewport"
+   ],
+   "sources": [
+    "https://vercel.com/design/guidelines"
+   ]
+  },
+  {
+   "id": "ly.fixed-wide",
+   "category": "layout",
+   "severity": "minor",
+   "detect": "lint",
+   "title_zh": "固定超宽导致移动端横向滚动",
+   "signal": "容器宽度",
+   "correct": "max-width + 百分比/flex/grid 自适应",
+   "anti_patterns": [
+    "width:1200px"
+   ],
+   "rationale": "小屏出现横向滚动。",
+   "fix_zh": "改 max-width:1200px;width:100%。",
+   "detection_hints": [
+    "width/min-width ≥1000px 且无 max-width"
+   ],
+   "sources": [
+    "https://vercel.com/design/guidelines"
+   ]
+  },
+  {
+   "id": "ly.centered-paragraph",
+   "category": "layout",
+   "severity": "minor",
+   "detect": "lint",
+   "title_zh": "长段落居中对齐",
+   "signal": "正文段落 >2 行",
+   "correct": "左对齐（中文正文两端对齐亦可），行长 35—45 字",
+   "anti_patterns": [
+    "整段居中"
+   ],
+   "rationale": "居中长文每行起点不同，难阅读。",
+   "fix_zh": "正文 text-align:left，只有短标题居中。",
+   "detection_hints": [
+    "text-align:center 的 p 超过 120 字符"
+   ],
+   "sources": [
+    "https://github.com/pbakaus/impeccable"
+   ]
+  },
+  {
+   "id": "ly.hierarchy",
+   "category": "layout",
+   "severity": "major",
+   "detect": "rubric",
+   "title_zh": "主操作不突出或多个主按钮",
+   "signal": "每屏/每个卡片",
+   "correct": "每个区域只有 1 个主按钮，其余次要/文字按钮",
+   "anti_patterns": [
+    "三个同样鲜艳的按钮并排"
+   ],
+   "rationale": "层级不清导致选择困难（Hick 定律）。",
+   "fix_zh": "保留一个 primary，其余 secondary/ghost。",
+   "detection_hints": [],
+   "sources": [
+    "https://www.nngroup.com/articles/ten-usability-heuristics/"
+   ]
+  },
+  {
+   "id": "ly.consistency",
+   "category": "layout",
+   "severity": "major",
+   "detect": "rubric",
+   "title_zh": "同类组件样式/交互不一致",
+   "signal": "同一产品内",
+   "correct": "同类组件同 variant、同间距、同图标库",
+   "anti_patterns": [
+    "两个页面删除按钮颜色位置不同"
+   ],
+   "rationale": "一致性降低学习成本（Nielsen #4）。",
+   "fix_zh": "抽取 tokens 与组件，复用。",
+   "detection_hints": [],
+   "sources": [
+    "https://www.nngroup.com/articles/ten-usability-heuristics/"
+   ]
+  }
+ ]
+}
