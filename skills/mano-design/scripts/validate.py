@@ -130,6 +130,44 @@ def main(argv=None):
         for r in v.get("rule_ids", []):
             if r not in rules:
                 errs.append(f"vocab {v['term']} 引用未知规则 {r}")
+    # 5b visual layer：原型/基准/签名/主题互相引用完整 + 三个自测
+    V = ROOT / "visual"
+    try:
+        arch = json.loads((V / "archetypes.json").read_text(encoding="utf-8"))["archetypes"]
+        bench = json.loads((V / "benchmarks.json").read_text(encoding="utf-8"))["benchmarks"]
+        pats = json.loads((V / "creative-patterns.json").read_text(encoding="utf-8"))["patterns"]
+        bids, pids = {b["id"] for b in bench}, {x["id"] for x in pats}
+        for b in bench:
+            for k in ("id", "license", "demo_url", "archetypes", "use", "what", "borrow", "verified"):
+                if k not in b:
+                    errs.append(f"benchmark {b.get('id')} 缺 {k}")
+        for a_ in arch:
+            for k in ("id", "mode", "signals", "sections", "signature_patterns", "seed_benchmarks", "discovery_queries", "theme_hint"):
+                if k not in a_:
+                    errs.append(f"archetype {a_.get('id')} 缺 {k}")
+            if a_.get("mode") not in ("Persuade", "Operate", "Read", "Experience"):
+                errs.append(f"archetype {a_['id']} mode 非法")
+            errs += [f"archetype {a_['id']} 引用未知基准 {x}" for x in a_.get("seed_benchmarks", []) if x not in bids]
+            errs += [f"archetype {a_['id']} 引用未知签名 {x}" for x in a_.get("signature_patterns", []) if x not in pids]
+        for x in pats:
+            errs += [f"pattern {x['id']} 引用未知来源 {s}" for s in x.get("sources", []) if s not in bids]
+        sys.path.insert(0, str(ROOT / "scripts"))
+        import io
+        import contextlib
+        import archetype as _arch
+        import theme as _theme
+        import visual_score as _vs
+        with contextlib.redirect_stdout(io.StringIO()):
+            r1, r2 = _arch.self_test(), _vs.self_test()
+        terrs = _theme.check(_theme.load())
+        if r1:
+            errs.append("原型识别自测失败（python3 scripts/archetype.py --self-test）")
+        if r2:
+            errs.append("视觉评分门禁自测失败（python3 scripts/visual_score.py --self-test）")
+        errs += [f"主题对比度：{e}" for e in terrs]
+        info.append(f"视觉层：原型 {len(arch)} 类、基准 {len(bench)} 条、签名模式 {len(pats)} 个、主题 {len(_theme.load())} 套；原型识别/评分门禁自测与主题 AA 检查{'通过' if not (r1 or r2 or terrs) else '有失败'}")
+    except (OSError, KeyError, ValueError) as e:
+        errs.append(f"视觉层文件无法读取：{e}")
     # 6 privacy & junk
     for f in ROOT.rglob("*"):
         if f.is_dir():

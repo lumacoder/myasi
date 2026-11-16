@@ -1,0 +1,554 @@
+{
+ "note": "未指定主题时按『行业/受众/模式』选；token 命名与 shadcn/ui 一致（--background/--foreground/--primary…），可直接写进 :root / .dark。所有文字配对由 scripts/theme.py --check 实测 WCAG（正文 ≥4.5，语义色当文字 ≥4.5，图表/边框类 ≥3）。参考：shadcn/ui theming、tweakcn、refero 风格库的『材质隐喻』写法。",
+ "themes": [
+  {
+   "id": "neutral-ink",
+   "name_zh": "中性墨",
+   "metaphor": "白纸上的排版终端：几乎无彩，靠字重与留白",
+   "fits": {
+    "industries": [
+     "开发者工具",
+     "基础设施",
+     "法律",
+     "咨询",
+     "通用 SaaS"
+    ],
+    "audiences": [
+     "工程师",
+     "专业人士"
+    ],
+    "modes": [
+     "Operate",
+     "Read"
+    ]
+   },
+   "avoid": "需要情绪感染力的消费品牌",
+   "light": {
+    "background": "#ffffff",
+    "foreground": "#09090b",
+    "card": "#ffffff",
+    "muted": "#f4f4f5",
+    "muted-foreground": "#5f5f6a",
+    "border": "#e4e4e7",
+    "primary": "#18181b",
+    "primary-foreground": "#fafafa",
+    "accent": "#f4f4f5",
+    "ring": "#71717a",
+    "success": "#047857",
+    "warning": "#b45309",
+    "danger": "#b91c1c",
+    "info": "#1d4ed8",
+    "chart": [
+     "#18181b",
+     "#2563eb",
+     "#0d9488",
+     "#d97706",
+     "#9333ea"
+    ]
+   },
+   "dark": {
+    "background": "#09090b",
+    "foreground": "#fafafa",
+    "card": "#111113",
+    "muted": "#1c1c20",
+    "muted-foreground": "#a1a1aa",
+    "border": "#27272a",
+    "primary": "#fafafa",
+    "primary-foreground": "#18181b",
+    "accent": "#1c1c20",
+    "ring": "#a1a1aa",
+    "success": "#34d399",
+    "warning": "#fbbf24",
+    "danger": "#f87171",
+    "info": "#60a5fa",
+    "chart": [
+     "#fafafa",
+     "#60a5fa",
+     "#2dd4bf",
+     "#fbbf24",
+     "#c084fc"
+    ]
+   }
+  },
+  {
+   "id": "signal-blue",
+   "name_zh": "信号蓝",
+   "metaphor": "夜间调度台：冷静的蓝灰底，蓝色只标记『可操作』与『正在流动』",
+   "fits": {
+    "industries": [
+     "运营后台",
+     "金融/支付",
+     "物流调度",
+     "数据平台",
+     "工作流/自动化",
+     "企业服务"
+    ],
+    "audiences": [
+     "运营",
+     "分析师",
+     "管理者"
+    ],
+    "modes": [
+     "Operate"
+    ]
+   },
+   "avoid": "品牌色已是蓝以外的强色",
+   "light": {
+    "background": "#ffffff",
+    "foreground": "#0b1220",
+    "card": "#ffffff",
+    "muted": "#f1f5f9",
+    "muted-foreground": "#526077",
+    "border": "#e2e8f0",
+    "primary": "#2563eb",
+    "primary-foreground": "#ffffff",
+    "accent": "#eff6ff",
+    "ring": "#3b82f6",
+    "flow": "#0891b2",
+    "success": "#047857",
+    "warning": "#b45309",
+    "danger": "#be123c",
+    "info": "#1d4ed8",
+    "chart": [
+     "#2563eb",
+     "#0891b2",
+     "#7c3aed",
+     "#d97706",
+     "#64748b"
+    ]
+   },
+   "dark": {
+    "background": "#0a0f1a",
+    "foreground": "#e8edf5",
+    "card": "#0f1624",
+    "muted": "#162033",
+    "muted-foreground": "#94a3b8",
+    "border": "#1e2a3f",
+    "primary": "#3b82f6",
+    "primary-foreground": "#04122b",
+    "accent": "#13213a",
+    "ring": "#60a5fa",
+    "flow": "#22d3ee",
+    "success": "#34d399",
+    "warning": "#fbbf24",
+    "danger": "#fb7185",
+    "info": "#60a5fa",
+    "chart": [
+     "#60a5fa",
+     "#22d3ee",
+     "#a78bfa",
+     "#fbbf24",
+     "#94a3b8"
+    ]
+   }
+  },
+  {
+   "id": "clinic-teal",
+   "name_zh": "诊所青",
+   "metaphor": "干净的诊室：浅青白底，青绿只用于主操作",
+   "fits": {
+    "industries": [
+     "医疗健康",
+     "教育",
+     "公益",
+     "物业",
+     "人力资源"
+    ],
+    "audiences": [
+     "大众",
+     "患者",
+     "学生"
+    ],
+    "modes": [
+     "Operate",
+     "Read"
+    ]
+   },
+   "avoid": "成功/盈利语义大量出现时（青绿与成功绿易混）",
+   "light": {
+    "background": "#ffffff",
+    "foreground": "#0a1a1a",
+    "card": "#ffffff",
+    "muted": "#f0f7f6",
+    "muted-foreground": "#4d6260",
+    "border": "#d9e8e6",
+    "primary": "#0f766e",
+    "primary-foreground": "#ffffff",
+    "accent": "#e6f4f2",
+    "ring": "#0d9488",
+    "success": "#15803d",
+    "warning": "#b45309",
+    "danger": "#b91c1c",
+    "info": "#1d4ed8",
+    "chart": [
+     "#0f766e",
+     "#2563eb",
+     "#d97706",
+     "#9333ea",
+     "#64748b"
+    ]
+   },
+   "dark": {
+    "background": "#071413",
+    "foreground": "#e6f2f1",
+    "card": "#0c1d1c",
+    "muted": "#132826",
+    "muted-foreground": "#93aba8",
+    "border": "#1d3532",
+    "primary": "#2dd4bf",
+    "primary-foreground": "#042f2e",
+    "accent": "#123230",
+    "ring": "#5eead4",
+    "success": "#4ade80",
+    "warning": "#fbbf24",
+    "danger": "#f87171",
+    "info": "#60a5fa",
+    "chart": [
+     "#2dd4bf",
+     "#60a5fa",
+     "#fbbf24",
+     "#c084fc",
+     "#94a3b8"
+    ]
+   }
+  },
+  {
+   "id": "market-ember",
+   "name_zh": "市集橙",
+   "metaphor": "傍晚的街市：暖白底，橙色像招牌灯，只点亮购买与主行动",
+   "fits": {
+    "industries": [
+     "本地生活",
+     "餐饮外卖",
+     "零售电商",
+     "旅行",
+     "社区"
+    ],
+    "audiences": [
+     "消费者",
+     "商家"
+    ],
+    "modes": [
+     "Persuade",
+     "Operate"
+    ]
+   },
+   "avoid": "大量『警告/需关注』语义的后台（橙与警告色冲突）",
+   "light": {
+    "background": "#fffdfa",
+    "foreground": "#1c1410",
+    "card": "#ffffff",
+    "muted": "#f7f1ea",
+    "muted-foreground": "#6b5b4e",
+    "border": "#ece3d8",
+    "primary": "#c2410c",
+    "primary-foreground": "#ffffff",
+    "accent": "#fff1e6",
+    "ring": "#ea580c",
+    "success": "#15803d",
+    "warning": "#a16207",
+    "danger": "#b91c1c",
+    "info": "#1d4ed8",
+    "chart": [
+     "#c2410c",
+     "#0f766e",
+     "#2563eb",
+     "#a16207",
+     "#78716c"
+    ]
+   },
+   "dark": {
+    "background": "#14100d",
+    "foreground": "#f6eee6",
+    "card": "#1c1612",
+    "muted": "#261e18",
+    "muted-foreground": "#b3a397",
+    "border": "#33291f",
+    "primary": "#fb923c",
+    "primary-foreground": "#2a1203",
+    "accent": "#2c2017",
+    "ring": "#fdba74",
+    "success": "#4ade80",
+    "warning": "#facc15",
+    "danger": "#f87171",
+    "info": "#60a5fa",
+    "chart": [
+     "#fb923c",
+     "#2dd4bf",
+     "#60a5fa",
+     "#facc15",
+     "#a8a29e"
+    ]
+   }
+  },
+  {
+   "id": "growth-emerald",
+   "name_zh": "生长绿",
+   "metaphor": "温室：绿色是品牌而不是状态，状态改用图标+文字",
+   "fits": {
+    "industries": [
+     "可持续/能源",
+     "农业",
+     "个人理财（储蓄）",
+     "健身"
+    ],
+    "audiences": [
+     "大众"
+    ],
+    "modes": [
+     "Persuade",
+     "Operate"
+    ]
+   },
+   "avoid": "成功/失败状态密集的运维界面",
+   "light": {
+    "background": "#ffffff",
+    "foreground": "#08140e",
+    "card": "#ffffff",
+    "muted": "#f0f6f2",
+    "muted-foreground": "#4d6156",
+    "border": "#dce9e1",
+    "primary": "#047857",
+    "primary-foreground": "#ffffff",
+    "accent": "#e8f5ee",
+    "ring": "#059669",
+    "success": "#047857",
+    "warning": "#b45309",
+    "danger": "#b91c1c",
+    "info": "#1d4ed8",
+    "chart": [
+     "#047857",
+     "#2563eb",
+     "#d97706",
+     "#7c3aed",
+     "#64748b"
+    ]
+   },
+   "dark": {
+    "background": "#06120c",
+    "foreground": "#e6f4ec",
+    "card": "#0b1c13",
+    "muted": "#12281c",
+    "muted-foreground": "#93ab9d",
+    "border": "#1b3526",
+    "primary": "#34d399",
+    "primary-foreground": "#022c22",
+    "accent": "#123224",
+    "ring": "#6ee7b7",
+    "success": "#34d399",
+    "warning": "#fbbf24",
+    "danger": "#f87171",
+    "info": "#60a5fa",
+    "chart": [
+     "#34d399",
+     "#60a5fa",
+     "#fbbf24",
+     "#a78bfa",
+     "#94a3b8"
+    ]
+   }
+  },
+  {
+   "id": "coral-pop",
+   "name_zh": "珊瑚",
+   "metaphor": "贴纸本：明快的珊瑚红点缀大量留白，适合社交与创作",
+   "fits": {
+    "industries": [
+     "社交",
+     "内容创作",
+     "活动票务",
+     "自动化工具品牌页"
+    ],
+    "audiences": [
+     "年轻用户",
+     "创作者"
+    ],
+    "modes": [
+     "Persuade",
+     "Experience"
+    ]
+   },
+   "avoid": "危险/错误语义多的界面（与红色冲突）",
+   "light": {
+    "background": "#ffffff",
+    "foreground": "#1a0e12",
+    "card": "#ffffff",
+    "muted": "#fbf1f3",
+    "muted-foreground": "#6d5359",
+    "border": "#f1dfe3",
+    "primary": "#e11d48",
+    "primary-foreground": "#ffffff",
+    "accent": "#ffe9ee",
+    "ring": "#e11d48",
+    "success": "#15803d",
+    "warning": "#b45309",
+    "danger": "#9f1239",
+    "info": "#1d4ed8",
+    "chart": [
+     "#e11d48",
+     "#2563eb",
+     "#0d9488",
+     "#d97706",
+     "#71717a"
+    ]
+   },
+   "dark": {
+    "background": "#140a0d",
+    "foreground": "#f8e9ed",
+    "card": "#1d1013",
+    "muted": "#2a171c",
+    "muted-foreground": "#bba0a7",
+    "border": "#3a2027",
+    "primary": "#fb7185",
+    "primary-foreground": "#2a0a12",
+    "accent": "#331a20",
+    "ring": "#fda4af",
+    "success": "#4ade80",
+    "warning": "#fbbf24",
+    "danger": "#fda4af",
+    "info": "#60a5fa",
+    "chart": [
+     "#fb7185",
+     "#60a5fa",
+     "#2dd4bf",
+     "#fbbf24",
+     "#a1a1aa"
+    ]
+   }
+  },
+  {
+   "id": "studio-violet",
+   "name_zh": "工作室紫",
+   "metaphor": "暗房：紫只用实色点缀，绝不做紫蓝渐变",
+   "fits": {
+    "industries": [
+     "AI 产品",
+     "设计/创意工具",
+     "音乐/播客"
+    ],
+    "audiences": [
+     "创作者",
+     "开发者"
+    ],
+    "modes": [
+     "Persuade",
+     "Operate",
+     "Experience"
+    ]
+   },
+   "avoid": "严肃金融、政务；任何想加紫蓝渐变的冲动（co.ai-gradient）",
+   "light": {
+    "background": "#ffffff",
+    "foreground": "#120d1c",
+    "card": "#ffffff",
+    "muted": "#f5f3fa",
+    "muted-foreground": "#5e5670",
+    "border": "#e7e3f0",
+    "primary": "#6d28d9",
+    "primary-foreground": "#ffffff",
+    "accent": "#f1ecfd",
+    "ring": "#8b5cf6",
+    "success": "#047857",
+    "warning": "#b45309",
+    "danger": "#b91c1c",
+    "info": "#1d4ed8",
+    "chart": [
+     "#6d28d9",
+     "#0891b2",
+     "#d97706",
+     "#db2777",
+     "#64748b"
+    ]
+   },
+   "dark": {
+    "background": "#0d0a14",
+    "foreground": "#ede9f7",
+    "card": "#14101e",
+    "muted": "#1d1729",
+    "muted-foreground": "#a79fbd",
+    "border": "#2a2240",
+    "primary": "#a78bfa",
+    "primary-foreground": "#1b0b3a",
+    "accent": "#231b36",
+    "ring": "#c4b5fd",
+    "success": "#34d399",
+    "warning": "#fbbf24",
+    "danger": "#f87171",
+    "info": "#60a5fa",
+    "chart": [
+     "#a78bfa",
+     "#22d3ee",
+     "#fbbf24",
+     "#f472b6",
+     "#94a3b8"
+    ]
+   }
+  },
+  {
+   "id": "warm-paper",
+   "name_zh": "暖纸",
+   "metaphor": "纸质书页：米白底 + 深墨字，正文优先；注意这是 AI 常见默认，只在阅读型内容且有理由时选",
+   "fits": {
+    "industries": [
+     "出版",
+     "博客",
+     "文化",
+     "知识付费"
+    ],
+    "audiences": [
+     "读者"
+    ],
+    "modes": [
+     "Read"
+    ]
+   },
+   "avoid": "SaaS/后台；作为『不知道选什么』的默认（anthropics frontend-design 点名的 AI 默认样式）",
+   "light": {
+    "background": "#fbf8f2",
+    "foreground": "#1d1a16",
+    "card": "#fffdf8",
+    "muted": "#f2ede3",
+    "muted-foreground": "#625a4e",
+    "border": "#e6dfd2",
+    "primary": "#1f3a5f",
+    "primary-foreground": "#ffffff",
+    "accent": "#efe7d8",
+    "ring": "#3b5b85",
+    "success": "#166534",
+    "warning": "#92400e",
+    "danger": "#991b1b",
+    "info": "#1e40af",
+    "chart": [
+     "#1f3a5f",
+     "#9a3412",
+     "#166534",
+     "#6b21a8",
+     "#57534e"
+    ]
+   },
+   "dark": {
+    "background": "#16140f",
+    "foreground": "#efe9dc",
+    "card": "#1d1a14",
+    "muted": "#27231b",
+    "muted-foreground": "#b3a993",
+    "border": "#363024",
+    "primary": "#93b4dd",
+    "primary-foreground": "#0c1a2c",
+    "accent": "#2c271d",
+    "ring": "#b6cde9",
+    "success": "#86efac",
+    "warning": "#fcd34d",
+    "danger": "#fca5a5",
+    "info": "#93c5fd",
+    "chart": [
+     "#93b4dd",
+     "#fdba74",
+     "#86efac",
+     "#d8b4fe",
+     "#a8a29e"
+    ]
+   }
+  }
+ ]
+}

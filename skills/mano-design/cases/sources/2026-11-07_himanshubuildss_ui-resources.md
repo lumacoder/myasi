@@ -21,3 +21,5 @@
 | https://styles.refero.design | 真实网站风格与 AI 可读的 DESIGN.md | 抽取真实产品 tokens，替代模型默认审美 |
 
 结论：都是灵感/素材网站，不是开源仓库，不能当依赖；用于「参考真实产品」以减少 AI 味。
+
+2026-11-16 重读：这些资源体现的机制（逐区块参考、真实站点 DESIGN.md、四层素材、动效礼仪）及在 skill 中的落点见 `capabilities/mechanism-sources.md`。

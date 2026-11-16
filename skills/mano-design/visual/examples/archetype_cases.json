@@ -1,0 +1,19 @@
+[
+ {"text": "商户治理：工作流列表、执行记录、执行详情，运营同学每天看", "expect": "workflow-automation"},
+ {"text": "商户治理运营后台，KPI 看板和报表", "expect": "admin-dashboard"},
+ {"text": "给一款 AI 写作工具做官网 landing，包含定价和 FAQ", "expect": "landing-marketing"},
+ {"text": "咖啡豆电商：商品详情页、购物车、下单", "expect": "ecommerce"},
+ {"text": "开发者文档站，API 参考 + 教程 + changelog", "expect": "docs-knowledge"},
+ {"text": "个人博客文章页与专栏", "expect": "content-blog"},
+ {"text": "移动端 H5 活动页，微信里打开", "expect": "mobile-h5"},
+ {"text": "多步骤开户表单与新手引导 onboarding", "expect": "forms-onboarding"},
+ {"text": "企业内部 AI 助手聊天界面，支持 agent 工具调用", "expect": "chat-ai"},
+ {"text": "摄影师作品集 portfolio", "expect": "portfolio-showcase"},
+ {"text": "WebGL 3D 互动体验小游戏", "expect": "game-3d-immersive"},
+ {"text": "服务日志与告警监控，trace 查看", "expect": "logs-observability"},
+ {"text": "销售漏斗分析与留存图表报告", "expect": "analytics-report"},
+ {"text": "账户设置：个人资料、通知设置、权限", "expect": "settings-account"},
+ {"text": "在线白板编辑器，画布 + 图层", "expect": "canvas-editor"},
+ {"text": "订单列表批量导出、筛选、分页的 CRUD 页面", "expect": "data-table-crud"},
+ {"text": "部署平台控制台：项目、部署、API key、用量与 billing", "expect": "saas-console"}
+]

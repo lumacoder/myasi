@@ -7,8 +7,12 @@
 - a11y.keyboard-trap / st.focus-removed  连续 Tab：焦点是否前进、是否有可见焦点样式
 - axe:<rule>        若能加载 axe-core（本地 AXE_PATH 或 --axe-url），附带 axe 违规
 
+- 多路由 / SPA：--routes "#/,#/runs,#/runs/38" 逐个检查；--wait-for <选择器> / --wait-ms 等真实内容渲染后再查（骨架屏不算）
+- --color-scheme dark 检查暗色模式；--shots <目录> 每个路由截一张图（给 visual_capture / 视觉评分用）
+
 用法：
   python3 scripts/browser_check.py page.html            # 或 http://localhost:5173
+  python3 scripts/browser_check.py dist/index.html --routes "#/workflows,#/runs" --wait-for "main [data-ready]" --wait-ms 600
   python3 scripts/browser_check.py page.html --viewport 390x844 --axe-url https://cdn.jsdelivr.net/npm/axe-core@4/axe.min.js
 安装（可选）：pip install playwright；使用本机 Chrome（CHROME_PATH）或 `playwright install chromium`。
 """
@@ -68,6 +72,57 @@ def find_chrome():
     return None
 
 
+def route_url(base, route):
+    if not route:
+        return base
+    if route.startswith(("http://", "https://", "file:")):
+        return route
+    if route.startswith("#"):
+        return base.split("#")[0] + route
+    root = base.split("#")[0].rstrip("/")
+    return root + ("" if route.startswith("/") else "/") + route
+
+
+def check_page(page, a, w):
+    findings, notes = [], []
+    findings += page.evaluate(PAGE_JS)
+    sw = page.evaluate("document.documentElement.scrollWidth")
+    if sw > w + 1:
+        findings.append({"rule": "ly.fixed-wide", "severity": "minor", "element": "document", "evidence": f"横向溢出：scrollWidth {sw}px > 视口 {w}px"})
+    visited, invisible = [], []
+    for _ in range(a.tabs):
+        page.keyboard.press("Tab")
+        f = page.evaluate(FOCUS_JS)
+        if f is None:
+            continue
+        visited.append(f"{f['tag']}:{f['text']}")
+        label = f"{f['tag']} \"{f['text']}\""
+        if not f["visible"] and label not in invisible:
+            invisible.append(label)
+    focusable = page.evaluate("""() => [...document.querySelectorAll('a[href],button,input,select,textarea,[tabindex]')]
+        .filter(e => !e.disabled && e.tabIndex >= 0 && e.getBoundingClientRect().width > 0).length""")
+    if focusable > 1 and visited and len(set(visited)) == 1 and len(visited) > 2:
+        findings.append({"rule": "a11y.keyboard-trap", "severity": "critical", "element": visited[0], "evidence": "连续 Tab 焦点不前进"})
+    if invisible:
+        findings.append({"rule": "st.focus-removed", "severity": "major", "element": invisible[0], "evidence": f"{len(invisible)} 个焦点位置无可见轮廓（outline/box-shadow）"})
+    axe_src = a.axe_path or os.environ.get("AXE_PATH")
+    try:
+        if axe_src and Path(axe_src).exists():
+            page.add_script_tag(path=axe_src)
+        elif a.axe_url:
+            page.add_script_tag(url=a.axe_url)
+        if (axe_src and Path(axe_src).exists()) or a.axe_url:
+            res = page.evaluate("async () => (await axe.run(document, {resultTypes: ['violations']})).violations.map(v => ({id: v.id, impact: v.impact, help: v.help, nodes: v.nodes.length, target: (v.nodes[0]||{}).target}))")
+            for v in res:
+                findings.append({"rule": "axe:" + v["id"], "severity": "major" if v["impact"] in ("serious", "critical") else "minor",
+                                 "element": f"{v['nodes']} 个节点，如 {v.get('target')}", "evidence": v["help"]})
+        else:
+            notes.append("未加载 axe-core（设置 AXE_PATH / --axe-path 或 --axe-url 可启用）")
+    except Exception as e:  # noqa: BLE001
+        notes.append(f"axe-core 加载失败：{e.__class__.__name__}")
+    return findings, notes
+
+
 def main(argv=None):
     for s in (sys.stdout, sys.stderr):
         if hasattr(s, "reconfigure"):
@@ -79,6 +134,12 @@ def main(argv=None):
     ap.add_argument("target", help="HTML 文件路径或 URL")
     ap.add_argument("--viewport", default="1280x800")
     ap.add_argument("--tabs", type=int, default=15, help="键盘 Tab 次数")
+    ap.add_argument("--routes", default="", help="逗号分隔：#/hash、/path 或完整 URL；为空只查 target")
+    ap.add_argument("--wait-for", default="", help="每个路由等待该 CSS 选择器出现（SPA 真实内容）")
+    ap.add_argument("--wait-ms", type=int, default=400, help="额外等待毫秒（动画/骨架屏）")
+    ap.add_argument("--color-scheme", choices=("light", "dark"), default="light")
+    ap.add_argument("--shots", default="", help="截图输出目录（每个路由一张）")
+    ap.add_argument("--axe-path", help="本地 axe.min.js 路径")
     ap.add_argument("--axe-url", help="axe-core 脚本 URL（可选，需要联网）")
     a = ap.parse_args(argv)
     try:
@@ -86,9 +147,10 @@ def main(argv=None):
     except ImportError:
         print(json.dumps({"skipped": True, "reason": "未安装 playwright（pip install playwright）；已退回静态检查 ui_lint.py"}, ensure_ascii=False))
         return 0
-    url = a.target if "://" in a.target else Path(a.target).resolve().as_uri()
+    base = a.target if "://" in a.target else Path(a.target).resolve().as_uri()
+    routes = [r.strip() for r in a.routes.split(",") if r.strip()] or [""]
     w, h = (int(x) for x in a.viewport.lower().split("x"))
-    findings, notes = [], []
+    pages, all_notes = [], []
     with sync_playwright() as p:
         kw = {"headless": True}
         chrome = find_chrome()
@@ -99,45 +161,33 @@ def main(argv=None):
         except Exception as e:  # noqa: BLE001
             print(json.dumps({"skipped": True, "reason": f"浏览器启动失败：{e.__class__.__name__}；设置 CHROME_PATH 或 playwright install chromium"}, ensure_ascii=False))
             return 0
-        page = browser.new_page(viewport={"width": w, "height": h})
-        page.goto(url, wait_until="load")
-        findings += page.evaluate(PAGE_JS)
-        sw = page.evaluate("document.documentElement.scrollWidth")
-        if sw > w + 1:
-            findings.append({"rule": "ly.fixed-wide", "severity": "minor", "element": "document", "evidence": f"横向溢出：scrollWidth {sw}px > 视口 {w}px"})
-        visited, invisible = [], []
-        for _ in range(a.tabs):
-            page.keyboard.press("Tab")
-            f = page.evaluate(FOCUS_JS)
-            if f is None:
-                continue
-            visited.append(f"{f['tag']}:{f['text']}")
-            label = f"{f['tag']} \"{f['text']}\""
-            if not f["visible"] and label not in invisible:
-                invisible.append(label)
-        focusable = page.evaluate("""() => [...document.querySelectorAll('a[href],button,input,select,textarea,[tabindex]')]
-            .filter(e => !e.disabled && e.tabIndex >= 0 && e.getBoundingClientRect().width > 0).length""")
-        if focusable > 1 and visited and len(set(visited)) == 1 and len(visited) > 2:
-            findings.append({"rule": "a11y.keyboard-trap", "severity": "critical", "element": visited[0], "evidence": "连续 Tab 焦点不前进"})
-        if invisible:
-            findings.append({"rule": "st.focus-removed", "severity": "major", "element": invisible[0], "evidence": f"{len(invisible)} 个焦点位置无可见轮廓（outline/box-shadow）"})
-        axe_src = os.environ.get("AXE_PATH")
-        try:
-            if axe_src and Path(axe_src).exists():
-                page.add_script_tag(path=axe_src)
-            elif a.axe_url:
-                page.add_script_tag(url=a.axe_url)
-            if axe_src or a.axe_url:
-                res = page.evaluate("async () => (await axe.run(document, {resultTypes: ['violations']})).violations.map(v => ({id: v.id, impact: v.impact, help: v.help, nodes: v.nodes.length}))")
-                for v in res:
-                    findings.append({"rule": "axe:" + v["id"], "severity": "major" if v["impact"] in ("serious", "critical") else "minor", "element": f"{v['nodes']} 个节点", "evidence": v["help"]})
-            else:
-                notes.append("未加载 axe-core（设置 AXE_PATH 或 --axe-url 可启用）")
-        except Exception as e:  # noqa: BLE001
-            notes.append(f"axe-core 加载失败：{e.__class__.__name__}")
+        ctx = browser.new_context(viewport={"width": w, "height": h}, color_scheme=a.color_scheme)
+        for i, r in enumerate(routes):
+            page = ctx.new_page()
+            errors = []
+            page.on("pageerror", lambda e, errors=errors: errors.append(str(e)[:160]))
+            url = route_url(base, r)
+            page.goto(url, wait_until="load")
+            note = []
+            if a.wait_for:
+                try:
+                    page.wait_for_selector(a.wait_for, timeout=10000)
+                except Exception:  # noqa: BLE001
+                    note.append(f"等待 {a.wait_for} 超时，结果可能只覆盖骨架屏")
+            page.wait_for_timeout(a.wait_ms)
+            if a.shots:
+                Path(a.shots).mkdir(parents=True, exist_ok=True)
+                page.screenshot(path=str(Path(a.shots) / f"route-{i + 1}-{a.color_scheme}.png"))
+            f, n = check_page(page, a, w)
+            f += [{"rule": "st.missing-error", "severity": "major", "element": "console", "evidence": "页面脚本报错：" + e} for e in errors[:3]]
+            pages.append({"route": r or "/", "url": url, "findings": f, "notes": note + n})
+            page.close()
         browser.close()
+    findings = [dict(x, route=pg["route"]) for pg in pages for x in pg["findings"]]
     verdict = "FAIL" if any(f["severity"] in ("critical", "major") for f in findings) else "PASS"
-    print(json.dumps({"target": a.target, "viewport": a.viewport, "verdict": verdict, "findings": findings, "notes": notes}, ensure_ascii=False, indent=2))
+    out = {"target": a.target, "viewport": a.viewport, "color_scheme": a.color_scheme, "verdict": verdict,
+           "findings": findings, "routes": [{"route": pg["route"], "count": len(pg["findings"]), "notes": pg["notes"]} for pg in pages]}
+    print(json.dumps(out, ensure_ascii=False, indent=2))
     return 2 if verdict == "FAIL" else 0
 
 

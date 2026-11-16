@@ -1,0 +1,647 @@
+{
+ "note": "创意 pass：识别页面的『领域对象』（工作流、商品、文章、运行、商户…），从这里挑 1 个签名可视化/交互作为全页唯一的『记忆点』（anthropics frontend-design：Spend your boldness in one place）。其余保持安静。来源 id 见 benchmarks.json。",
+ "patterns": [
+  {
+   "id": "live-product-hero",
+   "name_zh": "真实产品首屏",
+   "domain": "产品/SaaS/工具",
+   "what": "首屏放真实产品界面（截图/可交互缩略版），不是抽象插画+大数字",
+   "interaction": "悬停高亮关键功能区；点击进入 demo",
+   "motion": "入场一次 ≤600ms",
+   "sources": [
+    "refero-styles",
+    "scrolltide"
+   ],
+   "avoid_when": "没有真实产品素材时用占位槽并说明，不编造"
+  },
+  {
+   "id": "scroll-story",
+   "name_zh": "滚动叙事",
+   "domain": "品牌/作品/产品发布",
+   "what": "按滚动逐段揭示：一段一个观点，画面随滚动变化",
+   "interaction": "滚动驱动；可跳到任意段",
+   "motion": "每段 1 个编排动作；reduced-motion 直接展示终态",
+   "sources": [
+    "scrolltide",
+    "snapblocks",
+    "gsap",
+    "lenis"
+   ],
+   "avoid_when": "操作型页面、信息查找型页面"
+  },
+  {
+   "id": "shader-hero",
+   "name_zh": "Shader 动态背景",
+   "domain": "AI/技术/游戏/金融科技品牌页",
+   "what": "Hero 背后一层 GPU 背景（网格渐变/颗粒/光线）",
+   "interaction": "无（纯氛围）或随指针轻微响应",
+   "motion": "无缝循环；离屏暂停；DPR≤2；reduced-motion 静帧",
+   "sources": [
+    "scrollshaders",
+    "react-three-fiber"
+   ],
+   "avoid_when": "本地生活/餐饮/文字为主的页面（taste-skill：照片优先）；文字对比必须实测"
+  },
+  {
+   "id": "interactive-demo",
+   "name_zh": "可玩的迷你演示",
+   "domain": "开发工具/AI/编辑器",
+   "what": "页面里直接能操作的产品切片（输入→看到结果）",
+   "interaction": "真实输入、即时反馈",
+   "motion": "响应用户动作的过渡 150–250ms",
+   "sources": [
+    "shadcn-ui"
+   ],
+   "avoid_when": "无法保证演示真实时"
+  },
+  {
+   "id": "command-palette",
+   "name_zh": "⌘K 命令面板",
+   "domain": "任何多页面应用",
+   "what": "全局搜索 + 跳转 + 动作",
+   "interaction": "⌘K/Ctrl+K 打开，方向键选择，回车执行",
+   "motion": "弹出 150ms",
+   "sources": [
+    "shadcn-ui",
+    "shadcn-admin"
+   ],
+   "avoid_when": "单页面、少于 5 个入口"
+  },
+  {
+   "id": "usage-meter",
+   "name_zh": "用量/配额表",
+   "domain": "SaaS 计费/资源",
+   "what": "进度条 + 阈值标记 + 预测到期",
+   "interaction": "悬停看明细",
+   "motion": "数值滚动 ≤400ms",
+   "sources": [
+    "tremor"
+   ],
+   "avoid_when": "无配额概念"
+  },
+  {
+   "id": "deploy-timeline",
+   "name_zh": "部署/发布时间线",
+   "domain": "CI/CD/发布",
+   "what": "按时间的阶段条，当前阶段脉冲",
+   "interaction": "点击阶段看日志",
+   "motion": "运行中脉冲 1.5s 循环，可暂停",
+   "sources": [
+    "trigger-dev",
+    "kestra"
+   ],
+   "avoid_when": ""
+  },
+  {
+   "id": "live-status",
+   "name_zh": "实时状态点+心跳",
+   "domain": "服务/设备/任务",
+   "what": "状态胶囊 + 最近心跳时间",
+   "interaction": "悬停看历史",
+   "motion": "仅『运行中』动，其余静止",
+   "sources": [
+    "tremor"
+   ],
+   "avoid_when": "状态不实时时不要假装实时"
+  },
+  {
+   "id": "kpi-sparkline",
+   "name_zh": "KPI + 迷你趋势",
+   "domain": "运营/财务/增长",
+   "what": "大数 + 环比徽章 + 7/30 天 sparkline + 一句解读",
+   "interaction": "悬停 sparkline 看当日值；点击下钻",
+   "motion": "数字入场计数 ≤600ms（一次）",
+   "sources": [
+    "shadcn-dashboard-example",
+    "tremor",
+    "recharts"
+   ],
+   "avoid_when": "只有占位值时（ly.placeholder-as-metric）"
+  },
+  {
+   "id": "status-tracker",
+   "name_zh": "每日状态条",
+   "domain": "运行历史/可用性/打卡",
+   "what": "一排小格，每格一天/一次，颜色=结果（成功/需关注/失败）",
+   "interaction": "悬停看详情，点击跳到该次",
+   "motion": "无",
+   "sources": [
+    "tremor"
+   ],
+   "avoid_when": "样本 <7 个"
+  },
+  {
+   "id": "drilldown-sheet",
+   "name_zh": "下钻侧滑面板",
+   "domain": "列表→详情",
+   "what": "点击行/图表元素从右侧滑出详情，不丢上下文",
+   "interaction": "Esc 关闭，焦点回到触发处",
+   "motion": "进出 200ms",
+   "sources": [
+    "shadcn-ui"
+   ],
+   "avoid_when": ""
+  },
+  {
+   "id": "entity-map",
+   "name_zh": "地理/关系分布图",
+   "domain": "门店/商户/物流/设备",
+   "what": "地图或关系图上标出实体与状态",
+   "interaction": "点击实体看详情",
+   "motion": "聚合/展开 300ms",
+   "sources": [
+    "echarts",
+    "antv-g6"
+   ],
+   "avoid_when": "没有地理/关系信息"
+  },
+  {
+   "id": "workflow-graph-replay",
+   "name_zh": "工作流图 + 运行回放",
+   "domain": "工作流/流水线/自动化/审批流",
+   "what": "节点+连线的有向图；节点显示状态与指标；连线流动表示数据流；选择一次运行可逐节点回放",
+   "interaction": "点击节点 → 侧栏（输入/输出/日志/指标）；回放控制（播放/暂停/单步）；键盘可聚焦节点",
+   "motion": "连线虚线流动；回放每节点 400–700ms；reduced-motion 关闭流动与回放动画只显示终态",
+   "sources": [
+    "react-flow",
+    "vue-flow",
+    "antv-x6",
+    "dagre",
+    "n8n",
+    "dify"
+   ],
+   "avoid_when": "只有 1–2 个步骤时用 stepper 即可"
+  },
+  {
+   "id": "run-gantt",
+   "name_zh": "运行甘特图",
+   "domain": "任务/调度/批处理",
+   "what": "每个步骤一条时间条，看出瓶颈与并行",
+   "interaction": "悬停看耗时，点击跳日志",
+   "motion": "无",
+   "sources": [
+    "kestra",
+    "trigger-dev"
+   ],
+   "avoid_when": ""
+  },
+  {
+   "id": "log-timeline",
+   "name_zh": "日志/事件时间线",
+   "domain": "执行/审计/工单",
+   "what": "按时间排列的事件，级别着色，可折叠分组",
+   "interaction": "筛选级别、跳到首个错误",
+   "motion": "新事件淡入 150ms",
+   "sources": [
+    "trigger-dev",
+    "grafana"
+   ],
+   "avoid_when": ""
+  },
+  {
+   "id": "faceted-filter",
+   "name_zh": "分面筛选",
+   "domain": "大列表",
+   "what": "列头/工具栏的多选分面，带计数与清除",
+   "interaction": "选择即刻生效，显示结果数",
+   "motion": "无",
+   "sources": [
+    "shadcn-admin",
+    "tanstack-table"
+   ],
+   "avoid_when": ""
+  },
+  {
+   "id": "inline-edit",
+   "name_zh": "行内编辑",
+   "domain": "CRUD",
+   "what": "双击/编辑图标就地修改，回车保存，Esc 取消",
+   "interaction": "乐观更新 + 撤销",
+   "motion": "保存成功轻提示",
+   "sources": [
+    "shadcn-ui"
+   ],
+   "avoid_when": "需要审批的数据"
+  },
+  {
+   "id": "saved-views",
+   "name_zh": "保存的视图",
+   "domain": "复杂筛选的列表",
+   "what": "把筛选+排序保存为命名视图（Tabs）",
+   "interaction": "切换即应用",
+   "motion": "无",
+   "sources": [
+    "shadcn-admin"
+   ],
+   "avoid_when": ""
+  },
+  {
+   "id": "annotated-chart",
+   "name_zh": "带注释的图表",
+   "domain": "分析/报告/故事",
+   "what": "在图上直接标注事件与结论，而不是图下一段字",
+   "interaction": "悬停注释高亮区间",
+   "motion": "无",
+   "sources": [
+    "observable-framework",
+    "evidence"
+   ],
+   "avoid_when": ""
+  },
+  {
+   "id": "small-multiples",
+   "name_zh": "小多图",
+   "domain": "多维对比",
+   "what": "同尺度的一组小图代替一个塞满的图",
+   "interaction": "悬停同步十字线",
+   "motion": "无",
+   "sources": [
+    "observable-framework",
+    "recharts"
+   ],
+   "avoid_when": ""
+  },
+  {
+   "id": "geo-map",
+   "name_zh": "地理热力",
+   "domain": "区域业务",
+   "what": "区域着色 + 排名列表联动",
+   "interaction": "点击区域筛选",
+   "motion": "无",
+   "sources": [
+    "echarts"
+   ],
+   "avoid_when": ""
+  },
+  {
+   "id": "trace-waterfall",
+   "name_zh": "Trace 瀑布图",
+   "domain": "请求/运行详情",
+   "what": "span 嵌套时间条",
+   "interaction": "点击 span 看属性",
+   "motion": "展开 150ms",
+   "sources": [
+    "trigger-dev"
+   ],
+   "avoid_when": ""
+  },
+  {
+   "id": "live-tail",
+   "name_zh": "实时尾随日志",
+   "domain": "日志/控制台",
+   "what": "自动滚动到最新，可暂停",
+   "interaction": "滚动时自动暂停尾随",
+   "motion": "新行高亮 1s",
+   "sources": [
+    "grafana"
+   ],
+   "avoid_when": ""
+  },
+  {
+   "id": "product-360",
+   "name_zh": "商品多角度/3D",
+   "domain": "电商",
+   "what": "可拖拽旋转或多图手势切换",
+   "interaction": "拖拽、捏合",
+   "motion": "惯性 300ms",
+   "sources": [
+    "react-three-fiber"
+   ],
+   "avoid_when": "无 3D 素材时用多图"
+  },
+  {
+   "id": "sticky-buy-bar",
+   "name_zh": "吸底购买栏",
+   "domain": "电商 PDP/移动端",
+   "what": "价格 + 主按钮始终可见",
+   "interaction": "选择规格后即可购买",
+   "motion": "出现 200ms",
+   "sources": [
+    "vant"
+   ],
+   "avoid_when": ""
+  },
+  {
+   "id": "variant-swatches",
+   "name_zh": "规格色块",
+   "domain": "电商",
+   "what": "颜色/尺码用色块与按钮组，不用下拉",
+   "interaction": "选中即换图",
+   "motion": "换图交叉淡入 200ms",
+   "sources": [
+    "vercel-commerce"
+   ],
+   "avoid_when": "规格 >15 个时用可搜索选择"
+  },
+  {
+   "id": "shoppable-lookbook",
+   "name_zh": "可购场景图",
+   "domain": "时尚/家居",
+   "what": "场景图上打点，点开即购买",
+   "interaction": "点击热点开小卡",
+   "motion": "热点脉冲（可关）",
+   "sources": [
+    "snapblocks"
+   ],
+   "avoid_when": ""
+  },
+  {
+   "id": "bottom-sheet-flow",
+   "name_zh": "底部抽屉流程",
+   "domain": "移动 H5",
+   "what": "操作在底部抽屉内完成，不跳页",
+   "interaction": "下滑关闭",
+   "motion": "进出 250ms",
+   "sources": [
+    "vant",
+    "antd-mobile"
+   ],
+   "avoid_when": ""
+  },
+  {
+   "id": "pull-refresh",
+   "name_zh": "下拉刷新",
+   "domain": "移动列表",
+   "what": "下拉刷新 + 状态文案",
+   "interaction": "手势",
+   "motion": "回弹 300ms",
+   "sources": [
+    "vant"
+   ],
+   "avoid_when": ""
+  },
+  {
+   "id": "swipe-cards",
+   "name_zh": "滑动卡片",
+   "domain": "移动推荐/学习",
+   "what": "左右滑处理一项",
+   "interaction": "滑动 + 按钮等价操作",
+   "motion": "跟手",
+   "sources": [
+    "antd-mobile"
+   ],
+   "avoid_when": "需要精确比较的内容"
+  },
+  {
+   "id": "progress-ring",
+   "name_zh": "进度环",
+   "domain": "目标/任务/学习",
+   "what": "环形进度 + 中心数字",
+   "interaction": "点击看明细",
+   "motion": "填充 600ms 一次",
+   "sources": [
+    "tremor"
+   ],
+   "avoid_when": ""
+  },
+  {
+   "id": "reading-progress",
+   "name_zh": "阅读进度",
+   "domain": "长文",
+   "what": "顶部细进度条 + 预计剩余时间",
+   "interaction": "无",
+   "motion": "跟随滚动",
+   "sources": [
+    "tailwind-nextjs-blog"
+   ],
+   "avoid_when": ""
+  },
+  {
+   "id": "pull-quote",
+   "name_zh": "引文强调",
+   "domain": "文章",
+   "what": "一段最有力的话放大作为版式元素",
+   "interaction": "无",
+   "motion": "无",
+   "sources": [
+    "refero-styles"
+   ],
+   "avoid_when": ""
+  },
+  {
+   "id": "inline-footnotes",
+   "name_zh": "行内脚注",
+   "domain": "深度文章/文档",
+   "what": "脚注悬停/点击就地展开",
+   "interaction": "Esc 关闭",
+   "motion": "150ms",
+   "sources": [
+    "starlight"
+   ],
+   "avoid_when": ""
+  },
+  {
+   "id": "search-cmdk",
+   "name_zh": "⌘K 文档搜索",
+   "domain": "文档/知识库",
+   "what": "即时搜索 + 分组结果 + 键盘导航",
+   "interaction": "⌘K",
+   "motion": "150ms",
+   "sources": [
+    "nextra",
+    "starlight",
+    "vitepress"
+   ],
+   "avoid_when": ""
+  },
+  {
+   "id": "interactive-code",
+   "name_zh": "可运行代码块",
+   "domain": "技术文档/教程",
+   "what": "代码块可编辑运行并显示结果",
+   "interaction": "运行/重置/复制",
+   "motion": "无",
+   "sources": [
+    "docusaurus"
+   ],
+   "avoid_when": ""
+  },
+  {
+   "id": "api-playground",
+   "name_zh": "API 调试台",
+   "domain": "API 文档",
+   "what": "参数表单 + 请求示例 + 响应",
+   "interaction": "发送请求",
+   "motion": "响应展开 150ms",
+   "sources": [
+    "docusaurus"
+   ],
+   "avoid_when": ""
+  },
+  {
+   "id": "progressive-steps",
+   "name_zh": "渐进式步骤",
+   "domain": "注册/开户/引导",
+   "what": "一屏一组问题，顶部步骤条，可回退不丢数据",
+   "interaction": "回车下一步，错误内联",
+   "motion": "步骤切换 200ms 横移",
+   "sources": [
+    "shadcn-ui",
+    "react-hook-form",
+    "formbricks"
+   ],
+   "avoid_when": ""
+  },
+  {
+   "id": "live-preview",
+   "name_zh": "实时预览",
+   "domain": "配置/定制/建站",
+   "what": "左侧设置，右侧即时预览结果",
+   "interaction": "修改即预览",
+   "motion": "150ms",
+   "sources": [
+    "tweakcn"
+   ],
+   "avoid_when": ""
+  },
+  {
+   "id": "celebration",
+   "name_zh": "完成庆祝",
+   "domain": "引导完成/首次成功",
+   "what": "一次性的完成动效 + 下一步",
+   "interaction": "可跳过",
+   "motion": "≤1.2s，一次，reduced-motion 关闭",
+   "sources": [
+    "magicui"
+   ],
+   "avoid_when": "操作型高频流程"
+  },
+  {
+   "id": "streaming-message",
+   "name_zh": "流式消息",
+   "domain": "AI 聊天",
+   "what": "逐字流式 + 停止按钮 + 重新生成",
+   "interaction": "停止/复制/重试",
+   "motion": "光标闪烁",
+   "sources": [
+    "vercel-chatbot",
+    "assistant-ui"
+   ],
+   "avoid_when": ""
+  },
+  {
+   "id": "tool-call-cards",
+   "name_zh": "工具调用卡片",
+   "domain": "AI agent",
+   "what": "把 agent 的每步工具调用显示为可展开卡片（状态/输入/输出）",
+   "interaction": "展开看详情",
+   "motion": "运行中骨架",
+   "sources": [
+    "assistant-ui",
+    "dify"
+   ],
+   "avoid_when": ""
+  },
+  {
+   "id": "artifact-canvas",
+   "name_zh": "Artifact 并排画布",
+   "domain": "AI 生成文档/代码/图",
+   "what": "对话在左，产物在右，可编辑可版本切换",
+   "interaction": "版本切换",
+   "motion": "面板展开 200ms",
+   "sources": [
+    "vercel-chatbot"
+   ],
+   "avoid_when": ""
+  },
+  {
+   "id": "cursor-reveal",
+   "name_zh": "指针揭示",
+   "domain": "作品集",
+   "what": "指针移动揭示作品预览",
+   "interaction": "悬停",
+   "motion": "跟手；触屏改点击",
+   "sources": [
+    "snapblocks"
+   ],
+   "avoid_when": "操作型页面"
+  },
+  {
+   "id": "case-study-transition",
+   "name_zh": "作品转场",
+   "domain": "作品集",
+   "what": "列表卡片放大过渡为案例页",
+   "interaction": "点击",
+   "motion": "共享元素 400ms",
+   "sources": [
+    "motion"
+   ],
+   "avoid_when": ""
+  },
+  {
+   "id": "interactive-3d-scene",
+   "name_zh": "可交互 3D 场景",
+   "domain": "游戏/硬件/沉浸展示",
+   "what": "主体 3D 可旋转，热点讲解",
+   "interaction": "拖拽/点击热点",
+   "motion": "惯性；离屏暂停",
+   "sources": [
+    "react-three-fiber",
+    "threejs"
+   ],
+   "avoid_when": "内容型/操作型主页面"
+  },
+  {
+   "id": "particle-data",
+   "name_zh": "粒子数据",
+   "domain": "大屏/科技品牌",
+   "what": "用粒子/点阵表达数量与流动",
+   "interaction": "悬停聚合",
+   "motion": "离屏暂停",
+   "sources": [
+    "threejs"
+   ],
+   "avoid_when": "需要读精确数字时"
+  },
+  {
+   "id": "infinite-canvas",
+   "name_zh": "无限画布",
+   "domain": "白板/编辑器",
+   "what": "缩放平移 + 小地图 + 网格吸附",
+   "interaction": "滚轮缩放、空格拖拽",
+   "motion": "缩放 150ms",
+   "sources": [
+    "excalidraw",
+    "tldraw",
+    "react-flow"
+   ],
+   "avoid_when": ""
+  },
+  {
+   "id": "multiplayer-cursors",
+   "name_zh": "多人光标",
+   "domain": "协作",
+   "what": "显示协作者光标与选择",
+   "interaction": "跟随某人",
+   "motion": "跟手",
+   "sources": [
+    "tldraw"
+   ],
+   "avoid_when": "单人产品"
+  },
+  {
+   "id": "instant-save-feedback",
+   "name_zh": "即时保存反馈",
+   "domain": "设置",
+   "what": "开关/输入即时保存，旁边显示『已保存』与撤销",
+   "interaction": "撤销",
+   "motion": "150ms",
+   "sources": [
+    "sonner"
+   ],
+   "avoid_when": ""
+  },
+  {
+   "id": "preview-pane",
+   "name_zh": "预览窗格",
+   "domain": "设置/模板",
+   "what": "修改设置时右侧预览效果",
+   "interaction": "—",
+   "motion": "150ms",
+   "sources": [
+    "tweakcn"
+   ],
+   "avoid_when": ""
+  }
+ ]
+}

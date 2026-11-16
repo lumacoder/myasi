@@ -1,0 +1,60 @@
+{
+ "target": "x.html",
+ "archetype": "admin-dashboard",
+ "mode": "Operate",
+ "reviewer": "fresh",
+ "screenshots": [
+  "a.png"
+ ],
+ "benchmarks": [
+  "shadcn-admin"
+ ],
+ "lint_blocking": 2,
+ "browser_blocking": 0,
+ "dimensions": {
+  "hierarchy": {
+   "score": 9,
+   "vs_benchmark": "above",
+   "evidence": "对照 shadcn-admin 截图：侧栏分组、表格密度与留白处于同档，关键数字突出"
+  },
+  "typography": {
+   "score": 9,
+   "vs_benchmark": "above",
+   "evidence": "对照 shadcn-admin 截图：侧栏分组、表格密度与留白处于同档，关键数字突出"
+  },
+  "color": {
+   "score": 9,
+   "vs_benchmark": "above",
+   "evidence": "对照 shadcn-admin 截图：侧栏分组、表格密度与留白处于同档，关键数字突出"
+  },
+  "polish": {
+   "score": 9,
+   "vs_benchmark": "above",
+   "evidence": "对照 shadcn-admin 截图：侧栏分组、表格密度与留白处于同档，关键数字突出"
+  },
+  "density": {
+   "score": 9,
+   "vs_benchmark": "above",
+   "evidence": "对照 shadcn-admin 截图：侧栏分组、表格密度与留白处于同档，关键数字突出"
+  },
+  "motion": {
+   "score": 9,
+   "vs_benchmark": "above",
+   "evidence": "对照 shadcn-admin 截图：侧栏分组、表格密度与留白处于同档，关键数字突出"
+  },
+  "creativity": {
+   "score": 9,
+   "vs_benchmark": "above",
+   "evidence": "对照 shadcn-admin 截图：侧栏分组、表格密度与留白处于同档，关键数字突出"
+  },
+  "consistency": {
+   "score": 9,
+   "vs_benchmark": "above",
+   "evidence": "对照 shadcn-admin 截图：侧栏分组、表格密度与留白处于同档，关键数字突出"
+  }
+ },
+ "top3": [
+  "示例"
+ ],
+ "_expect": "fail"
+}

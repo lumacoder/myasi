@@ -1,5 +1,5 @@
 {
- "version": "0.1.1",
+ "version": "0.2.0",
  "severity_levels": {
   "critical": "不合格，阻断交付",
   "major": "不合格，需修复",
@@ -1098,6 +1098,132 @@
    "detection_hints": [],
    "sources": [
     "https://www.nngroup.com/articles/ten-usability-heuristics/"
+   ]
+  },
+  {
+   "id": "st.contradictory-status",
+   "category": "state",
+   "severity": "major",
+   "detect": "rubric",
+   "title_zh": "同一对象的状态文案互相矛盾",
+   "signal": "同屏同一对象的标题、徽章、时间列、副文案各自描述状态",
+   "correct": "一个对象只有一个状态字段，标题/徽章/时间列全部由它派生；状态只出现一次",
+   "anti_patterns": [
+    "卡片标题「结果尚未就绪」旁徽章「结果已就绪」",
+    "状态列「执行成功」而时间列「仍在执行」"
+   ],
+   "rationale": "矛盾状态直接摧毁信任，用户不知道该信哪个。",
+   "fix_zh": "删除重复状态，只在页头/状态列保留一个；时间列只写时间和耗时。",
+   "detection_hints": [
+    "同一行/卡片内同时出现完成类与进行中/未完成类状态词"
+   ],
+   "sources": [
+    "https://www.nngroup.com/articles/ten-usability-heuristics/"
+   ]
+  },
+  {
+   "id": "ly.placeholder-as-metric",
+   "category": "layout",
+   "severity": "major",
+   "detect": "lint",
+   "title_zh": "占位值和真实指标同权重展示",
+   "signal": "指标卡组里出现 —/N/A/未启用/暂无 等占位，并与真实数值使用同样的大号样式",
+   "correct": "只把真实数值做成 KPI；未启用/无数据的指标收进一行弱化说明，并按优先级分主次",
+   "anti_patterns": [
+    "「整改完成率 —」「触达成功率 未启用」与「77」同样大号粗体"
+   ],
+   "rationale": "占位值稀释视觉权重，真正需要关注的数被淹没。",
+   "fix_zh": "删掉占位 KPI 卡，改为 <p class=muted>未启用的指标：…</p>；关键告警指标用语义色突出。",
+   "detection_hints": [
+    "metric/kpi/stat/card 容器组 ≥3 个数值节点，同 tag+class 的数值节点中既有数字又有占位文本"
+   ],
+   "sources": [
+    "https://www.nngroup.com/articles/dashboards-preattentive/",
+    "https://github.com/satnaing/shadcn-admin"
+   ]
+  },
+  {
+   "id": "cs.stat-card-filter",
+   "category": "component",
+   "severity": "major",
+   "detect": "lint",
+   "title_zh": "统计卡兼做筛选器",
+   "signal": "一排统计数字卡片点击后会筛选下方列表",
+   "correct": "筛选用带计数的 Segmented/Tabs（role=tab + aria-selected）或 ToggleGroup；统计卡只展示",
+   "anti_patterns": [
+    "div.stat-card[data-filter] 用事件委托筛选",
+    "选中态只靠细边框"
+   ],
+   "rationale": "卡片看起来是只读数字，没有按钮语义、选中态和键盘入口，用户不知道能点、也不知道当前筛的是什么。",
+   "fix_zh": "改成 <div role=tablist><button role=tab aria-selected=true>全部 38</button>…</div>。",
+   "detection_hints": [
+    "≥2 个兄弟元素带 data-filter/data-status/data-tab 等筛选属性，却不是 button/a/role=tab|button|radio 且无 tabindex"
+   ],
+   "sources": [
+    "https://www.w3.org/WAI/ARIA/apg/patterns/tabs/",
+    "https://ui.shadcn.com/docs/components/toggle-group"
+   ]
+  },
+  {
+   "id": "st.selection-panel-mismatch",
+   "category": "state",
+   "severity": "major",
+   "detect": "rubric",
+   "title_zh": "依赖选择的面板与当前选择不符",
+   "signal": "侧栏/详情面板依赖用户选择某一项",
+   "correct": "未选中时只显示空状态或不显示面板；选中后标题写明对象名，内容只属于该对象",
+   "anti_patterns": [
+    "面板标题「选择工作流查看详情」下面已列出某工作流的最近执行"
+   ],
+   "rationale": "用户无法判断面板数据属于谁。",
+   "fix_zh": "未选中 → 空状态插画 + 一句说明；选中 → 「<对象名> · 详情」。",
+   "detection_hints": [
+    "面板标题含「选择…查看」且同时有列表/数据"
+   ],
+   "sources": [
+    "https://www.nngroup.com/articles/empty-state-interface-design/"
+   ]
+  },
+  {
+   "id": "cp.redundant-status",
+   "category": "copy",
+   "severity": "minor",
+   "detect": "rubric",
+   "title_zh": "冗余的状态副文案",
+   "signal": "一行里多个状态胶囊/副文案都在说同一件事",
+   "correct": "一行一个状态（图标+文字）；副文案只在异常时出现并说明原因；结论列只写变化的数字",
+   "anti_patterns": [
+    "「执行成功 / 结果已就绪」+「业务结论 / 业务结果已记录」",
+    "摘要句重复工作流名"
+   ],
+   "rationale": "重复信息增加扫读成本，真正的结论反而不显眼。",
+   "fix_zh": "合并为一列「结果」，正常时只写「成功」，异常写原因。",
+   "detection_hints": [
+    "同一行 ≥2 个同色状态胶囊"
+   ],
+   "sources": [
+    "https://www.nngroup.com/articles/scanning-patterns/"
+   ]
+  },
+  {
+   "id": "cp.opaque-id",
+   "category": "a11y",
+   "severity": "minor",
+   "detect": "lint",
+   "title_zh": "不透明/前缀截断的机器编号做主标识",
+   "signal": "列表用长编号做主标识并截断前缀显示",
+   "correct": "主标识用人能读的序号/名称（第 38 次）；机器编号放次要位置，显示尾部区分位并提供复制按钮",
+   "anti_patterns": [
+    "run_20261116_d8a…",
+    "ORD-2026111600..."
+   ],
+   "rationale": "同批编号前缀相同，截断后无法区分也无法复制。",
+   "fix_zh": "<strong>第 38 次</strong> <code>…d8af5a47</code> <button aria-label=\"复制完整运行编号\">复制</button>",
+   "detection_hints": [
+    "文本形如 [A-Za-z0-9_-]{6,} 后接 … 或 ...（尾部截断）"
+   ],
+   "sources": [
+    "https://www.nngroup.com/articles/microcontent-how-to-write-headlines-page-titles-and-subject-lines/"
    ]
   }
  ]

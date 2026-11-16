@@ -33,6 +33,10 @@ BINARY_PAIRS = [{"开", "关"}, {"开启", "关闭"}, {"打开", "关闭"}, {"�
                 {"true", "false"}, {"显示", "隐藏"}, {"show", "hide"}, {"允许", "禁止"}, {"允许", "不允许"},
                 {"接收", "不接收"}, {"开通", "关闭"}, {"active", "inactive"}]
 PLACEHOLDER_OPT = re.compile(r"^(请选择|选择|--|—|select|choose|please select)", re.I)
+METRIC_BOX = re.compile(r"(metric|kpi|stat|tile|card)", re.I)
+VALUE_CLS = re.compile(r"(value|num|number|figure|amount)", re.I)
+PLACEHOLDER_VAL = re.compile(r"^(—|–|-|--|——|N/?A|null|TBD|未启用|暂无|暂无数据|无数据|未知|待接入|未配置)$", re.I)
+OPAQUE_ID = re.compile(r"(?<![\w…])[A-Za-z][A-Za-z0-9]*[_-][A-Za-z0-9_-]{4,}(…|\.{3})(?=\s|$)")
 QUESTION = re.compile(r"[?？]|^(如何|怎么|怎样|为什么|为何|什么|能否|是否|可以|可否|我能|我可以|how|what|why|can|do|does|is|are|when|where)\b", re.I)
 DESTRUCTIVE = re.compile(r"删除|移除|清空|注销|销毁|永久|delete|remove|erase|destroy|clear all|reset all", re.I)
 VAGUE_DIALOG_BTN = {"确定", "确认", "是", "好", "好的", "ok", "yes", "确定删除?"}
@@ -562,6 +566,22 @@ class Linter:
             if n.tag == "button" and JS_NAV.search(n.get("onclick", "")):
                 self.add("cs.button-as-link", n, f"按钮用脚本跳转：{n.get('onclick')[:40]}")
 
+    def check_cs_stat_filter(self):
+        # 统计卡/状态块兼做筛选：带筛选数据属性的兄弟元素却没有按钮/标签页语义
+        clicky = re.search(r"addEventListener\(\s*['\"]click|onclick|@click|onClick", self.script + self.src)
+        groups = {}
+        for n in self.nodes:
+            keys = [k for k in n.attrs if k.startswith("data-filter") or (k in ("data-status", "data-tab", "data-view") and clicky)]
+            if not keys or n.tag in ("button", "a", "input", "select", "option", "label", "tr", "td", "th"):
+                continue
+            if n.get("role") in ("tab", "button", "radio", "option", "checkbox", "link", "menuitem", "menuitemradio", "switch") \
+                    or n.get("tabindex") is not None:
+                continue
+            groups.setdefault(id(n.parent), []).append(n)
+        for g in groups.values():
+            if len(g) >= 2:
+                self.add("cs.stat-card-filter", g[0], f"{len(g)} 个 <{g[0].tag}> 带筛选属性（{', '.join(k for k in g[0].attrs if k.startswith('data-'))}）却无按钮/tab 语义")
+
     # ---- state
     def check_st_focus(self):
         removed = re.search(r"outline\s*:\s*(none|0)\b", self.all_style)
@@ -740,6 +760,33 @@ class Linter:
         if re.search(r"<html|<head", self.src, re.I) and not any(
                 n.tag == "meta" and n.get("name") == "viewport" for n in self.nodes):
             self.add("ly.no-viewport", None, "完整页面缺少 viewport meta")
+
+    def check_ly_placeholder_metric(self):
+        groups = {}
+        for c in self.nodes:
+            if not any(METRIC_BOX.search(k) for k in c.classes) or c.tag in ("table", "tr", "td"):
+                continue
+            vals = [n for n in c.iter() if any(VALUE_CLS.search(k) for k in n.classes)]
+            if not vals:
+                vals = [n for n in c.iter() if n.tag in ("strong", "b", "em", "h2", "h3")][:1]
+            for v in vals:
+                t = v.text()
+                if 0 < len(t) <= 24:
+                    groups.setdefault(id(c.parent), []).append(v)
+        for vs in groups.values():
+            if len(vs) < 3:
+                continue
+            sig = lambda n: (n.tag, tuple(sorted(n.classes)))
+            nums = {sig(n) for n in vs if re.search(r"\d", n.text())}
+            ph = [n for n in vs if PLACEHOLDER_VAL.match(n.text()) and sig(n) in nums]
+            if nums and ph:
+                self.add("ly.placeholder-as-metric", ph[0], f"占位值「{'」「'.join(n.text() for n in ph[:3])}」与真实指标同样式并列")
+
+    def check_cp_opaque_id(self):
+        for n in self.nodes:
+            m = OPAQUE_ID.search(n.own_text())
+            if m:
+                self.add("cp.opaque-id", n, f"编号前缀截断：{m.group(0)}")
 
 
 def lint_source(src, rules=None, path=""):

@@ -1,4 +1,4 @@
 interface:
   display_name: "Mano-Design"
-  short_description: "交互体验把关：组件选型、状态、对比度、去AI味，含自测与RSI"
-  default_prompt: "Use $mano-design to pick the right components, build or review this UI, run ui_lint, and fix every critical/major finding before delivery."
+  short_description: "视觉+交互把关：原型对标、自动主题、签名创意、视觉评分≥8、组件选型与RSI"
+  default_prompt: "Use $mano-design: recognise the page archetype, benchmark mainstream references, pick a fitting theme, add one domain signature visualization, build with mainstream components, pass ui_lint, and only deliver at visual score ≥8."

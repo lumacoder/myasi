@@ -3,7 +3,13 @@
 来源：https://x.com/Y0urDumble/status/2120197632500887856（2026-11-11 00:51 北京时间）
 抓取：2026-11-15（X API）；已滤掉 24 秒视频。帖子里的星数为作者口径，cases.json 内为 GitHub API 快照。
 该帖引用了作者的一篇 X 文章（post 2115164938884862375），内容是用 Blender + Remotion 做 2.5D 动画短片的流程，其中与本 skill 相关的是「评审者提示」：
-> You did not make this. You are the harshest animation director I know. … List every problem with a timestamp. Fix the 3 worst. Re-render only those seconds.
+> Open review/contact.png and review/phone.png.
+> You did not make this. You are the harshest animation director I know.
+> Check: … Are captions readable at phone size? Is any claim on screen missing from sources.md?
+> List every problem with a timestamp. Fix the 3 worst.
+> Re-render only those seconds. Show me the new sheet.
+
+（2026-11-16 重读全文：contact.png = 每秒一帧拼成一张图，phone.png = 360px 宽手机测试。mano-design 0.2.0 把它变成 `visual_capture.py` 的联系表 + 手机截图 + `review.md`。各条目体现的机制见 `capabilities/mechanism-sources.md`。）
 mano-design 的 rsi/rubric.md 借用了这个「你不是作者、挑最严重的 3 个先修」的评审姿态；文章还给出 `npx skills add LottieFiles/motion-design-skill`（动效 taste）。
 
 ## 与「AI 生成 UI 不友好」直接相关的条目（DESIGN / BRAND 段）

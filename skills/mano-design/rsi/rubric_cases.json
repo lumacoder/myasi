@@ -1,1 +1,35 @@
-[]
+[
+ {
+  "id": "rsi-merchant-status-contradiction",
+  "category": "state",
+  "verdict": "FAIL",
+  "rules": [
+   "st.contradictory-status"
+  ],
+  "html": "<section class=\"card\"><h3>结果尚未就绪</h3><span class=\"badge success\">结果已就绪</span><p>治理商户总数 77</p></section>\n<table><tr><td><span class=\"pill success\">执行成功</span></td><td>开始时间：仍在执行</td></tr></table>",
+  "note": "同一对象同屏出现互相矛盾的状态文案：卡片标题「结果尚未就绪」旁边是徽章「结果已就绪」；状态列「执行成功」而开始时间列写「仍在执行」。现有 53 条规则没有覆盖「状态一致性」。建议新增 rubric 规则 st.contradictory-status（major）：一个对象只有一个状态来源，标题、徽章、时间列由同一状态字段派生。",
+  "source": "merchant-redesign 2026-11-16 / llm-rubric 截图评审"
+ },
+ {
+  "id": "rsi-merchant-empty-selection-panel",
+  "category": "state",
+  "verdict": "FAIL",
+  "rules": [
+   "st.selection-panel-mismatch"
+  ],
+  "html": "<aside class=\"panel\"><h3>选择工作流查看详情</h3><h4>最近执行</h4><ul><li>11-16 09:00 执行成功</li><li>11-15 09:00 执行成功</li></ul></aside>",
+  "note": "依赖选择的侧栏在未选中时一边提示「选择工作流查看详情」，一边已经展示了某个工作流的最近执行，用户无法判断数据属于谁。建议新增 rubric 规则 st.selection-panel-mismatch（major）：未选中时要么不显示面板，要么只显示空状态；选中后标题写明对象名。",
+  "source": "merchant-redesign 2026-11-16 / llm-rubric 截图评审"
+ },
+ {
+  "id": "rsi-merchant-redundant-status-subtext",
+  "category": "copy",
+  "verdict": "PASS",
+  "rules": [
+   "cp.redundant-status"
+  ],
+  "html": "<table><tr><td><span class=\"pill success\">执行成功</span><small>结果已就绪</small></td><td><span class=\"pill success\">业务结论</span><small>业务结果已记录</small></td><td>10月份新开商户7天治理已完成，治理商户77户</td></tr></table>",
+  "note": "两列都是绿色胶囊 + 不提供新信息的副文案（结果已就绪/业务结果已记录），每行摘要句重复工作流名。扫读成本高、真正的结论（多少户持续亏损）反而不显眼。建议新增 rubric 规则 cp.redundant-status（minor）：一行一个状态；副文案只在异常时出现并说明原因；结论列只写变化的数字。（minor：不阻断交付，但评审必须列出）",
+  "source": "merchant-redesign 2026-11-16 / llm-rubric 截图评审"
+ }
+]

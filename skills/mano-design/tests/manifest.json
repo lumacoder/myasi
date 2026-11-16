@@ -860,5 +860,137 @@
   "split": "holdout",
   "file": "good/rsi-radio-yesno-survey-ok.html",
   "source": "rsi-cycle-1 / human"
+ },
+ {
+  "id": "rsi-merchant-status-single-source-ok",
+  "category": "state",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "正确版本：状态只出现一次，时间列只写时间，避免规则过宽。",
+  "split": "holdout",
+  "file": "good/rsi-merchant-status-single-source-ok.html",
+  "source": "merchant-redesign 2026-11-16 / human"
+ },
+ {
+  "id": "rsi-merchant-placeholder-as-metric",
+  "category": "layout",
+  "verdict": "FAIL",
+  "rules": [
+   "ly.placeholder-as-metric"
+  ],
+  "note": "真实指标与「—」「未启用」占位用同一大号粗体、同等卡片权重排在一起，稀释了关键数（持续亏损 3）。建议新增规则 ly.placeholder-as-metric（major，可 lint：同一组 .value/.metric 中 文本为 —/-/N/A/未启用/暂无 的节点与数值节点共用样式时报出）。修复：占位指标收进一行弱化说明「未启用的指标：…」，关键指标按优先级分主次。",
+  "split": "train",
+  "file": "bad/rsi-merchant-placeholder-as-metric.html",
+  "source": "merchant-redesign 2026-11-16 / llm-rubric 截图评审"
+ },
+ {
+  "id": "rsi-merchant-metrics-ranked-ok",
+  "category": "layout",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "正确版本：只放真实数值，未启用项降级为一行说明。",
+  "split": "train",
+  "file": "good/rsi-merchant-metrics-ranked-ok.html",
+  "source": "merchant-redesign 2026-11-16 / human"
+ },
+ {
+  "id": "rsi-merchant-stat-cards-as-filter",
+  "category": "component",
+  "verdict": "FAIL",
+  "rules": [
+   "cs.stat-card-filter"
+  ],
+  "note": "5 张统计卡同时充当列表筛选器：看起来是展示数字，没有按钮语义、选中态与键盘入口，用户不知道能点、也不知道当前筛的是哪个。建议新增规则 cs.stat-card-filter（major）：筛选 → Segmented/Tabs（role=tab + aria-selected）带计数；统计卡只做展示。现有 cs.clickable-div 只在有 onclick 属性时触发，用 JS 事件委托时漏报。",
+  "split": "train",
+  "file": "bad/rsi-merchant-stat-cards-as-filter.html",
+  "source": "merchant-redesign 2026-11-16 / llm-rubric 截图评审"
+ },
+ {
+  "id": "rsi-merchant-filter-segmented-ok",
+  "category": "component",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "正确版本：带计数的分段筛选，有选中态与键盘语义。",
+  "split": "holdout",
+  "file": "good/rsi-merchant-filter-segmented-ok.html",
+  "source": "merchant-redesign 2026-11-16 / human"
+ },
+ {
+  "id": "rsi-merchant-opaque-truncated-id",
+  "category": "a11y",
+  "verdict": "PASS",
+  "rules": [
+   "cp.opaque-id"
+  ],
+  "note": "把长运行编号截断成前缀做主标识：同一天的编号前缀都一样，截断后无法区分，也不能复制。建议新增 rubric 规则 cp.opaque-id（minor）：主标识用人能读的序号/名称（第 38 次），机器编号放次要位置，显示尾部区分位并提供复制按钮（aria-label=复制完整运行编号）。（minor：不阻断交付，但评审必须列出）",
+  "split": "train",
+  "file": "bad/rsi-merchant-opaque-truncated-id.html",
+  "source": "merchant-redesign 2026-11-16 / llm-rubric 截图评审"
+ },
+ {
+  "id": "rsi-kpi-na-same-weight",
+  "category": "layout",
+  "verdict": "FAIL",
+  "rules": [
+   "ly.placeholder-as-metric"
+  ],
+  "note": "先写后测：英文 N/A 与「暂无」占位和真实 KPI 同权重。",
+  "split": "holdout",
+  "file": "bad/rsi-kpi-na-same-weight.html",
+  "source": "mano-design 0.2.0 RSI 手写"
+ },
+ {
+  "id": "rsi-table-dash-cell-ok",
+  "category": "layout",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "先写后测：表格单元格里的「—」是正常空值，不算占位指标。",
+  "split": "holdout",
+  "file": "good/rsi-table-dash-cell-ok.html",
+  "source": "mano-design 0.2.0 RSI 手写"
+ },
+ {
+  "id": "rsi-status-tiles-data-status",
+  "category": "component",
+  "verdict": "FAIL",
+  "rules": [
+   "cs.stat-card-filter"
+  ],
+  "note": "先写后测：事件委托 + data-status 的统计块兼做筛选，无按钮语义。",
+  "split": "holdout",
+  "file": "bad/rsi-status-tiles-data-status.html",
+  "source": "mano-design 0.2.0 RSI 手写"
+ },
+ {
+  "id": "rsi-stat-cards-display-only-ok",
+  "category": "component",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "先写后测：纯展示的统计卡（无筛选行为）合格。",
+  "split": "holdout",
+  "file": "good/rsi-stat-cards-display-only-ok.html",
+  "source": "mano-design 0.2.0 RSI 手写"
+ },
+ {
+  "id": "rsi-order-id-prefix-truncated",
+  "category": "a11y",
+  "verdict": "PASS",
+  "rules": [
+   "cp.opaque-id"
+  ],
+  "note": "先写后测：订单号前缀截断（三个点），两行无法区分。minor。",
+  "split": "holdout",
+  "file": "bad/rsi-order-id-prefix-truncated.html",
+  "source": "mano-design 0.2.0 RSI 手写"
+ },
+ {
+  "id": "rsi-id-tail-with-copy-ok",
+  "category": "a11y",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "先写后测：主标识可读、编号显示尾部区分位 + 复制。",
+  "split": "holdout",
+  "file": "good/rsi-id-tail-with-copy-ok.html",
+  "source": "mano-design 0.2.0 RSI 手写"
  }
 ]

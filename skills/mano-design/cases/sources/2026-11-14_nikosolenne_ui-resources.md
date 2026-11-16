@@ -16,3 +16,5 @@
 | https://scrollshaders.com | 无缝循环 WebGL shader 背景与组件 | 仅限品牌/营销页；必须加 prefers-reduced-motion 与文字对比校验 |
 
 结论：偏「视觉/动效素材」，解决不了交互正确性；本 skill 用规则与自测补这一块。
+
+2026-11-16 重读：这些资源体现的机制（逐区块参考、真实站点 DESIGN.md、四层素材、动效礼仪）及在 skill 中的落点见 `capabilities/mechanism-sources.md`。

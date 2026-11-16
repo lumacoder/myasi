@@ -1,0 +1,697 @@
+{
+ "note": "模式(mode)借自 impeccable：Persuade 说服 / Operate 操作 / Read 阅读 / Experience 沉浸；决定 rubric 权重与创意预算。一个页面可命中多个原型：主原型定外壳，次原型定局部（如 workflow-automation 页内的 analytics 区块）。",
+ "archetypes": [
+  {
+   "id": "landing-marketing",
+   "name_zh": "落地页/营销页",
+   "mode": "Persuade",
+   "signals": [
+    "落地页",
+    "官网",
+    "landing",
+    "hero",
+    "pricing",
+    "定价",
+    "产品介绍",
+    "营销",
+    "campaign",
+    "waitlist"
+   ],
+   "sections": [
+    "navbar",
+    "hero",
+    "social-proof",
+    "features",
+    "how-it-works",
+    "pricing",
+    "faq",
+    "cta",
+    "footer"
+   ],
+   "signature_patterns": [
+    "live-product-hero",
+    "scroll-story",
+    "shader-hero",
+    "interactive-demo"
+   ],
+   "seed_benchmarks": [
+    "magicui",
+    "scrolltide",
+    "snapblocks",
+    "scrollshaders",
+    "navbar-gallery",
+    "cta-gallery",
+    "footer-design",
+    "refero-styles"
+   ],
+   "discovery_queries": [
+    "<行业> landing page site:godly.website",
+    "<竞品> homepage",
+    "styles.refero.design <风格>",
+    "navbar.gallery <行业>",
+    "cta.gallery <行业>"
+   ],
+   "theme_hint": "按品牌/行业选；技术产品可深色 + 一处动效，本地生活用照片 + 暖色"
+  },
+  {
+   "id": "saas-console",
+   "name_zh": "SaaS 控制台/开发者平台",
+   "mode": "Operate",
+   "signals": [
+    "控制台",
+    "console",
+    "项目设置",
+    "api key",
+    "部署",
+    "deploy",
+    "workspace",
+    "团队",
+    "billing",
+    "用量"
+   ],
+   "sections": [
+    "sidebar",
+    "header",
+    "command-menu",
+    "list",
+    "detail",
+    "settings",
+    "empty-state"
+   ],
+   "signature_patterns": [
+    "command-palette",
+    "usage-meter",
+    "deploy-timeline",
+    "live-status"
+   ],
+   "seed_benchmarks": [
+    "shadcn-admin",
+    "supabase-studio",
+    "trigger-dev",
+    "shadcn-ui"
+   ],
+   "discovery_queries": [
+    "<品类> dashboard open source shadcn",
+    "vercel dashboard",
+    "linear app ui",
+    "supabase studio"
+   ],
+   "theme_hint": "中性灰 + 单一品牌色；深浅色都要可用"
+  },
+  {
+   "id": "admin-dashboard",
+   "name_zh": "运营后台/数据看板",
+   "mode": "Operate",
+   "signals": [
+    "后台",
+    "管理",
+    "dashboard",
+    "看板",
+    "运营",
+    "kpi",
+    "指标",
+    "报表",
+    "admin",
+    "经营",
+    "商家"
+   ],
+   "sections": [
+    "sidebar",
+    "header",
+    "kpi-row",
+    "chart",
+    "table",
+    "filters",
+    "detail-sheet"
+   ],
+   "signature_patterns": [
+    "kpi-sparkline",
+    "status-tracker",
+    "drilldown-sheet",
+    "entity-map"
+   ],
+   "seed_benchmarks": [
+    "shadcn-admin",
+    "shadcn-ui",
+    "shadcn-dashboard-example",
+    "studio-admin",
+    "tremor",
+    "next-shadcn-dashboard-starter"
+   ],
+   "discovery_queries": [
+    "shadcn admin dashboard github stars",
+    "<行业> admin dashboard template",
+    "tremor dashboard"
+   ],
+   "theme_hint": "数据可信感：蓝/青/中性；语义色（盈亏/告警）不与品牌色撞"
+  },
+  {
+   "id": "workflow-automation",
+   "name_zh": "工作流/编排/自动化",
+   "mode": "Operate",
+   "signals": [
+    "工作流",
+    "workflow",
+    "流水线",
+    "pipeline",
+    "编排",
+    "节点",
+    "dag",
+    "自动化",
+    "任务调度",
+    "定时",
+    "执行记录",
+    "run"
+   ],
+   "sections": [
+    "canvas",
+    "node-inspector",
+    "run-list",
+    "run-detail",
+    "logs"
+   ],
+   "signature_patterns": [
+    "workflow-graph-replay",
+    "run-gantt",
+    "status-tracker",
+    "log-timeline"
+   ],
+   "seed_benchmarks": [
+    "react-flow",
+    "n8n",
+    "dify",
+    "kestra",
+    "dagster",
+    "trigger-dev",
+    "langflow"
+   ],
+   "discovery_queries": [
+    "react flow workflow editor template",
+    "n8n execution view",
+    "<领域> pipeline ui open source"
+   ],
+   "theme_hint": "深浅色都可；流动/运行用一种强调色（青/蓝），失败红、需关注琥珀"
+  },
+  {
+   "id": "data-table-crud",
+   "name_zh": "列表管理/CRUD",
+   "mode": "Operate",
+   "signals": [
+    "列表",
+    "表格",
+    "增删改查",
+    "crud",
+    "批量",
+    "导入",
+    "导出",
+    "筛选",
+    "分页"
+   ],
+   "sections": [
+    "toolbar",
+    "filters",
+    "table",
+    "bulk-bar",
+    "row-sheet",
+    "pagination"
+   ],
+   "signature_patterns": [
+    "faceted-filter",
+    "inline-edit",
+    "saved-views"
+   ],
+   "seed_benchmarks": [
+    "shadcn-admin",
+    "tanstack-table",
+    "refine"
+   ],
+   "discovery_queries": [
+    "shadcn data table example",
+    "tanstack table faceted filter"
+   ],
+   "theme_hint": "中性；密度优先"
+  },
+  {
+   "id": "analytics-report",
+   "name_zh": "分析报告/数据可视化",
+   "mode": "Operate",
+   "signals": [
+    "分析",
+    "可视化",
+    "图表",
+    "报表",
+    "趋势",
+    "漏斗",
+    "留存",
+    "bi",
+    "data viz",
+    "大屏"
+   ],
+   "sections": [
+    "headline-metric",
+    "chart-grid",
+    "breakdown",
+    "annotations",
+    "export"
+   ],
+   "signature_patterns": [
+    "annotated-chart",
+    "small-multiples",
+    "kpi-sparkline",
+    "geo-map"
+   ],
+   "seed_benchmarks": [
+    "tremor",
+    "shadcn-ui",
+    "echarts",
+    "superset",
+    "evidence",
+    "observable-framework"
+   ],
+   "discovery_queries": [
+    "<指标> dashboard example",
+    "observable framework examples",
+    "tremor blocks"
+   ],
+   "theme_hint": "图表色板 5 色色盲友好；背景低饱和"
+  },
+  {
+   "id": "logs-observability",
+   "name_zh": "日志/监控/运行记录",
+   "mode": "Operate",
+   "signals": [
+    "日志",
+    "监控",
+    "告警",
+    "trace",
+    "运行记录",
+    "事件",
+    "incident",
+    "uptime",
+    "状态页"
+   ],
+   "sections": [
+    "filters",
+    "timeline",
+    "log-stream",
+    "trace-waterfall",
+    "detail"
+   ],
+   "signature_patterns": [
+    "log-timeline",
+    "trace-waterfall",
+    "status-tracker",
+    "live-tail"
+   ],
+   "seed_benchmarks": [
+    "trigger-dev",
+    "kestra",
+    "grafana",
+    "supabase-studio"
+   ],
+   "discovery_queries": [
+    "trace waterfall ui",
+    "status page open source"
+   ],
+   "theme_hint": "深色优先、等宽数字；状态色克制"
+  },
+  {
+   "id": "ecommerce",
+   "name_zh": "电商/商品/购物",
+   "mode": "Persuade",
+   "signals": [
+    "商城",
+    "商品",
+    "购物车",
+    "下单",
+    "sku",
+    "电商",
+    "store",
+    "shop",
+    "checkout"
+   ],
+   "sections": [
+    "header",
+    "category-nav",
+    "product-grid",
+    "pdp",
+    "cart",
+    "checkout"
+   ],
+   "signature_patterns": [
+    "product-360",
+    "sticky-buy-bar",
+    "variant-swatches",
+    "shoppable-lookbook"
+   ],
+   "seed_benchmarks": [
+    "vercel-commerce",
+    "medusa-storefront",
+    "shopify-hydrogen"
+   ],
+   "discovery_queries": [
+    "<品类> online store design",
+    "next.js commerce demo"
+   ],
+   "theme_hint": "跟品牌/品类；商品图是主角，界面中性"
+  },
+  {
+   "id": "mobile-h5",
+   "name_zh": "移动 H5/小程序页",
+   "mode": "Operate",
+   "signals": [
+    "h5",
+    "移动端",
+    "手机",
+    "小程序",
+    "app 页面",
+    "活动页",
+    "wechat"
+   ],
+   "sections": [
+    "top-bar",
+    "content",
+    "bottom-tab",
+    "sheet",
+    "toast"
+   ],
+   "signature_patterns": [
+    "bottom-sheet-flow",
+    "pull-refresh",
+    "swipe-cards",
+    "progress-ring"
+   ],
+   "seed_benchmarks": [
+    "vant",
+    "antd-mobile",
+    "ionic"
+   ],
+   "discovery_queries": [
+    "vant demo",
+    "ant design mobile demo",
+    "<品类> app ui mobbin"
+   ],
+   "theme_hint": "点击区 ≥44px；高对比；品牌色用于主按钮"
+  },
+  {
+   "id": "content-blog",
+   "name_zh": "内容/博客/资讯",
+   "mode": "Read",
+   "signals": [
+    "博客",
+    "文章",
+    "资讯",
+    "blog",
+    "article",
+    "newsletter",
+    "专栏",
+    "media"
+   ],
+   "sections": [
+    "masthead",
+    "article-list",
+    "article",
+    "toc",
+    "author",
+    "related"
+   ],
+   "signature_patterns": [
+    "reading-progress",
+    "pull-quote",
+    "inline-footnotes"
+   ],
+   "seed_benchmarks": [
+    "tailwind-nextjs-blog",
+    "astro",
+    "refero-styles"
+   ],
+   "discovery_queries": [
+    "<主题> blog design",
+    "tailwind nextjs starter blog"
+   ],
+   "theme_hint": "正文排版优先；衬线/无衬线二选一"
+  },
+  {
+   "id": "docs-knowledge",
+   "name_zh": "文档/知识库/帮助中心",
+   "mode": "Read",
+   "signals": [
+    "文档",
+    "docs",
+    "api 参考",
+    "帮助中心",
+    "知识库",
+    "教程",
+    "guide",
+    "changelog"
+   ],
+   "sections": [
+    "top-nav",
+    "sidebar-tree",
+    "content",
+    "toc",
+    "search",
+    "code-block"
+   ],
+   "signature_patterns": [
+    "search-cmdk",
+    "interactive-code",
+    "api-playground"
+   ],
+   "seed_benchmarks": [
+    "nextra",
+    "starlight",
+    "vitepress",
+    "docusaurus"
+   ],
+   "discovery_queries": [
+    "nextra docs theme",
+    "starlight docs showcase"
+   ],
+   "theme_hint": "中性 + 品牌强调；代码块主题匹配"
+  },
+  {
+   "id": "forms-onboarding",
+   "name_zh": "表单/注册/引导",
+   "mode": "Operate",
+   "signals": [
+    "表单",
+    "注册",
+    "登录",
+    "引导",
+    "onboarding",
+    "问卷",
+    "申请",
+    "开户",
+    "向导",
+    "wizard"
+   ],
+   "sections": [
+    "stepper",
+    "fields",
+    "validation",
+    "summary",
+    "success"
+   ],
+   "signature_patterns": [
+    "progressive-steps",
+    "live-preview",
+    "celebration"
+   ],
+   "seed_benchmarks": [
+    "shadcn-ui",
+    "react-hook-form",
+    "formbricks",
+    "typebot"
+   ],
+   "discovery_queries": [
+    "multi step form shadcn",
+    "onboarding flow examples"
+   ],
+   "theme_hint": "安静、可信；错误色仅用于错误"
+  },
+  {
+   "id": "chat-ai",
+   "name_zh": "聊天/AI 助手",
+   "mode": "Operate",
+   "signals": [
+    "聊天",
+    "对话",
+    "ai 助手",
+    "chatbot",
+    "copilot",
+    "agent",
+    "prompt",
+    "大模型"
+   ],
+   "sections": [
+    "thread-list",
+    "messages",
+    "composer",
+    "artifacts",
+    "tool-calls"
+   ],
+   "signature_patterns": [
+    "streaming-message",
+    "tool-call-cards",
+    "artifact-canvas"
+   ],
+   "seed_benchmarks": [
+    "vercel-chatbot",
+    "assistant-ui",
+    "open-webui",
+    "lobehub"
+   ],
+   "discovery_queries": [
+    "ai chatbot ui open source",
+    "assistant-ui examples"
+   ],
+   "theme_hint": "中性为主，品牌色用于发送/选中；避免紫蓝渐变"
+  },
+  {
+   "id": "portfolio-showcase",
+   "name_zh": "作品集/展示/画廊",
+   "mode": "Experience",
+   "signals": [
+    "作品集",
+    "portfolio",
+    "画廊",
+    "gallery",
+    "展示",
+    "个人主页",
+    "摄影",
+    "设计师"
+   ],
+   "sections": [
+    "intro",
+    "work-grid",
+    "case-study",
+    "about",
+    "contact"
+   ],
+   "signature_patterns": [
+    "scroll-story",
+    "cursor-reveal",
+    "case-study-transition"
+   ],
+   "seed_benchmarks": [
+    "magic-portfolio",
+    "scrolltide",
+    "snapblocks",
+    "refero-styles"
+   ],
+   "discovery_queries": [
+    "<职业> portfolio site:godly.website",
+    "magic portfolio template"
+   ],
+   "theme_hint": "作品决定配色；界面退后"
+  },
+  {
+   "id": "game-3d-immersive",
+   "name_zh": "游戏/3D/沉浸式",
+   "mode": "Experience",
+   "signals": [
+    "游戏",
+    "3d",
+    "webgl",
+    "three",
+    "沉浸",
+    "元宇宙",
+    "互动体验",
+    "可视化大屏"
+   ],
+   "sections": [
+    "loader",
+    "scene",
+    "hud",
+    "menu",
+    "overlay"
+   ],
+   "signature_patterns": [
+    "interactive-3d-scene",
+    "shader-hero",
+    "particle-data"
+   ],
+   "seed_benchmarks": [
+    "react-three-fiber",
+    "threejs",
+    "phaser",
+    "scrollshaders"
+   ],
+   "discovery_queries": [
+    "three.js journey showcase",
+    "r3f examples"
+   ],
+   "theme_hint": "深色舞台 + 高饱和点缀；HUD 文字对比 ≥4.5"
+  },
+  {
+   "id": "canvas-editor",
+   "name_zh": "画布/白板/编辑器",
+   "mode": "Operate",
+   "signals": [
+    "编辑器",
+    "画布",
+    "白板",
+    "设计工具",
+    "思维导图",
+    "editor",
+    "canvas",
+    "whiteboard"
+   ],
+   "sections": [
+    "toolbar",
+    "canvas",
+    "inspector",
+    "layers",
+    "minimap"
+   ],
+   "signature_patterns": [
+    "infinite-canvas",
+    "multiplayer-cursors",
+    "workflow-graph-replay"
+   ],
+   "seed_benchmarks": [
+    "excalidraw",
+    "tldraw",
+    "react-flow"
+   ],
+   "discovery_queries": [
+    "excalidraw ui",
+    "tldraw examples"
+   ],
+   "theme_hint": "中性画布，选中/强调一色"
+  },
+  {
+   "id": "settings-account",
+   "name_zh": "设置/账户",
+   "mode": "Operate",
+   "signals": [
+    "设置",
+    "账户",
+    "个人资料",
+    "偏好",
+    "通知设置",
+    "权限",
+    "settings",
+    "profile"
+   ],
+   "sections": [
+    "section-nav",
+    "form-sections",
+    "danger-zone"
+   ],
+   "signature_patterns": [
+    "instant-save-feedback",
+    "preview-pane"
+   ],
+   "seed_benchmarks": [
+    "shadcn-admin",
+    "supabase-studio"
+   ],
+   "discovery_queries": [
+    "shadcn settings page"
+   ],
+   "theme_hint": "中性；危险区红色仅限危险操作"
+  }
+ ]
+}

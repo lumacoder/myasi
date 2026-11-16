@@ -1,12 +1,16 @@
 {
-  "version": "0.1.1",
+  "version": "0.2.0",
   "tags": [
+    "a11y",
+    "benchmark",
+    "creative",
+    "design",
+    "lint",
+    "rsi",
+    "theme",
     "ui",
     "ux",
-    "design",
-    "a11y",
-    "lint",
-    "rsi"
+    "visual"
   ],
   "aliases": [],
   "clients": [
