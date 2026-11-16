@@ -64,7 +64,7 @@
         "ux",
         "visual"
       ],
-      "version": "0.2.1",
+      "version": "0.2.2",
       "path": "skills/mano-design",
       "clients": [
         "*"
@@ -73,7 +73,7 @@
         "example"
       ],
       "license": "MIT",
-      "size_kb": 426
+      "size_kb": 433
     },
     "myasi": {
       "description": "当用户按名字提到一个本机没有的 skill（如“用 xxx skill”“装上 xxx”“有没有做某事的 skill”），或要同步、更新、删除 skill，或要把 MCP/CLI 配置同步到 Codex、Claude Code、pi、DeepSeek（dsh / deepseek TUI）时使用；通过 myasi 仓库的 registry.json 按裸名解析并安装，然后加载对应 SKILL.md。",

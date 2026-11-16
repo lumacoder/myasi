@@ -8,8 +8,8 @@
       --archetype workflow-automation --dark --mobile
   python3 scripts/visual_capture.py https://example.com --out shots --bench-urls https://ui.shadcn.com/blocks
 
---views：名字=路由[|click:<选择器>][|wait:<毫秒>]，分号分隔；路由可为 #hash、/path 或完整 URL。
-基准截图默认取 --archetype（可逗号分隔多个：主原型,次原型）的 seed_benchmarks 中有 capture_url 的前 4 个（需联网；失败不阻断）。
+--views：名字=路由[|wait:<毫秒>][|click:<选择器>]…，分号分隔，步骤按书写顺序执行（例：先 wait 等回放结束再 click 打开详情）；路由可为 #hash、/path 或完整 URL。
+基准截图默认取 --archetype（可逗号分隔多个：主原型,次原型）的 seed_benchmarks 中有 capture_url 的，多原型时轮流各取一个，共 4 个（需联网；失败不阻断）。
 输出：<out>/<name>-light.png、-dark.png、-mobile.png、bench-<id>.png、contact-sheet.png、review.md。截图是临时证据，交付后按 hygiene 清理或只保留最终版。
 """
 import argparse
@@ -54,15 +54,19 @@ def parse_views(spec):
     for part in [p for p in spec.split(";") if p.strip()]:
         name, _, rest = part.partition("=")
         bits = rest.split("|")
-        v = {"name": name.strip(), "route": bits[0].strip(), "clicks": [], "wait": 600}
+        v = {"name": name.strip(), "route": bits[0].strip(), "steps": [], "clicks": [], "wait": 600}
         for b in bits[1:]:
             k, _, val = b.partition(":")
             if k == "click":
+                v["steps"].append(("click", val))
                 v["clicks"].append(val)
             elif k == "wait":
-                v["wait"] = int(val)
+                v["steps"].append(("wait", int(val)))
+        # 步骤按书写顺序执行（先等动画/数据，再点击）；末尾不是 wait 时补 600ms 让界面稳定
+        if not v["steps"] or v["steps"][-1][0] != "wait":
+            v["steps"].append(("wait", 600))
         views.append(v)
-    return views or [{"name": "page", "route": "", "clicks": [], "wait": 600}]
+    return views or [{"name": "page", "route": "", "steps": [("wait", 600)], "clicks": [], "wait": 600}]
 
 
 def url_for(base, route):
@@ -83,10 +87,12 @@ def shoot(ctx, url, view, path, wait_for):
             page.wait_for_selector(wait_for, timeout=10000)
         except Exception:  # noqa: BLE001
             pass
-    for sel in view.get("clicks", []):
-        page.click(sel, timeout=5000)
-        page.wait_for_timeout(300)
-    page.wait_for_timeout(view.get("wait", 600))
+    for kind, val in view.get("steps") or [("wait", view.get("wait", 600))]:
+        if kind == "click":
+            page.click(val, timeout=5000)
+            page.wait_for_timeout(300)
+        else:
+            page.wait_for_timeout(val)
     page.screenshot(path=str(path))
     page.close()
 
@@ -121,13 +127,17 @@ def main(argv=None):
     if a.bench_urls:
         benches = [(f"url{i + 1}", u) for i, u in enumerate(a.bench_urls.split(","))]
     elif picked and not a.no_bench:
+        # 每个原型轮流取一个，保证次原型（签名所在）也有基准：主,次,主,次…，最多 4 个
         seen, benches = set(), []
-        for ar in picked:
-            for b in ar["seed_benchmarks"]:
-                if b not in seen and bench[b].get("capture_url"):
+        queues = [[b for b in ar["seed_benchmarks"] if b in bench and bench[b].get("capture_url")] for ar in picked]
+        while len(benches) < 4 and any(queues):
+            for q in queues:
+                while q and q[0] in seen:
+                    q.pop(0)
+                if q and len(benches) < 4:
+                    b = q.pop(0)
                     seen.add(b)
                     benches.append((b, bench[b]["capture_url"]))
-        benches = benches[:4]
     else:
         benches = []
     mine, refs, notes = [], [], []

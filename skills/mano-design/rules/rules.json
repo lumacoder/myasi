@@ -1,5 +1,5 @@
 {
- "version": "0.2.1",
+ "version": "0.2.2",
  "severity_levels": {
   "critical": "不合格，阻断交付",
   "major": "不合格，需修复",

@@ -39,6 +39,8 @@ PLACEHOLDER_VAL = re.compile(r"^(—|–|-|--|——|N/?A|null|TBD|未启用|暂
 OPAQUE_ID = re.compile(r"(?<![\w…])[A-Za-z][A-Za-z0-9]*[_-][A-Za-z0-9_-]{4,}(…|\.{3})(?=\s|$)")
 QUESTION = re.compile(r"[?？]|^(如何|怎么|怎样|为什么|为何|什么|能否|是否|可以|可否|我能|我可以|how|what|why|can|do|does|is|are|when|where)\b", re.I)
 DESTRUCTIVE = re.compile(r"删除|移除|清空|注销|销毁|永久|delete|remove|erase|destroy|clear all|reset all", re.I)
+# 只改视图状态、可随手恢复的「清空」不算危险操作：清空搜索/筛选/输入/选择
+VIEW_ONLY_CLEAR = re.compile(r"^(清空|清除|重置|clear|reset)\s*(搜索|筛选|过滤|条件|输入|选择|关键词|search|filters?|input|selection)$", re.I)
 VAGUE_DIALOG_BTN = {"确定", "确认", "是", "好", "好的", "ok", "yes", "确定删除?"}
 VAGUE_LINK = {"点击这里", "点这里", "这里", "点此", "请点击", "点击此处", "click here", "here", "click", "this link"}
 VAGUE_ERROR = {"出错了", "错误", "发生错误", "操作失败", "失败", "系统错误", "未知错误", "网络错误", "error",
@@ -535,7 +537,7 @@ class Linter:
         for n in self.nodes:
             if n.tag == "button" or n.get("role") == "button":
                 t = self.label_of(n)
-                if t and DESTRUCTIVE.search(t) and len(t) <= 20 and not self.has_confirm(n) and not page_guard:
+                if t and DESTRUCTIVE.search(t) and not VIEW_ONLY_CLEAR.match(t.strip()) and len(t) <= 20 and not self.has_confirm(n) and not page_guard:
                     self.add("cs.destructive-no-confirm", n, f"危险操作「{t}」直接执行，无确认/撤销")
 
     def check_cs_dialog_buttons(self):
@@ -853,16 +855,25 @@ class Linter:
     def check_us_type(self):
         generic = {"serif", "sans-serif", "monospace", "cursive", "fantasy", "system-ui", "inherit", "initial", "unset",
                    "-apple-system", "blinkmacsystemfont", "ui-sans-serif", "ui-serif", "ui-monospace", "emoji", "math"}
+        # 系统字体栈（库样式 / preflight 的回退）不是设计选择，归为 system-ui，不算一个字体家族
+        system = {"segoe ui", "roboto", "helvetica neue", "helvetica", "arial", "noto sans", "ubuntu", "cantarell", "oxygen",
+                  "fira sans", "droid sans", "liberation sans", "apple color emoji", "segoe ui emoji", "segoe ui symbol",
+                  "noto color emoji", "pingfang sc", "hiragino sans gb", "microsoft yahei", "noto sans sc", "noto sans cjk sc",
+                  "source han sans sc", "heiti sc", "wenquanyi micro hei"}
+        mono = re.compile(r"mono|code|courier|consolas|menlo|monaco")
         fams, sizes = set(), set()
         for _n, k, v in self.all_decls():
             if k in ("font-family", "font"):
                 if k == "font" and "," not in v and not re.search(r"['\"]", v):
                     continue
-                for f in v.split(","):
-                    f = f.strip().strip("'\"").strip()
+                stack = re.sub(r"^var\(--[\w-]+\s*,?", "", v.strip()).rstrip(")") if v.strip().startswith("var(") else v
+                if "monospace" in stack.lower() or "ui-monospace" in stack.lower():
+                    continue  # 等宽栈（代码/ID）不计入界面字体家族
+                for f in stack.split(","):
+                    f = f.strip().strip("'\"").strip().lower()
                     if k == "font":
                         f = re.sub(r"^.*\d(px|rem|em|%)(/[\d.]+\w*)?\s+", "", f)
-                    if not f or f in generic or f.startswith("var(") or re.search(r"mono|code|courier|consolas|menlo", f):
+                    if not f or f in generic or f in system or f.startswith("var(") or mono.search(f):
                         continue
                     fams.add(f)
                     break
@@ -870,7 +881,7 @@ class Linter:
                 m = re.match(r"([\d.]+)(px|rem)$", v)
                 if m:
                     sizes.add(round(float(m.group(1)) * (16 if m.group(2) == "rem" else 1), 1))
-            if k == "font-weight" and v in ("800", "900", "bolder", "black"):
+            if k == "font-weight" and v in ("800", "900", "black"):  # bolder 是相对值（preflight 的 b/strong），不算
                 self.add("ty.heavy-weight", None, f"font-weight:{v}")
         if any(c in ("font-black", "font-extrabold") for _n, c in self.tw_classes()):
             self.add("ty.heavy-weight", None, "font-black/font-extrabold")

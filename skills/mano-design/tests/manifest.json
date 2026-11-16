@@ -1198,5 +1198,49 @@
   "split": "train",
   "file": "bad/us-shouty-copy.html",
   "source": "mano-design 0.2.0 RSI 第 3 轮（借鉴 heydamir/unslop signs.md / tokens.md，CC BY 4.0）"
+ },
+ {
+  "id": "us-lib-font-stacks-ok",
+  "category": "type",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "打包产物里的库样式（Tailwind preflight、sonner）：var() 回退字体栈、系统字体栈、等宽栈里的 Monaco、b/strong 的 bolder 都不是设计选择，不应算字体家族过多或字重过重（案例 v2 首轮 ui_lint 误报）",
+  "split": "holdout",
+  "file": "good/us-lib-font-stacks-ok.html",
+  "source": "mano-design 0.2.1 案例 v2（商户治理）首轮 ui_lint 误报"
+ },
+ {
+  "id": "us-three-families-with-system-stack",
+  "category": "type",
+  "verdict": "FAIL",
+  "rules": [
+   "ty.font-family-sprawl"
+  ],
+  "note": "系统字体栈之外仍有 3 个界面字体家族（Inter、Playfair Display、Space Grotesk）→ 仍应报 ty.font-family-sprawl",
+  "split": "train",
+  "file": "bad/us-three-families-with-system-stack.html",
+  "source": "mano-design 0.2.1 案例 v2（商户治理）首轮 ui_lint 误报的反例"
+ },
+ {
+  "id": "clear-search-not-destructive",
+  "category": "component",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "清空搜索框 / 清除筛选 / 清空输入只影响视图状态，可随手恢复，不是危险操作（案例 v2 Runs.tsx 首轮误报）",
+  "split": "holdout",
+  "file": "good/clear-search-not-destructive.html",
+  "source": "mano-design 0.2.1 案例 v2（商户治理）首轮 ui_lint 误报"
+ },
+ {
+  "id": "clear-history-still-destructive",
+  "category": "component",
+  "verdict": "FAIL",
+  "rules": [
+   "cs.destructive-no-confirm"
+  ],
+  "note": "清空记录会删除数据 → 仍需确认或撤销",
+  "split": "train",
+  "file": "bad/clear-history-still-destructive.html",
+  "source": "mano-design 0.2.1 案例 v2 误报的反例"
  }
 ]

@@ -1,7 +1,7 @@
 {
  "score": 100.0,
- "exact_correct": 106,
- "cases": 106,
+ "exact_correct": 110,
+ "cases": 110,
  "holdout_score": 100.0,
  "correct_ids": [
   "accordion-jsx-peer",
@@ -9,6 +9,8 @@
   "button-as-link",
   "centered-paragraph",
   "checkbox-group-correct",
+  "clear-history-still-destructive",
+  "clear-search-not-destructive",
   "clickable-div",
   "contrast-correct",
   "date-as-text",
@@ -96,6 +98,7 @@
   "us-gradient-heading",
   "us-heavy-heading",
   "us-lavender-text-tints",
+  "us-lib-font-stacks-ok",
   "us-off-scale-spacing",
   "us-scale-spacing-ok",
   "us-sentence-label-ok",
@@ -103,6 +106,7 @@
   "us-size-sprawl",
   "us-soft-shadow-ok",
   "us-solid-heading-ok",
+  "us-three-families-with-system-stack",
   "us-tracked-caps-label",
   "us-tw-arbitrary-spacing",
   "us-tw-glow-class",
@@ -117,6 +121,8 @@
   "button-as-link",
   "centered-paragraph",
   "checkbox-group-correct",
+  "clear-history-still-destructive",
+  "clear-search-not-destructive",
   "clickable-div",
   "contrast-correct",
   "date-as-text",
@@ -204,6 +210,7 @@
   "us-gradient-heading",
   "us-heavy-heading",
   "us-lavender-text-tints",
+  "us-lib-font-stacks-ok",
   "us-off-scale-spacing",
   "us-scale-spacing-ok",
   "us-sentence-label-ok",
@@ -211,6 +218,7 @@
   "us-size-sprawl",
   "us-soft-shadow-ok",
   "us-solid-heading-ok",
+  "us-three-families-with-system-stack",
   "us-tracked-caps-label",
   "us-tw-arbitrary-spacing",
   "us-tw-glow-class",
@@ -220,6 +228,6 @@
   "white-on-light-button"
  ],
  "open_ids": [],
- "version": "0.2.1",
+ "version": "0.2.2",
  "date": "2026-11-16"
 }

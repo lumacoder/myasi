@@ -1,5 +1,9 @@
 # 更新记录
 
+## 0.2.2 — 2026-11-16
+- RSI 第 4 轮（案例 v2 商户治理首轮验证暴露的工具缺陷）：① ty.font-family-sprawl 把打包产物里库样式的 var() 回退栈、系统字体栈、等宽栈里的 Monaco 当成设计字体 → 识别系统字体栈与等宽栈；ty.heavy-weight 不再把 preflight 的 bolder 当重字重（holdout us-lib-font-stacks-ok 先写后测，首轮 REJECT 96.57）；② cs.destructive-no-confirm 把「清空搜索」当危险操作 → 只改视图状态的清空/清除搜索/筛选/输入不算（holdout clear-search-not-destructive，首轮 REJECT 97.62）；两条都配了仍应报的反例。另：visual_capture --views 步骤按书写顺序执行（先 wait 等回放再 click），多原型基准轮流取（次原型的 React Flow 基准不再被挤掉）；workflow-graph-replay 增加 pitfalls（React Flow 不可选节点吞点击等）
+- eval：110/110，score 100.0，holdout 100.0
+
 ## 0.2.1 — 2026-11-16
 - RSI 第 3 轮（借鉴 heydamir/unslop，CC BY 4.0 署名）：新增 type 类别与 9 条视觉卫生 lint 规则——co.glow-shadow、co.gradient-text、co.near-duplicate-colors（只看文字色）、ty.font-family-sprawl、ty.size-sprawl、ty.heavy-weight、ty.uppercase-tracked、ly.off-scale-spacing（含 Tailwind 任意值）、cp.shouty-copy；18 个用例（4 个 holdout 先写后测：首轮 3/4，us-tw-glow-class 暴露了阴影模糊半径解析缺陷——未带单位的 0 偏移被跳过——通用修复后全对）；browser_check --visual-stats 渲染后统计调色板/字体/字号/奇数间距；流程加入方向五行、改多少分级、九遍顺序；unslop 自带的 3 个 vibecoded 示例被新规则全部命中
 - eval：106/106，score 100.0，holdout 100.0

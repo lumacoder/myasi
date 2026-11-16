@@ -170,7 +170,13 @@
     "n8n",
     "dify"
    ],
-   "avoid_when": "只有 1–2 个步骤时用 stepper 即可"
+   "avoid_when": "只有 1–2 个步骤时用 stepper 即可",
+   "pitfalls": [
+    "React Flow：nodesDraggable/elementsSelectable 都关掉时节点是 pointer-events:none，点击被画布吞掉——必须传 onNodeClick（或节点内用 button 且 stopPropagation），并用 browser_check/visual_capture 的 click 步骤真点一次验证",
+    "执行中的节点不要提前显示产出数字（显示『处理中…』+ 进度条），完成后再出数",
+    "fitView 后节点缩放 <0.75 会让 13px 字看不清：压缩纵向分支、用底部/顶部句柄做竖向连线，宁可让画布更高",
+    "截图时先 wait 等回放结束再 click 打开节点详情（visual_capture 步骤按书写顺序执行）"
+   ]
   },
   {
    "id": "run-gantt",
