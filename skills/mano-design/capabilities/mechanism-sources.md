@@ -1,6 +1,6 @@
 # 机制来源：mano-design 的视觉/创意机制从哪里来
 
-用户给的 3 条帖子（及其链接资源）是本机制的出处。下表把**每个机制步骤 → 来源 → 这个 skill 怎么用**一一对应。帖子原文与链接核实记录见 `cases/sources/`；资源内容 2026-11-16 重新打开阅读。
+用户给的 3 条帖子（及其链接资源）以及用户补充的 heydamir/unslop 是本机制的出处。下表把**每个机制步骤 → 来源 → 这个 skill 怎么用**一一对应。帖子原文与链接核实记录见 `cases/sources/`；资源内容 2026-11-16 重新打开阅读。
 
 ## 三条帖子各自体现的机制
 | 帖子 | 资源 | 体现的机制 | 落到 skill |
@@ -18,6 +18,7 @@
 | 同上 | alchaincyf/huashu-design | 「你有自己的默认审美」；**摆出来和参考并排让人看**才是验证；偏好沉淀 | 联系表（自己 vs 基准并排）；≥8 必须 par/above 基准 |
 | 同上 | google-labs-code/stitch-skills | DESIGN.md 作为设计系统的可交换载体（提取/上传/应用） | DESIGN.md-lite 模板；用户已有 DESIGN.md 时直接遵循 |
 | 同上 | dominikmartn/nothing-design-skill | **三层层级规则**（主/次/三级，眯眼测试） | rubric「hierarchy」锚点（眯眼测试） |
+| 用户补充 | [heydamir/unslop](https://github.com/heydamir/unslop)（16.7k★，CC BY 4.0，作者 Damir Sokolovsky / @heydamir） | **先审计再定方向再分层修**：signs.md 逐类列出 slop 痕迹（彩色发光、渐变字、近似色、800/900 字重、全大写宽字距、任意间距、喊叫文案、每张卡都塞 sparkline…）；按「重度/轻度/无 slop」决定改多少；方向五行（产品/性格/世界/时刻/签名，禁用 clean/modern/premium 这类词）；九遍修复顺序（间距→颜色→图标→文案→字体→布局→细节→视觉→动效）；tokens.md 给出间距阶梯、字阶、圆角嵌套、中性色阶 | 新增 9 条 lint 规则（co.glow-shadow、co.gradient-text、co.near-duplicate-colors、ty.font-family-sprawl、ty.size-sprawl、ty.heavy-weight、ty.uppercase-tracked、ly.off-scale-spacing、cp.shouty-copy）+ 18 个用例；`browser_check.py --visual-stats` 渲染后统计调色板/字体/字号/奇数间距；流程 ③ 方向五行、⑦ 九遍顺序、「改多少」分级；rubric 证据引用这些统计。规则与实现为本 skill 自写，按 CC BY 4.0 署名 |
 | 同上（引用文章 2115164938884862375） | 评审提示：「Open review/contact.png and review/phone.png. You did not make this. You are the harshest animation director I know… List every problem… Fix the 3 worst. Re-render only those seconds. Show me the new sheet.」 | **联系表 + 手机测试 + 局外人苛刻评审 + 只修最严重 3 个 + 只重做受影响部分** | `visual_capture.py` 生成 contact-sheet + mobile 截图 + `review.md`（同一姿态）；流程 ⑩；`rsi/rubric.md` 的 top3 |
 
 ## 机制步骤 → 来源 速查
@@ -25,12 +26,14 @@
 |---|---|
 | ① 原型识别 + 模式 | impeccable（modes）、taste-skill（kind decides everything） |
 | ② 逐区块基准 | navbar/footer/cta gallery、scrolltide 分层、refero |
-| ③ DESIGN.md-lite（材质隐喻） | refero styles、stitch DESIGN.md、frontend-design 两遍法 |
+| ③ DESIGN.md-lite（材质隐喻 + 方向五行） | refero styles、stitch DESIGN.md、frontend-design 两遍法、unslop Direction |
 | ④ 主题按行业/受众 | refero（真实产品配色）、taste-skill、frontend-design（AI 默认色避让） |
 | ⑤ 领域创意 pass（一个记忆点） | frontend-design（boldness in one place）、scrolltide/snapblocks/scrollshaders（素材）、huashu |
-| ⑥ 反默认自审 | frontend-design 聚类清单、hallmark Floor、impeccable 禁令 |
+| ⑥ 反默认自审 | frontend-design 聚类清单、hallmark Floor、impeccable 禁令、unslop signs.md |
+| ⑥b 改多少（重度/轻度/无 slop） | unslop「Decide how much to change」 |
 | ⑦ 主流组件 + token | hallmark Floor #1（全部走 token）、shadcn/ui 生态 |
-| ⑧ 确定性检查 | 本 skill 原有 ui_lint/browser_check（vercel web-interface-guidelines、axe-core） |
+| ⑦ 实现顺序（九遍） | unslop passes：间距→颜色→图标→文案→字体→布局→细节→视觉→动效 |
+| ⑧ 确定性检查 | ui_lint/browser_check（vercel web-interface-guidelines、axe-core）+ unslop 视觉卫生规则与 --visual-stats |
 | ⑨ 联系表取证 | 引用文章的 contact.png / phone.png |
 | ⑩ 苛刻评审·先修 3 个 | 引用文章评审提示、hallmark 新会话终审 |
 | ⑪ 0—10 评分 ≥8 门禁 | open-design critique 锚点、huashu「并排看」、hallmark「编造的通过即 slop」 |

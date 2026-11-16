@@ -1,5 +1,5 @@
 {
- "version": "0.2.0",
+ "version": "0.2.1",
  "severity_levels": {
   "critical": "不合格，阻断交付",
   "major": "不合格，需修复",
@@ -1224,6 +1224,201 @@
    ],
    "sources": [
     "https://www.nngroup.com/articles/microcontent-how-to-write-headlines-page-titles-and-subject-lines/"
+   ]
+  },
+  {
+   "id": "co.glow-shadow",
+   "category": "color",
+   "severity": "major",
+   "detect": "lint",
+   "title_zh": "彩色外发光阴影",
+   "signal": "阴影/投影使用高饱和颜色且模糊半径大",
+   "correct": "深度来自表面层级 + 细线；浅色用 0 1px 2px / 0 8px 24px 的中性低透明阴影",
+   "anti_patterns": [
+    "box-shadow:0 0 20px rgba(139,92,246,.5)",
+    "shadow-[0_0_24px_rgba(34,211,238,.6)]"
+   ],
+   "rationale": "发光是 AI 生成界面最典型的痕迹之一，抢走真正重点的注意力。",
+   "fix_zh": "去掉彩色发光；浅色主题用中性阴影，深色主题用表面色阶 + 1px 细线。",
+   "detection_hints": [
+    "box-shadow/text-shadow/drop-shadow 颜色饱和度>0.35、alpha≥0.2、模糊≥8px"
+   ],
+   "sources": [
+    "https://github.com/heydamir/unslop/blob/main/skills/unslop/references/signs.md",
+    "https://github.com/heydamir/unslop/blob/main/skills/unslop/references/tokens.md"
+   ]
+  },
+  {
+   "id": "co.gradient-text",
+   "category": "color",
+   "severity": "major",
+   "detect": "lint",
+   "title_zh": "渐变文字",
+   "signal": "标题/数字/Logo 用 background-clip:text 渐变",
+   "correct": "实色文字（主文字色或品牌色）",
+   "anti_patterns": [
+    "-webkit-background-clip:text + linear-gradient",
+    "bg-gradient-to-r … bg-clip-text text-transparent"
+   ],
+   "rationale": "渐变字可读性差、对比度不可控，且是模板感最强的装饰。",
+   "fix_zh": "改成 color: var(--foreground)；需要强调用字号/字重。",
+   "detection_hints": [
+    "同一规则或元素同时有 gradient 背景与 background-clip:text"
+   ],
+   "sources": [
+    "https://github.com/heydamir/unslop/blob/main/skills/unslop/references/signs.md",
+    "https://github.com/heydamir/unslop/blob/main/skills/unslop/references/tokens.md"
+   ]
+  },
+  {
+   "id": "co.near-duplicate-colors",
+   "category": "color",
+   "severity": "minor",
+   "detect": "lint",
+   "title_zh": "文字色里几乎相同的颜色太多",
+   "signal": "同一页里有多个肉眼难分的近似色（如五种淡紫文字）",
+   "correct": "一条中性色阶，文字只用 主/次/弱 三个角色",
+   "anti_patterns": [
+    "#6b5b95/#6e5c99/#705e9c/#73609f 四个文字色"
+   ],
+   "rationale": "近似色说明没有色彩系统，层级靠运气。",
+   "fix_zh": "把近似色合并为 token：--foreground / --muted-foreground / --subtle。",
+   "detection_hints": [
+    "文字 color 中 ≥3 组 RGB 距离 <14 但不相等的颜色对（表面色阶不算）"
+   ],
+   "sources": [
+    "https://github.com/heydamir/unslop/blob/main/skills/unslop/references/signs.md",
+    "https://github.com/heydamir/unslop/blob/main/skills/unslop/references/tokens.md"
+   ]
+  },
+  {
+   "id": "ty.font-family-sprawl",
+   "category": "type",
+   "severity": "major",
+   "detect": "lint",
+   "title_zh": "字体家族过多/不匹配",
+   "signal": "页面声明了 3 个以上非等宽字体家族",
+   "correct": "一个界面字体，最多再加一个只用于大标题的展示字体；等宽只用于代码/编号",
+   "anti_patterns": [
+    "Playfair + Lobster + Roboto + Poppins"
+   ],
+   "rationale": "字体混搭是最直观的「不专业」信号。",
+   "fix_zh": "统一为 1 个界面字体（+1 个标题字体），其他全部删掉。",
+   "detection_hints": [
+    "统计 font-family 首选家族（忽略通用族、var()、等宽族），>2 报出"
+   ],
+   "sources": [
+    "https://github.com/heydamir/unslop/blob/main/skills/unslop/references/signs.md",
+    "https://github.com/heydamir/unslop/blob/main/skills/unslop/references/tokens.md"
+   ]
+  },
+  {
+   "id": "ty.size-sprawl",
+   "category": "type",
+   "severity": "minor",
+   "detect": "lint",
+   "title_zh": "字号太多",
+   "signal": "一屏出现 8 种以上字号",
+   "correct": "从字阶取少数几档（12/13—14/14—15/18—20/28—32…）",
+   "anti_patterns": [
+    "11/13/14/15/17/19/22/26/31px 混用"
+   ],
+   "rationale": "字号随意导致层级混乱。",
+   "fix_zh": "建立 5—6 档字阶并替换所有字号。",
+   "detection_hints": [
+    "不同 font-size（px 或 rem×16）>8 种"
+   ],
+   "sources": [
+    "https://github.com/heydamir/unslop/blob/main/skills/unslop/references/signs.md",
+    "https://github.com/heydamir/unslop/blob/main/skills/unslop/references/tokens.md"
+   ]
+  },
+  {
+   "id": "ty.heavy-weight",
+   "category": "type",
+   "severity": "minor",
+   "detect": "lint",
+   "title_zh": "标题字重过重",
+   "signal": "标题/数字使用 800—900 字重",
+   "correct": "400—600，用字号与留白做层级",
+   "anti_patterns": [
+    "h1{font-weight:900}",
+    "font-black"
+   ],
+   "rationale": "超重字重显得喊叫、廉价。",
+   "fix_zh": "把 800/900 改为 500—600。",
+   "detection_hints": [
+    "font-weight 800/900/black/extrabold"
+   ],
+   "sources": [
+    "https://github.com/heydamir/unslop/blob/main/skills/unslop/references/signs.md",
+    "https://github.com/heydamir/unslop/blob/main/skills/unslop/references/tokens.md"
+   ]
+  },
+  {
+   "id": "ty.uppercase-tracked",
+   "category": "type",
+   "severity": "minor",
+   "detect": "lint",
+   "title_zh": "全大写加宽字距标签",
+   "signal": "标签/眉标 text-transform:uppercase 且字距加宽",
+   "correct": "句式大小写，正常字距；中文无此问题",
+   "anti_patterns": [
+    "NAVIGATION",
+    "PAID THIS MONTH"
+   ],
+   "rationale": "全大写宽字距眉标是 AI 模板的标志性默认。",
+   "fix_zh": "去掉 uppercase 与 tracking，改为句式标签。",
+   "detection_hints": [
+    "text-transform:uppercase 且 letter-spacing ≥0.05em/1px；或 uppercase + tracking-wide*"
+   ],
+   "sources": [
+    "https://github.com/heydamir/unslop/blob/main/skills/unslop/references/signs.md",
+    "https://github.com/heydamir/unslop/blob/main/skills/unslop/references/tokens.md"
+   ]
+  },
+  {
+   "id": "ly.off-scale-spacing",
+   "category": "layout",
+   "severity": "major",
+   "detect": "lint",
+   "title_zh": "间距不在阶梯上",
+   "signal": "margin/padding/gap 出现多个奇数等随意像素值",
+   "correct": "4px 阶梯（4/8/12/16/20/24/32…），半步 2/6/10 仅限控件内部",
+   "anti_patterns": [
+    "mt-[13px] ml-[7px] h-[31px]",
+    "padding:7px 11px"
+   ],
+   "rationale": "随意间距让节奏忽紧忽松，是「看起来不对劲」的主因。",
+   "fix_zh": "把所有间距换成 token 阶梯值；组内间距小于组间间距。",
+   "detection_hints": [
+    "间距类属性中 ≥3 个不同的奇数像素值（>1px），含 Tailwind 任意值类"
+   ],
+   "sources": [
+    "https://github.com/heydamir/unslop/blob/main/skills/unslop/references/signs.md",
+    "https://github.com/heydamir/unslop/blob/main/skills/unslop/references/tokens.md"
+   ]
+  },
+  {
+   "id": "cp.shouty-copy",
+   "category": "copy",
+   "severity": "minor",
+   "detect": "lint",
+   "title_zh": "喊叫式文案",
+   "signal": "问候式标题、双感叹号、没有比较对象的变化",
+   "correct": "页面名/时间段做标题；变化写明对比对象（较上月 +12%）",
+   "anti_patterns": [
+    "欢迎回来，小林！",
+    "+12%!!"
+   ],
+   "rationale": "喊叫文案降低可信度。",
+   "fix_zh": "标题改为「本月概览」；「+12%!!」改为「较上月 +12%」。",
+   "detection_hints": [
+    "文本含 !!/！！，或标题以 欢迎回来/Welcome back/Hi/Hello 开头且以感叹号结尾"
+   ],
+   "sources": [
+    "https://github.com/heydamir/unslop/blob/main/skills/unslop/references/signs.md",
+    "https://github.com/heydamir/unslop/blob/main/skills/unslop/references/tokens.md"
    ]
   }
  ]

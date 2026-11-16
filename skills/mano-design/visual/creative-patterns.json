@@ -116,7 +116,7 @@
     "tremor",
     "recharts"
    ],
-   "avoid_when": "只有占位值时（ly.placeholder-as-metric）"
+   "avoid_when": "只有占位值时（ly.placeholder-as-metric）；不要给每张统计卡都塞 sparkline（unslop：读起来像装饰）——默认是「数字 + 标签 + 写明对比对象的变化」，只在被追踪的那个指标上放趋势，或用一个主图表承载趋势"
   },
   {
    "id": "status-tracker",

@@ -9,7 +9,7 @@
   "additionalProperties": false,
   "properties": {
    "id": {"type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$", "maxLength": 60},
-   "category": {"enum": ["component", "state", "a11y", "color", "copy", "layout"]},
+   "category": {"enum": ["component", "state", "a11y", "color", "copy", "layout", "type"]},
    "verdict": {"enum": ["PASS", "FAIL"], "description": "这段 UI 应有的判定（不是检查器当前给的）"},
    "rules": {"type": "array", "items": {"type": "string"}, "description": "这段 UI 真正违反的规则 id；PASS 用例可为空"},
    "html": {"type": "string", "minLength": 10, "maxLength": 20000, "description": "最小复现片段（HTML 或 JSX），去掉无关代码与隐私"},

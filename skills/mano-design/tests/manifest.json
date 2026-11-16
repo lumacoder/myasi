@@ -992,5 +992,211 @@
   "split": "holdout",
   "file": "good/rsi-id-tail-with-copy-ok.html",
   "source": "mano-design 0.2.0 RSI 手写"
+ },
+ {
+  "id": "us-glow-pill",
+  "category": "color",
+  "verdict": "FAIL",
+  "rules": [
+   "co.glow-shadow"
+  ],
+  "note": "彩色外发光胶囊（unslop：colored glows → 去掉，用表面层级与细线）",
+  "split": "train",
+  "file": "bad/us-glow-pill.html",
+  "source": "mano-design 0.2.0 RSI 第 3 轮（借鉴 heydamir/unslop signs.md / tokens.md，CC BY 4.0）"
+ },
+ {
+  "id": "us-soft-shadow-ok",
+  "category": "color",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "中性柔和阴影合格",
+  "split": "train",
+  "file": "good/us-soft-shadow-ok.html",
+  "source": "mano-design 0.2.0 RSI 第 3 轮（借鉴 heydamir/unslop signs.md / tokens.md，CC BY 4.0）"
+ },
+ {
+  "id": "us-tw-glow-class",
+  "category": "color",
+  "verdict": "FAIL",
+  "rules": [
+   "co.glow-shadow"
+  ],
+  "note": "Tailwind 任意值发光阴影",
+  "split": "holdout",
+  "file": "bad/us-tw-glow-class.html",
+  "source": "mano-design 0.2.0 RSI 第 3 轮（借鉴 heydamir/unslop signs.md / tokens.md，CC BY 4.0）"
+ },
+ {
+  "id": "us-gradient-heading",
+  "category": "color",
+  "verdict": "FAIL",
+  "rules": [
+   "co.gradient-text"
+  ],
+  "note": "渐变文字标题（unslop：gradient text → 实色文字）",
+  "split": "train",
+  "file": "bad/us-gradient-heading.html",
+  "source": "mano-design 0.2.0 RSI 第 3 轮（借鉴 heydamir/unslop signs.md / tokens.md，CC BY 4.0）"
+ },
+ {
+  "id": "us-tw-gradient-number",
+  "category": "color",
+  "verdict": "FAIL",
+  "rules": [
+   "co.gradient-text"
+  ],
+  "note": "Tailwind 渐变数字",
+  "split": "holdout",
+  "file": "bad/us-tw-gradient-number.html",
+  "source": "mano-design 0.2.0 RSI 第 3 轮（借鉴 heydamir/unslop signs.md / tokens.md，CC BY 4.0）"
+ },
+ {
+  "id": "us-solid-heading-ok",
+  "category": "color",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "实色标题合格",
+  "split": "train",
+  "file": "good/us-solid-heading-ok.html",
+  "source": "mano-design 0.2.0 RSI 第 3 轮（借鉴 heydamir/unslop signs.md / tokens.md，CC BY 4.0）"
+ },
+ {
+  "id": "us-lavender-text-tints",
+  "category": "color",
+  "verdict": "PASS",
+  "rules": [
+   "co.near-duplicate-colors"
+  ],
+  "note": "多个几乎相同的同色相文字色（unslop：five lavenders → 一条中性色阶的三个文字角色）。minor",
+  "split": "train",
+  "file": "bad/us-lavender-text-tints.html",
+  "source": "mano-design 0.2.0 RSI 第 3 轮（借鉴 heydamir/unslop signs.md / tokens.md，CC BY 4.0）"
+ },
+ {
+  "id": "us-font-sprawl",
+  "category": "type",
+  "verdict": "FAIL",
+  "rules": [
+   "ty.font-family-sprawl"
+  ],
+  "note": "4 个字体家族混用（字体不匹配）",
+  "split": "train",
+  "file": "bad/us-font-sprawl.html",
+  "source": "mano-design 0.2.0 RSI 第 3 轮（借鉴 heydamir/unslop signs.md / tokens.md，CC BY 4.0）"
+ },
+ {
+  "id": "us-font-pair-ok",
+  "category": "type",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "界面字体 + 标题衬线 + 等宽代码：合格配对",
+  "split": "train",
+  "file": "good/us-font-pair-ok.html",
+  "source": "mano-design 0.2.0 RSI 第 3 轮（借鉴 heydamir/unslop signs.md / tokens.md，CC BY 4.0）"
+ },
+ {
+  "id": "us-font-sprawl-inline",
+  "category": "type",
+  "verdict": "FAIL",
+  "rules": [
+   "ty.font-family-sprawl"
+  ],
+  "note": "行内样式里 3 个无衬线家族混用",
+  "split": "holdout",
+  "file": "bad/us-font-sprawl-inline.html",
+  "source": "mano-design 0.2.0 RSI 第 3 轮（借鉴 heydamir/unslop signs.md / tokens.md，CC BY 4.0）"
+ },
+ {
+  "id": "us-size-sprawl",
+  "category": "type",
+  "verdict": "PASS",
+  "rules": [
+   "ty.size-sprawl"
+  ],
+  "note": "9 个字号（unslop：too many sizes → 从字阶取少数几档）。minor",
+  "split": "train",
+  "file": "bad/us-size-sprawl.html",
+  "source": "mano-design 0.2.0 RSI 第 3 轮（借鉴 heydamir/unslop signs.md / tokens.md，CC BY 4.0）"
+ },
+ {
+  "id": "us-heavy-heading",
+  "category": "type",
+  "verdict": "PASS",
+  "rules": [
+   "ty.heavy-weight"
+  ],
+  "note": "标题 900 字重（unslop：800/900 → 400—500 用字号做层级）。minor",
+  "split": "train",
+  "file": "bad/us-heavy-heading.html",
+  "source": "mano-design 0.2.0 RSI 第 3 轮（借鉴 heydamir/unslop signs.md / tokens.md，CC BY 4.0）"
+ },
+ {
+  "id": "us-tracked-caps-label",
+  "category": "type",
+  "verdict": "PASS",
+  "rules": [
+   "ty.uppercase-tracked"
+  ],
+  "note": "全大写加宽字距标签。minor",
+  "split": "train",
+  "file": "bad/us-tracked-caps-label.html",
+  "source": "mano-design 0.2.0 RSI 第 3 轮（借鉴 heydamir/unslop signs.md / tokens.md，CC BY 4.0）"
+ },
+ {
+  "id": "us-sentence-label-ok",
+  "category": "type",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "句式标签合格",
+  "split": "train",
+  "file": "good/us-sentence-label-ok.html",
+  "source": "mano-design 0.2.0 RSI 第 3 轮（借鉴 heydamir/unslop signs.md / tokens.md，CC BY 4.0）"
+ },
+ {
+  "id": "us-off-scale-spacing",
+  "category": "layout",
+  "verdict": "FAIL",
+  "rules": [
+   "ly.off-scale-spacing"
+  ],
+  "note": "任意间距值 13/7/11/19/5（unslop：arbitrary values → 4px 阶梯）",
+  "split": "train",
+  "file": "bad/us-off-scale-spacing.html",
+  "source": "mano-design 0.2.0 RSI 第 3 轮（借鉴 heydamir/unslop signs.md / tokens.md，CC BY 4.0）"
+ },
+ {
+  "id": "us-tw-arbitrary-spacing",
+  "category": "layout",
+  "verdict": "FAIL",
+  "rules": [
+   "ly.off-scale-spacing"
+  ],
+  "note": "Tailwind 任意间距值",
+  "split": "holdout",
+  "file": "bad/us-tw-arbitrary-spacing.html",
+  "source": "mano-design 0.2.0 RSI 第 3 轮（借鉴 heydamir/unslop signs.md / tokens.md，CC BY 4.0）"
+ },
+ {
+  "id": "us-scale-spacing-ok",
+  "category": "layout",
+  "verdict": "PASS",
+  "rules": [],
+  "note": "间距在 2/4px 阶梯上（含 1px 边框、6/10 半步）合格",
+  "split": "train",
+  "file": "good/us-scale-spacing-ok.html",
+  "source": "mano-design 0.2.0 RSI 第 3 轮（借鉴 heydamir/unslop signs.md / tokens.md，CC BY 4.0）"
+ },
+ {
+  "id": "us-shouty-copy",
+  "category": "copy",
+  "verdict": "PASS",
+  "rules": [
+   "cp.shouty-copy"
+  ],
+  "note": "问候式标题 + 双感叹号（unslop：Welcome back! / +12%!! → 页面名做标题、写明比较对象）。minor",
+  "split": "train",
+  "file": "bad/us-shouty-copy.html",
+  "source": "mano-design 0.2.0 RSI 第 3 轮（借鉴 heydamir/unslop signs.md / tokens.md，CC BY 4.0）"
  }
 ]

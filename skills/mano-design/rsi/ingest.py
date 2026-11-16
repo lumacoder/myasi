@@ -25,7 +25,7 @@ from validate import PRIVATE  # noqa: E402
 
 ID = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 EMAIL = re.compile(r"[\w.+-]+@(?!example\.(com|org|net)\b)[\w-]+\.[\w.-]+")
-CATS = {"component", "state", "a11y", "color", "copy", "layout"}
+CATS = {"component", "state", "a11y", "color", "copy", "layout", "type"}
 
 
 def check(entry, rules, existing_ids, existing_hashes):

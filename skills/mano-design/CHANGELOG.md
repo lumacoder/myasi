@@ -1,5 +1,9 @@
 # 更新记录
 
+## 0.2.1 — 2026-11-16
+- RSI 第 3 轮（借鉴 heydamir/unslop，CC BY 4.0 署名）：新增 type 类别与 9 条视觉卫生 lint 规则——co.glow-shadow、co.gradient-text、co.near-duplicate-colors（只看文字色）、ty.font-family-sprawl、ty.size-sprawl、ty.heavy-weight、ty.uppercase-tracked、ly.off-scale-spacing（含 Tailwind 任意值）、cp.shouty-copy；18 个用例（4 个 holdout 先写后测：首轮 3/4，us-tw-glow-class 暴露了阴影模糊半径解析缺陷——未带单位的 0 偏移被跳过——通用修复后全对）；browser_check --visual-stats 渲染后统计调色板/字体/字号/奇数间距；流程加入方向五行、改多少分级、九遍顺序；unslop 自带的 3 个 vibecoded 示例被新规则全部命中
+- eval：106/106，score 100.0，holdout 100.0
+
 ## 0.2.0 — 2026-11-16
 用户反馈 v0.1 只会挑错、视觉 4.5/10、缺创意 → 新增「视觉与创意」层，面向任何页面类型，机制逐条源自用户给的 3 条帖子（`capabilities/mechanism-sources.md`）。
 - 新流程 `capabilities/visual-design.md`：理解 → 原型 → 逐区块基准 → DESIGN.md-lite → 主题 → 领域创意 pass → 反默认自审 → 主流组件实现 → 检查 → 联系表苛刻评审（先修 3 个）→ 视觉评分 ≥8 门禁。

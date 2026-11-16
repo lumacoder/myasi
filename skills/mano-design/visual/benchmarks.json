@@ -1086,6 +1086,22 @@
    "verified": "2026-11-16",
    "verified_by": "GitHub API stars/license",
    "capture_url": null
+  },
+  {
+   "id": "unslop",
+   "repo": "https://github.com/heydamir/unslop",
+   "stars": 16771,
+   "license": "CC-BY-4.0",
+   "demo_url": "https://github.com/heydamir/unslop",
+   "capture_url": null,
+   "archetypes": [
+    "*"
+   ],
+   "use": "tool",
+   "what": "把 vibecoded 界面改成有设计感：slop 痕迹清单、方向五行、九遍修复、tokens（间距/字阶/圆角/色阶）",
+   "borrow": "视觉卫生 lint 规则、--visual-stats、方向五行、改多少分级（署名 CC BY 4.0）",
+   "verified": "2026-11-16",
+   "verified_by": "GitHub API stars/license；阅读 README、SKILL.md、signs.md、tokens.md、snapshot.mjs"
   }
  ]
 }

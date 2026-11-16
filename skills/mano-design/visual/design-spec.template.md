@@ -1,6 +1,7 @@
 # DESIGN.md-lite（动手前填写；来源：refero styles 的真实站点 DESIGN.md + anthropics frontend-design 两遍法）
 - 产品 / 用户 / 这一屏的任务：
 - 原型（主 / 次）与模式：
+- 方向五行（unslop）：产品 / 性格（2—3 个具体词，禁用 clean·modern·premium·简洁·高级）/ 世界 / 时刻（1—2 处）/ 签名（1 个）：
 - 材质隐喻（一句话，像 refero 的写法：「白纸上的排版终端」「夜间调度台」）：
 - 基准与借鉴点（每个区块一个）：| 区块 | 参考 | 借什么 |
 - 颜色（4—6 个命名 hex；或 theme.py 的主题 id）：

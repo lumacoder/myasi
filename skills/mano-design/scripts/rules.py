@@ -19,7 +19,7 @@ def main(argv=None):
     utf8_stdio()
     ap = argparse.ArgumentParser(description="查询 mano-design 规则")
     ap.add_argument("--id", action="append", default=[])
-    ap.add_argument("--category", choices=("component", "state", "a11y", "color", "copy", "layout"))
+    ap.add_argument("--category", choices=("component", "state", "a11y", "color", "copy", "layout", "type"))
     ap.add_argument("--detect", choices=("lint", "rubric", "browser"))
     ap.add_argument("--severity", choices=("critical", "major", "minor"))
     ap.add_argument("--keyword")

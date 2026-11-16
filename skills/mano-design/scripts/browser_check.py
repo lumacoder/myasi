@@ -8,6 +8,7 @@
 - axe:<rule>        若能加载 axe-core（本地 AXE_PATH 或 --axe-url），附带 axe 违规
 
 - 多路由 / SPA：--routes "#/,#/runs,#/runs/38" 逐个检查；--wait-for <选择器> / --wait-ms 等真实内容渲染后再查（骨架屏不算）
+- --visual-stats 渲染后统计调色板/字体家族/字号/奇数间距（借鉴 heydamir/unslop），给视觉评分提供证据
 - --color-scheme dark 检查暗色模式；--shots <目录> 每个路由截一张图（给 visual_capture / 视觉评分用）
 
 用法：
@@ -60,6 +61,34 @@ FOCUS_JS = r"""
   const s = getComputedStyle(el);
   const visible = (s.outlineStyle !== 'none' && parseFloat(s.outlineWidth) > 0) || (s.boxShadow && s.boxShadow !== 'none');
   return {tag: el.tagName.toLowerCase(), text: (el.innerText || el.getAttribute('aria-label') || '').trim().slice(0, 24), visible}; }
+"""
+
+VISUAL_JS = r"""
+() => {
+  // 渲染后的视觉统计（借鉴 heydamir/unslop 的 signs/tokens 思路：调色板、字体、字号、间距阶梯；实现自写）
+  const parse = c => { const m = c && c.match(/rgba?\(([^)]+)\)/); if (!m) return null; const p = m[1].split(/[ ,\/]+/).filter(Boolean).map(Number); return [p[0], p[1], p[2], p.length > 3 ? p[3] : 1]; };
+  const hsl = ([r, g, b]) => { r /= 255; g /= 255; b /= 255; const mx = Math.max(r, g, b), mn = Math.min(r, g, b), l = (mx + mn) / 2; if (mx === mn) return [0, 0, l];
+    const d = mx - mn, s = l > .5 ? d / (2 - mx - mn) : d / (mx + mn); let h = mx === r ? (g - b) / d + (g < b ? 6 : 0) : mx === g ? (b - r) / d + 2 : (r - g) / d + 4; return [h * 60, s, l]; };
+  const text = new Map(), bgs = new Map(), fams = new Map(), sizes = new Map(), weights = new Map(), odd = new Map(); const hues = new Set();
+  const inc = (m, k) => m.set(k, (m.get(k) || 0) + 1);
+  for (const el of document.querySelectorAll('body *')) {
+    const r = el.getBoundingClientRect(); if (r.width < 1 || r.height < 1) continue;
+    const s = getComputedStyle(el); if (s.visibility === 'hidden' || s.display === 'none') continue;
+    const hasText = [...el.childNodes].some(n => n.nodeType === 3 && n.textContent.trim());
+    if (hasText) { const c = parse(s.color); if (c && c[3] > .5) { inc(text, c.slice(0, 3).join(',')); const [h, sat, l] = hsl(c); if (sat > .3 && l > .15 && l < .9) hues.add(Math.floor(h / 30)); }
+      inc(fams, s.fontFamily.split(',')[0].replace(/["']/g, '').trim()); inc(sizes, s.fontSize); inc(weights, s.fontWeight); }
+    const b = parse(s.backgroundColor); if (b && b[3] > .5) { inc(bgs, b.slice(0, 3).join(',')); const [h, sat, l] = hsl(b); if (sat > .3 && l > .15 && l < .9) hues.add(Math.floor(h / 30)); }
+    for (const k of ['marginTop', 'marginBottom', 'marginLeft', 'marginRight', 'paddingTop', 'paddingBottom', 'paddingLeft', 'paddingRight', 'rowGap', 'columnGap']) {
+      const v = parseFloat(s[k]); if (v > 1 && Number.isInteger(v) && v % 2) inc(odd, v); }
+  }
+  const top = m => [...m.entries()].sort((a, b) => b[1] - a[1]);
+  const tc = top(text).map(([k]) => k.split(',').map(Number));
+  let near = 0; for (let i = 0; i < tc.length; i++) for (let j = i + 1; j < tc.length; j++) { const d = Math.hypot(...tc[i].map((x, k) => x - tc[j][k])); if (d > 0 && d < 14) near++; }
+  const mono = f => /mono|code|courier|consolas|menlo/i.test(f);
+  return { text_colors: tc.length, near_duplicate_text_pairs: near, background_colors: bgs.size, chromatic_hue_buckets: hues.size,
+    font_families: top(fams).map(([k, n]) => k + '×' + n), non_mono_families: [...fams.keys()].filter(f => !mono(f)).length,
+    font_sizes: top(sizes).map(([k]) => k), font_weights: top(weights).map(([k]) => k), odd_spacing_values: top(odd).map(([k, n]) => k + 'px×' + n) };
+}
 """
 
 
@@ -140,6 +169,7 @@ def main(argv=None):
     ap.add_argument("--color-scheme", choices=("light", "dark"), default="light")
     ap.add_argument("--shots", default="", help="截图输出目录（每个路由一张）")
     ap.add_argument("--axe-path", help="本地 axe.min.js 路径")
+    ap.add_argument("--visual-stats", action="store_true", help="输出渲染后的调色板/字体/字号/间距统计，并按 co./ty./ly. 规则给出提示")
     ap.add_argument("--axe-url", help="axe-core 脚本 URL（可选，需要联网）")
     a = ap.parse_args(argv)
     try:
@@ -179,14 +209,27 @@ def main(argv=None):
                 Path(a.shots).mkdir(parents=True, exist_ok=True)
                 page.screenshot(path=str(Path(a.shots) / f"route-{i + 1}-{a.color_scheme}.png"))
             f, n = check_page(page, a, w)
+            vs = None
+            if a.visual_stats:
+                vs = page.evaluate(VISUAL_JS)
+                if vs["non_mono_families"] > 2:
+                    f.append({"rule": "ty.font-family-sprawl", "severity": "major", "element": "document", "evidence": f"渲染出 {vs['non_mono_families']} 个非等宽字体家族：{vs['font_families'][:5]}"})
+                if len(vs["font_sizes"]) > 8:
+                    f.append({"rule": "ty.size-sprawl", "severity": "minor", "element": "document", "evidence": f"{len(vs['font_sizes'])} 种字号：{vs['font_sizes']}"})
+                if vs["near_duplicate_text_pairs"] >= 3:
+                    f.append({"rule": "co.near-duplicate-colors", "severity": "minor", "element": "document", "evidence": f"{vs['near_duplicate_text_pairs']} 组近似文字色"})
+                if vs["chromatic_hue_buckets"] >= 5:
+                    f.append({"rule": "co.palette-sprawl", "severity": "minor", "element": "document", "evidence": f"有彩色相分布在 {vs['chromatic_hue_buckets']} 个 30° 区间"})
+                if len(vs["odd_spacing_values"]) >= 3:
+                    f.append({"rule": "ly.off-scale-spacing", "severity": "major", "element": "document", "evidence": f"奇数间距值：{vs['odd_spacing_values'][:6]}"})
             f += [{"rule": "st.missing-error", "severity": "major", "element": "console", "evidence": "页面脚本报错：" + e} for e in errors[:3]]
-            pages.append({"route": r or "/", "url": url, "findings": f, "notes": note + n})
+            pages.append({"route": r or "/", "url": url, "findings": f, "notes": note + n, "visual_stats": vs})
             page.close()
         browser.close()
     findings = [dict(x, route=pg["route"]) for pg in pages for x in pg["findings"]]
     verdict = "FAIL" if any(f["severity"] in ("critical", "major") for f in findings) else "PASS"
     out = {"target": a.target, "viewport": a.viewport, "color_scheme": a.color_scheme, "verdict": verdict,
-           "findings": findings, "routes": [{"route": pg["route"], "count": len(pg["findings"]), "notes": pg["notes"]} for pg in pages]}
+           "findings": findings, "routes": [{"route": pg["route"], "count": len(pg["findings"]), "notes": pg["notes"], **({"visual_stats": pg["visual_stats"]} if pg["visual_stats"] else {})} for pg in pages]}
     print(json.dumps(out, ensure_ascii=False, indent=2))
     return 2 if verdict == "FAIL" else 0
 

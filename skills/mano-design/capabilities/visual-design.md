@@ -26,7 +26,8 @@ Operate/Read 的大胆体现为**精确与克制 + 一个签名可视化**；Per
 
 ## ③ 风格规格（DESIGN.md-lite，动手前写）
 来自 refero styles（真实网站 → AI 可读 DESIGN.md）与 anthropics frontend-design 的「两遍法」。模板：`visual/design-spec.template.md`。
-必须包含：一句**材质隐喻**（如「夜间调度台」）、4—6 个命名色（hex）、字体角色与字阶、布局概念（一句话 + ASCII 线框）、签名元素、动效预算、明确**不做**什么。
+先写 unslop 的**方向五行**：产品（做什么、给谁）/ 性格（2—3 个具体词，禁用 clean、modern、sleek、minimal、premium、简洁、高级）/ 世界（产品天然所属的场所或材质，决定中性色调、强调色与视觉）/ 时刻（1—2 处承载色彩与细节的内容）/ 签名（只有这个产品才有的一个小细节）。
+再写：一句**材质隐喻**（如「夜间调度台」）、4—6 个命名色（hex）、字体角色与字阶、布局概念（一句话 + ASCII 线框）、签名元素、动效预算、明确**不做**什么。
 用户/品牌有 DESIGN.md 或设计系统 → 直接用它，跳过 ④ 的挑选。
 
 ## ④ 主题（未指定时必须自己选）
@@ -51,13 +52,17 @@ Operate/Read 的大胆体现为**精确与克制 + 一个签名可视化**；Per
 - 首屏「大数字 + 小标签 + 渐变点缀」；01/02/03 编号却不是顺序内容；每个区块都淡入上滑。
 命中的要么改掉，要么写明理由（例如用户点名要这种风格）。
 
+## ⑥b 改多少（重做已有页面时）
+先按 signs 审计（`ui_lint` 的 co./ty./ly./cp. 视觉卫生规则 + `browser_check --visual-stats`）：**重度**（颜色、字体、图标、文案多处命中）→ 全流程重做；**轻度** → 只修审计到的点，沿用现有品牌与版式，大想法写进建议；**无** → 直说，最多给 2—3 个带具体数值的微调，不为不同而改（unslop）。
+
 ## ⑦ 实现：主流组件 + token
 - 组件：项目已有设计系统 > shadcn/ui（Radix）风格 > 其他；图标一套（lucide）；Toast 用 sonner 风格；图表 Recharts/Tremor；节点图 @xyflow/react。
+- 按 unslop 的九遍顺序落地：间距 → 颜色 → 图标 → 文案 → 字体 → 布局 → 细节（嵌套圆角 = 外圆角 − 内边距、计数用安静文字/键帽、图表一个强调色）→ 视觉 → 动效；每遍覆盖全屏再进下一遍。
 - 所有颜色/字体走 token（hallmark Floor #1）；`transform/opacity` 动画，不用 `transition: all`；每个动画有 reduced-motion。
 - 交付形态需要「双击即开」时：Vite + vite-plugin-singlefile 打成单个 HTML（离线可用，不依赖 CDN）。
 
 ## ⑧ 检查（确定性）
-`ui_lint.py`（源码/产物）+ `browser_check.py dist/index.html --routes "#/a,#/b" --wait-for "<真实内容选择器>" --axe-path axe.min.js`，明暗各一次。critical/major 必须清零。
+`ui_lint.py`（源码/产物）+ `browser_check.py dist/index.html --routes "#/a,#/b" --wait-for "<真实内容选择器>" --axe-path axe.min.js --visual-stats`（渲染后的字体家族/字号/调色板/奇数间距作为视觉评分证据），明暗各一次。critical/major 必须清零。
 
 ## ⑨ 取证：联系表
 `python3 scripts/visual_capture.py dist/index.html --out shots --views "..." --archetype <主>,<次> --dark --mobile`

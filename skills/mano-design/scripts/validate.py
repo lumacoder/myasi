@@ -20,7 +20,7 @@ PRIVATE = [("Windows 用户路径", re.compile(r"[A-Za-z]:\\\\?Users\\\\?[A-Za-z
            ("API key", re.compile(r"\bsk-[A-Za-z0-9_-]{24,}|\bAKIA[0-9A-Z]{16}\b|\bAIza[0-9A-Za-z_-]{35}\b")),
            ("私钥", re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----"))]
 SEVERITIES = {"critical", "major", "minor"}
-CATS = {"component", "state", "a11y", "color", "copy", "layout"}
+CATS = {"component", "state", "a11y", "color", "copy", "layout", "type"}
 
 
 def frontmatter(text):

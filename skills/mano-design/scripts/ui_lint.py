@@ -789,6 +789,130 @@ class Linter:
                 self.add("cp.opaque-id", n, f"编号前缀截断：{m.group(0)}")
 
 
+    # ---- 视觉卫生（借鉴 heydamir/unslop 的 signs/tokens，CC BY 4.0；实现为本 skill 自写）
+    def all_decls(self):
+        """(节点或 None, 属性, 值)：样式表 + 行内样式 + Tailwind 任意值类。"""
+        for sel, d, _m in self.css_rules:
+            for k, v in d.items():
+                yield None, k, v
+        for n in self.nodes:
+            for part in (n.get("style") or "").split(";"):
+                if ":" in part:
+                    k, v = part.split(":", 1)
+                    yield n, k.strip().lower(), v.strip().lower()
+
+    def tw_classes(self):
+        for n in self.nodes:
+            for c in n.classes:
+                yield n, c
+
+    def check_us_color(self):
+        glow = None
+        shadows = [(n, v) for n, k, v in self.all_decls() if k in ("box-shadow", "text-shadow", "filter")]
+        shadows += [(n, c[c.index("[") + 1:-1].replace("_", " ")) for n, c in self.tw_classes() if re.match(r"^(drop-)?shadow-\[", c) and c.endswith("]")]
+        for n, v in shadows:
+            for part in re.split(r",(?![^(]*\))", v):
+                col = parse_color(part)
+                if not col:
+                    continue
+                nums = [float(x) for x in re.findall(r"(?<![\w.])(-?[\d.]+)(?:px)?(?![\w.%])", re.sub(r"rgba?\([^)]*\)|hsla?\([^)]*\)|#[0-9a-f]+|drop-shadow|inset", " ", part))]
+                blur = nums[2] if len(nums) >= 3 else (nums[-1] if "drop-shadow" in part and nums else 0)
+                h, sat, l = hsl(col)
+                if sat > 0.35 and 0.2 < l < 0.85 and col[3] >= 0.2 and blur >= 8:
+                    glow = (n, part.strip()[:60])
+                    break
+            if glow:
+                break
+        if glow:
+            self.add("co.glow-shadow", glow[0], f"彩色发光阴影：{glow[1]}")
+        grad_text = None
+        for sel, d, _m in self.css_rules:
+            bg = d.get("background", "") + d.get("background-image", "")
+            if "gradient(" in bg and "text" in (d.get("background-clip", "") + d.get("-webkit-background-clip", "")):
+                grad_text = sel
+        for n in self.nodes:
+            cl = n.classes
+            if "bg-clip-text" in cl and any(c.startswith(("bg-gradient-", "bg-linear-", "bg-radial-")) for c in cl):
+                grad_text = n.desc()
+            st = (n.get("style") or "").lower()
+            if "gradient(" in st and "background-clip:text" in st.replace(" ", ""):
+                grad_text = n.desc()
+        if grad_text:
+            self.add("co.gradient-text", None, f"渐变文字：{grad_text[:60]}")
+        cols = set()
+        for _n, k, v in self.all_decls():
+            if k == "color":  # 只看文字色：表面色阶本来就该是相近的几步
+                c = parse_color(v)
+                if c and c[3] >= 0.99:
+                    cols.add(tuple(int(round(x)) for x in c[:3]))
+        cols = sorted(cols)
+        near = [(a, b) for i, a in enumerate(cols) for b in cols[i + 1:] if 0 < sum((x - y) ** 2 for x, y in zip(a, b)) ** 0.5 < 14]
+        if len(near) >= 3:
+            self.add("co.near-duplicate-colors", None, f"{len(near)} 组肉眼难分的近似色，如 " + "、".join("#%02x%02x%02x" % a for a, _ in near[:3]))
+
+    def check_us_type(self):
+        generic = {"serif", "sans-serif", "monospace", "cursive", "fantasy", "system-ui", "inherit", "initial", "unset",
+                   "-apple-system", "blinkmacsystemfont", "ui-sans-serif", "ui-serif", "ui-monospace", "emoji", "math"}
+        fams, sizes = set(), set()
+        for _n, k, v in self.all_decls():
+            if k in ("font-family", "font"):
+                if k == "font" and "," not in v and not re.search(r"['\"]", v):
+                    continue
+                for f in v.split(","):
+                    f = f.strip().strip("'\"").strip()
+                    if k == "font":
+                        f = re.sub(r"^.*\d(px|rem|em|%)(/[\d.]+\w*)?\s+", "", f)
+                    if not f or f in generic or f.startswith("var(") or re.search(r"mono|code|courier|consolas|menlo", f):
+                        continue
+                    fams.add(f)
+                    break
+            if k == "font-size":
+                m = re.match(r"([\d.]+)(px|rem)$", v)
+                if m:
+                    sizes.add(round(float(m.group(1)) * (16 if m.group(2) == "rem" else 1), 1))
+            if k == "font-weight" and v in ("800", "900", "bolder", "black"):
+                self.add("ty.heavy-weight", None, f"font-weight:{v}")
+        if any(c in ("font-black", "font-extrabold") for _n, c in self.tw_classes()):
+            self.add("ty.heavy-weight", None, "font-black/font-extrabold")
+        if len(fams) > 2:
+            self.add("ty.font-family-sprawl", None, f"{len(fams)} 个字体家族：{'、'.join(sorted(fams)[:5])}")
+        if len(sizes) > 8:
+            self.add("ty.size-sprawl", None, f"{len(sizes)} 种字号：{', '.join(str(int(x) if x == int(x) else x) for x in sorted(sizes))}")
+        for sel, d, _m in self.css_rules:
+            ls = d.get("letter-spacing", "")
+            m = re.match(r"([\d.]+)(em|px)", ls)
+            if d.get("text-transform") == "uppercase" and m and float(m.group(1)) >= (0.05 if m.group(2) == "em" else 1):
+                self.add("ty.uppercase-tracked", None, f"{sel[:30]}：uppercase + letter-spacing {ls}")
+                break
+        for n, c in self.tw_classes():
+            if c == "uppercase" and any(x.startswith("tracking-w") for x in n.classes):
+                self.add("ty.uppercase-tracked", n, "uppercase + tracking-wide*")
+                break
+
+    def check_us_spacing(self):
+        odd = set()
+        for _n, k, v in self.all_decls():
+            if re.match(r"^(margin|padding|gap|row-gap|column-gap)(-|$)", k):
+                for x in re.findall(r"(?<![\w.-])(\d+)px", v):
+                    if int(x) > 1 and int(x) % 2:
+                        odd.add(int(x))
+        for _n, c in self.tw_classes():
+            m = re.match(r"^-?(m|p|gap|space)[trblxyse]?(-[xy])?-\[(\d+)px\]$", c)
+            if m and int(m.group(3)) > 1 and int(m.group(3)) % 2:
+                odd.add(int(m.group(3)))
+        if len(odd) >= 3:
+            self.add("ly.off-scale-spacing", None, f"{len(odd)} 个随意间距值：{', '.join(f'{x}px' for x in sorted(odd))}")
+
+    def check_us_copy(self):
+        t = self.doc_text
+        if re.search(r"[!！]{2,}", t):
+            self.add("cp.shouty-copy", None, "双感叹号：" + re.search(r".{0,12}[!！]{2,}", t).group(0))
+        for n in self.nodes:
+            if n.tag in ("h1", "h2") and re.match(r"^(欢迎回来|欢迎|welcome back|hi|hello|hey)\b.*[!！]$", n.text().strip(), re.I):
+                self.add("cp.shouty-copy", n, f"问候式标题：{n.text()[:20]}")
+                break
+
+
 def lint_source(src, rules=None, path=""):
     rules = rules or load_rules()
     if path.endswith((".jsx", ".tsx")) or re.search(r"className=|onClick=\{", src):

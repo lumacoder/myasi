@@ -22,6 +22,8 @@
 | **creativity 创意与领域契合** | 模板感、可贴到任何产品 | 只是把原组件换皮 | 有一点领域化处理 | 有一个**来自领域对象的签名可视化/交互**（见 creative-patterns.json），且服务任务 | 签名设计让人想截图转发，同时更好用 |
 | **consistency 一致性** | 多种风格打架 | 页面间组件/术语不一致 | 大体一致，少量漂移 | 一个设计方向贯穿所有页面与状态（philosophy consistency） | 每个细节都在论证同一个方向 |
 
+> 证据来源建议：`browser_check.py --visual-stats` 的字体家族数、字号数、近似文字色、色相桶数、奇数间距值（unslop 的视觉卫生项），直接引用到 typography / color / density 的 evidence。
+
 ## 模式权重（总和 1）
 | 维度 | Operate | Persuade | Read | Experience |
 |---|---|---|---|---|

@@ -18,7 +18,7 @@ description: >-
 | 场景 | 读取 / 运行 |
 |---|---|
 | **新做/重做任何页面（主流程）** | `capabilities/visual-design.md` |
-| 机制出处（3 条帖子 → 每一步） | `capabilities/mechanism-sources.md` |
+| 机制出处（3 条帖子 + unslop → 每一步） | `capabilities/mechanism-sources.md` |
 | 原型识别 → 区块、基准、签名候选 | `python3 scripts/archetype.py "<需求>"`；全表 `visual/archetypes.json` |
 | 找/核实基准 | `capabilities/benchmark-discovery.md`；种子 `visual/benchmarks.json` |
 | 风格规格 | `visual/design-spec.template.md` |
@@ -56,7 +56,7 @@ description: >-
 - 统计卡不兼做筛选（用带计数的 Tabs）；占位值（—/未启用）不和真实 KPI 同权重；同一对象只有一个状态来源；编号用可读序号 + 尾号 + 复制。
 - 互斥 3—5 → Radio/Segmented；>7 → Select；>15 → 可搜索 Combobox；日期 → Date Picker；危险操作 → AlertDialog 或撤销。
 - 正文对比 ≥4.5:1；点击区 ≥24px（移动 44px）；过渡 150—300ms；有 reduced-motion。
-- 去 AI 味：无紫蓝渐变、emoji 标题、卡片套卡片、全大写眉标、「赋能/一站式」套话。
+- 去 AI 味：无紫蓝渐变、彩色发光、渐变字、emoji 标题、卡片套卡片、全大写宽字距眉标、800/900 字重、>2 个字体家族、奇数随意间距、喊叫文案、「赋能/一站式」套话（视觉卫生规则借鉴 heydamir/unslop，CC BY 4.0）。
 
 ## 自测
 ```bash
