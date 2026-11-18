@@ -1,0 +1,187 @@
+{
+  "version": 1,
+  "snapshot_date": "2026-11-18",
+  "scope": "UI motion and 3D libraries for mano-design; excludes video editing / game engines / audio processing",
+  "verification": "Licenses checked 2026-11-18 (GitHub API; GSAP via https://gsap.com/licensing/). Bundle sizes and browser support are intentionally not listed: measure with the project's own bundle analyzer and target browsers.",
+  "libraries": [
+    {
+      "name": "motion",
+      "npm": "motion",
+      "repo": "motiondivision/motion",
+      "license": "MIT",
+      "stars": 35314,
+      "use_case": "React 组件状态转场、layout animation、enter/exit",
+      "browser_support": "Evergreen browsers; verify against project targets",
+      "pros": "声明式；自动处理布局变化；TypeScript 原生支持",
+      "cons": "包体积比纯 CSS 大；复杂动画不如 GSAP 灵活",
+      "install": "npm install motion",
+      "verified": "license_only"
+    },
+    {
+      "name": "three.js",
+      "npm": "three",
+      "repo": "mrdoob/three.js",
+      "license": "MIT",
+      "stars": 118776,
+      "use_case": "原生 JS 3D 场景、WebGL",
+      "browser_support": "Evergreen browsers; verify against project targets",
+      "pros": "行业标准；文档完善；生态丰富；可按需导入",
+      "cons": "命令式 API；React 集成需额外封装",
+      "install": "npm install three",
+      "verified": "license_only"
+    },
+    {
+      "name": "@react-three/fiber",
+      "npm": "@react-three/fiber",
+      "repo": "pmndrs/react-three-fiber",
+      "license": "MIT",
+      "stars": 33795,
+      "use_case": "React 中声明式使用 three.js",
+      "browser_support": "同 three.js",
+      "pros": "React 组件化；hooks；自动内存清理；SSR 支持",
+      "cons": "需学习 three.js 概念；调试比原生 three.js 难",
+      "install": "npm install three @react-three/fiber",
+      "peer_dependencies": [
+        "react",
+        "react-dom",
+        "three"
+      ],
+      "verified": "license_only"
+    },
+    {
+      "name": "@react-three/drei",
+      "npm": "@react-three/drei",
+      "repo": "pmndrs/drei",
+      "license": "MIT",
+      "stars": 10173,
+      "use_case": "react-three/fiber 的辅助组件（相机控制、加载器、后处理）",
+      "browser_support": "同 react-three/fiber",
+      "pros": "开箱即用的常用功能；减少样板代码",
+      "cons": "增加包体积；部分组件有性能开销",
+      "install": "npm install @react-three/drei",
+      "peer_dependencies": [
+        "react",
+        "react-dom",
+        "three",
+        "@react-three/fiber"
+      ],
+      "verified": "license_only"
+    },
+    {
+      "name": "lottie-web",
+      "npm": "lottie-web",
+      "repo": "airbnb/lottie-web",
+      "license": "MIT",
+      "stars": 32492,
+      "use_case": "播放 After Effects 导出的 Bodymovin JSON 动画",
+      "browser_support": "Evergreen browsers; verify against project targets",
+      "pros": "设计师友好；矢量无损；文件小",
+      "cons": "不适合手写动画；需 AE 插件导出；部分 AE 特效不支持",
+      "install": "npm install lottie-web",
+      "verified": "license_only"
+    },
+    {
+      "name": "anime.js",
+      "npm": "animejs",
+      "repo": "juliangarnier/anime",
+      "license": "MIT",
+      "stars": 74850,
+      "use_case": "时间轴动画、stagger、路径动画",
+      "browser_support": "Evergreen browsers; verify against project targets",
+      "pros": "轻量；API 简洁；对 SVG/DOM/CSS/JS 对象统一接口",
+      "cons": "功能比 GSAP 少；无插件生态",
+      "install": "npm install animejs",
+      "verified": "license_only"
+    },
+    {
+      "name": "GSAP",
+      "npm": "gsap",
+      "repo": "greensock/GSAP",
+      "license": "GSAP Standard \"No Charge\" License (proprietary, not OSI)",
+      "license_note": "Free for commercial use, including former members-only plugins (SplitText, MorphSVG). Prohibited: use in no-code visual animation builders that compete with Webflow. Effective 2025-04-30.",
+      "stars": 30849,
+      "use_case": "复杂时间轴、ScrollTrigger、高级缓动",
+      "browser_support": "Evergreen browsers; verify against project targets",
+      "pros": "功能最强；性能优秀；插件丰富",
+      "cons": "非 OSI 开源许可，有竞争性可视化工具限制；已用 motion 的项目无需再引入",
+      "install": "npm install gsap",
+      "commercial_use": "Allowed at no charge (see license restrictions)",
+      "verified": "license_only",
+      "license_verified_url": "https://gsap.com/licensing/"
+    },
+    {
+      "name": "CSS 3D Transforms",
+      "npm": null,
+      "repo": null,
+      "license": "N/A (Web Standard)",
+      "use_case": "简单 2.5D 效果、卡片翻转、视差",
+      "browser_support": "Evergreen browsers; verify against project targets",
+      "pros": "无依赖；硬件加速；简单场景足够",
+      "cons": "无 Z-buffer 排序；无灯光材质；不适合复杂 3D",
+      "example": "transform: perspective(1000px) rotateX(10deg);",
+      "verified": "license_only"
+    },
+    {
+      "name": "Canvas API + requestAnimationFrame",
+      "npm": null,
+      "repo": null,
+      "license": "N/A (Web Standard)",
+      "use_case": "简单粒子、发光效果",
+      "browser_support": "Evergreen browsers; verify against project targets",
+      "pros": "无依赖；可控；性能可预测",
+      "cons": "需手写动画循环；复杂效果代码量大",
+      "example": "ctx.globalCompositeOperation='lighter' for glow",
+      "verified": "license_only"
+    }
+  ],
+  "excluded_from_ui_scope": [
+    {
+      "category": "视频制作",
+      "libraries": [
+        "remotion",
+        "ffmpeg.wasm",
+        "motion-canvas"
+      ],
+      "reason": "长视频渲染、字幕对齐、编解码不属于 UI 动效；需要时单独引入"
+    },
+    {
+      "category": "音频处理",
+      "libraries": [
+        "librosa",
+        "tone.js",
+        "howler.js"
+      ],
+      "reason": "节拍检测、音频可视化、音效播放不是 UI 必需；需要时单独引入"
+    },
+    {
+      "category": "数学公式动画",
+      "libraries": [
+        "manim",
+        "motion-canvas"
+      ],
+      "reason": "教育讲解类内容；不适用于通用 UI；需要时单独引入"
+    },
+    {
+      "category": "游戏引擎",
+      "libraries": [
+        "babylon.js",
+        "playcanvas",
+        "godot-web"
+      ],
+      "reason": "物理引擎、角色动画、地形生成超出 UI 范围；需要用专门工具"
+    }
+  ],
+  "selection_rules": [
+    "已有项目栈优先（motion 已有不引入 GSAP）",
+    "MIT 许可优先；GSAP 商业免费，但需遵守其禁止条款",
+    "包体积考虑：简单场景用原生 CSS；复杂才引入库",
+    "React 项目优先 motion / react-three-fiber；原生 JS 优先 anime.js / three.js",
+    "3D 需降级：WebGL 检测 + 静态预览图后备",
+    "所有动效需 prefers-reduced-motion 降级"
+  ],
+  "performance_budgets": {
+    "3d_model_per_file_mb": 2,
+    "frame_budget_ms": 16.7,
+    "notes": "体积预算由项目自定；用打包分析实测并按需拆包，3D 场景懒加载"
+  }
+}

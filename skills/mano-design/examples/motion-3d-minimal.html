@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI 动效与 3D 最小示例 | mano-design</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    
+    .subtitle {
+      opacity: 0.9;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+    
+    .section {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    h2 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+    
+    /* 示例 1: 动效按钮 */
+    .motion-demo {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .animated-button {
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: transform 0.2s ease-out, background 0.2s ease-out;
+      user-select: none;
+    }
+    
+    .animated-button:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+    
+    .animated-button:active {
+      transform: translateY(0);
+    }
+    
+    .expandable-card {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      padding: 1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+      overflow: hidden;
+      transition: all 0.3s ease-out;
+    }
+    
+    .expandable-card.expanded {
+      background: rgba(255, 255, 255, 0.25);
+    }
+    
+    .card-header {
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .card-content {
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.3s ease-out, opacity 0.3s ease-out, margin-top 0.3s ease-out;
+      overflow: hidden;
+    }
+    
+    .expandable-card.expanded .card-content {
+      max-height: 200px;
+      opacity: 1;
+      margin-top: 1rem;
+    }
+    
+    .arrow {
+      transition: transform 0.3s ease-out;
+    }
+    
+    .expandable-card.expanded .arrow {
+      transform: rotate(180deg);
+    }
+    
+    /* 示例 2: 3D 立方体 */
+    .scene-container {
+      perspective: 1000px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    
+    .cube {
+      width: 100px;
+      height: 100px;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: rotate-cube 8s infinite linear;
+    }
+    
+    .cube-face {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: bold;
+      backdrop-filter: blur(5px);
+    }
+    
+    .cube-face.front  { transform: rotateY(  0deg) translateZ(50px); }
+    .cube-face.back   { transform: rotateY(180deg) translateZ(50px); }
+    .cube-face.right  { transform: rotateY( 90deg) translateZ(50px); }
+    .cube-face.left   { transform: rotateY(-90deg) translateZ(50px); }
+    .cube-face.top    { transform: rotateX( 90deg) translateZ(50px); }
+    .cube-face.bottom { transform: rotateX(-90deg) translateZ(50px); }
+    
+    @keyframes rotate-cube {
+      from { transform: rotateX(0deg) rotateY(0deg); }
+      to   { transform: rotateX(360deg) rotateY(360deg); }
+    }
+    
+    /* prefers-reduced-motion 降级 */
+    @media (prefers-reduced-motion: reduce) {
+      .animated-button,
+      .expandable-card,
+      .card-content,
+      .arrow {
+        transition: none;
+      }
+      
+      .cube {
+        animation: none;
+        transform: rotateX(20deg) rotateY(30deg);
+      }
+      
+      .animated-button:hover {
+        transform: none;
+      }
+    }
+    
+    .info {
+      background: rgba(255, 255, 255, 0.15);
+      border-left: 3px solid rgba(255, 255, 255, 0.5);
+      padding: 0.75rem;
+      margin-top: 1rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+    
+    .webgl-status {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-top: 0.5rem;
+    }
+    
+    .webgl-status.supported {
+      background: rgba(34, 197, 94, 0.3);
+      border: 1px solid rgba(34, 197, 94, 0.5);
+    }
+    
+    .webgl-status.unsupported {
+      background: rgba(239, 68, 68, 0.3);
+      border: 1px solid rgba(239, 68, 68, 0.5);
+    }
+    
+    code {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>UI 动效与 3D 最小示例</h1>
+    <p class="subtitle">mano-design 增强能力演示 | 纯原生实现，无构建依赖</p>
+    
+    <!-- 示例 1: UI 动效 -->
+    <div class="section">
+      <h2>1. UI 状态转场与微交互</h2>
+      <p style="margin-bottom: 1rem; opacity: 0.9; font-size: 0.95rem;">
+        使用原生 CSS <code>transition</code>，遵循 150-300ms 时长规范
+      </p>
+      
+      <div class="motion-demo">
+        <button class="animated-button">悬停查看动效</button>
+        <button class="animated-button">点击查看反馈</button>
+      </div>
+      
+      <div class="expandable-card" id="expandCard">
+        <div class="card-header">
+          <span>展开查看更多内容</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="card-content">
+          <p>这是展开的内容。使用 <code>max-height</code> 和 <code>opacity</code> 过渡实现流畅的展开动画。</p>
+          <p style="margin-top: 0.5rem;">时长: 300ms ease-out，符合 mano-design 交互规范。</p>
+        </div>
+      </div>
+      
+      <div class="info">
+        <strong>动效原则</strong>: 只动 <code>transform</code> 和 <code>opacity</code>；时长 150-300ms；提供 <code>prefers-reduced-motion</code> 降级。
+      </div>
+    </div>
+    
+    <!-- 示例 2: CSS 3D -->
+    <div class="section">
+      <h2>2. CSS 3D 变换（2.5D 效果）</h2>
+      <p style="margin-bottom: 1rem; opacity: 0.9; font-size: 0.95rem;">
+        使用 CSS <code>perspective</code> 和 <code>transform-style: preserve-3d</code>
+      </p>
+      
+      <div class="scene-container">
+        <div class="cube">
+          <div class="cube-face front">前</div>
+          <div class="cube-face back">后</div>
+          <div class="cube-face right">右</div>
+          <div class="cube-face left">左</div>
+          <div class="cube-face top">上</div>
+          <div class="cube-face bottom">下</div>
+        </div>
+      </div>
+      
+      <div class="info">
+        <strong>适用场景</strong>: 卡片翻转、产品展示、视差效果。复杂 3D 场景需要 three.js。
+      </div>
+    </div>
+    
+    <!-- 示例 3: WebGL 检测与降级 -->
+    <div class="section">
+      <h2>3. 能力检测与降级</h2>
+      <p style="margin-bottom: 1rem; opacity: 0.9; font-size: 0.95rem;">
+        检测浏览器支持情况，提供降级方案
+      </p>
+      
+      <div>
+        <strong>WebGL 支持:</strong>
+        <div class="webgl-status" id="webglStatus">检测中...</div>
+      </div>
+      
+      <div style="margin-top: 1rem;">
+        <strong>动画偏好:</strong>
+        <div class="webgl-status" id="motionStatus">检测中...</div>
+      </div>
+      
+      <div class="info">
+        <strong>渐进增强</strong>: 核心功能无动效可用；3D 不支持时回退到 2D/静图；尊重用户偏好设置。
+      </div>
+    </div>
+    
+    <!-- 技术说明 -->
+    <div class="section">
+      <h2>技术栈与许可证</h2>
+      <ul style="list-style: none; line-height: 1.8;">
+        <li>✅ <strong>原生 CSS</strong> — transition, transform, animation (Web 标准)</li>
+        <li>✅ <strong>CSS 3D</strong> — perspective, preserve-3d (无需 WebGL)</li>
+        <li>✅ <strong>渐进增强</strong> — matchMedia, getContext 检测</li>
+      </ul>
+      
+      <div class="info" style="margin-top: 1rem;">
+        <p><strong>进阶库选型</strong>（见 <code>references/motion-libraries.json</code>）:</p>
+        <ul style="list-style: none; margin-top: 0.5rem; line-height: 1.8;">
+          <li>• React 状态转场: <strong>motion</strong> (MIT)</li>
+          <li>• 复杂 3D: <strong>three.js</strong> + <strong>@react-three/fiber</strong> (MIT)</li>
+          <li>• AE 动效: <strong>lottie-web</strong> (MIT)</li>
+          <li>• 时间轴编排: <strong>anime.js</strong> (MIT)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // 展开卡片交互
+    document.getElementById('expandCard').addEventListener('click', function() {
+      this.classList.toggle('expanded');
+    });
+    
+    // WebGL 检测
+    function detectWebGL() {
+      try {
+        const canvas = document.createElement('canvas');
+        const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+        return !!gl;
+      } catch(e) {
+        return false;
+      }
+    }
+    
+    const webglSupported = detectWebGL();
+    const webglStatus = document.getElementById('webglStatus');
+    if (webglSupported) {
+      webglStatus.textContent = '✅ 支持 WebGL';
+      webglStatus.classList.add('supported');
+    } else {
+      webglStatus.textContent = '❌ 不支持 WebGL（需降级）';
+      webglStatus.classList.add('unsupported');
+    }
+    
+    // 动画偏好检测
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const motionStatus = document.getElementById('motionStatus');
+    if (prefersReducedMotion) {
+      motionStatus.textContent = '⚠️ 用户偏好减少动画（已降级）';
+      motionStatus.classList.add('unsupported');
+    } else {
+      motionStatus.textContent = '✅ 允许动画';
+      motionStatus.classList.add('supported');
+    }
+    
+    // 监听偏好变化（用户在系统设置中切换）
+    window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (e) => {
+      if (e.matches) {
+        motionStatus.textContent = '⚠️ 用户偏好减少动画（已降级）';
+        motionStatus.classList.remove('supported');
+        motionStatus.classList.add('unsupported');
+      } else {
+        motionStatus.textContent = '✅ 允许动画';
+        motionStatus.classList.remove('unsupported');
+        motionStatus.classList.add('supported');
+      }
+    });
+  </script>
+</body>
+</html>

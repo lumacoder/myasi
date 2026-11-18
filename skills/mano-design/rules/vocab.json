@@ -188,5 +188,49 @@
    "container query",
    "max-width"
   ]
+ },
+ {
+  "term": "立体感",
+  "domain": "3D",
+  "concrete_spec": "CSS: perspective(1000px) + rotateX/Y；WebGL: three.js MeshStandardMaterial + AmbientLight(0.4) + DirectionalLight(0.8)；提供键盘控制与静图降级。",
+  "acceptance": "WebGL 检测；iOS Safari 测试；有「重置视角」；prefers-reduced-motion 停止自动旋转。",
+  "rule_ids": [
+   "st.no-reduced-motion",
+   "a11y.keyboard-trap"
+  ],
+  "model_known_keywords": [
+   "three.js",
+   "react-three-fiber",
+   "perspective"
+  ]
+ },
+ {
+  "term": "产品展示",
+  "domain": "3D",
+  "concrete_spec": "3D 模型 <2MB；PBR 材质（金属度/粗糙度）；@react-three/drei OrbitControls 或 PresentationControls；环境贴图 HDRI；移动端降分辨率。",
+  "acceptance": "加载进度条；触摸缩放旋转；灯光材质参数可配置；≥30fps。",
+  "rule_ids": [
+   "st.missing-loading"
+  ],
+  "model_known_keywords": [
+   "@react-three/fiber",
+   "@react-three/drei",
+   "GLB/GLTF"
+  ]
+ },
+ {
+  "term": "错峰动画",
+  "domain": "动效",
+  "concrete_spec": "列表项 stagger 30—50ms（≤8 项）；anime.js delay: anime.stagger(40) 或 motion staggerChildren: 0.04；从上到下或从中心向外。",
+  "acceptance": "总时长 <500ms；reduced-motion 关闭 stagger；无视觉跳变。",
+  "rule_ids": [
+   "st.slow-transition",
+   "st.no-reduced-motion"
+  ],
+  "model_known_keywords": [
+   "stagger",
+   "anime.js",
+   "motion"
+  ]
  }
 ]

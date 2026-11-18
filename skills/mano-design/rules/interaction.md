@@ -7,6 +7,7 @@
 | 空状态 | 说明原因 + 一个主操作；搜索无结果给「清除筛选」 | st.missing-empty, cs.search-filter-feedback |
 | 错误 | 字段下内联、aria-describedby、提交后聚焦首个错误；不清空已输入内容 | st.missing-error, cp.vague-error |
 | 动效 | 微交互 150—200ms，面板 200—300ms，>500ms 视为拖沓；只列具体属性；有 reduced-motion | st.slow-transition, st.transition-all, st.no-reduced-motion |
+| 3D 交互 | 提供键盘控制（方向键旋转）；WebGL 检测+静图降级；相机控制有「重置视角」；灯光材质参数可配置 | a11y.keyboard-trap, st.no-fallback |
 | 点击区 | ≥24×24（WCAG 2.5.8 AA），移动端 44×44；相邻目标间距 ≥8px | tt.small-target |
 | 键盘 | 全流程可 Tab；Tabs 用左右键；对话框焦点循环、Esc 关闭、关闭后焦点回触发器 | a11y.keyboard-trap |
 | 认知负荷 | 每屏 1 个主操作；选项 ≤7 平铺；渐进披露高级设置 | ly.hierarchy |
