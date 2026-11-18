@@ -1,0 +1,106 @@
+{
+  "version": "1.0",
+  "seed": 17,
+  "canvas": {
+    "width_px": 1280,
+    "height_px": 720,
+    "background": "#f4f2eb"
+  },
+  "fps": 24,
+  "duration_s": 4,
+  "intent": {
+    "original": "同一个球、同样距离，对比线性、丝滑、厚重",
+    "interpretation": "丝滑选C2起停的smootherstep；厚重选晚峰速、较短制动且不回弹。相同物体、距离、起止时刻，只比较运动。",
+    "conflicts": [
+      "本例固定等长2.6s便于对照，不把厚重简单等同于更慢。",
+      "数值图只验证平移，不证明角色/叙事品质。"
+    ],
+    "acceptance": [
+      "三个球从300px到1170px，均在0.5–3.1s移动。",
+      "丝滑起停速度和加速度趋0；厚重不回弹。",
+      "随机seek同t同图；4s/24fps导出96帧。"
+    ]
+  },
+  "objects": [
+    {
+      "id": "linear",
+      "label": "LINEAR / constant velocity",
+      "shape": "circle",
+      "color": "#65716d",
+      "width_px": 44,
+      "height_px": 44,
+      "x_px": 300,
+      "y_px": 210,
+      "scale": 1,
+      "rotation_rad": 0,
+      "opacity": 1
+    },
+    {
+      "id": "smooth",
+      "label": "SMOOTH / continuous start + stop",
+      "shape": "circle",
+      "color": "#217568",
+      "width_px": 44,
+      "height_px": 44,
+      "x_px": 300,
+      "y_px": 364,
+      "scale": 1,
+      "rotation_rad": 0,
+      "opacity": 1
+    },
+    {
+      "id": "heavy",
+      "label": "HEAVY / late peak, no rebound",
+      "shape": "circle",
+      "color": "#ab5c34",
+      "width_px": 44,
+      "height_px": 44,
+      "x_px": 300,
+      "y_px": 518,
+      "scale": 1,
+      "rotation_rad": 0,
+      "opacity": 1
+    }
+  ],
+  "tracks": [
+    {
+      "object": "linear",
+      "property": "x_px",
+      "start_s": 0.5,
+      "duration_s": 2.6,
+      "from": 300,
+      "to": 1170,
+      "ease": {
+        "kind": "linear"
+      }
+    },
+    {
+      "object": "smooth",
+      "property": "x_px",
+      "start_s": 0.5,
+      "duration_s": 2.6,
+      "from": 300,
+      "to": 1170,
+      "ease": {
+        "kind": "smootherstep"
+      }
+    },
+    {
+      "object": "heavy",
+      "property": "x_px",
+      "start_s": 0.5,
+      "duration_s": 2.6,
+      "from": 300,
+      "to": 1170,
+      "ease": {
+        "kind": "cubic-bezier",
+        "control": [
+          0.7,
+          0,
+          0.8,
+          1
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "version": "0.1.0",
+  "contract": "仅为LLM情境解释的候选，不做关键词自动编译。所有数值均为起始假设，需按画幅/时长/风格复核。配方参数不都是v1执行器字段，不能直接复制进spec。",
+  "terms": [
+    {
+      "term": "丝滑",
+      "intent": "连续、不生硬、注意力不中断",
+      "context_branches": [
+        {
+          "when": "UI或图形进出",
+          "interpretation": "可缩短时长，起止低速；中间连续接段保留世界速度",
+          "parameter_hypotheses": "duration_s: 0.25–0.6；候选 smootherstep 或时间贝塞尔(0.4,0,0.2,1)"
+        },
+        {
+          "when": "惯性滑行/镜头跟拍",
+          "interpretation": "保持物理动因；镜头与主体分别设计速度",
+          "parameter_hypotheses": "camera_lag_s: 0.08–0.2；接段速度 px/s 向量匹配"
+        }
+      ],
+      "counterexample": "所有物体同一 ease；用60fps或模糊掩盖断速",
+      "verification": "正常速度看起停；接段比较位移/时长乘端点导数；轨迹和速度图"
+    },
+    {
+      "term": "利落",
+      "intent": "响应明确、动作可读、余振少",
+      "context_branches": [
+        {
+          "when": "功能反馈",
+          "interpretation": "短动作后稳定，文字保留读字时间",
+          "parameter_hypotheses": "duration_s: 0.12–0.28；overshoot_px: 0"
+        },
+        {
+          "when": "拔刀/甩镜",
+          "interpretation": "可有预备与快段，关键落点保留短停顿",
+          "parameter_hypotheses": "anticipation_s: 0.08–0.18；hold_s: 0.1–0.25"
+        }
+      ],
+      "counterexample": "把所有时间减半导致字幕闪过；瞬移冒充干净",
+      "verification": "逐帧看动作剪影和落点；检查结束后是否还有不必要余振"
+    },
+    {
+      "term": "轻盈",
+      "intent": "低惯性感、小幅重叠、离地有支撑",
+      "context_branches": [
+        {
+          "when": "纸片/羽毛",
+          "interpretation": "轻但受空气阻力，横向漂移不等于根节点乱抖",
+          "parameter_hypotheses": "lateral_amplitude_px: 对象宽度的0.1–0.3；period_s: 1.5–3"
+        },
+        {
+          "when": "人物跳跃",
+          "interpretation": "预备较轻、腾空清楚，重力和落地接触仍成立",
+          "parameter_hypotheses": "hang_s: 依动作取0.15–0.35；landing_compression: 身高的0.02–0.05"
+        }
+      ],
+      "counterexample": "慢动作等于轻盈；脚底悬空、接触后漂移",
+      "verification": "关闭特效看重心/脚底；固定相机检查接触"
+    },
+    {
+      "term": "厚重",
+      "intent": "大惯性、动因明确、稳固落点",
+      "context_branches": [
+        {
+          "when": "水平推重块",
+          "interpretation": "起动迟缓，接触后稳定，不默认回弹",
+          "parameter_hypotheses": "duration_s: 1.5–3；候选时间贝塞尔(0.7,0,0.8,1)；rebound_px: 0"
+        },
+        {
+          "when": "重锤/岩石落地",
+          "interpretation": "落前加速，接触时快速止住，环境可次级响应",
+          "parameter_hypotheses": "contact_stop_s: 0.04–0.12；body_rebound_px: 0"
+        }
+      ],
+      "counterexample": "给刚石加多次弹簧；所有物体一律慢",
+      "verification": "先看没有尘土震动的根运动；接触后位移与穿地测量"
+    },
+    {
+      "term": "Q弹",
+      "intent": "可压缩材质、能量交换与衰减",
+      "context_branches": [
+        {
+          "when": "果冻/软球",
+          "interpretation": "压缩和拉伸配对，振幅逐次下降，近似体积守恒",
+          "parameter_hypotheses": "damping_ratio: 0.35–0.65；settle_s: 0.4–0.9；scale_amplitude: 0.04–0.12"
+        },
+        {
+          "when": "按钮拟物反馈",
+          "interpretation": "小幅一次回弹，不妨碍命中与文字阅读",
+          "parameter_hypotheses": "overshoot_ratio: 0.02–0.06；duration_s: 0.2–0.45"
+        }
+      ],
+      "counterexample": "金属门像布丁；无衰减无限弹；文字也随形变扭曲",
+      "verification": "测峰值逐次下降；检查接触/体积/稳定时间；减弱动态模式去弹"
+    },
+    {
+      "term": "冲击力",
+      "intent": "能量集中、接触时刻清楚、前后对比",
+      "context_branches": [
+        {
+          "when": "撞击/落地",
+          "interpretation": "预备/快段/骤停，特效跟随同一接触事件",
+          "parameter_hypotheses": "anticipation_s: 0.1–0.25；impact_hold_s: 0.04–0.12"
+        },
+        {
+          "when": "标题揭示",
+          "interpretation": "大小和节奏对比优先，不一定震屏",
+          "parameter_hypotheses": "scale_overshoot: 0–0.06；accent_s: 0.08–0.2"
+        }
+      ],
+      "counterexample": "持续震屏闪白、粒子遮挡主动作",
+      "verification": "关闭震动粒子仍能读出击中；检查光敏风险和字幕稳定"
+    },
+    {
+      "term": "呼吸感",
+      "intent": "有组织的轻微周期变化与留白",
+      "context_branches": [
+        {
+          "when": "角色静息",
+          "interpretation": "胸腔起伏，根节点和脚固定，附件略延迟",
+          "parameter_hypotheses": "period_s: 3–5；chest_scale_amplitude: 0.005–0.02"
+        },
+        {
+          "when": "光/界面氛围",
+          "interpretation": "低幅慢变，不让内容整体缩放难读",
+          "parameter_hypotheses": "period_s: 4–7；opacity_amplitude: 0.02–0.06"
+        }
+      ],
+      "counterexample": "全画面同步缩放；停顿空白毫无叙事信息",
+      "verification": "观察多个周期衔接；阅读不被打断；根/脚静止"
+    },
+    {
+      "term": "电影感",
+      "intent": "有动机的构图、镜头、光与节奏组织",
+      "context_branches": [
+        {
+          "when": "人物叙事",
+          "interpretation": "视线与动作决定镜头，不把所有镜头都推近",
+          "parameter_hypotheses": "shot_duration_s: 依叙事；push_ratio: 0–0.05作为候选"
+        },
+        {
+          "when": "产品展示",
+          "interpretation": "材质/体积/轮廓光与镜头克制配合",
+          "parameter_hypotheses": "camera_move_s: 2–5；focus_distance_m: 按场景实际测定"
+        }
+      ],
+      "counterexample": "24fps+黑边+颗粒就是电影；用景深掩盖造型",
+      "verification": "关闭黑边颗粒后看构图与叙事；检查镜头动机与曝光一致"
+    },
+    {
+      "term": "流畅转场",
+      "intent": "时间/空间/注意力的连续或明确断开",
+      "context_branches": [
+        {
+          "when": "同一动作跨镜头",
+          "interpretation": "方向与动作相位匹配，可直接切",
+          "parameter_hypotheses": "match_window_s: 切点前后各0.1–0.2检查"
+        },
+        {
+          "when": "场景/时间跨越",
+          "interpretation": "锚点或遮挡切；必要时短溶解",
+          "parameter_hypotheses": "dissolve_s: 0.2–0.6作为候选；alpha_a+alpha_b: 1"
+        }
+      ],
+      "counterexample": "一律长溶解导致灰脏；随机缩放旋转",
+      "verification": "看中点亮度、眼动落点、方向、转场两侧关键帧"
+    },
+    {
+      "term": "手绘感",
+      "intent": "有设计的形状节奏、有限帧与稳定不规则",
+      "context_branches": [
+        {
+          "when": "逐张角色动画",
+          "interpretation": "按二/按三设计姿势，根运动与接触单独检查",
+          "parameter_hypotheses": "pose_hold_frames: 2–3；delivery_fps: 24或30，需确认"
+        },
+        {
+          "when": "线稿轻微沸腾",
+          "interpretation": "稳定关键形状，小幅低频扰动，固定种子",
+          "parameter_hypotheses": "line_jitter_px: 1080p下0.3–1作为候选；update_hz: 6–12"
+        }
+      ],
+      "counterexample": "每帧随机抖整个画面；低fps代替关键姿势质量",
+      "verification": "同t重复与乱序seek一致；轮廓身份稳定；正常速度看是否眩晕"
+    }
+  ]
+}

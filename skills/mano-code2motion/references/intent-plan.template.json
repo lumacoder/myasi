@@ -1,0 +1,89 @@
+{
+  "kind": "semantic-plan-template-not-executable-v1",
+  "original_request": "填写用户原话",
+  "assumptions": [
+    "缺失信息采用的可逆假设"
+  ],
+  "output": {
+    "width_px": 1280,
+    "height_px": 720,
+    "fps": 24,
+    "duration_s": 4,
+    "audio": "none unless explicitly requested"
+  },
+  "story": {
+    "intent": "这一段为什么存在",
+    "attention_target": "观众先看什么再看什么",
+    "style": "参考与借鉴点，不等于套滤镜"
+  },
+  "objects": [
+    {
+      "id": "subject",
+      "role": "主角/道具/背景",
+      "material": "软/硬/阻尼/形变边界",
+      "weight_perception": "轻/厚重的情境解释；未知质量不编造kg",
+      "contact_constraints": [
+        "接触阶段的世界坐标锚点"
+      ],
+      "design_reference": "造型由独立资产/关键原画定义"
+    }
+  ],
+  "shots": [
+    {
+      "start_s": 0,
+      "end_s": 4,
+      "purpose": "一镜头的一件事",
+      "key_poses": [
+        "预备",
+        "接触",
+        "结束"
+      ],
+      "camera_intent": "固定或运动的原因",
+      "transition_out": "有无跨镜锚点"
+    }
+  ],
+  "translation_choices": [
+    {
+      "word": "丝滑",
+      "context_candidates": [
+        "物体速度连续",
+        "相机跟随稳定"
+      ],
+      "selected": "依情境选择",
+      "rejected_and_why": "不能套所有物体同ease",
+      "parameter_hypotheses": [
+        {
+          "name": "duration_s",
+          "value": 2.6,
+          "unit": "s",
+          "reason": "对照试验，不是普适规则"
+        }
+      ],
+      "counterexample": "fps高但断速",
+      "verification": "接段世界速度/正常速度回放"
+    }
+  ],
+  "conflict_resolution": {
+    "priority": [
+      "硬约束与可读性/接触",
+      "叙事",
+      "材质风格",
+      "装饰"
+    ],
+    "tradeoffs": [
+      "明确写不同时满足了什么"
+    ]
+  },
+  "compile": {
+    "target": "MotionSpec v1 numeric adapter, or explicitly named new adapter",
+    "unsupported_requirements": [
+      "骨骼/3D等需新增适配器和测试，不得静默忽略"
+    ],
+    "artifacts": [
+      "spec.json",
+      "renderer with renderAt(seconds)",
+      "evidence/report",
+      "video"
+    ]
+  }
+}

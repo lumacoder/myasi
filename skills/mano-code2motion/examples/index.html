@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Code2Motion — deterministic comparison</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#e7e6df;color:#202a27;font:15px system-ui,sans-serif}main{max-width:1280px;margin:24px auto}canvas{display:block;width:100%;height:auto;background:#f4f2eb}nav{display:flex;align-items:center;gap:16px;padding:16px;background:#fff}button{font:inherit;min-width:90px;padding:10px 16px;border:1px solid #89958f;border-radius:4px;background:white;color:inherit;cursor:pointer}input{flex:1;min-width:80px}output{font-variant-numeric:tabular-nums;min-width:70px}p{margin:12px 16px;line-height:1.5}.capture main{max-width:none;margin:0}.capture canvas{width:100vw;height:100vh}.capture nav,.capture p{display:none}button:focus-visible,input:focus-visible{outline:3px solid #217568;outline-offset:3px}
+</style></head><body><main>
+<canvas id="scene" width="1280" height="720" aria-label="Same object and distance: linear, smooth, heavy motion comparison"></canvas>
+<nav aria-label="Playback"><button id="play" type="button">Play</button><label for="seek">Time</label><input id="seek" type="range" min="0" max="4" step="0.001" value="0"><output id="clock">0.000 s</output></nav>
+<p>No autoplay. Seek any time. Same geometry, distance and duration; only the temporal motion differs. Velocity sketches below are normalized per segment. No audio.</p>
+<pre id="selftest" hidden></pre></main>
+<script src="motion.js"></script><script>
+'use strict';
+(async()=>{
+ const query=new URLSearchParams(location.search), capture=query.get('capture')==='1';
+ if(capture) document.body.classList.add('capture');
+ const spec=await (await fetch('compare.json')).json();
+ const canvas=document.getElementById('scene'),ctx=canvas.getContext('2d',{alpha:false});
+ canvas.width=spec.canvas.width_px;canvas.height=spec.canvas.height_px;
+ const seek=document.getElementById('seek'),clock=document.getElementById('clock'),play=document.getElementById('play');
+ seek.max=spec.duration_s;
+ let time=0,playing=false,anchor=0;
+ const text=(s,x,y,size=16,color='#26342f',weight=400)=>{ctx.font=`${weight} ${size}px Arial,sans-serif`;ctx.fillStyle=color;ctx.fillText(s,x,y);};
+ function renderAt(seconds) {
+  time=Math.max(0,Math.min(spec.duration_s,seconds));
+  const state=Motion.stateAt(spec,time), W=canvas.width,H=canvas.height;
+  ctx.setTransform(1,0,0,1,0,0);ctx.globalAlpha=1;ctx.fillStyle=spec.canvas.background;ctx.fillRect(0,0,W,H);
+  ctx.save();ctx.scale(W/1280,H/720);
+  text('One gesture. Three interpretations.',56,68,32,'#202d28',600);
+  text('Same object / 870 px travel / 2.6 s motion / no effects to hide the timing',57,100,16,'#68746d');
+  text(`TIME  ${time.toFixed(3)} s`,1010,68,18,'#202d28',600);
+  for(const original of spec.objects) {
+   const o=state[original.id],y=original.y_px;
+   ctx.strokeStyle='#c7cec6';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(278,y+24);ctx.lineTo(1194,y+24);ctx.stroke();
+   // Fixed endpoints + restrained shadow, same for all variants.
+   for(const x of [300,1170]){ctx.strokeStyle='#b4bdb6';ctx.beginPath();ctx.moveTo(x,y+30);ctx.lineTo(x,y+36);ctx.stroke();}
+   text(original.label,56,y-44,17,original.color,600);
+   text(`${(o.x_px-300).toFixed(1)} / 870 px`,56,y-17,14,'#68746d');
+   ctx.fillStyle='#26342f15';ctx.beginPath();ctx.ellipse(o.x_px,y+25,26,4,0,0,Math.PI*2);ctx.fill();
+   ctx.save();ctx.globalAlpha=o.opacity;ctx.translate(o.x_px,o.y_px);ctx.rotate(o.rotation_rad);ctx.scale(o.scale,o.scale);ctx.fillStyle=o.color;
+   if(o.shape==='circle'){ctx.beginPath();ctx.ellipse(0,0,o.width_px/2,o.height_px/2,0,0,Math.PI*2);ctx.fill();}
+   else ctx.fillRect(-o.width_px/2,-o.height_px/2,o.width_px,o.height_px);
+   ctx.restore();
+   // An independent diagnostic velocity silhouette; not decorative motion.
+   const tr=spec.tracks.find(t=>t.object===o.id&&t.property==='x_px');
+   if(tr){const gx=56+spec.objects.indexOf(original)*406,gy=657,gw=340,gh=42;
+    text(original.id.toUpperCase()+' / normalized velocity',gx,gy-57,12,'#68746d');
+    ctx.strokeStyle='#c7cec6';ctx.beginPath();ctx.moveTo(gx,gy);ctx.lineTo(gx+gw,gy);ctx.stroke();
+    ctx.strokeStyle=o.color;ctx.lineWidth=2;ctx.beginPath();
+    for(let i=0;i<=160;i++){const q=i/160,h=0.0001,a=Math.max(0,q-h),b=Math.min(1,q+h),v=(Motion.easing(b,tr.ease)-Motion.easing(a,tr.ease))/(b-a);const x=gx+q*gw,yy=gy-v*gh/2.5;i?ctx.lineTo(x,yy):ctx.moveTo(x,yy);}ctx.stroke();
+    const q=Math.max(0,Math.min(1,(time-tr.start_s)/tr.duration_s));ctx.strokeStyle='#26342f';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(gx+q*gw,gy+5);ctx.lineTo(gx+q*gw,gy-gh-7);ctx.stroke();
+   }
+  }
+  text('0.5 s start → 3.1 s arrival → hold',56,699,13,'#68746d');
+  ctx.restore();seek.value=time;clock.value=time.toFixed(3)+' s';
+  document.documentElement.dataset.ready='1';
+  return state;
+ }
+ window.renderAt=renderAt;
+ play.onclick=()=>{playing=!playing;if(playing){if(time>=spec.duration_s)time=0;anchor=performance.now()-time*1000;requestAnimationFrame(tick);}play.textContent=playing?'Pause':'Play';};
+ function tick(now){if(!playing)return;renderAt((now-anchor)/1000);if(time>=spec.duration_s){playing=false;play.textContent='Play';return;}requestAnimationFrame(tick);}
+ seek.oninput=()=>{playing=false;play.textContent='Play';renderAt(Number(seek.value));};
+ renderAt(query.has('time')?Number(query.get('time')):0);
+ if(query.get('selftest')==='1'){
+  const target=renderAt(1.375), first=canvas.toDataURL();renderAt(3.6);renderAt(.2);renderAt(1.375);
+  if(first!==canvas.toDataURL())throw new Error('Out-of-order seek changed pixels');
+  const e=Motion.easing(.5,{kind:'cubic-bezier',control:[.42,0,1,1]});
+  if(Math.abs(e-.3153568126)>1e-8)throw new Error('Temporal bezier inversion failed');
+  document.getElementById('selftest').textContent=JSON.stringify({status:'PASS',seekPixelsEqual:true,bezier:e,samples:[0,.5,1.375,3.1,4].map(t=>({t,state:Motion.stateAt(spec,t)})),seed:Motion.seeded(17,31)});
+ }
+})().catch(error=>{document.documentElement.dataset.error=String(error);document.getElementById('selftest').textContent='FAIL '+error;console.error(error);});
+</script></body></html>

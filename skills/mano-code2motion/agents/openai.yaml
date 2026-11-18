@@ -1,0 +1,6 @@
+# Codex 界面元数据（可选）
+interface:
+  display_name: "mano-code2motion"
+  short_description: "当需要将丝滑、厚重、Q弹、电影感等自然语言解释为可执行 MotionSpec、确定性动画代码和视频，并验证动作与镜头质量"
+policy:
+  allow_implicit_invocation: true

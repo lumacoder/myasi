@@ -30,6 +30,7 @@ description: >-
 | 评审/修复已有 UI | `capabilities/ui-review.md` + `rsi/rubric.md` |
 | 状态、焦点、动效、点击区 / 配色对比 / 中文文案 | `rules/interaction.md` / `rules/color.md` / `rules/copy-zh.md` |
 | **画动画 / 评审动效**（角色动作、镜头转场、UI 动效、轻量 3D 的理解与判断依据） | `capabilities/motion-and-3d.md`（实现库索引见 `references/motion-libraries.json`） |
+| 自然语言 → 代码视频（独立技能：MotionSpec / 确定性时间线 / 视频证据） | `../mano-code2motion/SKILL.md`；未安装时按仓库规则安装 `mano-code2motion` |
 | 模糊词 → 规格 | `rules/vocab.json`（只取相关 term） |
 | 查规则 | `python3 scripts/rules.py --id cs.binary-select` |
 | 开源方案 | `capabilities/catalog.md` |
