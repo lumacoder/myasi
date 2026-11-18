@@ -1,0 +1,146 @@
+{
+  "repository": "https://github.com/OpenSenseNova/SenseNova-6.8-Code2Video",
+  "github_commit": "776ae79824e338ba5d63fef66167455edc94ad26",
+  "hf_commit": "0f99ab03e0e2616155b0395199acfdc322a741eb",
+  "license": {
+    "hf_card_declares": "Apache-2.0",
+    "github_license_file_present": false,
+    "caution": "No standalone LICENSE in this GitHub tree; HF model card declares Apache-2.0. Do not infer separate rights for every showcase asset."
+  },
+  "paper_status": "No official paper linked in inspected README/model card, and targeted search did not identify a SenseNova-specific paper. This is not proof none exists. Do not conflate ShowLab arXiv:2510.01174 with this release.",
+  "not_observed": [
+    "fine-tuning training scripts/data recipe/reward optimization method",
+    "quantitative benchmark or automated semantic/aesthetic scoring engine",
+    "clean reproducible source projects for all showcased videos",
+    "explicit Planner/Coder/Critic multi-agent orchestration source"
+  ],
+  "sources": [
+    {
+      "path": "README.md",
+      "url": "https://github.com/OpenSenseNova/SenseNova-6.8-Code2Video/blob/776ae79824e338ba5d63fef66167455edc94ad26/README.md",
+      "commit": "776ae79824e338ba5d63fef66167455edc94ad26",
+      "git_blob_sha": "dd42ad34db6c45374fb7d1c9760832df6a09c565",
+      "git_blob_verified": true,
+      "kind": "production instructions; not an executed controller"
+    },
+    {
+      "path": "skills/code-video/SKILL.md",
+      "url": "https://github.com/OpenSenseNova/SenseNova-6.8-Code2Video/blob/776ae79824e338ba5d63fef66167455edc94ad26/skills/code-video/SKILL.md",
+      "commit": "776ae79824e338ba5d63fef66167455edc94ad26",
+      "git_blob_sha": "6197b213de08c49ce8b376af70539a3b56498f68",
+      "git_blob_verified": true,
+      "kind": "production instructions; not an executed controller"
+    },
+    {
+      "path": "prompts/enhance_prompt.md",
+      "url": "https://github.com/OpenSenseNova/SenseNova-6.8-Code2Video/blob/776ae79824e338ba5d63fef66167455edc94ad26/prompts/enhance_prompt.md",
+      "commit": "776ae79824e338ba5d63fef66167455edc94ad26",
+      "git_blob_sha": "030af3062c655e03e4daf60ae607656385cc3fef",
+      "git_blob_verified": true,
+      "kind": "production instructions; not an executed controller"
+    },
+    {
+      "path": "prompts/README.md",
+      "url": "https://github.com/OpenSenseNova/SenseNova-6.8-Code2Video/blob/776ae79824e338ba5d63fef66167455edc94ad26/prompts/README.md",
+      "commit": "776ae79824e338ba5d63fef66167455edc94ad26",
+      "git_blob_sha": "492aad7c3c6d99df4d369dcd2290314bf8a4dec7",
+      "git_blob_verified": true,
+      "kind": "production instructions; not an executed controller"
+    },
+    {
+      "path": "skills/code-video/crafts/character-and-creature-motion.md",
+      "url": "https://github.com/OpenSenseNova/SenseNova-6.8-Code2Video/blob/776ae79824e338ba5d63fef66167455edc94ad26/skills/code-video/crafts/character-and-creature-motion.md",
+      "commit": "776ae79824e338ba5d63fef66167455edc94ad26",
+      "git_blob_sha": "88988d4a688ff9853f4b160d7f910ddad9e45419",
+      "git_blob_verified": true,
+      "kind": "production instructions; not an executed controller"
+    },
+    {
+      "path": "skills/code-video/crafts/stylized-looks.md",
+      "url": "https://github.com/OpenSenseNova/SenseNova-6.8-Code2Video/blob/776ae79824e338ba5d63fef66167455edc94ad26/skills/code-video/crafts/stylized-looks.md",
+      "commit": "776ae79824e338ba5d63fef66167455edc94ad26",
+      "git_blob_sha": "887aa7bf5ff235bc07040a8b64b0f2596abb2caa",
+      "git_blob_verified": true,
+      "kind": "production instructions; not an executed controller"
+    },
+    {
+      "path": "skills/code-video/crafts/motion-graphics-and-promos.md",
+      "url": "https://github.com/OpenSenseNova/SenseNova-6.8-Code2Video/blob/776ae79824e338ba5d63fef66167455edc94ad26/skills/code-video/crafts/motion-graphics-and-promos.md",
+      "commit": "776ae79824e338ba5d63fef66167455edc94ad26",
+      "git_blob_sha": "168e67705543446f1a0742aa6e35432fc9d8eb5b",
+      "git_blob_verified": true,
+      "kind": "production instructions; not an executed controller"
+    },
+    {
+      "path": "skills/code-video/crafts/threejs-scenes-and-cameras.md",
+      "url": "https://github.com/OpenSenseNova/SenseNova-6.8-Code2Video/blob/776ae79824e338ba5d63fef66167455edc94ad26/skills/code-video/crafts/threejs-scenes-and-cameras.md",
+      "commit": "776ae79824e338ba5d63fef66167455edc94ad26",
+      "git_blob_sha": "9f8735638d70bcd365d5c28a305908c34b75dd05",
+      "git_blob_verified": true,
+      "kind": "production instructions; not an executed controller"
+    },
+    {
+      "path": "skills/code-video/crafts/simulations-and-generative.md",
+      "url": "https://github.com/OpenSenseNova/SenseNova-6.8-Code2Video/blob/776ae79824e338ba5d63fef66167455edc94ad26/skills/code-video/crafts/simulations-and-generative.md",
+      "commit": "776ae79824e338ba5d63fef66167455edc94ad26",
+      "git_blob_sha": "16361421e68a0434faed1042b92804b89889263c",
+      "git_blob_verified": true,
+      "kind": "production instructions; not an executed controller"
+    },
+    {
+      "path": "skills/code-video/crafts/explainer-diagrams.md",
+      "url": "https://github.com/OpenSenseNova/SenseNova-6.8-Code2Video/blob/776ae79824e338ba5d63fef66167455edc94ad26/skills/code-video/crafts/explainer-diagrams.md",
+      "commit": "776ae79824e338ba5d63fef66167455edc94ad26",
+      "git_blob_sha": "5e8516b0a28bad82969f651e20a2458403b359c9",
+      "git_blob_verified": true,
+      "kind": "production instructions; not an executed controller"
+    },
+    {
+      "path": "skills/code-video/crafts/sound-design-and-narration.md",
+      "url": "https://github.com/OpenSenseNova/SenseNova-6.8-Code2Video/blob/776ae79824e338ba5d63fef66167455edc94ad26/skills/code-video/crafts/sound-design-and-narration.md",
+      "commit": "776ae79824e338ba5d63fef66167455edc94ad26",
+      "git_blob_sha": "dc501f58a5b00e6c9498aac2c6ed47615ec27fdd",
+      "git_blob_verified": true,
+      "kind": "production instructions; not an executed controller"
+    },
+    {
+      "path": "skills/code-video/crafts/music-and-beat-sync.md",
+      "url": "https://github.com/OpenSenseNova/SenseNova-6.8-Code2Video/blob/776ae79824e338ba5d63fef66167455edc94ad26/skills/code-video/crafts/music-and-beat-sync.md",
+      "commit": "776ae79824e338ba5d63fef66167455edc94ad26",
+      "git_blob_sha": "1e64705eb43556dd01652a0178fc724f1f09c833",
+      "git_blob_verified": true,
+      "kind": "production instructions; not an executed controller"
+    },
+    {
+      "path": "skills/code-video/scripts/capture.mjs",
+      "url": "https://github.com/OpenSenseNova/SenseNova-6.8-Code2Video/blob/776ae79824e338ba5d63fef66167455edc94ad26/skills/code-video/scripts/capture.mjs",
+      "commit": "776ae79824e338ba5d63fef66167455edc94ad26",
+      "git_blob_sha": "d62621dca587621ef016cc6ca7c7999987228ae9",
+      "git_blob_verified": true,
+      "kind": "source"
+    },
+    {
+      "path": "skills/code-video/scripts/check_video.sh",
+      "url": "https://github.com/OpenSenseNova/SenseNova-6.8-Code2Video/blob/776ae79824e338ba5d63fef66167455edc94ad26/skills/code-video/scripts/check_video.sh",
+      "commit": "776ae79824e338ba5d63fef66167455edc94ad26",
+      "git_blob_sha": "ee0f0143ee082e07e36de3c9b7704aa80e391719",
+      "git_blob_verified": true,
+      "kind": "source"
+    }
+  ],
+  "additional_primary_sources": [
+    {
+      "url": "https://huggingface.co/sensenova/SenseNova-6.8-Code2Video/blob/0f99ab03e0e2616155b0395199acfdc322a741eb/README.md",
+      "kind": "official model card"
+    },
+    {
+      "url": "https://huggingface.co/sensenova/SenseNova-6.8-Code2Video/blob/0f99ab03e0e2616155b0395199acfdc322a741eb/config.json",
+      "kind": "model architecture/config, not training recipe"
+    },
+    {
+      "url": "https://huggingface.co/sensenova/SenseNova-6.8-Code2Video/blob/0f99ab03e0e2616155b0395199acfdc322a741eb/trajectories/all.openai.jsonl",
+      "kind": "6 real production conversation logs, code and tool results; private paths anonymized"
+    }
+  ],
+  "scope": "Research source metadata only; no third-party code/media/weights copied or executed. Blob verification was performed during research; runtime capabilities are not inferred from it."
+}

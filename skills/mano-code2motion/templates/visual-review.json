@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "project": "replace",
+  "brief": "brief.md",
+  "scope": "author-biased still review; motion pending",
+  "reviews": [
+    {
+      "id": "A",
+      "variant": "a",
+      "time_s": 2.8,
+      "frame": "replace-a.png",
+      "sha256": "",
+      "pixels_observed": "REPLACE with actual observation after opening pixels, not planned outcome",
+      "intent_delta": "REPLACE",
+      "weakest_moment": "REPLACE"
+    },
+    {
+      "id": "B",
+      "variant": "b",
+      "time_s": 2.8,
+      "frame": "replace-b.png",
+      "sha256": "",
+      "pixels_observed": "REPLACE after rendering and opening B",
+      "intent_delta": "REPLACE",
+      "weakest_moment": "REPLACE"
+    }
+  ],
+  "revisions": [
+    {
+      "from_review": "A",
+      "to_review": "B",
+      "hypothesis": "REPLACE",
+      "substantive_change": "REPLACE geometry/material/pose/timing change",
+      "source_before": "scene-a.js",
+      "source_after": "scene-b.js",
+      "predicted_pixel_change": "REPLACE",
+      "observed_result": "REPLACE"
+    }
+  ],
+  "comparisons": [
+    {
+      "a": "A",
+      "b": "B",
+      "same_conditions": [
+        "time_s",
+        "dimensions",
+        "camera",
+        "background"
+      ],
+      "declared_changes": [
+        "REPLACE actual changed variables"
+      ]
+    }
+  ],
+  "gates": {
+    "technical": {
+      "status": "not_reviewed",
+      "evidence": [],
+      "reason": "REPLACE after inspection; no default pass"
+    },
+    "readability": {
+      "status": "not_reviewed",
+      "evidence": [],
+      "reason": "REPLACE after inspection; no default pass"
+    },
+    "expression": {
+      "status": "not_reviewed",
+      "evidence": [],
+      "reason": "REPLACE after inspection; no default pass"
+    }
+  },
+  "limitations": [
+    "No independent normal-speed video review yet."
+  ]
+}

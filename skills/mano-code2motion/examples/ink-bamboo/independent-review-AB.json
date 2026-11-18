@@ -1,0 +1,36 @@
+{
+  "provenance": "Coordinator supplied summary of two independent video review rounds, 2026-11-18 19:22 Asia/Shanghai. Full verbatim reviewer transcripts were not supplied; this record preserves the reported observations, not invented quotes.",
+  "rounds": [
+    {
+      "mode": "independent cold read",
+      "reported_observations": "B比A竹叶轮廓、分节与生长连接明显改善，A约1s漂叶而B连贯；2s后读成重复idle，读不出2.6–3.1短停、3.1–4.6单次风压、4.6–6恢复安静。韧性和迟响应不可见。",
+      "material": "partial",
+      "expression": "fail"
+    },
+    {
+      "mode": "independent after brief",
+      "reported_observations": "与冷读结论一致；所要求的单次风来、受压、迟响应、较小反向回落、末尾安静未被正常速度读出。",
+      "material": "partial",
+      "expression": "fail"
+    }
+  ],
+  "reviewer_causal_hypothesis_not_source_fact": "Reviewer guessed underlying sine rotation / no pulse; this is not accepted as a code fact.",
+  "verified_B_source_facts": {
+    "source": "scene-b.js",
+    "wind": "positive Gaussian .12 centered3.65/.45 minus .025 Gaussian centered4.5/.55; it already contains one positive/negative event, not perpetual time sine",
+    "leaf_delay_s": ".13 + .035*j",
+    "spatial_sines": "sin in pressure/brush texture is a spatial q function, not periodic wind",
+    "interpretation": "Presence of a pulse and small coded delays did not make temporal beats perceptible; no visual pass can be inferred from function names."
+  },
+  "C_hypothesis": "Use compact-support timed press/rebound with a visible quiet interval, stronger but bounded upper curvature, delayed leaf-fan alignment and a short sparse wind approach cue. Keep rod arc length and rooted attachments; one bounded revision only.",
+  "B_verdict_preserved": {
+    "readability": "partial (identity improved; intended wind narrative failed)",
+    "expression": "fail"
+  },
+  "C_verdict": {
+    "readability": "pass",
+    "expression": "partial",
+    "source": "independent-review-C.json",
+    "note": "Later normal-speed review completed; this supersedes the former pending state."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "provenance": "Summary of independent normal-speed viewing supplied by the task coordinator, 2026-11-18 19:35 Asia/Shanghai. Full verbatim transcript not supplied; no invented quotations.",
+  "variant": "C",
+  "duration_s": 6,
+  "review_type": "independent normal-speed video review",
+  "observations": [
+    "0–2s两侧生长，长成后静止到约3s。",
+    "随后一次明显右弯、较小左回，末尾归静；意图可读。",
+    "审阅者未见漂叶、拉伸或橡胶塌陷。",
+    "叶片像刚性片绕根旋转，叶尖内部柔性/迟响应不明显，回落稍机械。"
+  ],
+  "gates": {
+    "technical": {
+      "status": "pass",
+      "scope": "Separate executed engineering checks: attachments, early reveal, fixed rod arc length, deterministic seek,144-frame6s encode. Not an aesthetic score; full Windows repository still has2 known symlink failures and1 optional Node skip."
+    },
+    "readability": {
+      "status": "pass",
+      "basis": "independent normal-speed viewing: stillness, one right bend, smaller left return and final quiet were read"
+    },
+    "expression": {
+      "status": "partial",
+      "basis": "rigid-looking leaves, unclear internal tip flexibility/lag, somewhat mechanical return"
+    }
+  },
+  "material": "partial; unchanged stylized procedural ink, not realistic ink diffusion",
+  "not_all_gates_pass": true,
+  "mechanism_vs_observation": "B looked looping to viewers, but its source already had Gaussian pulses. C has coded delays; the reviewer still did not clearly perceive internal leaf-tip lag. Neither source labels nor causal guesses override observed limitations.",
+  "production_closed": true,
+  "further_render_or_polish": "not authorized in this publication step",
+  "originality": "scene/brush algorithms are original task-specific code; no third-party showcase code, prompts or media copied"
+}

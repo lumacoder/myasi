@@ -1,44 +1,52 @@
-# mano-code2motion 0.1.0
+# mano-code2motion 0.2
 
-目标不是更多视频工具，而是把“丝滑”等描述解释为**有情境、有单位、可实现、可检查**的运动计划。
+自然语言创意 → 导演简报 → 适合题目的绘制/动画机制 → 真实渲染 → 针对最弱画面的修改。
 
-入口：`SKILL.md`。不依赖 mano-design；需要界面造型评审时再配合使用。
+不是把所有作品变成“形容词→ease→圆/矩形播放器”；也不是声称拥有新的训练模型或自动审美器。主入口见 [SKILL.md](SKILL.md)。
 
-## 实际包含什么
-- 十个感受词，每个有两种情境、参数假设、反例和验证方法。
-- MotionSpec v1 JSON Schema、严格结构/语义校验、Python 与浏览器求值器。
-- 同一球/相同位移/相同时段的线性、丝滑、厚重对照；可播放、可 seek，无自动播放、无音频。
-- Chrome固定时刻PNG → ffmpeg无声MP4导出；浏览器像素seek自测、Python/JS数值对照、ffprobe检查。
-- 叙事/角色/镜头/转场/特效配方；v1执行器**不实现**骨骼、3D、粒子、空间贝塞尔或任意文字自动编译。
+## 内容与接线
+- `templates/director-brief.md`：观众体验、因果、造型/材料、构图/镜头、节奏、风险与自由。
+- `guides/`：按需阅读导演决策、专用绘制机制、真实像素反馈及反例。
+- `scripts/render_project.py`：与MotionSpec解耦的单Canvas2D项目导出；显式READY、绝对时间seek、乱序像素检查、PNG/无声H264/元信息。
+- `scripts/review_gate.py`：审阅证据/文件/哈希及三门状态的结构检查；**不验证审美或描述真实性**。
+- `examples/ink-bamboo/`：原创6秒挑战短段，A/B/C源码、独立审阅fail与一次动作修正记录；不复制SenseNova素材。
+- `references/research-findings.md`、`references/sources.md`：可核查研究结论、来源与未开源/许可边界。
+- 原`motion.py`/schema/`check.py`/`render.py`/compare保持兼容，只作**局部数值轨道**工具，不再规定作品表达上限。
 
-## 运行（Python 3.8+，无Python第三方包）
-在本技能目录：
+## 运行原创案例
+Python 3.8+标准库；Node只用于案例几何QA，浏览器与ffmpeg/ffprobe需本机可用，不自动安装，不收费。
+```bash
+# 本目录执行；HTML也可直接双击
+python -m http.server 8765 --bind 127.0.0.1
+# examples/ink-bamboo/index-c.html 是独立可读性pass、表现力partial的C；index.html 是独立动作审阅fail的冻结B；index-a.html 是冻结A
+# 指定当前机器实际的浏览器路径，而不是照抄其他机器路径
+python scripts/render_project.py examples/ink-bamboo --entry index-c.html --duration 6 --fps 24 --out /outside/repo/ink-c --chrome /path/to/chrome
+python scripts/render_project.py examples/ink-bamboo --entry index-a.html --duration 6 --fps 24 --out /outside/repo/ink-a --chrome /path/to/chrome
+# 只做同条件风险设计帧（新目录）：加 --times 0.7,2.8,3.8,5.5
+node examples/ink-bamboo/qa.js
+python -m unittest discover -s tests -v
+```
+Windows的输出例如 `D:\motion-exports\ink-b`，Chrome例如 `C:\Program Files\Google\Chrome\Application\chrome.exe`，用引号包围带空格路径。
+
+每次输出目录必须不存在，且在skill及任何git仓库之外；错误时保留部分输出，不覆盖或假装成功。输出 `frames/`、`probe-*.png`、`film.mp4`、`ffprobe.json`、`capture-report.json`。`--times`模式不编码MP4，也不要求ffmpeg。逐帧浏览器启动，速度慢但免npm依赖；不对SVG/WebGL/多Canvas或有异步资源的任意网页承诺开箱即用。
+
+### 你自己的作品适配
+HTML内一个Canvas，内在像素为1280×720（或用`--width/--height`传偶数尺寸）；`window.renderAt(t)`必须重建完整画面，加载完毕后`window.READY=true`。捕获URL带`?t=`时禁用实时播放，避免rAF覆盖。`renderAt`可异步，但初始化必须有界并在资产错误时拒绝READY。不得执行未经检查的第三方项目。导出器在每帧检查READY和尺寸，初始化失败即非0退出，不把空截图当成功。
+
+### 审阅记录
+复制 `templates/visual-review.json` 到产物目录，填入真实证据相对路径和实际观察；模板里的REPLACE不是已执行证据。
+```bash
+python scripts/review_gate.py /outside/repo/review.json
+python scripts/review_gate.py /outside/repo/review.json --require-pass
+```
+默认只检查记录完整性，允许诚实的partial/not_reviewed；`--require-pass`在任何一门未通过时非0退出。两种模式都不验证画面含义，不会自动升级门禁。作者知道题目时不能称为独立冷读；仅看过PNG不能称看过正常速度视频。
+
+## 旧数值工具（保留，不是创作能力验收）
 ```bash
 python scripts/check.py examples/compare.json
-python -m unittest discover -s tests -v
-python -m http.server 8765 --bind 127.0.0.1
+python scripts/render.py --out /outside/repo/compare --chrome /path/to/chrome
 ```
-浏览器访问 `http://127.0.0.1:8765/examples/index.html`。控制台 `renderAt(1.375)` 可验证绝对时间。URL `?capture=1&time=1.375` 隐藏控件以供截图。`?selftest=1` 运行乱序seek像素和曲线自测。
+MotionSpec v1只支持circle/rect和x/y/scale/rotation/opacity；数值合法/轨道连续不代表能理解任意视觉需求。
 
-导出另需 Chrome/Chromium（或手动指定兼容的Edge）和有 libx264 的 ffmpeg/ffprobe，在PATH或用 `--chrome` 指定；不自动安装，不联网取素材。
-```bash
-python scripts/render.py --out /tmp/code2motion-output
-# Windows示例，选一个尚不存在且在仓库外的目录
-python scripts/render.py --out C:\Users\Administrator\g3v-xfer\code2motion-output --chrome "C:\Program Files\Google\Chrome\Application\chrome.exe"
-# 只跑浏览器和Python/JS一致性检查，不要求ffmpeg
-python scripts/render.py --out /tmp/code2motion-browser-check --check-only
-```
-`--workers 1..4` 控制并行Chrome进程，默认2。每帧独立临时profile，慢但不依赖实时录屏；4秒24fps共96帧。导出期间仅向自身 `127.0.0.1` 临时端口提供三个示例文件，不暴露整个仓库。失败会保留部分输出诊断，**不覆盖、不自动删除输出目录**。Chrome在root容器运行才自动加 `--no-sandbox`，桌面保留sandbox。
-
-输出 `frames/*.png`、`first/middle/last.png`、`compare.mp4`、`browser-test.json`、`sampling-report.json`、`ffprobe.json`。不将这些构建产物提交进技能仓库。
-
-## 单位与扩展
-1280×720诊断示例中圆心从x=300到1170px，0.5秒开始，2.6秒运动，余下保持；三个圆的几何与基线相同，颜色/标签仅用于识别。
-示例页面是该对照的专用展示适配器（标题、速度图、端点标注固定），不是通用影片排版器；`render.py`仅导出附带示例。要生成新影片，先用语义工作流出规格，再实现影片自己的 `renderAt(t)` 和导出适配器。底层 MotionSpec v1 求值器可复用，不能把不支持的相机/角色计划冒充可执行字段。
-
-默认噪声hash已固定种子并提供Python/JS一致性测试；本例不添加噪声，避免扰动影响运动对照。浏览器播放按真实时间求t，离线导出按 i/fps，不依赖刷新率；reduced-motion用户默认也不自动播放，可用静态seek检查，无闪烁/自动摇镜。
-
-`references/engineering.md` 说明时间贝塞尔求逆、C0/C1/C2、接段世界速度与帧数契约。建议参数不是审美定律，实测速度不是质量分数。
-
-## 测试范围
-单元测试无需浏览器；像素/跨语言测试与编码检查只有运行 `render.py` 才发生。支持Python 3.8语法；是否实际在Windows、特定Chrome、3.8解释器测试应看交付报告，不由代码存在推断。跨机器字体/抗锯齿/编码器不同，不保证视频字节级哈希一致。
+## 验证边界
+原12例预注册评估尚未完成，仍针对350efba冻结版本；不能把此次单案例或新增测试冒充它的通过结论。案例展示一种任务专用表达和真实修改，不证明泛化质量、完整滑板动作修复、微调能力或与SenseNova等效。本例C已完成独立正常速度审阅（可读性pass、表现力partial）；叶片偏刚性、内部柔性/迟响应不明显、回落稍机械，不能宣称全部通过。其他作品仍须独立审阅。

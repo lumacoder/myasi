@@ -1,7 +1,16 @@
 {
-  "version": "0.1.0",
-  "tags": ["animation", "canvas", "code-video", "motion-spec", "storytelling"],
+  "version": "0.2.0",
+  "tags": [
+    "animation",
+    "canvas",
+    "code-video",
+    "visual-storytelling",
+    "procedural-art",
+    "visual-review"
+  ],
   "aliases": [],
-  "clients": ["*"],
+  "clients": [
+    "*"
+  ],
   "license": "MIT"
 }
