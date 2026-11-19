@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "title": "Replace with your own production intent",
+  "fps": 24,
+  "width": 768,
+  "height": 432,
+  "shots": [
+    {
+      "id": "shot-one",
+      "start": 0,
+      "end": 48,
+      "clip": "clips/shot-one.mp4",
+      "renderer": "your-existing-renderer",
+      "visual": "Replace with a concrete visible action.",
+      "cut_reason": "Opening: establish the subject and space.",
+      "identity": "Describe invariant subject cues.",
+      "look": "Describe drawing/material rules.",
+      "rights": {
+        "basis": "original",
+        "credit": "Replace with actual author/credit",
+        "evidence": "Replace with actual provenance or permission evidence"
+      },
+      "risk_frames": [
+        0,
+        24,
+        47
+      ],
+      "sources": []
+    }
+  ],
+  "captions": [],
+  "tracks": [],
+  "landmarks": [],
+  "notes": "Template declarations are not verified facts. Fill all placeholders before using; do not claim a visual/audio pass."
+}

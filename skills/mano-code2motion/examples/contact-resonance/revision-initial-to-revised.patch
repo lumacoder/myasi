@@ -1,0 +1,25 @@
+--- a/shared/scene.js
++++ b/shared/scene.js
+@@ -51,9 +51,9 @@
+     // A single outward disturbance, then two weaker trailing fronts; no endless sine idle.
+     for (let k = 0; k < 3; k++) {
+       const a = age - k * 0.23;
+-      if (a < 0 || a > 2.25) continue;
+-      const r = 19 + 74 * a, alpha = (0.6 / (k + 1)) * Math.pow(Math.max(0, 1 - a / 2.25), 1.65);
+-      g.globalAlpha = alpha; g.strokeStyle = ink; g.lineWidth = 2.2 - k * 0.3;
++      if (a < 0 || a > 2.4) continue;
++      const r = 32 + 65 * a, alpha = (0.75 / (k + 1)) * Math.pow(Math.max(0, 1 - a / 2.4), 0.7);
++      g.globalAlpha = alpha; g.strokeStyle = ink; g.lineWidth = 3.2 - k * 0.45;
+       ellipse(g, x, y - 5, r, r * 0.72); g.stroke();
+     }
+     g.globalAlpha = 1;
+--- a/project.template.json
++++ b/project.template.json
+@@ -108,5 +108,6 @@
+     "subdivision": 1,
+     "tolerance_frames": 0.5
+   },
+-  "notes": "Original stylized scene; not a physically solved membrane. Sound is a synthetic demonstration, not a real recording. Captions are pipeline probes, not proof of action readability."
++  "notes": "Original stylized scene; not a physically solved membrane. Sound is a synthetic demonstration, not a real recording. Captions are pipeline probes, not proof of action readability.",
++  "caption_position": "top"
+ }

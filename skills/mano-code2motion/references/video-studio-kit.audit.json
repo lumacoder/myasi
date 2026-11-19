@@ -1,0 +1,771 @@
+{
+  "repository": "https://github.com/owlinthebarnai/video-studio-kit",
+  "commit": "fbd31eb4ca70e774e570a096843329a4c91349ce",
+  "tree_sha": "5a2b0918d1854f41b679554272b9ab4b10f194f8",
+  "observed_date_Asia_Shanghai": "2026-11-19",
+  "reuse": "pattern/reference only; original implementation, zero upstream code/text/media/font/model vendoring",
+  "inventory": {
+    "tree_entries": 3205,
+    "blobs": 2616,
+    "truncated": false,
+    "cached_text_files": 1645,
+    "skill_entrypoints": 52,
+    "agent_yaml_files": 27,
+    "unique_agent_yaml_contents": 13,
+    "catalog_tools": 19,
+    "catalog_styles": 109,
+    "existing_preview_files": 93
+  },
+  "review_scope": {
+    "all_text": "Decoded and structurally scanned all cached text: instructions, scripts, templates, configs, examples/tests, licences and dependency manifests. Not a claim of line-by-line semantic verification.",
+    "semantic_review": "All 52 entrypoint capability/section maps; detailed integration-chain code and representative grammar/renderer/audio/test fixtures. 27 agent files are UI metadata, not an executed planner/coder/critic system.",
+    "external_sources": "repos.json pins 19 optional/source repos; absent external repo bodies are not claimed as reviewed, installed or executed.",
+    "runtime": "No upstream code executed. Only original integration tests and new original proof are run."
+  },
+  "licensing": {
+    "root_LICENSE": null,
+    "root_license_result": "NOASSERTION: no root LICENSE/COPYING/grant in fixed tree; README/THIRD_PARTY credits are not a blanket licence.",
+    "bundled_MIT_notices": [
+      ".claude/skills/blender-claymation/LICENSE",
+      ".claude/skills/cartoon-3d-short/LICENSE",
+      ".claude/skills/what-if-animation/LICENSE",
+      ".claude/skills/motion-studio/external/howseen/LICENSE",
+      ".claude/skills/motion-studio/external/charlie947/LICENSE",
+      ".claude/skills/painted-animation/template/LICENSE",
+      "demos/painted/LICENSE"
+    ],
+    "font_notices": "13 bundled OFL-* texts; assets not imported. Kenney CC0/Kokoro Apache declarations noted, not used.",
+    "unclear_scopes": [
+      "first-party video-studio/science/product code",
+      "claude-animation-styles",
+      "Remotion skill text"
+    ],
+    "upstream_claims": "Other MIT/Apache/CC0 labels in THIRD_PARTY are upstream declarations, not independent verification of every external repo licence. No code/assets taken from them.",
+    "external_tools": "Existing Chrome/FFmpeg/Node used as tools, not vendored; FFmpeg build/distribution/codec terms remain environment-specific."
+  },
+  "core_sources": [
+    {
+      "path": "README.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/README.md",
+      "sha256": "ba5f54b5162fcfa7d6a22e3d571cbd22b8dc7f5cc72c5b3de60e3a7e5a367979"
+    },
+    {
+      "path": "THIRD_PARTY.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/THIRD_PARTY.md",
+      "sha256": "6b320c8689b4c7b642bca7972b9a9540933c33b5647b72781a9fdbfc5d6eceb3"
+    },
+    {
+      "path": "repos.json",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/repos.json",
+      "sha256": "71fb5d0ae5a8e5dfada779c5f378716e4febe8d32b467c29e6d02286196e602e"
+    },
+    {
+      "path": "setup.mjs",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/setup.mjs",
+      "sha256": "dba2c1059401e4e55204777da4b1f22aeaaed977a1721142323b1c4786e81dee"
+    },
+    {
+      "path": ".mcp.json",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.mcp.json",
+      "sha256": "bb0aac4ecdc890de1e75c7112a3f9e8a2ecf517487d6ab5959f0b209866432de"
+    },
+    {
+      "path": "video-studio/catalog.json",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/video-studio/catalog.json",
+      "sha256": "378643411af49619be352493d99f5ce49f2e6e2cc91550c4ceee4b4d18cd2bd5"
+    },
+    {
+      "path": "video-studio/agent.mjs",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/video-studio/agent.mjs",
+      "sha256": "ccdb234ab661a4c6abd164f72f8baab52ab89f162e39134fe9c4ed2c7a2054f6"
+    },
+    {
+      "path": "video-studio/vs.mjs",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/video-studio/vs.mjs",
+      "sha256": "77b4aa44e7a6880a728df712da56155821573c76d07ff68d7a5bbea11d1e464a"
+    },
+    {
+      "path": "video-studio/ui/app.js",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/video-studio/ui/app.js",
+      "sha256": "48d6c82c0f0a4dc91eb3ae66a4d57d18e2c11c07e075388e7151338eb87bb8c8"
+    },
+    {
+      "path": "video-studio/tools/page-render.mjs",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/video-studio/tools/page-render.mjs",
+      "sha256": "292f8c29c0a1a42fe0c9afb3d68e98d8920d72f0bd18d251687b9915e65d1206"
+    },
+    {
+      "path": "video-studio/tools/stitch.mjs",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/video-studio/tools/stitch.mjs",
+      "sha256": "bba3c3a2a2cbc89e55543c1e5f482a6fab3f0d792a7eda05721c2f5de0cf3cd3"
+    },
+    {
+      "path": "video-studio/tools/package.mjs",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/video-studio/tools/package.mjs",
+      "sha256": "3cfe5278ecd9d405c9f10522d3acfd938756d7745423f8afd6c40077e96ce293"
+    },
+    {
+      "path": ".claude/skills/animate/tools/build.mjs",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/animate/tools/build.mjs",
+      "sha256": "3b61faa843539a3d86315cb5b392f99ca8149600a6b4658fa2f015bf691e0a9c"
+    },
+    {
+      "path": ".claude/skills/animate/tools/review.mjs",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/animate/tools/review.mjs",
+      "sha256": "f9b2a1144efecd744c757b43ea7c5e5bf56c5dde491c1e9a6415512265c9066c"
+    },
+    {
+      "path": ".claude/skills/animate/tools/textcheck.mjs",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/animate/tools/textcheck.mjs",
+      "sha256": "c7fa1c07945e374e5a715106c11ee55c29745920c6bd491151ced62f864b1ca3"
+    },
+    {
+      "path": ".claude/skills/animate/grammar/STORY.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/animate/grammar/STORY.md",
+      "sha256": "329b238a352db48ffc2837c4716b34c68c1d95205da589983f2d771ebfbd9a00"
+    },
+    {
+      "path": ".claude/skills/animate/grammar/FRAME.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/animate/grammar/FRAME.md",
+      "sha256": "3dbb855d5502dea12c9f791cebd99199f027870e94b5eb3d3cf3043f763a3877"
+    },
+    {
+      "path": ".claude/skills/animate/grammar/FORMATS.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/animate/grammar/FORMATS.md",
+      "sha256": "f2dec2a09c27b31f859af40e8325b49c748304e3db1cbe75ee45913f1a15e103"
+    },
+    {
+      "path": ".claude/skills/animate/new-style.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/animate/new-style.md",
+      "sha256": "41944dfe1b7fda45224969c7212ea54cc20f7a7aecaa609a6d639d2f4166ac86"
+    },
+    {
+      "path": ".claude/skills/animate/kit/core.js",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/animate/kit/core.js",
+      "sha256": "40a1b12c9d19b294658fba335774210c9e3d66810f598dfb93ca821b94bc84d1"
+    },
+    {
+      "path": ".claude/skills/animate/kit/morph.js",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/animate/kit/morph.js",
+      "sha256": "1edb672efa20142a13aa0c2699913912498a9f281a62e0ca563984511145d05b"
+    },
+    {
+      "path": ".claude/skills/animate/kit/score-head.js",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/animate/kit/score-head.js",
+      "sha256": "6f7f0f1c465a5ace4ba7574f6a8316667d92bb6b170dd7b48ca94aa1a8e2c963"
+    },
+    {
+      "path": ".claude/skills/animate/kit/score-tail.js",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/animate/kit/score-tail.js",
+      "sha256": "13b1836500dd4ebdf083a13a40bcdaf8a447c72bf20a24c94ca822f7468edb8e"
+    },
+    {
+      "path": "studio/lib/music.mjs",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/studio/lib/music.mjs",
+      "sha256": "32cd97c9c3edde2742a00a29016679370f36fc77d80242dd207e9e8df8259319"
+    },
+    {
+      "path": "studio/lib/voice.mjs",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/studio/lib/voice.mjs",
+      "sha256": "bd7d8b375f5621b7de76dd2043df479fdc700a5c4b4bf1959dc986314e5b7879"
+    },
+    {
+      "path": "studio/tts/speak.py",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/studio/tts/speak.py",
+      "sha256": "1b59d2f530df89f3505f770e3d1fe5808d22f48d66f64dc6e7a007e0156c57d4"
+    },
+    {
+      "path": "studio/tools/verify.mjs",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/studio/tools/verify.mjs",
+      "sha256": "bda552d33151fc6a76f5fcc80b5899823a4582e79d9dd6b3c67d53b8e18143a8"
+    },
+    {
+      "path": ".claude/skills/motion-studio/template/tools/seams.mjs",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/motion-studio/template/tools/seams.mjs",
+      "sha256": "63a3bf5d13f5bc184ab34a88759c936e75e5b2923893fa9d551cf9968fe6b0fa"
+    },
+    {
+      "path": ".claude/skills/remotion-to-hyperframes/scripts/tests/boxSizing.test.mjs",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/remotion-to-hyperframes/scripts/tests/boxSizing.test.mjs",
+      "sha256": "f860a1b0d1cb67f6ca64e0bf2d980e1dbbb8cf620603e04ec58d20172acf536f"
+    },
+    {
+      "path": ".claude/skills/remotion-to-hyperframes/assets/test-corpus/tier-4-escape-hatch/expected.json",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/remotion-to-hyperframes/assets/test-corpus/tier-4-escape-hatch/expected.json",
+      "sha256": "fff7f57d87ec185c3f4b95debabcb1c8dd3ea8012af7b6b3a83486900fc095c5"
+    }
+  ],
+  "coverage": [
+    {
+      "skill": "ai-montage",
+      "path": ".claude/skills/ai-montage/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/ai-montage/SKILL.md",
+      "sha256": "8b4acb29711960a55eb4f5d51066b8111ef19b8d3cc3a0d051d4616b54d1982e",
+      "family": "data-montage",
+      "upstream_executed": false
+    },
+    {
+      "skill": "animate",
+      "path": ".claude/skills/animate/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/animate/SKILL.md",
+      "sha256": "58876da1af957ac977132b693e5052adfbd047eada9f22dc8db6f93e3984abe7",
+      "family": "procedural",
+      "upstream_executed": false
+    },
+    {
+      "skill": "blender-3d",
+      "path": ".claude/skills/blender-3d/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/blender-3d/SKILL.md",
+      "sha256": "a3e53d3b9f0f7343dc856919b935eb93405435a0ab8cf406bca90351db9d754d",
+      "family": "character-space",
+      "upstream_executed": false
+    },
+    {
+      "skill": "blender-claymation",
+      "path": ".claude/skills/blender-claymation/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/blender-claymation/SKILL.md",
+      "sha256": "69058fb2681f5ac042dc24ab8e0bb32cf3db0809683b2c432de1268ba4ebfa33",
+      "family": "character-space",
+      "upstream_executed": false
+    },
+    {
+      "skill": "cartoon-3d-short",
+      "path": ".claude/skills/cartoon-3d-short/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/cartoon-3d-short/SKILL.md",
+      "sha256": "288b71077113f14060ed003aec62813f71e46a6102e310ac06b586bab0ce3085",
+      "family": "character-space",
+      "upstream_executed": false
+    },
+    {
+      "skill": "claude-animation-styles",
+      "path": ".claude/skills/claude-animation-styles/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/claude-animation-styles/SKILL.md",
+      "sha256": "fd2b3b2134c34fc626dcc65aa36706589e70c087e3b49f5ffa9c1615545c9921",
+      "family": "code-looks",
+      "upstream_executed": false
+    },
+    {
+      "skill": "earshot",
+      "path": ".claude/skills/earshot/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/earshot/SKILL.md",
+      "sha256": "57b984a602ae1881cb3cfe58cedf61cc89b5c443c0b315fe5b8767471cb6c1ec",
+      "family": "sound",
+      "upstream_executed": false
+    },
+    {
+      "skill": "exploded-product",
+      "path": ".claude/skills/exploded-product/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/exploded-product/SKILL.md",
+      "sha256": "72d04c81264d30ed55045709d553cb30b0f1fa237fe5f6bd0271afda8e2afd52",
+      "family": "science-product",
+      "upstream_executed": false
+    },
+    {
+      "skill": "figma",
+      "path": ".claude/skills/figma/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/figma/SKILL.md",
+      "sha256": "0c5b70c4b2b6bf0a4494b3468426b593d8cdc68a5a83eee1d09f41ad9fde31d7",
+      "family": "html-video",
+      "upstream_executed": false
+    },
+    {
+      "skill": "gsap-core",
+      "path": ".claude/skills/gsap-core/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/gsap-core/SKILL.md",
+      "sha256": "de938eefd9a5bc6335216a17783788cd21408923ead290cda5871b7d61db66b8",
+      "family": "gsap",
+      "upstream_executed": false
+    },
+    {
+      "skill": "gsap-frameworks",
+      "path": ".claude/skills/gsap-frameworks/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/gsap-frameworks/SKILL.md",
+      "sha256": "3d7e8c2f6bddb32ffc1763b17bba9a8a3dcbc3bd5bf6815d921d3c5a4aded85d",
+      "family": "gsap",
+      "upstream_executed": false
+    },
+    {
+      "skill": "gsap-performance",
+      "path": ".claude/skills/gsap-performance/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/gsap-performance/SKILL.md",
+      "sha256": "2dd51f19a7fcabe1c06caee9e61554485696d05003396c528237aba970a959ce",
+      "family": "gsap",
+      "upstream_executed": false
+    },
+    {
+      "skill": "gsap-plugins",
+      "path": ".claude/skills/gsap-plugins/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/gsap-plugins/SKILL.md",
+      "sha256": "a755f587a107ae5c9f4f35702f6e0d870774c6930e28a082c4e9ebb1d2c7bf06",
+      "family": "gsap",
+      "upstream_executed": false
+    },
+    {
+      "skill": "gsap-react",
+      "path": ".claude/skills/gsap-react/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/gsap-react/SKILL.md",
+      "sha256": "fd1ce4fa883a256e6578f13a4271b494a18dffaaa6111ab64ca1bc97d4dd8b21",
+      "family": "gsap",
+      "upstream_executed": false
+    },
+    {
+      "skill": "gsap-scrolltrigger",
+      "path": ".claude/skills/gsap-scrolltrigger/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/gsap-scrolltrigger/SKILL.md",
+      "sha256": "e6612777bcce1617d3b9e061b2f671fb0f36379684d0c61f7a1baa06d7f7a989",
+      "family": "gsap",
+      "upstream_executed": false
+    },
+    {
+      "skill": "gsap-timeline",
+      "path": ".claude/skills/gsap-timeline/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/gsap-timeline/SKILL.md",
+      "sha256": "fbe7a2b9e66e66d2c956f650583d48385498b677ba1292f1dce9d1ffb1a77ea0",
+      "family": "gsap",
+      "upstream_executed": false
+    },
+    {
+      "skill": "gsap-utils",
+      "path": ".claude/skills/gsap-utils/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/gsap-utils/SKILL.md",
+      "sha256": "f71503f423561eeb5567ae8ee41e4363c85fd3970a8feaeac2c2b18309596bab",
+      "family": "gsap",
+      "upstream_executed": false
+    },
+    {
+      "skill": "hyperframes",
+      "path": ".claude/skills/hyperframes/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/hyperframes/SKILL.md",
+      "sha256": "85afaf987ee74bdb022bb952857695ccaabf2137f3a3924bbfa9aad81a436243",
+      "family": "html-video",
+      "upstream_executed": false
+    },
+    {
+      "skill": "hyperframes-cli",
+      "path": ".claude/skills/hyperframes-cli/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/hyperframes-cli/SKILL.md",
+      "sha256": "341c509a4eac5ec32e3e33211904629b8837a0fe49d82fb82273fdf9584d839b",
+      "family": "html-video",
+      "upstream_executed": false
+    },
+    {
+      "skill": "hyperframes-registry",
+      "path": ".claude/skills/hyperframes-registry/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/hyperframes-registry/SKILL.md",
+      "sha256": "843f9459912d464e84aa9cdeb21ec3d2628d444d252e1db13c2f947582792b70",
+      "family": "html-video",
+      "upstream_executed": false
+    },
+    {
+      "skill": "kinetic-reel",
+      "path": ".claude/skills/kinetic-reel/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/kinetic-reel/SKILL.md",
+      "sha256": "a1636b2dfbb3897bd51aab80f6507bce141ff429e1aabc3b2724acba7e7bda8f",
+      "family": "code-looks",
+      "upstream_executed": false
+    },
+    {
+      "skill": "lemo-opuscar",
+      "path": ".claude/skills/lemo-opuscar/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/lemo-opuscar/SKILL.md",
+      "sha256": "0e29cdf6564e8c58e9e3f9f85fc44e2f2695ef539a51d298a040517e95a84fac",
+      "family": "code-looks",
+      "upstream_executed": false
+    },
+    {
+      "skill": "media-use",
+      "path": ".claude/skills/media-use/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/media-use/SKILL.md",
+      "sha256": "f1a33fdf411ad8cb0998ccec0a1bcb1fa5bab0f1c14588c82c725cf5fe3961d1",
+      "family": "html-video",
+      "upstream_executed": false
+    },
+    {
+      "skill": "motion-design",
+      "path": ".claude/skills/motion-design/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/motion-design/SKILL.md",
+      "sha256": "0fa7bd378776e776a9af528db040e5144127834c461ba7fb6805f47d13bc293d",
+      "family": "motion-ui",
+      "upstream_executed": false
+    },
+    {
+      "skill": "motion-prompt",
+      "path": ".claude/skills/motion-prompt/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/motion-prompt/SKILL.md",
+      "sha256": "aa67dd0605c74047b85ff1f69d2d4b7ebdbb7ee7db4b81bd6cd4f1f35cf28a2e",
+      "family": "code-looks",
+      "upstream_executed": false
+    },
+    {
+      "skill": "motion-studio",
+      "path": ".claude/skills/motion-studio/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/motion-studio/SKILL.md",
+      "sha256": "0d70c529b063e5630252a72d215fcf77ed2a7e8bbd63b2169a03ccddf23b45b7",
+      "family": "character-space",
+      "upstream_executed": false
+    },
+    {
+      "skill": "painted-animation",
+      "path": ".claude/skills/painted-animation/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/painted-animation/SKILL.md",
+      "sha256": "01bf8f8a9e462be19060d7d8ea7d88cfabc650167e454a2161e34918d129d97e",
+      "family": "code-looks",
+      "upstream_executed": false
+    },
+    {
+      "skill": "real-sound",
+      "path": ".claude/skills/real-sound/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/real-sound/SKILL.md",
+      "sha256": "4810cd9a42676d927ca3cee29933bdbf2ddb92976e869fa439f38531bbc59a0e",
+      "family": "sound",
+      "upstream_executed": false
+    },
+    {
+      "skill": "remotion-best-practices",
+      "path": ".claude/skills/remotion-best-practices/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/remotion-best-practices/SKILL.md",
+      "sha256": "93cc5d39b04b32dc849f9dae54142f6092adb532db074ae01ebcdafee662e40b",
+      "family": "remotion",
+      "upstream_executed": false
+    },
+    {
+      "skill": "remotion-captions",
+      "path": ".claude/skills/remotion-captions/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/remotion-captions/SKILL.md",
+      "sha256": "b3f9fbbef20ae62fa862655928e037b71ed520b3cf31d682b1b7f45783addb5b",
+      "family": "remotion",
+      "upstream_executed": false
+    },
+    {
+      "skill": "remotion-create",
+      "path": ".claude/skills/remotion-create/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/remotion-create/SKILL.md",
+      "sha256": "6ab082d49aa841be79208ba1b8b965fb0635d9a29baa9539f47f2c87f5804916",
+      "family": "remotion",
+      "upstream_executed": false
+    },
+    {
+      "skill": "remotion-docs",
+      "path": ".claude/skills/remotion-docs/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/remotion-docs/SKILL.md",
+      "sha256": "3b9c1afaf31206e18823c298f69885d3b6106fcdecb926e9c48d0371f4d1f5ab",
+      "family": "remotion",
+      "upstream_executed": false
+    },
+    {
+      "skill": "remotion-interactivity",
+      "path": ".claude/skills/remotion-interactivity/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/remotion-interactivity/SKILL.md",
+      "sha256": "fa521eac92e95973d3be3d5a15d7b0bfe45a758f8cb08876a3f91c01fabc3e92",
+      "family": "remotion",
+      "upstream_executed": false
+    },
+    {
+      "skill": "remotion-license",
+      "path": ".claude/skills/remotion-license/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/remotion-license/SKILL.md",
+      "sha256": "9fd8504488d1c83914c32732814c5eae78670c213e7101f8b9a1de67a443a506",
+      "family": "remotion",
+      "upstream_executed": false
+    },
+    {
+      "skill": "remotion-maps",
+      "path": ".claude/skills/remotion-maps/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/remotion-maps/SKILL.md",
+      "sha256": "f9679ce0700d7ae2be7ea43e55cc016d79bf51aade06c59f951e29e5c1c2d319",
+      "family": "remotion",
+      "upstream_executed": false
+    },
+    {
+      "skill": "remotion-markup",
+      "path": ".claude/skills/remotion-markup/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/remotion-markup/SKILL.md",
+      "sha256": "12727c04d92eebd7664e2b83451e17d2d1ffec64da759c46d18b4c06bd3b8ab7",
+      "family": "remotion",
+      "upstream_executed": false
+    },
+    {
+      "skill": "remotion-multimedia",
+      "path": ".claude/skills/remotion-multimedia/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/remotion-multimedia/SKILL.md",
+      "sha256": "48810e78d1562495a51c0d01f65adb40013a07c0dd208df228a5b4aafb25fe65",
+      "family": "remotion",
+      "upstream_executed": false
+    },
+    {
+      "skill": "remotion-render",
+      "path": ".claude/skills/remotion-render/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/remotion-render/SKILL.md",
+      "sha256": "c7f0fd40cf61f0ab8cb157ca7f0fd07758ce020e4f640bc927d4bf257ec06929",
+      "family": "remotion",
+      "upstream_executed": false
+    },
+    {
+      "skill": "remotion-saas",
+      "path": ".claude/skills/remotion-saas/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/remotion-saas/SKILL.md",
+      "sha256": "6ea1b9ef107474ab210c7f6138f836e0bd11a0792cdaec44b8e9788a5fad311d",
+      "family": "remotion",
+      "upstream_executed": false
+    },
+    {
+      "skill": "remotion-studio",
+      "path": ".claude/skills/remotion-studio/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/remotion-studio/SKILL.md",
+      "sha256": "9c56fcce32e659a68f447cf2a382a62d8e1a973731a58e018d08f621c4ccde4e",
+      "family": "remotion",
+      "upstream_executed": false
+    },
+    {
+      "skill": "remotion-to-hyperframes",
+      "path": ".claude/skills/remotion-to-hyperframes/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/remotion-to-hyperframes/SKILL.md",
+      "sha256": "8efa3dfedb1e591f7c2f86321faafd390848fb77d95ae8d55791df0544ca6036",
+      "family": "porting",
+      "upstream_executed": false
+    },
+    {
+      "skill": "remotion-upgrade",
+      "path": ".claude/skills/remotion-upgrade/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/remotion-upgrade/SKILL.md",
+      "sha256": "8b7cdc313e34706ab96b87eb5b4cfecee73f659b6fe79efc98e4ecf36b4cb8d1",
+      "family": "remotion",
+      "upstream_executed": false
+    },
+    {
+      "skill": "reverse-any-video",
+      "path": ".claude/skills/reverse-any-video/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/reverse-any-video/SKILL.md",
+      "sha256": "fe9d3ec0a9a6821207a25860d7653aa9c4cf4cfed5543f560fe426ed56ce5e1e",
+      "family": "porting",
+      "upstream_executed": false
+    },
+    {
+      "skill": "sci-flat",
+      "path": ".claude/skills/sci-flat/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/sci-flat/SKILL.md",
+      "sha256": "deb48b91d8a81d76f3d0131afdcf500778caf28ac9c90b8d560b8df3af581a42",
+      "family": "science-product",
+      "upstream_executed": false
+    },
+    {
+      "skill": "sci-fluoro",
+      "path": ".claude/skills/sci-fluoro/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/sci-fluoro/SKILL.md",
+      "sha256": "a8e379126ca0aaa6d6fe899023c79f3df0d558e3aa96a40a867f4e699cf59781",
+      "family": "science-product",
+      "upstream_executed": false
+    },
+    {
+      "skill": "sci-molecular",
+      "path": ".claude/skills/sci-molecular/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/sci-molecular/SKILL.md",
+      "sha256": "a5b6478e23f10d19847d1d44da7e2dda8250ceae4e70af864f457aa7785a9543",
+      "family": "science-product",
+      "upstream_executed": false
+    },
+    {
+      "skill": "sci-notebook",
+      "path": ".claude/skills/sci-notebook/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/sci-notebook/SKILL.md",
+      "sha256": "83b2402962d03634e03ccfc911bf5318828c9b3a8d08d8b2320646b00a26c611",
+      "family": "science-product",
+      "upstream_executed": false
+    },
+    {
+      "skill": "slideshow",
+      "path": ".claude/skills/slideshow/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/slideshow/SKILL.md",
+      "sha256": "f4d67791536d8c4689e2cd1aa25330cde43cd924f7ca47e6877ac6bbb280dfe8",
+      "family": "presentation",
+      "upstream_executed": false
+    },
+    {
+      "skill": "style-sampling",
+      "path": ".claude/skills/style-sampling/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/style-sampling/SKILL.md",
+      "sha256": "88dfb15673fadf63e6f4cc99a2f17ba595a358ee79021e628078ebb912c73efe",
+      "family": "paid-template",
+      "upstream_executed": false
+    },
+    {
+      "skill": "tvhead-video",
+      "path": ".claude/skills/tvhead-video/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/tvhead-video/SKILL.md",
+      "sha256": "842e8f1a1a696b65de00cbb425361aa2a11db563e87c239b9859d7b5ffaf3e29",
+      "family": "character-space",
+      "upstream_executed": false
+    },
+    {
+      "skill": "video-studio",
+      "path": ".claude/skills/video-studio/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/video-studio/SKILL.md",
+      "sha256": "ab275d124c2d71afc8cfcd2a0a1dffb191f68ca630dcea667762a9bab90981fd",
+      "family": "production",
+      "upstream_executed": false
+    },
+    {
+      "skill": "what-if-animation",
+      "path": ".claude/skills/what-if-animation/SKILL.md",
+      "url": "https://github.com/owlinthebarnai/video-studio-kit/blob/fbd31eb4ca70e774e570a096843329a4c91349ce/.claude/skills/what-if-animation/SKILL.md",
+      "sha256": "06d4c93c86f1afc482fca2c14729e89aedda32f0057604711c70cc8517b47056",
+      "family": "character-space",
+      "upstream_executed": false
+    }
+  ],
+  "capability_families": {
+    "production": {
+      "mechanism": "Editable scene contract; silent scene renders merged into one film; scoped progress and artifact delivery.",
+      "gap": "Previously one authored Canvas project, not a multi-shot production contract.",
+      "landing": [
+        "guides/production.md",
+        "scripts/production.py",
+        "templates/production-project.json"
+      ],
+      "status": "original implementation of deterministic core; subscription runner/UI not ported",
+      "test": "ContractTests and MediaTests + new 6s proof; no upstream runner executed"
+    },
+    "procedural": {
+      "mechanism": "Narrative formats, subject anchors, style hooks, path/morph bridges, beat/cue timeline, design frames, pixel/seam/phone review, procedural score.",
+      "gap": "Intent/brief/pixel revision already present; style/continuity and production clocks needed explicit handoff.",
+      "landing": [
+        "guides/style-and-continuity.md",
+        "runtime/scene-kit.js",
+        "templates/style-bible.md",
+        "guides/production.md"
+      ],
+      "status": "workflow adapted + small original optional kit; no upstream painter/synth copied",
+      "test": "scene-kit Node QA; new Canvas case + frame/clip tests; not all upstream styles reproduced"
+    },
+    "sound": {
+      "mechanism": "Picture-derived audio cues; trim-level provenance; category stems; sync, loudness, silence and actual listening separated.",
+      "gap": "Old exporter silent; no film audio placement or proof.",
+      "landing": [
+        "scripts/production.py",
+        "guides/production.md",
+        "examples/contact-resonance/build.py"
+      ],
+      "status": "explicit local tracks, frame-to-sample cue placement, fades/limiter and measurements implemented; no neural listening/ASR/asset bank installed",
+      "test": "real delayed WAV/AAC fixture and overrun failures; audition remains independent"
+    },
+    "code-looks": {
+      "mechanism": "Authored medium-specific geometry/type/lighting, modular shot code, shape/identity continuity, frame-driven render, style-specific checks.",
+      "gap": "Specialized algorithms allowed, but style reuse and shot-to-shot identity needed a reusable contract.",
+      "landing": [
+        "guides/style-and-continuity.md",
+        "templates/style-bible.md",
+        "runtime/scene-kit.js",
+        "guides/renderer-adapters.md"
+      ],
+      "status": "mechanisms adapted, not 109 installed effects; unlicensed animation-styles and externally fetched lemo library not copied",
+      "test": "original 6s drawing + hook/arc-length tests; upstream look parity and style speed claims not tested"
+    },
+    "character-space": {
+      "mechanism": "Character identity, contact/parented coordinates, camera/pose staging, plate compositing, low-cost keyframe probes, per-word cues when real timings exist.",
+      "gap": "No general 3D/character engine; existing bamboo case proves no such thing.",
+      "landing": [
+        "guides/style-and-continuity.md",
+        "guides/renderer-adapters.md",
+        "guides/production.md"
+      ],
+      "status": "workflow + reviewed rendered-media interop only; no native 3D renderer, rig, paid TTS, plugin bootstrap or existing character assets imported",
+      "test": "media normalization/muting verified; native 3D/character/word-timing backends not executed"
+    },
+    "science-product": {
+      "mechanism": "Part hierarchy/leader anchors; meaningful colour channels; path reveal, topology/occlusion, focus and science fact checks; medium-specific risks.",
+      "gap": "No mechanism-specific look checklist; no product/molecular simulator.",
+      "landing": [
+        "guides/style-and-continuity.md",
+        "templates/style-bible.md",
+        "runtime/scene-kit.js",
+        "guides/renderer-adapters.md"
+      ],
+      "status": "original mechanism guidance and arc-length helper; no upstream shaders/engines/models copied, no scientific simulation claim",
+      "test": "path-prefix numeric tests; native product/molecular/microscopy visuals not executed"
+    },
+    "motion-ui": {
+      "mechanism": "Context-dependent motion personality, weight, hierarchy, choreography and meaningful feedback rather than adjective-to-preset lookup.",
+      "gap": "Contextual interpretation already covered; avoid reinstating a numeric schema ceiling.",
+      "landing": [
+        "guides/style-and-continuity.md",
+        "guides/directing.md"
+      ],
+      "status": "overlap retained plus context-specific counterexamples; not a new engine",
+      "test": "existing context/vocabulary regressions; no imported numerical quality score"
+    },
+    "gsap": {
+      "mechanism": "Paused/nested timelines, absolute seeking, scoped selectors, lifecycle cleanup, layout-vs-transform budgeting and accessible live previews.",
+      "gap": "Core deterministic seek already covered; do not duplicate a GSAP API encyclopedia.",
+      "landing": [
+        "guides/renderer-adapters.md",
+        "guides/style-and-continuity.md",
+        "references/engineering.md"
+      ],
+      "status": "overlap retained + handoff guidance; GSAP not installed or bundled; live scroll/interaction not a film renderer",
+      "test": "existing seek regressions; native GSAP/plugin/scroll backends not executed"
+    },
+    "html-video": {
+      "mechanism": "Editable compositions, per-scene subcompositions, root duration and paint order, ready assets/fonts, reusable blocks, token/source/media lineage.",
+      "gap": "Canvas-only capture remains deliberately narrow; needs honest adapter boundary rather than pretend HTML/WebGL support.",
+      "landing": [
+        "guides/renderer-adapters.md",
+        "guides/production.md",
+        "templates/style-bible.md"
+      ],
+      "status": "existing local media interop and project-level guidance; no external registry downloads, Figma imports, SaaS media generation or provider auth",
+      "test": "media adapter tested; native HyperFrames/Figma/registry/cloud actions not executed"
+    },
+    "porting": {
+      "mechanism": "Source-vs-render comparison, exact size/fractional FPS, frame-neighbour cuts; state/async/UI blockers must use interop, not approximate rewrites.",
+      "gap": "No generic engine translator and no right to copy real-film footage.",
+      "landing": [
+        "guides/renderer-adapters.md",
+        "scripts/production.py",
+        "guides/production.md"
+      ],
+      "status": "frame-exact media interop, rational FPS, rendered cut-neighbour evidence implemented; no automatic source translation/reverse engineering claim",
+      "test": "real rational-rate output/order tests, cut-neighbour/pixel-delta extraction; upstream 4-tier corpus inspected but not run"
+    },
+    "remotion": {
+      "mechanism": "Frame-based React composition, font/media readiness, captions, editable properties, package-version consistency and renderer/license boundaries.",
+      "gap": "Not a Remotion installer or host app; frame contract should not become a universal drawing schema.",
+      "landing": [
+        "guides/renderer-adapters.md",
+        "scripts/production.py",
+        "guides/production.md"
+      ],
+      "status": "explicit local media/subtitle/probe integration, no Remotion skill text copied (no clear license here); runtime terms separate",
+      "test": "actual SRT burn and FFprobe/decoding tests; Remotion-native React/maps/SaaS/ASR not executed"
+    },
+    "data-montage": {
+      "mechanism": "Documentary/data sourcing, source credits, factual arithmetic, licensed assets, one visual argument per phrase and contextual sound.",
+      "gap": "Real-material provenance absent from previous authored-only exporter.",
+      "landing": [
+        "guides/production.md",
+        "guides/style-and-continuity.md",
+        "templates/production-project.json"
+      ],
+      "status": "explicit provenance and cue/edit workflow; no downloads of people/data/archival media, finance claims or misleading identities",
+      "test": "rights/missing-media checks; no factual dataset imported"
+    },
+    "paid-template": {
+      "mechanism": "Episode reuse from a style template with user-selected topic and editable project.",
+      "gap": "User explicitly prohibits spend; source requires HyperFrames Pro templates.",
+      "landing": [
+        "guides/style-and-continuity.md",
+        "guides/renderer-adapters.md"
+      ],
+      "status": "paid acquisition excluded; reuse original local look rules instead; no login/billing steps",
+      "test": "not invoked; no entitlement claimed"
+    },
+    "presentation": {
+      "mechanism": "Seekable presentation states/fragments and notes, rather than autoplay film shots.",
+      "gap": "Live presenter navigation is not needed by this animation skill task.",
+      "landing": [
+        "guides/renderer-adapters.md"
+      ],
+      "status": "out of scope as a live deck system; reuse absolute seek principle only; source TTS fields explicitly unwired",
+      "test": "not invoked; no deck capability claimed"
+    }
+  }
+}

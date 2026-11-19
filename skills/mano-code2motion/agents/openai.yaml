@@ -1,6 +1,6 @@
 # 可选界面元数据；不是多agent调度器。
 interface:
   display_name: "mano-code2motion"
-  short_description: "自然语言创意→导演简报→专用代码表达→真实像素反馈与修改；独立记录技术、可读性、表现力"
+  short_description: "自然语言创意→导演简报→专用代码表达→真实像素反馈与修改；多镜头/字幕/本地音画制作，独立记录技术、可读性、表现力"
 policy:
   allow_implicit_invocation: true

@@ -1,7 +1,7 @@
 ---
 name: mano-code2motion
 description: >-
-  当需要用代码创作视频/动画，或把丝滑、轻盈、有力量、手绘感、电影感等短描述解释成可见的表演、造型、材质、构图与节奏时使用。先导演简报与风险设计帧，再选专用绘制机制，渲染真实像素并修改；交付可运行源码、同条件对照和分门审阅。适用于角色片、叙事短片、程序绘画、动态图形、产品与UI动效。
+  当需要用代码创作视频/动画，或把丝滑、轻盈、有力量、手绘感、电影感等短描述解释成可见的表演、造型、材质、构图与节奏时使用。先导演简报与风险设计帧，再选专用绘制机制，渲染真实像素并修改；交付可运行源码、同条件对照和分门审阅。适用于角色片、叙事短片、程序绘画、动态图形、产品与UI动效，以及多镜头制作、字幕与本地音画剪辑。
 ---
 # Mano-Code2Motion｜意图 → 导演简报 → 代码表达 → 像素反馈
 
@@ -16,7 +16,7 @@ description: >-
 
 ## 工作闭环（按项目留下少量真实证据）
 1. **导演简报**：用 `templates/director-brief.md`。保留原话与不可变约束；明确观众体验、视觉主体、动作因果/转折、材料与造型规则、画面主次、镜头任务、节奏、最难的2–3帧、可自由设计处与主动不做的东西。缺失的非关键项作可逆假设，不把短需求膨胀成装饰清单。按需读 `guides/directing.md`。
-2. **选择表达机制**：从目标反推算法，写“画面问题 → 候选机制 → 选择/代价 → 失败长什么样”。按需读 `guides/visual-mechanisms.md`。Canvas/SVG/WebGL/Three.js/Manim等均可；附带导出器只支持单Canvas2D，其他技术另备适配导出。低层轨道只是工具。
+2. **选择表达机制**：从目标反推算法，写“画面问题 → 候选机制 → 选择/代价 → 失败长什么样”。按需读 `guides/visual-mechanisms.md`。Canvas/SVG/WebGL/Three.js/Manim等均可；附带导出器只支持单Canvas2D，其他技术另备适配导出。低层轨道只是工具。多镜头/字幕/音画制作再读 `guides/production.md`，用帧级镜头表交接，不用制作schema限制绘制代码；造型与身份连续性可用 `guides/style-and-continuity.md`。
 3. **先做风险设计帧**：先渲2–3个构图/剪影/材料候选，或难动作的接触条。缩到交付尺寸的1/4后冷读，再看全尺寸。身份/主次/关键姿势不成立，不先渲30秒。保留被否决的源码和图片，不能只保存胜出版。
 4. **实现确定性短段**：显式 `READY`，纯 `renderAt(seconds)`，固定种子，从绝对时间计算形状与运动，局部坐标/接触关系明确。只约束相关量，别为了通过测试把动作冻结。随机纹理预计算或按索引散列；空间曲线和时间推进分开。需要时查 `references/engineering.md`。
 5. **渲染 → 冷读 → 核对意图 → 改最弱处**：使用 `guides/review-loop.md` 与 `templates/visual-review.json`。先记录实际像素的主体/焦点/不清楚处，后看brief。挑最弱时刻，提出可证伪根因，改造型/因果/相位/构图/材料等实质选择。相同时间、机位、尺寸做A/B；必要时正常速度短预览。至少两次真实审阅，其中一次必须审阅改版；若仅检查静帧，运动判断仍待审，不能冒称已看完整视频。
@@ -42,6 +42,11 @@ python scripts/review_gate.py /outside/repo/review.json --require-pass
 ## 按需加载，别一次塞满上下文
 - 创意解释/冲突与镜头：`guides/directing.md`
 - 专用造型/材料/角色机制：`guides/visual-mechanisms.md`
+- 多镜头契约/剪辑/音画/切点证据：`guides/production.md`；`scripts/production.py doctor` 只探测、不安装
+- 绘制风格与跨镜头身份：`guides/style-and-continuity.md`、`templates/style-bible.md`
+- 已有框架/媒体真实接入边界：`guides/renderer-adapters.md`
+- 新制作通路的6秒原创执行例（独立视觉已审：动作清楚、鼓身份/表现力不足；音频未审）：`examples/contact-resonance/README.md`
+- video-studio-kit固定SHA/权利/全部技能覆盖决策：`references/video-studio-kit.md`（按需）
 - 真实像素审阅与反例：`guides/review-loop.md`
 - 完整案例及A/B记录：`examples/ink-bamboo/README.md`
 - 来源、权利和能力边界：`references/sources.md`

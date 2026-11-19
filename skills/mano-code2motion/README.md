@@ -1,4 +1,4 @@
-# mano-code2motion 0.2
+# mano-code2motion 0.3
 
 自然语言创意 → 导演简报 → 适合题目的绘制/动画机制 → 真实渲染 → 针对最弱画面的修改。
 
@@ -13,7 +13,19 @@
 - `references/research-findings.md`、`references/sources.md`：可核查研究结论、来源与未开源/许可边界。
 - 原`motion.py`/schema/`check.py`/`render.py`/compare保持兼容，只作**局部数值轨道**工具，不再规定作品表达上限。
 
-## 运行原创案例
+## 新增制作通路（0.3）
+- `scripts/production.py`：可编辑帧级镜头表→本地媒体conform/剪辑→显式音轨/字幕→真实解码/切点前后图→哈希校验草稿包；缺媒体/过短默认失败，不用占位卡假成功。
+- `guides/production.md`：精确时钟、声音/留白、许可与交付；`guides/style-and-continuity.md`、`runtime/scene-kit.js`：造型规则与可自由替换的绘制代码，不是风格enum。
+- `examples/contact-resonance/`：新的6秒两镜头、本地合成提示音和字幕执行例；独立正常速度/试听仍待审，不借用水墨竹的通过结论。
+- `references/video-studio-kit.md` + `.audit.json`：固定SHA、完整树/全部技能覆盖决策、原生实现与外部依赖/付费/许可边界。没有导入上游代码/字体/模型/素材，没有安装19个引擎或获得109种已验证效果。
+```bash
+python scripts/production.py doctor
+python examples/contact-resonance/build.py --out /outside/repo/contact-proof
+# 可在新输出目录authored/project.json修改字幕、cue和镜头，再assemble到另一个全新目录
+```
+实际媒体适配支持精确有理数fps；Canvas捕获仍是整数fps、单Canvas2D。无自动TTS/ASR/ducking/听感判断；所有平台适配的实测范围见示例与指南。
+
+## 运行原创水墨案例
 Python 3.8+标准库；Node只用于案例几何QA，浏览器与ffmpeg/ffprobe需本机可用，不自动安装，不收费。
 ```bash
 # 本目录执行；HTML也可直接双击

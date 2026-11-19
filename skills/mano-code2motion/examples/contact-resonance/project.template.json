@@ -1,0 +1,113 @@
+{
+  "version": 1,
+  "title": "Contact / resonance — 6s production proof",
+  "fps": 24,
+  "width": 768,
+  "height": 432,
+  "shots": [
+    {
+      "id": "wide",
+      "start": 0,
+      "end": 48,
+      "clip": "clips/wide.mp4",
+      "renderer": "authored-canvas2d",
+      "visual": "One red bead falls toward a taut drum skin.",
+      "cut_reason": "Establish one red bead, release and approach; no ornamental camera.",
+      "identity": "red-bead/navy-outline/wood-rim-v1",
+      "look": "warm-paper/copper-wood/navy-v1",
+      "rights": {
+        "basis": "original",
+        "credit": "mano-code2motion contact-resonance demonstration authors",
+        "evidence": "Original geometric drawing, paper texture and analytic PCM cue authored for this integration; no upstream code or media copied."
+      },
+      "risk_frames": [
+        0,
+        13,
+        36,
+        47
+      ],
+      "sources": [
+        "wide/index.html",
+        "shared/scene.js",
+        "shared/scene-kit.js"
+      ],
+      "notes": "No visual pass claimed; scale jump and membrane readability need independent review."
+    },
+    {
+      "id": "close",
+      "start": 48,
+      "end": 144,
+      "clip": "clips/close.mp4",
+      "renderer": "authored-canvas2d",
+      "visual": "One disturbance travels out from contact; weaker trails fade; the last second rests.",
+      "cut_reason": "Cut on the contact to reveal propagation. Same bead, rim and paper palette; overhead view is a deliberate scale/POV change.",
+      "identity": "red-bead/navy-outline/wood-rim-v1",
+      "look": "warm-paper/copper-wood/navy-v1",
+      "rights": {
+        "basis": "original",
+        "credit": "mano-code2motion contact-resonance demonstration authors",
+        "evidence": "Original geometric drawing, paper texture and analytic PCM cue authored for this integration; no upstream code or media copied."
+      },
+      "risk_frames": [
+        0,
+        1,
+        18,
+        48,
+        84,
+        95
+      ],
+      "sources": [
+        "close/index.html",
+        "shared/scene.js",
+        "shared/scene-kit.js"
+      ],
+      "notes": "No visual pass claimed; scale jump and membrane readability need independent review."
+    }
+  ],
+  "captions": [
+    {
+      "start": 8,
+      "end": 36,
+      "text": "One small contact."
+    },
+    {
+      "start": 86,
+      "end": 122,
+      "text": "Carries a wider echo."
+    }
+  ],
+  "tracks": [
+    {
+      "file": "assets/contact.wav",
+      "start": 48,
+      "end": 84,
+      "role": "sfx",
+      "gain_db": -3,
+      "fade_in": 0,
+      "fade_out": 3,
+      "rights": {
+        "basis": "original",
+        "credit": "mano-code2motion contact-resonance demonstration authors",
+        "evidence": "Original geometric drawing, paper texture and analytic PCM cue authored for this integration; no upstream code or media copied."
+      }
+    }
+  ],
+  "landmarks": [
+    {
+      "frame": 48,
+      "purpose": "single contact: source of picture disturbance and sound cue"
+    },
+    {
+      "frame": 120,
+      "purpose": "quiet ending; an intentional hold is not a freeze defect"
+    }
+  ],
+  "beat_grid": {
+    "bpm": 120,
+    "offset_frame": 0,
+    "subdivision": 1,
+    "tolerance_frames": 0.5
+  },
+  "notes": "Original stylized scene; not a physically solved membrane. Sound is a synthetic demonstration, not a real recording. Captions are pipeline probes, not proof of action readability.",
+  "caption_position": "top"
+}

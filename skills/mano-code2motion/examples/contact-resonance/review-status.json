@@ -1,0 +1,156 @@
+{
+  "case": "contact-resonance",
+  "status": "independent visual review completed; drum identity/expression incomplete; audio inaccessible and not auditioned",
+  "technical": {
+    "case_render": "measured subset pass: 144 decoded frames, 24fps, 768x432, 6 seconds, two source shots; seek probes completed",
+    "unchanged_opening_raw_frames": {
+      "0": true,
+      "47": true
+    },
+    "same_decoded_audio": true,
+    "gates": "Current assessed gates are recorded below; immutable assembly/inspection keep historical not_reviewed states. Measurements do not override these judgments.",
+    "regression": {
+      "Linux_skill_tests": "82/82 pass, including real FFmpeg5 fixtures and Node QA",
+      "MalePC_full_repository_tests": "142 total:139 pass,2 pre-existing Windows symlink failures,1 missing sh+curl skip; new31 tests all pass",
+      "Windows_baseline_failures": [
+        "test_get_by_bare_name_links_everywhere",
+        "test_symlink_failure_falls_back_on_posix"
+      ],
+      "Node": "installed and actual original B/C QA and new runtime QA passed; not skipped",
+      "registry_validate_diff_check": "pass",
+      "full_suite_exit_code": 1
+    },
+    "reviewed_version_regression": {
+      "Linux_skill_tests": "83/83 pass after independent review record and guard-test update",
+      "Windows_production_tests": "32/32 pass after independent review record and guard-test update",
+      "registry_validate_diff_check": "pass; generated wiring idempotence verified at packaging",
+      "earlier_full_Windows_suite": "142 total:139 pass,2 baseline Windows symlink failures,1 needs sh+curl skip; not rerun after review record/test-only edits",
+      "no_scene_change_or_rerender": true
+    }
+  },
+  "creator_pixel_observations": [
+    {
+      "version": "initial",
+      "frames": [
+        48,
+        66,
+        96,
+        132
+      ],
+      "observation": "At frame96 ripple lines are very faint; bottom caption touches the near rim. These are creator PNG observations, not a cold read or video verdict."
+    },
+    {
+      "version": "revised",
+      "frames": [
+        48,
+        49,
+        66,
+        96,
+        132
+      ],
+      "observation": "Actual frame96 has more visible finite rings and top-centred caption separated from the near rim. Cut48/49 show the same red bead on the close surface; no video continuity verdict inferred."
+    }
+  ],
+  "source_mechanism_facts": [
+    "One quadratic release/fall and a contact at global frame48.",
+    "Finite-lifetime ripple fronts, no endless idle; same subject palette/identity in both shots.",
+    "One original analytic PCM cue placed by frame48, captions are a production probe."
+  ],
+  "hypotheses_not_visual_proof": [
+    "The close-up should reveal contact propagation, but bead occlusion/scale jump may weaken it."
+  ],
+  "independent_review": {
+    "normal_speed_video": "reviewed by independent reviewer; report supplied by parent, not watched by executor",
+    "audio_audition": "not_reviewed: audio inaccessible to reviewer",
+    "action_causality": "pass",
+    "cut_time_continuity": "pass",
+    "spatial_readability": "pass despite scale change; stable central focus, no drift/geometric pop observed",
+    "intended_drum_identity": "partial: reads as plate/shallow tray/coaster; brief still requires a drum",
+    "expression": "partial: no visible membrane deformation, tension or rebound",
+    "caption_revision": "At0:04 moving caption to upper negative space visibly reduced rim occlusion."
+  },
+  "limitations": [
+    "Stylized drawing, not acoustic or membrane simulation.",
+    "No real-recorded foley, speech synthesis, ASR or automatic listening.",
+    "Upstream tool count/style catalogue is not local installed capability.",
+    "Independent reviewer could not access audio and did not listen; executor also did not audition.",
+    "Visual report confirms plate-like reading and missing intended drum mechanics; no further creative revision performed."
+  ],
+  "preserved_prior_results": "ink-bamboo C readability pass/expression partial; B independent expression fail; old twelve-case evaluation incomplete",
+  "revision": {
+    "bounded_change": "Start wave outside bead silhouette; increase finite-front visibility and slower finite decay; place captions in top negative space. Wide drawing and sound unchanged.",
+    "patch": "revision-initial-to-revised.patch",
+    "evidence": {
+      "initial_video_sha256": "81d26331aecc260f2cf66275fd5af95ae91f955fcf036d63b782efc446ccde36",
+      "revised_video_sha256": "3073409bf40c57a934ce65ef4e830a1a6cff58f08b7b605c597fc5ce41b3b359",
+      "initial_scene_sha256": "e5c14e95b1274fb82a57682156518c9265aac52f5a30e198af3ba64fe227ffb7",
+      "revised_scene_sha256": "8b567d97410ff46c146c407b5b5fc2f01643207a8ddf1e15e09e3864f109bb73",
+      "same_time_frames": [
+        48,
+        66,
+        96,
+        132
+      ],
+      "unchanged_wide_raw_pixels": {
+        "0": true,
+        "47": true
+      },
+      "decoded_audio_sha256": [
+        "7d0e96bdd753cec33b55e3b84670789b65c54e7015e896c663b2309801a41e40",
+        "7d0e96bdd753cec33b55e3b84670789b65c54e7015e896c663b2309801a41e40"
+      ],
+      "comparison_audio": "revised only, not doubled",
+      "video_watched": false,
+      "audio_listened": false
+    },
+    "artifact_root": "external task evidence video-studio-kit-integration/",
+    "initial_source": "contact-proof-headless-shell/authored/",
+    "initial_video": "contact-proof-headless-shell/assembly/proof.mp4",
+    "revised_source": "contact-proof-revised/authored/",
+    "revised_video": "contact-proof-revised/assembly-final/proof.mp4",
+    "inspection": "contact-proof-revised/inspection-final/",
+    "comparison": "contact-comparison-verified/"
+  },
+  "technical_failures_and_fixes": [
+    {
+      "observation": "A requested top caption actually rendered middle-left with force_style Alignment=8 in a minimal local FFmpeg diagnostic.",
+      "fix": "Use observed Alignment=6 for top-centre; inspect actual case PNG and assert white glyph bounding box in real media test. Do not infer success from option labels.",
+      "scope": "Confirmed in Linux proof PNGs and final Linux/Windows real glyph-position regression."
+    },
+    {
+      "observation": "First Windows FFmpeg8 rational test decoded8 frames but avg_frame_rate=120000/3997, not30000/1001.",
+      "fix": "Explicit per-part frame-contract durations in concat list avoid relying on rounded container durations; candidate reproduced fix, final cross-platform regressions recorded separately.",
+      "scope": "Original failed video and ffprobe facts retained outside repo."
+    }
+  ],
+  "render_environment": {
+    "executed": "Box, explicitly selected already-installed Chromium Headless Shell through existing CLI renderer; no paid provider/install/download or sandbox bypass.",
+    "failed": "Default system Chrome timed out even on an empty page; diagnostics retained, not attributed to scene code.",
+    "not_executed": "Full case render on MalePC avoided due low free disk budget; local FFmpeg/Node regression tests did execute there."
+  },
+  "independent_visual_observations": [
+    "Red ball falls onto a shallow circular plane; cut to overhead view at contact.",
+    "Three finite rings expand and disappear; action causality and cut-time continuity are clear.",
+    "Centre focus remains consistent; scale changes but space is readable; no drifting/geometric pop observed.",
+    "Revised subtitle placement visibly improves rim occlusion at0:04.",
+    "Object reads as plate/shallow tray/coaster, not intended drum; membrane deformation/tension/rebound are not visible."
+  ],
+  "gates": {
+    "technical": {
+      "status": "partial",
+      "reason": "Decoded media/frame/cue checks pass in measured scope and no visual pop/drift reported; audio perceptual/sync review inaccessible, not a full technical pass."
+    },
+    "readability": {
+      "status": "partial",
+      "reason": "Action/cut/space readable; intended drum identity is not established. Do not rename the brief as a plate to evade this gap."
+    },
+    "expression": {
+      "status": "partial",
+      "reason": "Drum membrane/tension/rebound absent; not all expressive goals passed."
+    }
+  },
+  "delivery_gate": {
+    "status": "blocked",
+    "reason": "Original drum brief remains partly unmet; actual audio audition unavailable. Numerical cue placement and stream presence are not hearing or perceptual sync evidence."
+  }
+}
