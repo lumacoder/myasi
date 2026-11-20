@@ -1,8 +1,22 @@
-# mano-code2motion 0.3
+# mano-code2motion 0.5
 
-自然语言创意 → 导演简报 → 适合题目的绘制/动画机制 → 真实渲染 → 针对最弱画面的修改。
+自然语言创意 → 时间总谱 → 导演简报 → 适合题目的绘制/动画机制 → 真实渲染 → 针对最弱画面的修改。
 
 不是把所有作品变成“形容词→ease→圆/矩形播放器”；也不是声称拥有新的训练模型或自动审美器。主入口见 [SKILL.md](SKILL.md)。
+
+## 0.5 新增（18 个仓库的 JSON 资料库 + 可执行精华提炼）
+- **JSON 资料库**：`references/repos-18.json` —— 18 个仓库逐个核对（2026-11-20，GitHub API 许可/语言/简介 + README/SKILL.md 头部），每个仓库有机制、3–7 条可执行技术、use_when / not_when、调用方式、未验证项；另有 `lookup_by_task`（按任务查仓库）与 tags 索引。AI 先查库再动手，不一次读全文。
+- **查库工具**：`scripts/repos_lookup.py`（仅标准库，Python 3.8+，只读）——`--tag timing|captions|particles|copy|encode`、`--query <词>`、`--repo <owner/name>`、`--list-tags`、`--all`。
+- **精华提炼**：`references/essences.md` —— P0 直接进技能的 6 条（实测运动数表、人格×时长×缓动查表、复刻判定标准、字幕类型化契约、实测节拍、成品文件 QC），P1 按镜头选路的 11 条（文案先行、分镜表硬门、风格 prompt 形状、画的顺序、身份连续、合成 JSON、粒子数据规格、电影感收尾、调参工具、授权声音、3D QA），P2 只作查库提示。只提炼机制与数字，不复制代码、提示词长文、媒体、字体或模型。
+- SKILL.md 新增“选路先查库”规则与第 3 步的查库动作；`references/language-to-code.md` 补实测数表与字幕契约的速查。
+
+## 0.4 新增（Florence @flxrnc，2026-11-19 清单 + Fable 5.2 Playbook）
+- **Copy → Style → Paint → VFX → Beat → Captions**：有参考先逐帧复刻结构与节拍，再画自己的东西。只学语法，不复制参考的角色、代码、字体或媒体。见 `guides/copy-and-reference.md`。
+- **语言生成代码的精华**：`references/language-to-code.md` —— 渲染契约、形容词换数字、提示词模板、数字速查（缓动/弹簧/时长/节拍/清晰度）、禁单、时间总谱先行、运动量测、按镜头选路。SKILL.md 只留规则入口，数字全放这里按需读。
+- **时间总谱先行**：先写 timing（节拍、事件帧号、声音落点），再写运动；写清“完成”的定义。
+- **静帧会撒谎，量运动**：freeze 检测、运动曲线、主体像素宽（1080p 主镜头 ≥170px）、关键动作帧号误差；自己按正常速度看一遍。
+- **规则要少而好**：禁用的默认逐个点名，每轮追加。
+- 18 个仓库已按 GitHub API 核对许可（2026-11-20，见 `references/sources.md`），本技能不导入其中任何代码与素材。
 
 ## 内容与接线
 - `templates/director-brief.md`：观众体验、因果、造型/材料、构图/镜头、节奏、风险与自由。
@@ -61,4 +75,4 @@ python scripts/render.py --out /outside/repo/compare --chrome /path/to/chrome
 MotionSpec v1只支持circle/rect和x/y/scale/rotation/opacity；数值合法/轨道连续不代表能理解任意视觉需求。
 
 ## 验证边界
-原12例预注册评估尚未完成，仍针对350efba冻结版本；不能把此次单案例或新增测试冒充它的通过结论。案例展示一种任务专用表达和真实修改，不证明泛化质量、完整滑板动作修复、微调能力或与SenseNova等效。本例C已完成独立正常速度审阅（可读性pass、表现力partial）；叶片偏刚性、内部柔性/迟响应不明显、回落稍机械，不能宣称全部通过。其他作品仍须独立审阅。
+原12例预注册评估尚未完成，仍针对350efba冻结版本；不能把此次单案例或新增测试冒充它的通过结论。案例展示一种任务专用表达和真实修改，不证明泛化质量、完整滑板动作修复、微调能力或与SenseNova等效。本例C已完成独立正常速度审阅（可读性pass、表现力partial）；叶片偏刚性、内部柔性/迟响应不明显、回落稍机械，不能宣称全部通过。其他作品仍须独立审阅。0.4 的新增内容（复刻流程、语言生成代码精华）与 0.5 的新增内容（JSON 资料库、查库工具、精华提炼）同样未经独立评估，不能冒充通过结论；各仓库 README 里的效果数字（见 `references/essences.md` 未验证一节）均未独立复现。

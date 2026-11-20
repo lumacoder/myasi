@@ -1,5 +1,9 @@
 {
-  "version": "0.3.0",
+  "aliases": [],
+  "clients": [
+    "*"
+  ],
+  "license": "MIT",
   "tags": [
     "animation",
     "canvas",
@@ -9,11 +13,14 @@
     "visual-review",
     "production-pipeline",
     "editing",
-    "audio-cues"
+    "audio-cues",
+    "copy-reference",
+    "timing-first",
+    "motion-qa",
+    "language-to-code",
+    "repos-library",
+    "measured-motion",
+    "caption-contract"
   ],
-  "aliases": [],
-  "clients": [
-    "*"
-  ],
-  "license": "MIT"
+  "version": "0.5.0"
 }
