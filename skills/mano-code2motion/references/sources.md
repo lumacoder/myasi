@@ -1,5 +1,36 @@
 # 来源与范围
 
+## 0.4 新增：Florence @flxrnc（2026-11-19 清单与 Fable 5.2 Playbook）
+- 目标帖：Florence @flxrnc，2026-11-19 12:28，“I copy any animation I see now, these 18 GitHub repos are the reason”，https://x.com/flxrnc/status/2123392905934999811 。X 本站当时返回 403，无法直接读；本文通过 Xtracticle 的公开 markdown 接口读到同一帖的全文后核对。
+- 该帖引用的前文：Florence @flxrnc，2026-11-10，“The Fable 5.2 Motion Playbook: One Prompt, One Film”，https://x.com/flxrnc/status/2120207374250049675 。
+- 更早的同系列：Florence @flxrnc，2026-09-30，Opus 5.5 Motion Lab，https://x.com/flxrnc/status/2105311836190978392 。
+- 本次只提炼可执行的规则与数字（渲染契约、形容词换数字、提示词模板、数字速查、禁单、时间总谱、运动量测），不复制原文提示词、代码或展示媒体。
+- 18 个仓库的许可与简介于 2026-11-20 用 GitHub API 逐个核对，见下表；Openverse 是 API（api.openverse.org/v1/），不是仓库。许可栏 “未列出” 表示 API 未返回许可，不等于可自由使用。
+
+| 仓库 | 许可 | 本技能的取舍 |
+|---|---|---|
+| NiazMorshed2007/reanimate | MIT | 复刻：逐帧反推参考动画，再逐帧核对 |
+| LottieFiles/motion-design-skill | MIT | timing / easing 的词表与规则 |
+| Vincentwei1021/mg-styles-15 | MIT | 15 种风格，各一 prompt 式选择 |
+| alchaincyf/huashu-art-motion | MIT | 35 种艺术风格的画动机制 |
+| alexgreensh/anidoodle | Apache-2.0 | 涂鸦与循环，纯代码 |
+| Leonxlnx/cinetic | MIT | 代码出发布片的流程 |
+| Tejashmakwana/motionmaxxing | Apache-2.0 | 把 AI 味片子改成设计师级 |
+| ManimCommunity/manim | MIT | 数学动画引擎，按镜头选路 |
+| EL4CTEO/blender-skills | MIT | Blender 5.3 工作流 skill |
+| Alchemist0823/three.quarks | MIT | three.js 粒子/VFX |
+| pmndrs/react-postprocessing | MIT | 电影感收尾 |
+| cocopon/tweakpane | MIT | 滑杆调参 |
+| storytold/effectcraft | Apache-2.0 | Rust 合成 |
+| librosa/librosa | ISC | 找节拍，动作跟节拍走 |
+| m-bain/whisperX | BSD-2-Clause | 逐词字幕，毫秒级对齐 |
+| remotion-dev/skills | 未列出 | 官方视频 skill，单独核对许可后再用 |
+| FFmpeg/FFmpeg | 未列出（镜像） | 编码：H.264 High、yuv420p、AAC |
+| Openverse API | — | 免费声音/音乐，只用 CC0/公有领域/CC BY |
+
+- 本技能不导入以上任何仓库的代码、提示词长文、媒体、字体或模型；需要时在项目里按各自许可单独引入，并记录来源。
+- 另见 `language-to-code.md` 的按镜头选路表；其中 motion2code、chrome-devtools-mcp、claude-video、HyperFrames、Mediabunny、faster-whisper、earshot 等来自 Fable Playbook 的工具箱，本次未逐个核对许可与版本，只作按需参考，不作能力承诺。
+
 - 用户提供灵感链接：https://x.com/anstapnever/status/2122679111323922521?s=20 。本次可获得的正文为视频编辑工具汇总的截断文本，提及 DaVinci Resolve MCP、auto-editor；未核实整帖全部项目或视频内容。**不能把本技能的解释器/MotionSpec说成该帖已有实现**。这里不复制工具名单，不以帖子为软件许可/兼容性依据。
 - 核心设计来自任务要求：人类感受词 → 情境化解释 → 可执行单位契约 → 动画代码 → 视频证据。词义、配方与代码为本技能原创实现。
 - 可选配合仓库内 `mano-design/capabilities/motion-and-3d.md` 理解动画原则；其中或其他资料的时长/推镜比例等一律视为情境候选，不是普适审美阈值。本技能自行定义单位、连续性和验收，独立运行。
