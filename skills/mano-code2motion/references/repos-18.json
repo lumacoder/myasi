@@ -1,0 +1,682 @@
+{
+  "checked": "2026-11-20",
+  "checked_how": "GitHub API for license/language/description; README / SKILL.md head via browser. No repo code was run, installed or rendered. Claims marked in unverified[] were not independently reproduced.",
+  "lookup_by_task": {
+    "captions_voice": [
+      "whisperx",
+      "remotion-skills"
+    ],
+    "choose_a_style": [
+      "mg-styles-15",
+      "huashu-art-motion",
+      "anidoodle"
+    ],
+    "choose_timing_numbers": [
+      "motion-design-skill",
+      "motionmaxxing",
+      "mg-styles-15"
+    ],
+    "compositing_finish": [
+      "effectcraft",
+      "react-postprocessing"
+    ],
+    "copy_a_reference": [
+      "reanimate",
+      "motionmaxxing",
+      "cinetic"
+    ],
+    "encode_qc_export": [
+      "ffmpeg",
+      "effectcraft"
+    ],
+    "launch_film": [
+      "cinetic",
+      "motionmaxxing",
+      "anidoodle"
+    ],
+    "math_diagram": [
+      "manim"
+    ],
+    "music_beat": [
+      "librosa",
+      "openverse"
+    ],
+    "particles_vfx": [
+      "three-quarks",
+      "effectcraft",
+      "react-postprocessing"
+    ],
+    "react_video": [
+      "remotion-skills"
+    ],
+    "real_3d": [
+      "blender-skills",
+      "three-quarks",
+      "react-postprocessing"
+    ],
+    "tune_parameters": [
+      "tweakpane"
+    ]
+  },
+  "name": "mano-code2motion repos-18 library",
+  "repos": [
+    {
+      "call_how": "npx skills add NiazMorshed2007/reanimate -g; then /reanimate <target> into <path> in Claude Code. Needs Bun 1.1+, macOS/Linux, ffmpeg + Playwright Chromium.",
+      "description": "A Claude Code skill that reverse-engineers any animation frame by frame, then proves the copy moves the same.",
+      "id": "reanimate",
+      "language": "JavaScript",
+      "license": "MIT",
+      "mechanism": "Record a reference (site, recording, mp4, gif, Lottie) in headless Chromium on a virtual clock at fixed viewport/fps; reduce it to a spec (one row per element per property: start, duration, from-to, easing, stagger); rebuild in the project's own stack; film the copy identically and compare.",
+      "not_when": "Pages behind login; YouTube/Loom (hand it a recording instead); copying original art/brand wholesale; photoreal/organic motion with no recoverable mechanism.",
+      "repo": "NiazMorshed2007/reanimate",
+      "tags": [
+        "copy",
+        "reference",
+        "reverse-engineer",
+        "verification",
+        "webgl",
+        "three.js",
+        "gsap"
+      ],
+      "techniques": [
+        "Record -> spec -> build -> verify -> repeat, usually 2-5 rounds; after 5 rounds list remaining mismatches with reasons, do not claim done.",
+        "Two match levels stated up front: 'moves the same' = trigger, order, stagger, timing within 80 ms, easing family, distance; 'pixel-perfect' = all above plus fonts/sizes/colours/spacing/assets and <=2% mean pixel mismatch.",
+        "Fit easing/springs from tracked data (overshoot + settle time); do not guess them.",
+        "Virtual clock + seeded random for capture so two captures are byte-identical; for unreproducible particles compare blurred mismatch (density/colour/motion), not dot-by-dot.",
+        "Replay the same pointer path on original and copy; side-by-side reference/clone/diff sheets, activity curves and timing error per element every round."
+      ],
+      "unverified": [
+        "Capture/compare scripts not run",
+        "Frame-identical claims (e.g. 417/417 frames) not independently checked",
+        "WebGL trace / virtual-clock behaviour not tested"
+      ],
+      "url": "https://github.com/NiazMorshed2007/reanimate",
+      "use_when": "User gives a reference animation/site/video and wants it rebuilt in code; UI/WebGL/three.js motion where timing is the hard part."
+    },
+    {
+      "call_how": "npx skills add LottieFiles/motion-design-skill; agent loads skills/motion-design/SKILL.md on demand, reads director/patterns/reference/timing-easing-tables.md as needed.",
+      "description": "Universal motion design principles for AI agents - timing, easing, choreography, and Disney animation principles adapted for UI.",
+      "id": "motion-design-skill",
+      "language": null,
+      "license": "MIT",
+      "mechanism": "Philosophy-first, implementation-agnostic skill. 8-step checklist (emotion -> personality -> property -> duration -> easing -> hero/staging -> secondary/ambient -> 1/3 rules), 4 motion-personality archetypes, Disney 12 principles adapted for UI. No renderer; hands off once to Creator MCP for MP4/GIF/Lottie export.",
+      "not_when": "Long-form film / narrative video (no render, no timing grid, no review loop); photoreal 3D or math animation.",
+      "repo": "LottieFiles/motion-design-skill",
+      "tags": [
+        "timing",
+        "easing",
+        "ui",
+        "choreography",
+        "personality",
+        "disney"
+      ],
+      "techniques": [
+        "8-step checklist before any code; every animation has 3 layers: primary, secondary, ambient (flat = missing layers).",
+        "One personality per project: Playful 150-300ms, ease-out-back, 10-20% overshoot; Premium 350-600ms, cubic-bezier(0.4,0,0.2,1), 0% overshoot; Corporate 200-400ms, cubic-bezier(0.2,0,0,1), 0-3%; Energetic 100-250ms, ease-out-expo, 15-30%. Brand = 1 signature easing (80% of animations) + 3 durations + 1 entrance pattern.",
+        "Duration table: tooltip 80-120ms, button 120-180ms, card 200-350ms, modal 300-400ms, page 400-600ms, dramatic reveal 600-1200ms; distance scaling 100px=base, 200px=1.3x, 400px=1.6x, full screen=1.8-2.0x. Entrances 30-50% longer than exits (exit = 65-75% of entrance).",
+        "Latency caps: hover <100ms, press <150ms, release/settle 200-300ms, error shake 300-400ms (2-3 oscillations, +-10-15px, 0% overshoot).",
+        "Stagger: micro 20-40ms, standard 50-100ms, dramatic 100-200ms; total stagger <500ms; direction top-to-bottom, L-to-R, centre-out, reverse on exits.",
+        "Material easing: rigid 1.2x/0% overshoot, elastic 0.8x/15-25%, fluid 1.5x/5%, paper 1.0x/3-5%, gas 2.0x/0%. Springs: standard stiffness 250-350 / damping 18-24; bouncy 150-250 / 10-15; damping ratio <1 oscillates, =1 fastest no-oscillation, >1 slow settle.",
+        "Property budget: 1 property = direct, 2 = polished, 3+ = potentially overwhelming; map goal to primary property (entrance=position, emphasis=scale, error=position shake, success=scale pop)."
+      ],
+      "unverified": [
+        "Sub-files beyond SKILL.md and timing-easing-tables.md not read",
+        "Tables are guidance, not measured results",
+        "Creator MCP not tested"
+      ],
+      "url": "https://github.com/LottieFiles/motion-design-skill",
+      "use_when": "UI/micro-interaction motion, state feedback, loading/success/error, multi-element choreography, establishing a brand motion identity."
+    },
+    {
+      "call_how": "Read a file in prompts/ and send the whole prompt block to a coding agent; Node 22.12+, Chrome, ffmpeg, Python 3.11+; node harness/render.mjs demos/<name>. Fonts are not in the repo.",
+      "description": "15 motion design styles, each made by Claude Opus 5.5 writing code from one prompt: watch the films, copy the prompts, read the full source.",
+      "id": "mg-styles-15",
+      "language": "Python",
+      "license": "MIT",
+      "mechanism": "15 x 10-second films, one style each. Each film is a web page exposing window.renderAt(t); headless Chrome captures every frame, audio.py synthesises music/SFX on the same cues (cues.json timing sheet), ffmpeg muxes an exact 10s MP4. Each went through make -> independent review (rubric.md) -> revise, twice; final jury scores 7.57-8.21/10.",
+      "not_when": "A film whose idea is not a style (narrative/character/product launch); single-run expectation - one run usually does not reach the original finish.",
+      "repo": "Vincentwei1021/mg-styles-15",
+      "tags": [
+        "style",
+        "mg",
+        "prompt",
+        "review",
+        "rubric",
+        "jury"
+      ],
+      "techniques": [
+        "One prompt per style, split into fixed shared parts + 4 fill-in sections: Output spec, Suggested technical route, Creative seed, Signature features. To reuse: replace only the Creative seed; keep Signature features.",
+        "Signature features must be checkable: write 'elastic overshoot cubic-bezier(0.34,1.56,0.64,1), stagger 2-4 frames', never 'motion should feel elastic'.",
+        "Creative seed must have beats: hook -> escalation -> climax -> end frame, written per-second, or the model makes a flat template.",
+        "Independent-jury review (fresh session, did not make the film): contact sheet every 0.5s, filmstrips around fastest/hero moves, full-res frames at 5-8 key times; spec check (exactly 10.00s, resolution/fps, loudness approx -14 LUFS +-1, true peak <= -1 dBTP, no unintended black/static spans, hits aligned to audio onsets); score 1-10 on 7 dimensions (style fidelity, concept/wow, motion craft, design/typography, finish/texture, sound sync, technical); 5 = competent student, 8 = high-end agency, 9 = award shortlist; 5-10 fixes ordered by impact, each with timecode + observable fault + concrete how-to with numbers; at least one fix must raise wow, not just polish.",
+        "Sound is code too: audio.py deterministic synthesis; rerun gives same result (note reproducibility caveat in README).",
+        "Harness reuse: point the agent at harness/render.mjs and lib/audio instead of rebuilding renderer/soundtrack from scratch."
+      ],
+      "unverified": [
+        "Jury scores 7.57-8.21 and review rounds not independently reproduced",
+        "Individual style prompts/demos not read",
+        "Audio determinism claim not checked"
+      ],
+      "url": "https://github.com/Vincentwei1021/mg-styles-15",
+      "use_when": "Need a recognisable style quickly (one prompt -> one film), style-selection / style-transfer for MG/explainer films, or a scored review rubric to import."
+    },
+    {
+      "call_how": "npx skills add alchaincyf/huashu-art-motion; needs uv, ffmpeg, Playwright Chromium. Track tier: shot table -> storyboard_lint.py -> render.py --spec <shot>.json -> qa.py -> deliver.py. Content is in Chinese.",
+      "description": "Art animation skill: 35 art styles, 9 explainer grammars, animation in code.",
+      "id": "huashu-art-motion",
+      "language": "JavaScript",
+      "license": "MIT",
+      "mechanism": "Skill (SKILL.md v1.3.1) with two reading tiers. Workflow: breakdown a reference (scripts/analyze/breakdown.py -> cuts, beat grid, motion heatmaps) -> one-frame-first -> code-drawn scenes from 53 style recipe cards (36 implemented + 17 research) or 9 explainer-grammar cards driven by JSON spec (render.py --spec) -> per-shot QA (qa.py) -> independent review -> deliver.py gate.",
+      "not_when": "Photoreal/product launch films, UI motion, or free-form improvisation; work needing the Huashu/Clawd character art (demo-only, not MIT).",
+      "repo": "alchaincyf/huashu-art-motion",
+      "tags": [
+        "art",
+        "style",
+        "explainer",
+        "storyboard",
+        "lint",
+        "painting"
+      ],
+      "techniques": [
+        "Storyboard lint as a hard gate: write a shot table first (one row per shot: time | object (noun) | action (verb) | camera | on-screen text <=8 chars | method), lock one style + one palette (3-6 colours, no blue-purple) before any code; red light = fix table and re-run, no coding starts. Shots 2-6s; text-led shots <=30%; first 3s is a concrete small scene, not a title card.",
+        "One style, one palette to the last frame; every parameterised clip writes the same theme.",
+        "Camera discipline: still when the picture itself moves or the viewer is reading; slow push for transitions, lateral move between items, pull-back for overview/ending; fast push / smash-in / whip-pan are accents only, countable in one film. Never three push-ins in a row; never one motion per shot.",
+        "Anti-PPT / anti-empty deliver gates (film_gate.py, deliver.py): red light = almost no intra-shot motion, blue-purple frames >30%, or a mid-film empty stretch >0.3s - no delivery.",
+        "Breakdown before copy: measure cuts, fit beat grid, motion heatmap per segment; copy the mechanism, not the pixels. New character/style direction is offered as 3 options with different compositions, not just recolours.",
+        "People: humans come from image-model frames + code compositing; without image ability, show only hands/back.",
+        "Parameterised clips: one JSON spec per explainer segment, frame-accurate; a single clip holds at most 8s - longer splits into shots; shots are hard-cut and concatenated with ffmpeg (-r 30 -c:v libx264 -crf 16 -pix_fmt yuv420p)."
+      ],
+      "unverified": [
+        "53 recipe cards, 9 grammar cards, breakdown/qa/deliver scripts not read or run",
+        "Gate thresholds (30% blue-purple, 0.3s empty) are the author's rules, not measured benchmarks"
+      ],
+      "url": "https://github.com/alchaincyf/huashu-art-motion",
+      "use_when": "Art-style / painterly animation, explainer videos (Kurzgesagt/Vox/whiteboard/3Blue1Brown/finance-chart grammars), long-scroll style-journey films, voiceover-driven pieces with a shot table."
+    },
+    {
+      "call_how": "Plugin marketplace (/plugin marketplace add alexgreensh/anidoodle) or copy skills/anidoodle/SKILL.md. Drive engine: node <skill>/engine/tools/scaffold.mjs, then tools/still.mjs, tools/render.mjs, tools/emit.mjs, tools/gate.mjs, tools/verify-export.mjs.",
+      "description": "Art and animation, written as code. Illustrations, loops, interactive web art, launch-videos and scored films in dozens of styles, identical on every render.",
+      "id": "anidoodle",
+      "language": "TypeScript",
+      "license": "Apache-2.0",
+      "mechanism": "One pure function paints each frame (pure functions + seeded random, same source rebuilds the exact same piece on any machine/size). 32 hand-drawn styles, each a mark-making recipe; every style ships the finished picture and, from the same source, a film of it being drawn in the order an artist in that medium works. Music is composed per piece from 21 genre vocabularies (notes as data).",
+      "not_when": "Photoreal, 3D product, or data-heavy explainer; if the team cannot accept a TypeScript/Node engine (Node 20+, Playwright, ffmpeg).",
+      "repo": "alexgreensh/anidoodle",
+      "tags": [
+        "drawing",
+        "illustration",
+        "hand-drawn",
+        "determinism",
+        "music",
+        "launch"
+      ],
+      "techniques": [
+        "Marks are made, in artist order: nothing fades in; every stroke grows, every wash spreads from the touch point; the film's last frame is the still, pixel for pixel.",
+        "One still proves the look, then build straight through; spend approval where being wrong is expensive. A still is a few hundred lines; a family of images is a list of seeds.",
+        "Story discipline: one idea + one focal subject per still; one transformation, one payoff, one returning token per film. Realism by naming: anatomy, view, reference opened, so a creature reads as a creature.",
+        "Determinism gate: tools/gate.mjs checks determinism, contract and dead air in one pass; tools/verify-export.mjs decodes the shipped MP4 and checks it. Cache key names every input a pixel depends on.",
+        "Music check before listening: tools/music.mjs check clears a score on key/mode, loudness, masking, balance of parts, and novelty - novelty fails a score that sounds like a known one or quotes it. SFX kit: 14 layered, seeded effects cued to the exact frame, score ducking under each.",
+        "Launch-film rules: say what it is within 5s, never put words over the art, cut on the downbeat, make the first frame the thumbnail; end card holds install lines long enough to copy; launch.mjs ship renders every shape (16:9, 1:1, 4:5, 9:16, each re-composed, never cropped), poster + captions (.srt/.vtt), checks A/V sync and peak level, and fails any frame whose edge cuts off text.",
+        "Character continuity: build a character once; every shot, pose and style uses the same one."
+      ],
+      "unverified": [
+        "Engine/tools and style recipes not read beyond README",
+        "Determinism / byte-identical claims not reproduced",
+        "Recorded-instrument pack (373 MB) not downloaded or checked"
+      ],
+      "url": "https://github.com/alexgreensh/anidoodle",
+      "use_when": "Hand-drawn / illustration-led films, drawing timelapses, brand illustration families, launch films, interactive web art - where the mark itself is the style."
+    },
+    {
+      "call_how": "npx skills add Leonxlnx/cinetic; brief in 1-2 sentences, agent scaffolds with scripts/new-film.sh films/<name> --fps 60 --size 1920x1080. Needs Node 22+, ffmpeg 6+, Python 3.11+, headless Chromium, earshot 0.4+.",
+      "description": "Cinematic launch films and motion design from code, directed by your coding agent.",
+      "id": "cinetic",
+      "language": "TypeScript",
+      "license": "MIT",
+      "mechanism": "Director skill for launch films (15-45s) and update videos (15-23s). Pipeline Steps 0-11, each writes a file and ends at a runnable gate: BRIEF.md -> dealt direction (deck.py, 3 directions from 35) -> script checked by copy-check.py -> brand/type -> licensed music found and analysed (music.mjs, track.py) -> beat sheet/timeline on the music's bars (pick.py draws devices) -> build from tested primitives -> look/forensics/grammar checks -> sound cast/score mastered to -14 LUFS -> motion-blurred master -> contact-sheet + critic review -> delivery. Engines: Remotion (React) default or HyperFrames (HTML/GSAP).",
+      "not_when": "Short doodle/art/explainer films, single-shot loops, or low-budget runs - a cinetic run costs ~3x the time/tokens of the baseline; not for photoreal/organic motion.",
+      "repo": "Leonxlnx/cinetic",
+      "tags": [
+        "launch",
+        "copy",
+        "brand",
+        "music",
+        "remotion",
+        "direction",
+        "critic"
+      ],
+      "techniques": [
+        "Copy first, before any picture: script must say what the product is by 3s, one thing it does per line, name + what to do; 2-7 plain words per line; copy-check.py fails vague words, slogans, keyword piles, lines >7 words, two lines on screen at once, 'Introducing...', eyebrow/kicker labels, fake metrics/lorem ipsum.",
+        "Direction is dealt, not improvised: deck.py --brief ... --options 3 gives 3 complete directions; agent writes one idea sentence each, keeps the one a competitor could not claim.",
+        "Device book as a draw, not a menu: 466 devices in 25 families + 724 entries in techniques.json; pick.py draws ~1 device per beat, in format order, with a variety rule (one family cannot fill a film), weighted to house workhorses and film energy, a different text animation per line; seed printed so a plan reproduces.",
+        "Velocity handoff as the default cut: outgoing shot accelerates and is cut on its fastest frame; incoming opens moving the same way at 0.5-1.5x that speed and decelerates to rest; every cut hands over a carrier (velocity, scale direction, shape or position). Numbers: exit ease-in 4-29f, entry 20-60f settling, cut speeds 15-200 px/f at 1080p; sound on the cut within +-30ms of the beat. Avoid cutting between two parked frames or into an opposite-direction move.",
+        "One grid for everything: b(bar, beat, 16ths) helper maps every frame number to the track's measured bars, so picture, cue export and audits cannot drift. Sounds are never placed by hand: export-cues.ts computes contact frames of springs, settle frames of arrivals and velocity peaks of launches from the same constants the acts animate with.",
+        "Look floors + forensics as gates: look-audit.py fails a render under the floors (camera or ground moving through most of the body, two planes at different rates, carried seams, a designed moment every 3s, a light event in every act, scale changes across cuts); forensics.py fails motion that snaps, freezes, settles too fast or stops dead; grammar-score.mjs scores against house grammar.",
+        "Sound restraint: licensed human-made instrumental track only (no generated music); one soft sound per line of text, near-silence while it is read, one big hit for the one reveal; at most 2 pitched effects in any 4s.",
+        "Templates are floors: 7 templates (update 15-23s, ui-walkthrough 25-40s, capability-reel 15-25s, camera-teaser 20-25s, prompt-run 18-20s, social-ad 15s, type-explainer 20-30s); social versions are re-laid out from the same timeline, never cropped."
+      ],
+      "unverified": [
+        "Eval table read from README only, not re-run",
+        "51 scripts / device book / critic prompts not read beyond README index",
+        "Music/earshot pipeline not tested"
+      ],
+      "url": "https://github.com/Leonxlnx/cinetic",
+      "use_when": "Product launch / update films, UI walkthroughs, capability reels - where copy, brand, music and a ship gate matter as much as motion."
+    },
+    {
+      "call_how": "git clone ... ~/.claude/skills/motionmaxxing; bash install.sh; trigger /motionmaxxing or plain language; scripts brand.mjs, precedent.py, render.mjs, look.py, lint.mjs, blind_review.py; runtime/motion.js on vendored GSAP + Three.js.",
+      "description": "Looksmaxxing for motion graphics. An agent skill that turns AI slop videos into films that look made by a motion designer.",
+      "id": "motionmaxxing",
+      "language": "JavaScript",
+      "license": "Apache-2.0",
+      "mechanism": "Agent skill (SKILL.md + runtime/ + scripts/ + library/moments.jsonl, 716 rows). 10-step protocol: brand capture -> one true thing / PAGE -> idea -> world/time + storyboard -> hardest beat first -> look honestly -> sound -> deliver. Renders plain HTML + GSAP/Motion runtime frame-by-frame in Chrome + ffmpeg. Checked by scripted gates G0-G5 (look.py, lint.mjs) and blind A/B; NOTE.md records numbers, never certifies 'good'.",
+      "not_when": "Photoreal scenes, complex characters, organic movement, long narrative; no Node 22+/Chrome/ffmpeg.",
+      "repo": "Tejashmakwana/motionmaxxing",
+      "tags": [
+        "repair",
+        "slop",
+        "measured",
+        "lint",
+        "gates",
+        "gsap",
+        "three.js"
+      ],
+      "techniques": [
+        "Measured motion numbers, not opinions: median move 10f (0.33s); entries 11-12f, opacity 6f, blur 7-8f; landing decelerates (58% ease-out), leaving accelerates (37% ease-in); overshoot <9% (8.8%), late slow lean, not fast spring; logos arrive decelerating from ~3.5x, nothing grows from zero; 3,392 transform entries vs 584 opacity fades; hard cuts 96%, ~20/moment, cut on motion not rest.",
+        "Dead-frame gate: pro 3-7s moments move on ~99% of frames, median still run 1f; fail >3 consecutive flat frames. End hold 0.6-1.4s, final shot <=25% of film, end hold <=1.4s.",
+        "Page-chrome lint G5: fail corner labels, counters, timecodes, progress bars, kicker over headline, left-headline + right-media, letter-typed headlines, vibe-coded UI cards. Lint is a lead, not a verdict - it cannot see text in canvas/image.",
+        "One hero per frame (G4): two panels only if one has 2x area or camera moves between them. UI text >=0.04H, fragment >=0.55W or cropped by frame (G1, by eye).",
+        "Fix the skill, not the agent: several slop tells were prescribed by earlier skill wording; rewrite the rule when a default recurs.",
+        "Runtime: 12 measured eases by name (softLand, snapSettle, accelExit...), seek-safe pure function of time with Motion.selfTest, hero3d (Three.js hero on same clock), native-ui true-proportion iOS furniture, words/typing/cursor/press/count/camera/snap/dive/whip/smear authored in frames.",
+        "Sound: word timings -> frames (sync.mjs), mix to -14 LUFS / -1 dBTP (mix.py)."
+      ],
+      "unverified": [
+        "53 pro moments / 4,288 moves / 150 rules not independently checked",
+        "9/10 blind A/B was one rater, per README",
+        "Bundled GSAP is GreenSock Standard License, not open source - see NOTICE"
+      ],
+      "url": "https://github.com/Tejashmakwana/motionmaxxing",
+      "use_when": "Launch/product/brand/kinetic-type films; rating + repairing an AI-slop draft (draft.mp4 + index.html -> slop/mid/maxxed)."
+    },
+    {
+      "call_how": "pip/uv install manim; from manim import *; class X(Scene): def construct(self): ... self.play(Create(square)); manim -p -ql example.py SquareToCircle; %%manim in Jupyter.",
+      "description": "A community-maintained Python framework for creating mathematical animations.",
+      "id": "manim",
+      "language": "Python",
+      "license": "MIT",
+      "mechanism": "Three concepts - Mobject (displayable object, mostly vector VMobject), Animation (interpolation between two states), Scene (construct() orchestrates). Input is a Python Scene class; self.play(Animation) renders it, CLI manim encodes MP4 via Cairo/ffmpeg. Output is deterministic video, not an interactive page.",
+      "not_when": "Product UI, photoreal/3D, characters, real-time or HTML seek(t) loops, short social loops.",
+      "repo": "ManimCommunity/manim",
+      "tags": [
+        "math",
+        "diagram",
+        "transform",
+        "education",
+        "python"
+      ],
+      "techniques": [
+        "Identity continuity: keep the same object across stages with Transform(square, circle) / Create / FadeOut, instead of title-card sequences - the audience can point to how state N became N+1.",
+        "Animation = interpolation: every animation interpolates start->end (opacity, angle, position). Name run_time and rate_func explicitly per play(); do not rely on a global default ease.",
+        ".animate chaining: any setter is animatable - square.animate.set_fill(WHITE).shift(UP).rotate(PI/3) in one play() - one causal change per beat.",
+        "Relational placement: move_to(), next_to(), align_to() relative to origin/other objects, not absolute pixels; origin is screen centre, up/right positive.",
+        "Live-updating plots: Axes/FunctionGraph/ValueTracker + always_redraw - the analogue of renderAt(t): derive the drawing from a single time/value parameter.",
+        "Cheap stills first: manim -s renders final frame only, -n <k> skips to the k-th animation, -ql low-quality preview, -p preview."
+      ],
+      "unverified": [
+        "No code run in this research",
+        "LaTeX dependency for Tex/MathTex not checked here",
+        "Docs version v0.22.1, API details beyond building-blocks page not fetched"
+      ],
+      "url": "https://github.com/ManimCommunity/manim",
+      "use_when": "Math, equations, diagrams, explanatory / data stories where one concept occupies one colour and causal order matters."
+    },
+    {
+      "call_how": "/plugin marketplace add EL4CTEO/blender-skills; /plugin install blender-agent-skills@blender-agent-skills, or clone + install/install.sh --agent ...; invoke by skill name e.g. blender-animation, blender-asset-qa; validate with python tools/validate_skills.py, python tools/run_tests.py (67 headless Blender tests).",
+      "description": "Professional Blender 5.3 workflows as Agent Skills for Claude Code, Codex, Gemini CLI, Copilot and Cursor: modeling, UVs, PBR, baking, rigging, animation, export and QA.",
+      "id": "blender-skills",
+      "language": "Python",
+      "license": "MIT",
+      "mechanism": "28 SKILL.md files, one per pipeline stage, plus shared/ + tools/. Agent starts at blender-core (router + Blender 5.x API rules), writes bpy Python, runs blender -b --factory-startup -P script.py headless, renders a turnaround sheet, looks, fixes, then renders Cycles/EEVEE and exports per target.",
+      "not_when": "UI/type/2D, math diagrams, quick loops, no Blender 5.2+ installed, or when HTML/three.js suffices.",
+      "repo": "EL4CTEO/blender-skills",
+      "tags": [
+        "blender",
+        "3d",
+        "pbr",
+        "rigging",
+        "qa",
+        "export"
+      ],
+      "techniques": [
+        "Script-driven, not click-driven: every scene is a re-runnable Python file; an edit is a changed number + re-render - same determinism contract as renderAt(t).",
+        "Turnaround-sheet QA: render wireframe -> clay -> full colour, judge at phone size; fix clipping/poke-through before the full render.",
+        "Texel density + baking: retopology/UV skill sets texel density; bake normal/AO/curvature/ORM maps - texture quality is a number, not 'more detail'.",
+        "PBR correctness: materials built from textures with correct roughness/metalness; edge wear, grime, dust, decals, trim sheets as explicit rules, not a colour swap.",
+        "Rigging/animation: Rigify, ARKit 52 blendshapes/visemes, mocap retargeting, loop checks, root motion - check the loop seam and that the root is driven by contact, not an independent speed key.",
+        "Asset QA gate (blender-asset-qa): scripted checklist for z-fighting, floating parts, bad normals, bad skin weights, bad textures - fail before export.",
+        "Export per target: Roblox/Unity/Unreal/Godot/web/USD with LODs and draw-call budgets; Blender 5.3 adds KTX2 web export, compositor effects stack, Gaussian splats."
+      ],
+      "unverified": [
+        "Blender tests not run here",
+        "28-skill count vs README table not cross-counted",
+        "Optional Blender MCP server not verified"
+      ],
+      "url": "https://github.com/EL4CTEO/blender-skills",
+      "use_when": "Real 3D, true materials/light/physics, rigged characters, game assets, product 3D that Canvas2D fakes."
+    },
+    {
+      "call_how": "npm install three.quarks; import {BatchedRenderer, ParticleSystem, PointEmitter, RenderMode} from 'three.quarks'; R3F via quarks.r3f (<QuarksProvider>); editor at quarks.art exports JSON.",
+      "description": "Three.quarks is a general purpose particle system / VFX engine for three.js",
+      "id": "three-quarks",
+      "language": "TypeScript",
+      "license": "MIT",
+      "mechanism": "ParticleSystem (data spec) + BatchedRenderer (one renderer manages all systems, minimises draw calls). Particles are defined by emitter shape + behaviours over lifetime + material, updated per frame (batchRenderer.update(delta)), rendered as billboard/stretched-billboard/mesh/trail. Effects can be authored in a visual editor and loaded from JSON.",
+      "not_when": "Canvas2D-only, 2D type, math diagrams, no three.js, or deterministic frame export without a seek adapter.",
+      "repo": "Alchemist0823/three.quarks",
+      "tags": [
+        "particles",
+        "vfx",
+        "three.js",
+        "3d",
+        "emitter"
+      ],
+      "techniques": [
+        "Particle spec as numbers: duration, looping, startLife: IntervalValue(1,2), startSpeed: ConstantValue(5), startSize: IntervalValue(0.1,0.3), startColor, maxParticle: 100, emissionOverTime: ConstantValue(20) - no adjectives, every value is a range or constant.",
+        "Emitter shapes carry identity: Point/Sphere/Hemisphere/Cone/Circle/MeshSurface/Grid - emit from a model surface or a structured grid, not a random cloud; particles must serve a recognisable silhouette.",
+        "Behaviours over lifetime: Color/Size/Rotation over life, force fields, orbital motion, texture animation, sub-emitters, PiecewiseBezier size curves - define the whole life curve up front, not per-frame tweaks.",
+        "Batched rendering: one BatchedRenderer, shared shader builds per batch kind; trail = ribbon behind particle, stretched billboard = velocity-aligned sprite.",
+        "JSON VFX library: QuarksLoader.load('effects/explosion.json'), clone() for multiple instances, setAutoDestroy(true), play() - reusable, versioned effects instead of one-off code.",
+        "Determinism warning: quarks is delta-driven (update(delta)), so a frame-accurate renderAt(t) export needs reset + deterministic stepping from absolute time; do not assume seek works out of the box.",
+        "Finish: sprite sheets with frame blending, alpha test, soft particles (depth pre-pass on WebGL, automatic on WebGPU), configurable blending."
+      ],
+      "unverified": [
+        "WebGPU/mobile-target tuning not tested",
+        "three.js version pin not in README excerpt",
+        "Seek/determinism adapter not verified - README is delta-driven"
+      ],
+      "url": "https://github.com/Alchemist0823/three.quarks",
+      "use_when": "three.js 3D films needing fire/smoke/sparks/trails/magic; game/VFX shots where particles are the subject."
+    },
+    {
+      "call_how": "npm install @react-three/postprocessing; import {Bloom, DepthOfField, EffectComposer, Noise, Vignette} from '@react-three/postprocessing' inside <Canvas>.",
+      "description": "Postprocessing for react-three-fiber",
+      "id": "react-postprocessing",
+      "language": "TypeScript",
+      "license": "MIT",
+      "mechanism": "Declarative React wrapper around pmndrs/postprocessing. <EffectComposer> collects child effects into one merged EffectPass (fewer render ops than chained passes, each effect its own blend function), single-triangle fullscreen passes, WebGL2 MSAA by default, gamma correction out of the box.",
+      "not_when": "Canvas2D, Manim, Blender, plain HTML, no React/R3F, or when the finish would hide a geometric/contact error.",
+      "repo": "pmndrs/react-postprocessing",
+      "tags": [
+        "postprocessing",
+        "three.js",
+        "react",
+        "bloom",
+        "dof",
+        "grain"
+      ],
+      "techniques": [
+        "Effect chain as a list, order matters: <EffectComposer><DepthOfField/><Bloom/><Noise/><Vignette/></EffectComposer> - one pass, not one render per effect.",
+        "Starting numbers from the README example (treat as starting values, verify per shot): DoF focusDistance 0, focalLength 0.02, bokehScale 2, height 480; Bloom luminanceThreshold 0, luminanceSmoothing 0.9, height 300; Noise opacity 0.02; Vignette offset 0.1, darkness 1.1.",
+        "Text/UI after DoF: never let depth-of-field or blur eat text - draw UI on its own layer after the DoF pass.",
+        "Grain cap: Noise opacity 0.02 matches grain <=0.02 rule; heavier grain + JPEG-style double compression degrades fast.",
+        "MSAA by default: crisp edges without jagged aliasing; do not add a second AA pass.",
+        "Each effect chooses its own blend function - do not force one global blend mode on the whole chain."
+      ],
+      "unverified": [
+        "Full effect list beyond README example not fetched from docs",
+        "MSAA/performance cost not measured"
+      ],
+      "url": "https://github.com/pmndrs/react-postprocessing",
+      "use_when": "R3F/three.js film needing a cinematic finish - bloom, DoF, grain, vignette - in one composited pass."
+    },
+    {
+      "call_how": "npm install tweakpane (+ @tweakpane/core for TypeScript); import {Pane} from 'tweakpane'; const pane = new Pane(); pane.addBinding(params, 'speed', {min: 0, max: 1, step: 0.01}); pane.on('change', ...).",
+      "description": "Compact GUI for fine-tuning parameters and monitoring value changes",
+      "id": "tweakpane",
+      "language": "TypeScript",
+      "license": "MIT",
+      "mechanism": "Zero-dependency pane library. new Pane() binds a plain JS object's properties to sliders/inputs; dragging updates the object live and fires change events. Supports folders/tabs/buttons/separators, theming, plugins, JSON import/export. v4 is ES modules (v3.x for CommonJS).",
+      "not_when": "Final render, headless/CLI rendering, production code, or any film that must be deterministic without a DOM.",
+      "repo": "cocopon/tweakpane",
+      "tags": [
+        "tuning",
+        "parameters",
+        "preset",
+        "debug",
+        "sliders"
+      ],
+      "techniques": [
+        "Bind every motion number: Number/String/Boolean/Color/Point 2D/3D/4D bindings for damping ratio, duration (frames), stagger, easing, camera fov - never hard-code a tuned value in the film code.",
+        "JSON import/export as preset: save a tuned set as JSON, load it to reproduce a look - same discipline as timing.json / motion-tokens file.",
+        "Live tuning loop: drag a slider -> re-run renderAt(t) on the same frame -> compare - cheap stills tuning before any full render.",
+        "Readonly monitoring: readonly Number/String/Boolean bindings display measured values (hero pixel width, freeze count, fps) next to the controls that affect them.",
+        "Organise by shot: Folder/Tab per shot/object/pass, Button for 'render stills at risk frames', Separator between tuning and delivery controls.",
+        "Strip before delivery: the pane is a tuning tool, never part of the film; remove it (or gate it behind a debug flag) in the exported HTML."
+      ],
+      "unverified": [
+        "Docs site returned only a landing summary - full API signatures not fetched",
+        "Plugin list not checked"
+      ],
+      "url": "https://github.com/cocopon/tweakpane",
+      "use_when": "Tuning parameters, style exploration, A/B variants, preview/demo sessions where a human drags values and watches one frame."
+    },
+    {
+      "call_how": "CLI effectcraft-cli ..., MCP server, or JSON control channel (effectcraft --control 9877); docs docs/agents.md, docs/control-protocol.md.",
+      "description": "Open-source motion graphics and compositing tool written from scratch in pure Rust.",
+      "id": "effectcraft",
+      "language": "Rust",
+      "license": "Apache-2.0",
+      "mechanism": "After-Effects-like compositor: compositions of layers (solids, shapes, text, footage, nested comps, nulls, cameras, lights), animated by keyframes, stacked with 308 effects and 9 layer styles, rendered via a Render Queue. Projects are versioned JSON (.ecproj); engine commands are exposed via CLI, JSON control channel and MCP; all codecs are pure Rust, no FFmpeg inside.",
+      "not_when": "Production client work (README: alpha, ~91% of tracked features, ~45% to production-ready); when the route is single-HTML Canvas2D / Remotion / Blender; no Rust install available.",
+      "repo": "storytold/effectcraft",
+      "tags": [
+        "compositing",
+        "keyframes",
+        "effects",
+        "render-queue",
+        "mcp",
+        "lottie"
+      ],
+      "techniques": [
+        "Project as versioned, diffable JSON - extend production-project.json to a layer/keyframe schema (comp, layer, property, keyframes) an agent can edit textually and diff.",
+        "Keyframe model per property - linear / Bezier / hold / auto / continuous-Bezier, roving keys, Easy Ease, Graph Editor with value + speed graphs. Rule: every animated property declares interpolation type, not just values.",
+        "Expressions as closed-form JS - wiggle, loopOut, thisComp.layer('...'); maps directly to renderAt(t) pure-function rule, no per-frame state.",
+        "Effects taxonomy as a checklist, not a menu - 308 effects in blur/sharpen, colour, distort, generate, keying, matte, noise/grain, perspective, simulation (Particle Emitter 3D, Shatter, Caustics), stylize, time, audio, transitions; 38 blend modes, motion blur, track mattes. Use to name the one VFX pass needed, not to pile effects on.",
+        "Render Queue / Output Modules - H.264 MP4, ProRes MOV (Proxy-4444 XQ, alpha), HEVC Main/Main 10, AV1, WebM VP9/AV1 + Opus, PNG/JPEG/TIFF/EXR sequences, GIF, WAV/AIFF; templates + post-render actions. Rule: encode spec is chosen per deliverable, recorded in the brief.",
+        "Agent interface pattern - one-shot CLI with JSON output, e.g. effectcraft-cli set Main '#1' transform/position '[100,360]' --time 0 main.ecproj --save, render --comp Main --out main.mp4; MCP effectcraft-cli mcp over stdio."
+      ],
+      "unverified": [
+        "Did not install/run; '308 effects' count taken from README",
+        "Lottie round-trip fidelity not checked",
+        "MCP tool list not enumerated"
+      ],
+      "url": "https://github.com/storytold/effectcraft",
+      "use_when": "Finishing/polish, compositing, Lottie import/export, agent-driven AE-like work."
+    },
+    {
+      "call_how": "HTTPS GET, e.g. https://api.openverse.org/v1/audio/?q=whoosh&license=cc0&page_size=5; Python requests / curl; no key anonymous.",
+      "description": "Search engine for openly licensed images (800M+) and audio (~5.2M) from Flickr, Wikimedia, Freesound, Jamendo and others, with licence + attribution metadata per item.",
+      "id": "openverse",
+      "language": null,
+      "license": "not listed",
+      "mechanism": "GET /v1/audio/?q=... and /v1/images/?q=...; each result returns title, creator, license, license_url, direct file url, foreign_landing_url, duration (audio, ms), and a ready-made attribution string. Anonymous, no key; registered clients get higher limits via /v1/auth_tokens/register/; quota via /v1/rate_limit/.",
+      "not_when": "Need video (v1 has no video); need guaranteed licence; need >200 searches/day anonymous; offline work.",
+      "repo": "openverse-api",
+      "tags": [
+        "sound",
+        "music",
+        "sfx",
+        "images",
+        "license",
+        "attribution"
+      ],
+      "techniques": [
+        "License filter is mandatory - license=cc0,by,pdm first; for commercial posting use license_type=commercial; never use NC/ND/SA for a published film. Openverse does not verify licences - read the item page.",
+        "One search per sound kind - anonymous limit 20 req/min burst, 200/day (secondary sources differ); page_size max 20 anonymous. Search once per cue, pick from the shortlist, do not re-search with rephrasings.",
+        "Attribution verbatim - copy each file's attribution field into credits.txt; CC BY is only legal with credit; log CC0/PDM too.",
+        "Duration check before download - use the duration field to match the cue length; reject clips too short/long for the shot.",
+        "Source filter for reliability - source=freesound,jamendo for SFX/music.",
+        "Sound rule - picture must work muted; SFX hit lands 1 frame after its picture event, +3-6 dB over the music bed."
+      ],
+      "unverified": [
+        "Rate limit: 20/min + 200/day in one source vs ~100/day in another - not re-tested",
+        "Audio count 5.2M vs 800M total is from secondary sources",
+        "Registered-tier limits not checked"
+      ],
+      "url": "https://api.openverse.org/v1/",
+      "use_when": "Need real, licensed SFX/music/images; no budget for stock."
+    },
+    {
+      "call_how": "pip install librosa; import librosa in a Python script (agent runs it as a measurement tool, output is a timing JSON for the skill's beat_grid).",
+      "description": "Python library for audio and music analysis.",
+      "id": "librosa",
+      "language": "Python",
+      "license": "ISC",
+      "mechanism": "Load audio (librosa.load, default sr 22050), compute STFT/CQT/mel spectrograms, then beat.beat_track, onset.onset_detect, feature.chroma_cqt/mfcc/rms etc. Input: wav/mp3; output: BPM, beat/onset times in seconds, feature matrices.",
+      "not_when": "Silent film; no audio; need real-time analysis; need synthesis or loudness (librosa is analysis only).",
+      "repo": "librosa/librosa",
+      "tags": [
+        "audio",
+        "beat",
+        "onset",
+        "analysis",
+        "music",
+        "timing"
+      ],
+      "techniques": [
+        "Beat grid from real audio - tempo, beat_frames = librosa.beat.beat_track(y, sr); beat_times = librosa.frames_to_time(beat_frames, sr); frames-per-beat = fps x 60 / BPM; cut on the beat, change layout on the bar (every 4 beats).",
+        "Fallback when beats approx 0 (ambient/synth) - onset_env = librosa.onset.onset_strength(y, sr); onset_tempo = librosa.beat.tempo(onset_envelope=onset_env, sr=sr); sanitise BPM, default 120.0 if all fails.",
+        "Onset triggers - onset_detect(y, sr, units='time') gives note-onset times for SFX/cut triggers; backtrack to the onset envelope for accuracy.",
+        "Section segmentation - chroma_cqt + melspectrogram + rms (RMS weighted 5x), beat-sync with librosa.util.sync, cluster into intro/verse/chorus/drop/outro; pacing follows sections, not a flat grid.",
+        "Harmonic-percussive separation + YIN pitch (piptrack) - drive motion from drums vs melody separately, not from a single loudness curve.",
+        "Keep hop_length (default 512) consistent, or frames_to_time drifts."
+      ],
+      "unverified": [
+        "README is thin - functions from librosa docs / secondary skill pages, not run",
+        "API signatures not checked against a pinned version",
+        "Tempo accuracy on non-music audio not tested"
+      ],
+      "url": "https://github.com/librosa/librosa",
+      "use_when": "Music-driven film; beat grid must come from the actual track, not a guessed BPM."
+    },
+    {
+      "call_how": "CLI whisperx audio.wav --model large-v2 --language ja --diarize --highlight_words True; Python load_model -> transcribe -> load_align_model -> align -> assign_word_speakers.",
+      "description": "Fast ASR (70x realtime, large-v2) with word-level timestamps and speaker diarization.",
+      "id": "whisperx",
+      "language": "Python",
+      "license": "BSD-2-Clause",
+      "mechanism": "VAD pre-processing -> batched faster-whisper transcription -> wav2vec2 forced alignment (phoneme-level) -> pyannote diarization. Input: audio file; output: segments with per-word start/end, speaker IDs, SRT.",
+      "not_when": "No speech; music-only; overlapping speech; words with no characters in the alignment dictionary (e.g. '2014.', '£13.60') get no timing (README limitation).",
+      "repo": "m-bain/whisperX",
+      "tags": [
+        "captions",
+        "asr",
+        "word-timing",
+        "diarization",
+        "voiceover"
+      ],
+      "techniques": [
+        "Word-level, never line-level - never fake word timing by splitting a line evenly over its duration; drift is instantly visible. Normalise all sources to {text, startMs, endMs}[].",
+        "VAD first - reduces hallucination and enables batching with no WER degradation (per README).",
+        "Language-specific alignment - --language <code> auto-picks the alignment model; defaults for en/fr/de/es/it via torchaudio, others via Hugging Face; a wrong-language model gives wrong word times.",
+        "Context flags - --interleaved_context / condition_on_previous_context for punctuation and proper nouns on long audio.",
+        "Diarization - --diarize --min_speakers N --max_speakers N, HF read token required; labels are speaker IDs, not names; diarization is 'far from perfect' (README).",
+        "Compute trade-offs - large-v2 <8 GB GPU at beam_size=5; reduce batch_size (default 16) if low on memory; --compute_type int8 --device cpu for CPU/Mac; Numba (whisperx[fast]) accelerates alignment 30-100x.",
+        "Caption paging - group 4-6 words/page or createTikTokStyleCaptions(combineTokensWithinMilliseconds: 1200); active word highlighted, spring pop scale 0.6->1, active 1->1.1."
+      ],
+      "unverified": [
+        "Did not run; '70x realtime' and '<8 GB' are README claims",
+        "Japanese alignment model name not re-checked in this pass",
+        "Diarization accuracy not tested"
+      ],
+      "url": "https://github.com/m-bain/whisperX",
+      "use_when": "Narration/voiceover, captions, lip-sync or word-synced motion."
+    },
+    {
+      "call_how": "npx remotion skills add, or npx skills add remotion-dev/skills, or gh skill install remotion-dev/skills; then /remotion-captions, /remotion-markup, etc. in Claude Code / Codex / Cursor.",
+      "description": "Agent Skills for Remotion - 12 skills defining best practices for AI agents building video in Remotion.",
+      "id": "remotion-skills",
+      "language": "TypeScript",
+      "license": "not listed",
+      "mechanism": "A router skill (remotion-best-practices) plus per-task skills (create, markup, studio, render, maps, captions, saas, interactivity, docs, license, upgrade, multimedia), each a SKILL.md (+ REFERENCE.md); installed into a Remotion project and invoked as /remotion-* commands.",
+      "not_when": "Single-HTML Canvas2D route, Blender, Manim, or any non-React stack; no Node/React available.",
+      "repo": "remotion-dev/skills",
+      "tags": [
+        "remotion",
+        "react",
+        "captions",
+        "render",
+        "router"
+      ],
+      "techniques": [
+        "Router + preserve user changes - best-practices skill routes to the right sub-skill; if the user edited code outside the conversation, do not overwrite it, assume intentional or ask.",
+        "Pure function of frame - useCurrentFrame() is the only clock; no Date.now, Math.random, timers, or accumulated state; CSS transitions/animations forbidden (they will not render). This is the React form of renderAt(t).",
+        "Prefer interpolate() over spring() unless physics is requested; clamp both sides; Easing.out for entrances, Easing.in for exits; e.g. Easing.bezier(0.16, 1, 0.3, 1) over ~45f for a crisp UI entrance.",
+        "Caption type + TikTok paging - Caption {text, startMs, endMs, timestampMs, confidence, pageBreakAfter?}; createTikTokStyleCaptions({captions, combineTokensWithinMilliseconds: 1200}); page in a <Sequence>; active token when token.fromMs <= timeMs < token.toMs; word spring damping 10-15, mass 0.5-0.8.",
+        "Async discipline - delayRender() / continueRender() / cancelRender(err) for fonts, captions, Lottie; failure must fail the render, not silently render a placeholder.",
+        "Preview gate - open Remotion Studio after an edit so the user can preview and steer; render skill for stills/video."
+      ],
+      "unverified": [
+        "Licence not listed - do not assume MIT",
+        "Only remotion-captions SKILL.md head and remotion-best-practices head read in full, other 10 skills read from README summaries only",
+        "Remotion product pricing/licence is separate from this repo"
+      ],
+      "url": "https://github.com/remotion-dev/skills",
+      "use_when": "React/Remotion route; templated series; data-driven video; a team already in React."
+    },
+    {
+      "call_how": "CLI ffmpeg / ffprobe; in the skill, wrap as stdlib Python subprocess with measured outputs recorded, never as an imported library.",
+      "description": "Mirror of https://git.ffmpeg.org/ffmpeg.git - libraries and tools to process audio, video, subtitles and metadata.",
+      "id": "ffmpeg",
+      "language": "C",
+      "license": "not listed",
+      "mechanism": "ffmpeg CLI (transcode/filter/mux) + ffprobe (inspect) + ffplay; libraries libavcodec/format/util/filter/device, libswresample, libswscale. Input: PNG frame sequences / audio / video; output: encoded MP4/MOV/WebM/GIF + loudness/QC measurements.",
+      "not_when": "Drawing/animating (it is not a renderer); deterministic frame generation (that is renderAt(t)); if GPL-licensed components in a given build matter - check the build configuration.",
+      "repo": "FFmpeg/FFmpeg",
+      "tags": [
+        "encode",
+        "loudness",
+        "qc",
+        "ffprobe",
+        "gif",
+        "export"
+      ],
+      "techniques": [
+        "Encode spec - ffmpeg -framerate 30 -i frames/%04d.png -c:v libx264 -profile:v high -pix_fmt yuv420p -crf 16-18 -movflags +faststart out.mp4; PNG frames only, never JPEG; set colour tags in the filter chain (setparams=...bt709).",
+        "Two-pass loudness - measure first: loudnorm=I=-14:TP=-1:LRA=11:print_format=json -f null -; apply measured values second pass; force -ar 48000; verify on the encoded file with ebur128=peak=true (AAC changes peaks - a file held at -1.0 dBTP in WAV can come back at -0.9 dBTP). Target -14 LUFS, true peak <= -1 dBTP.",
+        "QC on the encoded file, not the renderer - freezedetect (warn frozen >=1s outside declared holds), blackdetect=d=0.1:pix_th=0.10 (warn black >=0.1s), silencedetect, signalstats YDIF; warn, do not fail, on dark-interface / slow-camera false positives.",
+        "Contact sheet + phone test - fps=2,scale=270:-1,tile=6x5 contact sheet; scale=360:-1 phone test; stream_loop 2 loop-seam check.",
+        "GIF export - fps=25,scale=1200:-1,palettegen/paletteuse, <=15 MB, <=350 frames; 25 fps is exact in GIF hundredths, 24 fps runs ~4% fast.",
+        "Probe first - ffprobe -v quiet -print_format json -show_format -show_streams INPUT before deciding; never trust renderer-internal numbers."
+      ],
+      "unverified": [
+        "Did not run ffmpeg in this pass; filter thresholds from docs/secondary sources, not from local ffmpeg -h",
+        "GPL/LGPL split depends on build config, not checked",
+        "GitHub PRs are ignored upstream - patches go to ffmpeg-devel"
+      ],
+      "url": "https://github.com/FFmpeg/FFmpeg",
+      "use_when": "Every encode, loudness, QC, conform and export step; any pipeline that ends in a file."
+    }
+  ],
+  "schema": {
+    "license": "SPDX id from GitHub API, or 'not listed'",
+    "repo": "owner/name",
+    "tags": "lookup keywords: use, mechanism, route",
+    "techniques": "distilled, actionable rules only, with numbers where the source gives them",
+    "unverified": "what was not checked"
+  },
+  "source_post": {
+    "author": "Florence @flxrnc",
+    "date": "2026-11-19",
+    "quoted_playbook": {
+      "author": "Florence @flxrnc",
+      "date": "2026-11-10",
+      "title": "The Fable 5.2 Motion Playbook: One Prompt, One Film",
+      "url": "https://x.com/flxrnc/status/2120207374250049675"
+    },
+    "title": "I copy any animation I see now, these 18 GitHub repos are the reason",
+    "url": "https://x.com/flxrnc/status/2123392905934999811"
+  },
+  "usage": "Agent lookup tool: python scripts/repos_lookup.py --tag <tag> | --query <word> | --repo <owner/name>. Read only the matching repos, not the whole file. Do not copy code, prompts, media, fonts or models from these repos; distill rules only, and check each repo license before reusing anything.",
+  "version": 1
+}
