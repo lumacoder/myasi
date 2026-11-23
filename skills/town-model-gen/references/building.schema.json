@@ -1,0 +1,2525 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "$ref": "#/$defs/__schema0"
+    },
+    "id": {
+      "$ref": "#/$defs/__schema1"
+    },
+    "name": {
+      "$ref": "#/$defs/__schema2"
+    },
+    "kind": {
+      "$ref": "#/$defs/__schema3"
+    },
+    "lot": {
+      "$ref": "#/$defs/__schema4"
+    },
+    "seed": {
+      "$ref": "#/$defs/__schema5"
+    },
+    "colorway": {
+      "$ref": "#/$defs/__schema6"
+    },
+    "recipe": {
+      "$ref": "#/$defs/__schema7"
+    },
+    "parts": {
+      "$ref": "#/$defs/__schema8"
+    },
+    "rig": {
+      "$ref": "#/$defs/__schema45"
+    },
+    "anim": {
+      "$ref": "#/$defs/__schema46"
+    },
+    "fx": {
+      "$ref": "#/$defs/__schema47"
+    },
+    "night": {
+      "$ref": "#/$defs/__schema48"
+    },
+    "anchors": {
+      "$ref": "#/$defs/__schema50"
+    },
+    "levels": {
+      "$ref": "#/$defs/__schema51"
+    },
+    "meta": {
+      "$ref": "#/$defs/__schema53"
+    }
+  },
+  "required": [
+    "schema",
+    "id",
+    "name",
+    "kind",
+    "lot",
+    "seed",
+    "colorway",
+    "anchors"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "__schema0": {
+      "type": "string",
+      "const": "aitown.building/1"
+    },
+    "__schema1": {
+      "type": "string",
+      "minLength": 1
+    },
+    "__schema2": {
+      "type": "string",
+      "minLength": 1
+    },
+    "__schema3": {
+      "type": "string",
+      "enum": [
+        "home",
+        "shop",
+        "food",
+        "civic",
+        "culture",
+        "fun",
+        "landmark",
+        "work",
+        "prop",
+        "tree"
+      ]
+    },
+    "__schema4": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "w": {
+              "type": "number",
+              "const": 2
+            },
+            "d": {
+              "type": "number",
+              "const": 2
+            }
+          },
+          "required": [
+            "w",
+            "d"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "w": {
+              "type": "number",
+              "const": 2
+            },
+            "d": {
+              "type": "number",
+              "const": 3
+            }
+          },
+          "required": [
+            "w",
+            "d"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "w": {
+              "type": "number",
+              "const": 3
+            },
+            "d": {
+              "type": "number",
+              "const": 3
+            }
+          },
+          "required": [
+            "w",
+            "d"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "w": {
+              "type": "number",
+              "const": 3
+            },
+            "d": {
+              "type": "number",
+              "const": 4
+            }
+          },
+          "required": [
+            "w",
+            "d"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "w": {
+              "type": "number",
+              "const": 4
+            },
+            "d": {
+              "type": "number",
+              "const": 4
+            }
+          },
+          "required": [
+            "w",
+            "d"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "w": {
+              "type": "number",
+              "const": 1
+            },
+            "d": {
+              "type": "number",
+              "const": 1
+            }
+          },
+          "required": [
+            "w",
+            "d"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "__schema5": {
+      "type": "integer",
+      "minimum": -9007199254740991,
+      "maximum": 9007199254740991
+    },
+    "__schema6": {
+      "type": "string",
+      "enum": [
+        "butter",
+        "brick",
+        "mint",
+        "harbor",
+        "sakura",
+        "chalk",
+        "conservatory",
+        "florist"
+      ]
+    },
+    "__schema7": {
+      "type": "object",
+      "properties": {
+        "archetype": {
+          "type": "string",
+          "enum": [
+            "cottage",
+            "rowhouse",
+            "apartment",
+            "shop",
+            "cornerShop",
+            "restaurant",
+            "stall",
+            "townHall",
+            "library",
+            "workshop",
+            "tower",
+            "pavilion"
+          ]
+        },
+        "params": {
+          "default": {},
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {
+            "type": [
+              "number",
+              "string",
+              "boolean"
+            ]
+          }
+        }
+      },
+      "required": [
+        "archetype"
+      ],
+      "additionalProperties": false
+    },
+    "__schema8": {
+      "default": [],
+      "maxItems": 200,
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/__schema9"
+      }
+    },
+    "__schema9": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "box"
+            },
+            "w": {
+              "$ref": "#/$defs/__schema20"
+            },
+            "h": {
+              "$ref": "#/$defs/__schema20"
+            },
+            "d": {
+              "$ref": "#/$defs/__schema20"
+            },
+            "bevel": {
+              "description": "Defaults to 8% of the shortest edge, clamped to 0.03–0.2 m.",
+              "$ref": "#/$defs/__schema21"
+            },
+            "nightLamp": {
+              "description": "Explicitly marks this box as a lamp diffuser for the night emissive pass.",
+              "$ref": "#/$defs/__schema22"
+            }
+          },
+          "required": [
+            "id",
+            "op"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "cylinder"
+            },
+            "r": {
+              "default": 0.5,
+              "type": "number",
+              "minimum": 0.04,
+              "maximum": 6
+            },
+            "h": {
+              "default": 1,
+              "type": "number",
+              "minimum": 0.05,
+              "maximum": 24
+            },
+            "bevel": {
+              "default": 0.02,
+              "$ref": "#/$defs/__schema21"
+            },
+            "segments": {
+              "description": "Defaults to 12–32 segments, increasing with radius.",
+              "$ref": "#/$defs/__schema23"
+            }
+          },
+          "required": [
+            "id",
+            "op"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "extrude"
+            },
+            "profile": {
+              "minItems": 3,
+              "maxItems": 24,
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/__schema24"
+              }
+            },
+            "axis": {
+              "description": "Y lays the profile flat in XZ, centred on both axes, with at on the bottom.",
+              "$ref": "#/$defs/__schema25"
+            },
+            "depth": {
+              "$ref": "#/$defs/__schema20"
+            },
+            "bevel": {
+              "default": 0.02,
+              "$ref": "#/$defs/__schema21"
+            }
+          },
+          "required": [
+            "id",
+            "op",
+            "profile"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "lathe"
+            },
+            "profile": {
+              "minItems": 2,
+              "maxItems": 16,
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/__schema26"
+              }
+            },
+            "segments": {
+              "default": 16,
+              "$ref": "#/$defs/__schema23"
+            }
+          },
+          "required": [
+            "id",
+            "op",
+            "profile"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "tube"
+            },
+            "path": {
+              "minItems": 2,
+              "maxItems": 12,
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/__schema12"
+              }
+            },
+            "r": {
+              "default": 0.08,
+              "type": "number",
+              "minimum": 0.04,
+              "maximum": 0.5
+            }
+          },
+          "required": [
+            "id",
+            "op",
+            "path"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "slab"
+            },
+            "w": {
+              "default": 1,
+              "type": "number",
+              "minimum": 0.2,
+              "maximum": 16
+            },
+            "d": {
+              "default": 1,
+              "type": "number",
+              "minimum": 0.2,
+              "maximum": 16
+            },
+            "t": {
+              "default": 0.15,
+              "type": "number",
+              "minimum": 0.05,
+              "maximum": 0.6
+            },
+            "overhang": {
+              "default": 0,
+              "$ref": "#/$defs/__schema27"
+            },
+            "bevel": {
+              "default": 0.02,
+              "$ref": "#/$defs/__schema21"
+            }
+          },
+          "required": [
+            "id",
+            "op"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "sheet"
+            },
+            "w": {
+              "default": 1,
+              "type": "number",
+              "minimum": 0.1,
+              "maximum": 6
+            },
+            "h": {
+              "default": 1,
+              "type": "number",
+              "minimum": 0.1,
+              "maximum": 6
+            }
+          },
+          "required": [
+            "id",
+            "op"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "wall"
+            },
+            "w": {
+              "default": 2,
+              "type": "number",
+              "minimum": 0.4,
+              "maximum": 16
+            },
+            "h": {
+              "default": 2.8,
+              "type": "number",
+              "minimum": 0.4,
+              "maximum": 12
+            },
+            "t": {
+              "default": 0.2,
+              "type": "number",
+              "minimum": 0.12,
+              "maximum": 0.5
+            },
+            "openings": {
+              "default": [],
+              "maxItems": 8,
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/__schema28"
+              }
+            }
+          },
+          "required": [
+            "id",
+            "op"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "window"
+            },
+            "w": {
+              "$ref": "#/$defs/__schema29"
+            },
+            "h": {
+              "$ref": "#/$defs/__schema30"
+            },
+            "depth": {
+              "$ref": "#/$defs/__schema31"
+            },
+            "mullions": {
+              "$ref": "#/$defs/__schema32"
+            },
+            "sill": {
+              "$ref": "#/$defs/__schema33"
+            }
+          },
+          "required": [
+            "id",
+            "op"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "windowGrid"
+            },
+            "wall": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "cols": {
+              "default": 1,
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 6
+            },
+            "rows": {
+              "default": 1,
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4
+            },
+            "margin": {
+              "default": 0.2,
+              "type": "number",
+              "minimum": 0.2,
+              "maximum": 1.5
+            },
+            "window": {
+              "type": "object",
+              "properties": {
+                "w": {
+                  "$ref": "#/$defs/__schema29"
+                },
+                "h": {
+                  "$ref": "#/$defs/__schema30"
+                },
+                "depth": {
+                  "$ref": "#/$defs/__schema31"
+                },
+                "mullions": {
+                  "$ref": "#/$defs/__schema32"
+                },
+                "sill": {
+                  "$ref": "#/$defs/__schema33"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "id",
+            "op",
+            "wall",
+            "window"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "door"
+            },
+            "w": {
+              "default": 0.9,
+              "type": "number",
+              "minimum": 0.7,
+              "maximum": 2.4
+            },
+            "h": {
+              "default": 2.1,
+              "type": "number",
+              "minimum": 1.8,
+              "maximum": 3
+            },
+            "depth": {
+              "$ref": "#/$defs/__schema31"
+            },
+            "style": {
+              "default": "plain",
+              "type": "string",
+              "enum": [
+                "plain",
+                "glass",
+                "double"
+              ]
+            },
+            "pivot": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "id",
+            "op"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "roofGable"
+            },
+            "w": {
+              "$ref": "#/$defs/__schema34"
+            },
+            "d": {
+              "$ref": "#/$defs/__schema34"
+            },
+            "pitch": {
+              "$ref": "#/$defs/__schema35"
+            },
+            "overhang": {
+              "$ref": "#/$defs/__schema36"
+            }
+          },
+          "required": [
+            "id",
+            "op"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "roofHip"
+            },
+            "w": {
+              "$ref": "#/$defs/__schema34"
+            },
+            "d": {
+              "$ref": "#/$defs/__schema34"
+            },
+            "pitch": {
+              "$ref": "#/$defs/__schema35"
+            },
+            "overhang": {
+              "$ref": "#/$defs/__schema36"
+            }
+          },
+          "required": [
+            "id",
+            "op"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "roofFlat"
+            },
+            "w": {
+              "$ref": "#/$defs/__schema34"
+            },
+            "d": {
+              "$ref": "#/$defs/__schema34"
+            },
+            "parapet": {
+              "default": 0,
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1.2
+            }
+          },
+          "required": [
+            "id",
+            "op"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "awning"
+            },
+            "w": {
+              "default": 2,
+              "type": "number",
+              "minimum": 0.6,
+              "maximum": 8
+            },
+            "depth": {
+              "default": 0.8,
+              "type": "number",
+              "minimum": 0.4,
+              "maximum": 1.6
+            },
+            "drop": {
+              "default": 0.3,
+              "type": "number",
+              "minimum": 0.1,
+              "maximum": 0.6
+            },
+            "stripes": {
+              "default": 0,
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 8
+            }
+          },
+          "required": [
+            "id",
+            "op"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "steps"
+            },
+            "w": {
+              "default": 1,
+              "type": "number",
+              "minimum": 0.6,
+              "maximum": 6
+            },
+            "count": {
+              "default": 1,
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 8
+            },
+            "rise": {
+              "default": 0.16,
+              "type": "number",
+              "minimum": 0.12,
+              "maximum": 0.2
+            },
+            "run": {
+              "default": 0.3,
+              "type": "number",
+              "minimum": 0.25,
+              "maximum": 0.4
+            }
+          },
+          "required": [
+            "id",
+            "op"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "plinth"
+            },
+            "w": {
+              "default": 1,
+              "type": "number",
+              "minimum": 0.5,
+              "maximum": 16
+            },
+            "d": {
+              "default": 1,
+              "type": "number",
+              "minimum": 0.5,
+              "maximum": 16
+            },
+            "h": {
+              "default": 0.15,
+              "type": "number",
+              "minimum": 0.05,
+              "maximum": 0.6
+            }
+          },
+          "required": [
+            "id",
+            "op"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "signBoard"
+            },
+            "w": {
+              "default": 1,
+              "type": "number",
+              "minimum": 0.4,
+              "maximum": 6
+            },
+            "h": {
+              "default": 0.4,
+              "type": "number",
+              "minimum": 0.2,
+              "maximum": 1.2
+            },
+            "text": {
+              "$ref": "#/$defs/__schema37"
+            }
+          },
+          "required": [
+            "id",
+            "op"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "railing"
+            },
+            "path": {
+              "minItems": 2,
+              "maxItems": 8,
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/__schema12"
+              }
+            },
+            "h": {
+              "default": 0.9,
+              "type": "number",
+              "minimum": 0.6,
+              "maximum": 1.2
+            },
+            "style": {
+              "default": "bar",
+              "type": "string",
+              "enum": [
+                "bar",
+                "panel"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "op",
+            "path"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "pole"
+            },
+            "h": {
+              "default": 2,
+              "type": "number",
+              "minimum": 0.5,
+              "maximum": 10
+            },
+            "r": {
+              "default": 0.05,
+              "type": "number",
+              "minimum": 0.04,
+              "maximum": 0.2
+            }
+          },
+          "required": [
+            "id",
+            "op"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "lampHead"
+            },
+            "style": {
+              "default": "globe",
+              "type": "string",
+              "enum": [
+                "globe",
+                "box",
+                "arm"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "op"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "canopy"
+            },
+            "r": {
+              "default": 1,
+              "type": "number",
+              "minimum": 0.4,
+              "maximum": 3
+            },
+            "lobes": {
+              "default": 5,
+              "type": "integer",
+              "minimum": 3,
+              "maximum": 7
+            },
+            "seed": {
+              "default": 0,
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            }
+          },
+          "required": [
+            "id",
+            "op"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "bloom"
+            },
+            "form": {
+              "default": "rose",
+              "type": "string",
+              "enum": [
+                "rose",
+                "tulip",
+                "hydrangea"
+              ]
+            },
+            "base": {
+              "type": "string",
+              "enum": [
+                "pot",
+                "wrap"
+              ]
+            },
+            "r": {
+              "default": 0.5,
+              "type": "number",
+              "minimum": 0.25,
+              "maximum": 2.5
+            },
+            "tilt": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 45
+            }
+          },
+          "required": [
+            "id",
+            "op"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "roseBouquet"
+            },
+            "r": {
+              "default": 2,
+              "type": "number",
+              "minimum": 0.5,
+              "maximum": 3
+            },
+            "count": {
+              "default": 36,
+              "type": "integer",
+              "minimum": 12,
+              "maximum": 120
+            }
+          },
+          "required": [
+            "id",
+            "op"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "trunk"
+            },
+            "h": {
+              "default": 2,
+              "type": "number",
+              "minimum": 0.5,
+              "maximum": 6
+            },
+            "r": {
+              "default": 0.15,
+              "type": "number",
+              "minimum": 0.08,
+              "maximum": 0.5
+            },
+            "taper": {
+              "default": 0.6,
+              "type": "number",
+              "minimum": 0.4,
+              "maximum": 1
+            }
+          },
+          "required": [
+            "id",
+            "op"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "heap"
+            },
+            "w": {
+              "$ref": "#/$defs/__schema38"
+            },
+            "d": {
+              "$ref": "#/$defs/__schema38"
+            },
+            "h": {
+              "default": 1,
+              "type": "number",
+              "minimum": 0.2,
+              "maximum": 4
+            },
+            "seed": {
+              "default": 0,
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            }
+          },
+          "required": [
+            "id",
+            "op"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "fence"
+            },
+            "w": {
+              "default": 2,
+              "description": "Post spacing per panel in metres, along local X.",
+              "$ref": "#/$defs/__schema39"
+            },
+            "h": {
+              "default": 1.4,
+              "type": "number",
+              "minimum": 0.5,
+              "maximum": 3
+            },
+            "count": {
+              "default": 3,
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 8
+            },
+            "text": {
+              "$ref": "#/$defs/__schema37"
+            }
+          },
+          "required": [
+            "id",
+            "op"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "grid"
+            },
+            "w": {
+              "$ref": "#/$defs/__schema38"
+            },
+            "d": {
+              "$ref": "#/$defs/__schema38"
+            },
+            "cols": {
+              "$ref": "#/$defs/__schema40"
+            },
+            "rows": {
+              "$ref": "#/$defs/__schema40"
+            },
+            "bar": {
+              "description": "Bar thickness in metres, limited by the grid spacing.",
+              "$ref": "#/$defs/__schema41"
+            }
+          },
+          "required": [
+            "id",
+            "op"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "stack"
+            },
+            "w": {
+              "$ref": "#/$defs/__schema38"
+            },
+            "d": {
+              "$ref": "#/$defs/__schema38"
+            },
+            "h": {
+              "default": 0.6,
+              "description": "Height of one crate layer.",
+              "$ref": "#/$defs/__schema42"
+            },
+            "cols": {
+              "$ref": "#/$defs/__schema43"
+            },
+            "rows": {
+              "$ref": "#/$defs/__schema43"
+            },
+            "layers": {
+              "default": 2,
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          "required": [
+            "id",
+            "op"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "cone"
+            },
+            "r": {
+              "default": 0.25,
+              "description": "Half-width of the square foot.",
+              "$ref": "#/$defs/__schema44"
+            },
+            "h": {
+              "default": 0.8,
+              "type": "number",
+              "minimum": 0.4,
+              "maximum": 1.5
+            }
+          },
+          "required": [
+            "id",
+            "op"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/__schema1"
+            },
+            "mat": {
+              "$ref": "#/$defs/__schema10"
+            },
+            "at": {
+              "$ref": "#/$defs/__schema11"
+            },
+            "ry": {
+              "$ref": "#/$defs/__schema13"
+            },
+            "parent": {
+              "$ref": "#/$defs/__schema14"
+            },
+            "minLevel": {
+              "$ref": "#/$defs/__schema15"
+            },
+            "repeat": {
+              "$ref": "#/$defs/__schema17"
+            },
+            "op": {
+              "type": "string",
+              "const": "group"
+            }
+          },
+          "required": [
+            "id",
+            "op"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "__schema10": {
+      "type": "string",
+      "enum": [
+        "wall",
+        "roof",
+        "trim",
+        "glass",
+        "door",
+        "window",
+        "stone",
+        "wood",
+        "metal",
+        "accent",
+        "sign",
+        "cloth",
+        "plant",
+        "sand",
+        "steel",
+        "glazing",
+        "petal"
+      ]
+    },
+    "__schema11": {
+      "$ref": "#/$defs/__schema12"
+    },
+    "__schema12": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "items": false,
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "__schema13": {
+      "type": "number"
+    },
+    "__schema14": {
+      "$ref": "#/$defs/__schema1"
+    },
+    "__schema15": {
+      "default": 1,
+      "$ref": "#/$defs/__schema16"
+    },
+    "__schema16": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3
+    },
+    "__schema17": {
+      "description": "Additional copies with the same dimensions. IDs append :2, :3, etc. Positions use the original parent frame.",
+      "$ref": "#/$defs/__schema18"
+    },
+    "__schema18": {
+      "maxItems": 32,
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/__schema19"
+      }
+    },
+    "__schema19": {
+      "type": "object",
+      "properties": {
+        "at": {
+          "$ref": "#/$defs/__schema12"
+        },
+        "ry": {
+          "type": "number"
+        },
+        "mat": {
+          "type": "string",
+          "enum": [
+            "wall",
+            "roof",
+            "trim",
+            "glass",
+            "door",
+            "window",
+            "stone",
+            "wood",
+            "metal",
+            "accent",
+            "sign",
+            "cloth",
+            "plant",
+            "sand",
+            "steel",
+            "glazing",
+            "petal"
+          ]
+        },
+        "minLevel": {
+          "$ref": "#/$defs/__schema16"
+        }
+      },
+      "required": [
+        "at"
+      ],
+      "additionalProperties": false
+    },
+    "__schema20": {
+      "default": 1,
+      "type": "number",
+      "minimum": 0.05,
+      "maximum": 16
+    },
+    "__schema21": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 0.25
+    },
+    "__schema22": {
+      "type": "boolean"
+    },
+    "__schema23": {
+      "type": "integer",
+      "minimum": 8,
+      "maximum": 32
+    },
+    "__schema24": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "__schema25": {
+      "type": "string",
+      "enum": [
+        "z",
+        "y"
+      ]
+    },
+    "__schema26": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 6
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "__schema27": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 0.8
+    },
+    "__schema28": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "door",
+            "window"
+          ]
+        },
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "default": 0,
+          "type": "number",
+          "minimum": 0
+        },
+        "w": {
+          "type": "number",
+          "minimum": 0.05
+        },
+        "h": {
+          "type": "number",
+          "minimum": 0.05
+        }
+      },
+      "required": [
+        "type",
+        "x",
+        "w",
+        "h"
+      ],
+      "additionalProperties": false
+    },
+    "__schema29": {
+      "default": 1,
+      "type": "number",
+      "minimum": 0.3,
+      "maximum": 3
+    },
+    "__schema30": {
+      "default": 1,
+      "type": "number",
+      "minimum": 0.3,
+      "maximum": 3
+    },
+    "__schema31": {
+      "default": 0.1,
+      "type": "number",
+      "minimum": 0.05,
+      "maximum": 0.25
+    },
+    "__schema32": {
+      "default": 0,
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4
+    },
+    "__schema33": {
+      "default": false,
+      "type": "boolean"
+    },
+    "__schema34": {
+      "default": 2,
+      "type": "number",
+      "minimum": 1,
+      "maximum": 16
+    },
+    "__schema35": {
+      "default": 30,
+      "type": "number",
+      "minimum": 15,
+      "maximum": 50
+    },
+    "__schema36": {
+      "default": 0,
+      "$ref": "#/$defs/__schema27"
+    },
+    "__schema37": {
+      "default": "",
+      "type": "string",
+      "maxLength": 8
+    },
+    "__schema38": {
+      "default": 2,
+      "type": "number",
+      "minimum": 1.2,
+      "maximum": 8
+    },
+    "__schema39": {
+      "type": "number",
+      "minimum": 0.6,
+      "maximum": 3
+    },
+    "__schema40": {
+      "default": 5,
+      "type": "integer",
+      "minimum": 2,
+      "maximum": 8
+    },
+    "__schema41": {
+      "type": "number",
+      "minimum": 0.08,
+      "maximum": 0.15
+    },
+    "__schema42": {
+      "type": "number",
+      "minimum": 0.2,
+      "maximum": 1.5
+    },
+    "__schema43": {
+      "default": 2,
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4
+    },
+    "__schema44": {
+      "type": "number",
+      "minimum": 0.15,
+      "maximum": 0.6
+    },
+    "__schema45": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "part": {
+            "$ref": "#/$defs/__schema1"
+          },
+          "axis": {
+            "type": "string",
+            "enum": [
+              "x",
+              "y",
+              "z"
+            ]
+          },
+          "range": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "required": [
+          "part",
+          "axis",
+          "range"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "__schema46": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "part": {
+            "$ref": "#/$defs/__schema1"
+          },
+          "preset": {
+            "type": "string",
+            "enum": [
+              "rotate",
+              "float",
+              "sway",
+              "blink",
+              "pulse"
+            ]
+          },
+          "axis": {
+            "type": "string",
+            "enum": [
+              "x",
+              "y",
+              "z"
+            ]
+          },
+          "amp": {
+            "type": "number"
+          },
+          "period": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "part",
+          "preset"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "__schema47": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "at": {
+            "$ref": "#/$defs/__schema1"
+          },
+          "effect": {
+            "type": "string",
+            "enum": [
+              "smoke",
+              "steam",
+              "sparkle",
+              "leaves",
+              "bubbles",
+              "confetti"
+            ]
+          },
+          "when": {
+            "type": "string",
+            "enum": [
+              "open",
+              "always"
+            ]
+          }
+        },
+        "required": [
+          "at",
+          "effect"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "__schema48": {
+      "type": "object",
+      "properties": {
+        "lit": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "glass": {
+          "$ref": "#/$defs/__schema49"
+        },
+        "sign": {
+          "$ref": "#/$defs/__schema49"
+        },
+        "lamp": {
+          "$ref": "#/$defs/__schema49"
+        }
+      },
+      "additionalProperties": false
+    },
+    "__schema49": {
+      "type": "object",
+      "properties": {
+        "color": {
+          "type": "string",
+          "minLength": 1
+        },
+        "intensity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "required": [
+        "color",
+        "intensity"
+      ],
+      "additionalProperties": false
+    },
+    "__schema50": {
+      "type": "object",
+      "properties": {
+        "door": {
+          "$ref": "#/$defs/__schema12"
+        },
+        "queue": {
+          "$ref": "#/$defs/__schema12"
+        }
+      },
+      "required": [
+        "door"
+      ],
+      "additionalProperties": false
+    },
+    "__schema51": {
+      "type": "object",
+      "properties": {
+        "2": {
+          "$ref": "#/$defs/__schema52"
+        },
+        "3": {
+          "$ref": "#/$defs/__schema52"
+        }
+      },
+      "additionalProperties": false
+    },
+    "__schema52": {
+      "type": "object",
+      "properties": {
+        "capacity": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "income": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "__schema53": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "title": "AITown BuildingSpec v1",
+  "description": "Building JSON must fit in 12288 UTF-8 bytes. Placement checks use validateBuilding.",
+  "anyOf": [
+    {
+      "required": [
+        "recipe"
+      ]
+    },
+    {
+      "required": [
+        "parts"
+      ],
+      "properties": {
+        "parts": {
+          "minItems": 1
+        }
+      }
+    }
+  ],
+  "if": {
+    "properties": {
+      "kind": {
+        "enum": [
+          "prop",
+          "tree"
+        ]
+      }
+    }
+  },
+  "then": {
+    "properties": {
+      "lot": {
+        "properties": {
+          "w": {
+            "const": 1
+          },
+          "d": {
+            "const": 1
+          }
+        }
+      }
+    }
+  },
+  "else": {
+    "properties": {
+      "lot": {
+        "anyOf": [
+          {
+            "properties": {
+              "w": {
+                "const": 2
+              },
+              "d": {
+                "const": 2
+              }
+            }
+          },
+          {
+            "properties": {
+              "w": {
+                "const": 2
+              },
+              "d": {
+                "const": 3
+              }
+            }
+          },
+          {
+            "properties": {
+              "w": {
+                "const": 3
+              },
+              "d": {
+                "const": 3
+              }
+            }
+          },
+          {
+            "properties": {
+              "w": {
+                "const": 3
+              },
+              "d": {
+                "const": 4
+              }
+            }
+          },
+          {
+            "properties": {
+              "w": {
+                "const": 4
+              },
+              "d": {
+                "const": 4
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,3 @@
+interface:
+  display_name: "Town Model Gen"
+  short_description: "生成 AITown 建筑、口袋公园和园区 JSON"

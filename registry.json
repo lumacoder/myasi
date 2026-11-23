@@ -124,6 +124,22 @@
       ],
       "license": "MIT",
       "size_kb": 2
+    },
+    "town-model-gen": {
+      "description": "根据一句话、参考图或已有草案生成 AITown 微缩卡通小镇的模型 JSON。适用于可直接导入的普通建筑、街景和口袋公园，也用于需要布局、占地与动作规划的大型园区。",
+      "tags": [
+        "3d",
+        "game",
+        "json"
+      ],
+      "version": "0.1.0",
+      "path": "skills/town-model-gen",
+      "clients": [
+        "*"
+      ],
+      "profiles": [],
+      "license": "",
+      "size_kb": 66
     }
   },
   "aliases": {
