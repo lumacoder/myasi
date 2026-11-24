@@ -1,0 +1,6 @@
+# 可选界面元数据；不是多agent调度器。
+interface:
+  display_name: "mano-3dmodel-gen"
+  short_description: "自然语言一句话→场景简报→角色映射模型→render(t)时间轴→Web 3D场景与动画；视觉与技术取自Nyxera0x/simulator"
+policy:
+  allow_implicit_invocation: true
