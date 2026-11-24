@@ -41,16 +41,18 @@
         "language-to-code",
         "prompt-templates",
         "render-timeline",
-        "visual-review"
+        "visual-review",
+        "model-only",
+        "placement-review"
       ],
-      "version": "0.1.0",
+      "version": "0.2.0",
       "path": "skills/mano-3dmodel-gen",
       "clients": [
         "*"
       ],
       "profiles": [],
       "license": "MIT",
-      "size_kb": 13
+      "size_kb": 18
     },
     "mano-asi": {
       "description": "当需要全栈研发、修复或重构代码、做UI/动效/视频/3D交付，从PRD/页面/仓库提取产品逻辑，从截图/网站/Figma提取UI规范，解读仓库架构，或要把“流畅、丝滑、美观、高级感”等模糊审美要求翻译成具体技术词、参数与验收标准时使用；以词汇翻译表、成熟方案组合（Glue Code）、结构化JSON产物、质量门禁与资源卫生，降低对高级模型的依赖。",

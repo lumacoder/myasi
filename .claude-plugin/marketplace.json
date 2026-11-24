@@ -21,7 +21,7 @@
     {
       "name": "mano-3dmodel-gen",
       "description": "充当自然语言与大模型之间的 3D 模型工作流：把一句话扩成场景简报、场景规格、逐机细节提示词，按玩具比例系统建成 Web 3D 场景与动画。视觉与技术完全取自 Nyxera0x/simulator（MIT），只提炼逻辑，不锁定任何具体物品。",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "source": "./",
       "strict": false,
       "skills": [
