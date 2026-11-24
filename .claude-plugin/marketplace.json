@@ -19,6 +19,16 @@
       ]
     },
     {
+      "name": "mano-3dmodel-gen",
+      "description": "充当自然语言与大模型之间的 3D 模型工作流：把一句话扩成场景简报、场景规格、逐机细节提示词，按玩具比例系统建成 Web 3D 场景与动画。视觉与技术完全取自 Nyxera0x/simulator（MIT），只提炼逻辑，不锁定任何具体物品。",
+      "version": "0.1.0",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/mano-3dmodel-gen"
+      ]
+    },
+    {
       "name": "mano-asi",
       "description": "当需要全栈研发、修复或重构代码、做UI/动效/视频/3D交付，从PRD/页面/仓库提取产品逻辑，从截图/网站/Figma提取UI规范，解读仓库架构，或要把“流畅、丝滑、美观、高级感”等模糊审美要求翻译成具体技术词、参数与验收标准时使用；以词汇翻译表、成熟方案组合（Glue Code）、结构化JSON产物、质量门禁与资源卫生，降低对高级模型的依赖。",
       "version": "0.1.0",
