@@ -353,5 +353,81 @@
       "Babylon.js"
     ],
     "example": "产品转台：环境光+主光+轮廓光，相机6秒绕Y轴30°，60fps实测。"
+  },
+  {
+    "term": "滚动叙事",
+    "domain": "动效",
+    "concrete_spec": "全页单一rAF循环+Lenis(lerp:0.09)；position:sticky舞台高度用svh(340–600svh)，祖先用overflow-x:clip；显式BEATS进度窗口+easeOutCubic/smoothstep直接写style，禁止对rAF属性加CSS transition。",
+    "model_known_keywords": [
+      "Lenis",
+      "requestAnimationFrame",
+      "position: sticky",
+      "svh",
+      "overflow-x: clip",
+      "easeOutCubic"
+    ],
+    "example": "440svh舞台内分dust[0,0.18]、rise[0.04,0.5]、exit[0.7,1]三段，退场底裙.apron无缝衔接下一屏。"
+  },
+  {
+    "term": "官网高级感",
+    "domain": "UI",
+    "concrete_spec": "1句主角时刻+非纯黑/纯白舞台底色(深墨#04050a/#05070c或暖石#efe9df/#e9e1d3，首条CSS写html/body防白闪)+全页唯一1个accent色+卡片中性色(28px圆角，按钮999px，标签2–6px)+主标题1个斜体衬线词+带单位真实数字。",
+    "model_known_keywords": [
+      "tinted ground",
+      "single accent",
+      "Instrument Serif",
+      "tabular-nums",
+      "cubic-bezier(0.16, 1, 0.3, 1)"
+    ],
+    "example": "深墨#05070c底+单色电光蓝accent仅用于眉标/进度条/焦点环，大标题仅1词用Instrument Serif斜体，无卡片彩虹发光。"
+  },
+  {
+    "term": "视差景深",
+    "domain": "动效",
+    "concrete_spec": "同画幅宽图切出远→近透明WebP层(d/横版+m/竖版)，共用object-position；标题夹在中景与前景之间；退场位移倍率由远及近递增，底层带110vh同色.apron。",
+    "model_known_keywords": [
+      "layered parallax",
+      "picture srcset",
+      "object-position",
+      "will-change: transform"
+    ],
+    "example": "远景退场-12vh、中景-26vh、前景-44vh、地面-78vh，滚动时前景掠过h1标题前形成真实空间感。"
+  },
+  {
+    "term": "首屏震撼",
+    "domain": "UI",
+    "concrete_spec": "选1个主角载体(循环视频canplay淡入/帧序列Canvas/实测fitText全宽字标)；文案落在画面安静区(object-position或局部软阴影保护，不铺全屏黑罩)；流体clamp大字配-0.03em字距与0.9–1.0行高。",
+    "model_known_keywords": [
+      "clamp",
+      "fitText",
+      "ResizeObserver",
+      "canplay",
+      "mix-blend-mode: difference"
+    ],
+    "example": "循环WebM/MP4在canplay后0.9s淡入，标题用clamp(2.75rem,7vw,96px)配Instrument Serif斜体词，底色先行防白闪。"
+  },
+  {
+    "term": "自绘路径",
+    "domain": "交互可视化",
+    "concrete_spec": "SVG每段设pathLength='1'与stroke-dasharray='1 1'，底层垫0.08透明度虚线幽灵轨；用getPointAtLength定位领航点，配合tabular-nums数字计数与aria-live礼仪。",
+    "model_known_keywords": [
+      "SVG pathLength",
+      "stroke-dashoffset",
+      "getPointAtLength",
+      "tabular-nums"
+    ],
+    "example": "380svh舞台内4段路线依次描摹，领航圆点贴轨移动，里程读数从0跳至384,400 km。"
+  },
+  {
+    "term": "帧序列滚动",
+    "domain": "动效",
+    "concrete_spec": "用ffmpeg导出d/(1600px)与m/(720px) WebP帧序列+Canvas drawCover替代改写video.currentTime；HTMLImageElement粗到细(步长32→1)加载；Fritsch–Carlson单调三次曲线在hold区间停顿展示卡片。",
+    "model_known_keywords": [
+      "Canvas2D",
+      "WebP frame sequence",
+      "Fritsch-Carlson monotone cubic",
+      "drawCover"
+    ],
+    "example": "600svh舞台驱动481帧，每帧15–40KB，停顿区间[0.25,0.39]定格第10秒展示产品卡并追踪主体焦点(fx,fy)。"
   }
 ]

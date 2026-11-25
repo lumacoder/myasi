@@ -2628,5 +2628,89 @@
       "https://api.github.com/repos/drawcall/Proton"
     ],
     "notes": []
+  },
+  {
+    "id": "mano-scrolltide-ai-studio-skill",
+    "name": "ai-studio-skill",
+    "requested_repo_url": "https://github.com/scrolltide/ai-studio-skill",
+    "repo_url": "https://github.com/scrolltide/ai-studio-skill",
+    "api_description": null,
+    "one_liner_zh": "以一句滚动主角时刻、317站实测House Style、8种原生滚动模式与全轨迹验屏构建非模板化网页。",
+    "category": "设计参考",
+    "tags": [
+      "scroll",
+      "web-design",
+      "house-style",
+      "lenis",
+      "playwright",
+      "skill"
+    ],
+    "use_when": [
+      "需要开发官网、产品页、作品集、滚动叙事或高审美单页应用"
+    ],
+    "avoid_when": [
+      "禁止直接再分发其 library/*.md 商业模板或其下载资源作为模板/套件"
+    ],
+    "borrow": "pattern",
+    "key_technique": "单一rAF循环+Beat窗口+非纯黑/纯白舞台底色+单强调色+单斜体衬线词+scrollshot多视口全轨迹验屏。",
+    "workflow_tip": "已内置精华至 rules/web-craft.md、patterns/ 与 scripts/scrollshot.mjs；library/*.md 专有模板不转存。",
+    "technique_basis": "已直接检出仓库源码并核对 LICENSE 与 MIT 文件（SKILL.md/house-style.md/patterns/checks.md/scrollshot.mjs）。",
+    "stars_snapshot": null,
+    "snapshot_date": "2026-11-25",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": false,
+    "verification_scope": "未通过GitHub API核实stars/pushed_at；已直接读取仓库源码与LICENSE。",
+    "verification_error": "GitHub API HTTP 403: rate limit exceeded (2026-11-25)",
+    "license": null,
+    "license_note": "双许可（已读LICENSE）：SKILL/house-style/patterns/checks/scrollshot.mjs 为 MIT；library/*.md（除INDEX.md）及下载资产为 © Scrolltide 保留权利，禁止作模板再分发。",
+    "pushed_at": null,
+    "primary_language": null,
+    "archived": null,
+    "source": [
+      "https://github.com/scrolltide/ai-studio-skill",
+      "cases/sources/2026-11-25_scrolltide_ai-studio-skill.md"
+    ],
+    "notes": []
+  },
+  {
+    "id": "mano-darkroomengineering-lenis",
+    "name": "Lenis",
+    "requested_repo_url": "https://github.com/darkroomengineering/lenis",
+    "repo_url": "https://github.com/darkroomengineering/lenis",
+    "api_description": null,
+    "one_liner_zh": "轻量平滑滚动库，与单一requestAnimationFrame循环配合驱动滚动叙事页面。",
+    "category": "交互可视化",
+    "tags": [
+      "lenis",
+      "smooth-scroll",
+      "raf",
+      "scroll"
+    ],
+    "use_when": [
+      "需要阻尼平滑滚动并与自定义rAF舞台同步推进（推荐lerp:0.09）"
+    ],
+    "avoid_when": [
+      "在prefers-reduced-motion:reduce下必须关闭平滑插值，或项目已存在另一套滚动劫持库"
+    ],
+    "borrow": "direct-dep",
+    "key_technique": "在单一rAF循环中调用lenis.raf(time)后读取scroll进度写入DOM样式，不经过框架state。",
+    "workflow_tip": "无构建工具时可用pinned CDN脚本；桌面/移动端务必配合overflow-x:clip与svh测试sticky。",
+    "technique_basis": "依据 scrolltide/ai-studio-skill 工程模式与 Mano-ASI 建议整理；未单独跑包安装测试。",
+    "stars_snapshot": null,
+    "snapshot_date": "2026-11-25",
+    "snapshot_timezone": "Asia/Shanghai",
+    "verified": false,
+    "verification_error": "GitHub API HTTP 403: rate limit exceeded (2026-11-25)",
+    "verification_scope": "未通过GitHub API核实stars/license/pushed_at；来源为scrolltide/ai-studio-skill patterns/engine.md引用。",
+    "license": null,
+    "license_note": "API未核实；安装或引入前请核查 darkroomengineering/lenis 仓库 LICENSE 与 npm 包许可。",
+    "pushed_at": null,
+    "primary_language": null,
+    "archived": null,
+    "source": [
+      "https://github.com/darkroomengineering/lenis",
+      "https://github.com/scrolltide/ai-studio-skill"
+    ],
+    "notes": []
   }
 ]
