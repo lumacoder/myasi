@@ -1,0 +1,4 @@
+interface:
+  display_name: "myasi"
+  short_description: "按名解析并同步 Agent Skills、MCP 与 CLI 配置"
+  default_prompt: "Use $myasi to resolve a skill by bare name, install or sync skills across agents, or preview MCP/CLI configuration."

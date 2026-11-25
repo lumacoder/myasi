@@ -1,6 +1,7 @@
 # myasi 设计说明
 
-> 一个 GitHub 仓库管理常用的 skills、MCP 配置和 CLI 清单，按裸名同步到 Codex、Claude Code、pi、DeepSeek Harness（dsh）和 deepseek TUI。
+> 导航：[首页](../README.md) · [使用与开发指南](GUIDE.md) · **架构与协议设计**  
+> 一个 GitHub 仓库管理常用的 skills、MCP 配置和 CLI 清单，按裸名同步到 Codex、Claude Code、pi、DeepSeek Harness（dsh）和 deepseek TUI。  
 > 标注：【已验证】查过官方文档或源码；【未验证】需要实测。
 
 ## 1. 结论
