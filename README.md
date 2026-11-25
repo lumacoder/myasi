@@ -84,7 +84,7 @@ myasi sync                             # 按 profiles/clients.yaml 一键幂等�
 | **`mano-asi`** | `devasi` | `0.2.0` | `example` | 212 KB | **全栈研发 & 网页审美工程师**：含 317 站实测网页审美规范、单一 `rAF` 滚动模式、60 条开源案例库与 Playwright 全轨迹验屏 `scrollshot.mjs` | [SKILL.md](skills/mano-asi/SKILL.md) |
 | **`mano-design`** | — | `0.2.2` | `example` | 462 KB | **UI 交互与视觉双门禁**：17 类原型识别、51 个领域签名、组件选型规则、`ui_lint` / `browser_check`（110 自测用例）与 ≥8 分视觉评分门禁 | [SKILL.md](skills/mano-design/SKILL.md) |
 | **`mano-code2motion`** | — | `0.5.0` | — | 395 KB | **代码创作动画与视频**：时间总谱先行、导演简报、18 仓库机制精华、风险设计帧对照与三门独立像素审阅 | [SKILL.md](skills/mano-code2motion/SKILL.md) |
-| **`mano-3dmodel-gen`** | — | `0.2.0` | — | 18 KB | **Web 3D 玩具比例工作流**：自然语言 → 场景规格 → Three.js / WebGL2 纯函数时间轴 `render(t)` 与碰撞放置验收 | [SKILL.md](skills/mano-3dmodel-gen/SKILL.md) |
+| **`mano-3dmodel-gen`** | — | `0.3.0` | — | 21 KB | **Web 3D 玩具比例工作流**：自然语言 → 场景规格 → Three.js / WebGL2 纯函数时间轴 `render(t)` 与碰撞放置验收 | [SKILL.md](skills/mano-3dmodel-gen/SKILL.md) |
 | **`myasi`** | — | `0.1.0` | `core` | 2 KB | **按名解析与跨端同步元 Skill**：教 Agent 自动查重、按别名拉取 skill 并安全预览/应用 MCP 配置 | [SKILL.md](skills/myasi/SKILL.md) |
 | **`town-model-gen`** | — | `0.1.0` | — | 66 KB | **AITown 建筑与园区 JSON**：根据描述或参考图生成带 Schema 校验的微缩建筑、街景与大型园区模型 | [SKILL.md](skills/town-model-gen/SKILL.md) |
 | **`hello-myasi`** | `hello` | `0.1.0` | `example` | 1 KB | **最小参考模板**：演示 `get / update / remove` 闭环及新建 skill 标准目录结构 | [SKILL.md](skills/hello-myasi/SKILL.md) |
