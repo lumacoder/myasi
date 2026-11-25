@@ -43,16 +43,18 @@
         "render-timeline",
         "visual-review",
         "model-only",
-        "placement-review"
+        "placement-review",
+        "audit-gate",
+        "1to1-copy"
       ],
-      "version": "0.2.0",
+      "version": "0.3.0",
       "path": "skills/mano-3dmodel-gen",
       "clients": [
         "*"
       ],
       "profiles": [],
       "license": "MIT",
-      "size_kb": 18
+      "size_kb": 21
     },
     "mano-asi": {
       "description": "当需要全栈研发、开发具备开源项目审美的网页/官网/落地页/作品集、修复或重构代码、做UI/滚动叙事/动效/视频/3D交付，从PRD/页面/仓库提取产品逻辑，从截图/网站/Figma提取UI规范，解读仓库架构，或要把“流畅、丝滑、美观、高级感”等模糊审美要求翻译成具体技术词、参数与验收标准时使用；以实测网页审美标尺、原生滚动模式、词汇翻译表、成熟方案组合（Glue Code）、全轨迹验屏与资源卫生，降低对高级模型的依赖。",
