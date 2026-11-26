@@ -1,5 +1,9 @@
 # CHANGELOG — mano-code2motion
 
+## 0.6.0
+- **Web 3D 直播交付**：`guides/web-3d-delivery.md`（按题材选 Web 3D、页面即交付物、Three.js 版 `renderAt` 契约、`?drive=1`、标注投影顺序、esbuild IIFE 打包、沙箱验证边界）。
+- `SKILL.md`：补充介质/网页交付/标注投影规则，扩展交付形态与 Web 打包说明。
+
 ## 0.5.0
 - **18 个仓库 JSON 资料库**：`references/repos-18.json`（2026-11-20 逐个核对 GitHub API 许可/语言/简介 + README/SKILL.md 头部），附 `lookup_by_task` 与 tags 索引。
 - **查库工具**：`scripts/repos_lookup.py`（纯标准库，只读，`--tag` / `--query` / `--repo` / `--list-tags` / `--all`）。

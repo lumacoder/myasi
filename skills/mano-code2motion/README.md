@@ -1,4 +1,4 @@
-# mano-code2motion 0.5
+# mano-code2motion 0.6
 
 自然语言创意 → 时间总谱 → 导演简报 → 适合题目的绘制/动画机制 → 真实渲染 → 针对最弱画面的修改。
 
@@ -6,7 +6,7 @@
 
 ## 目录与核心工具
 - `templates/director-brief.md`：观众体验、因果、造型/材料、构图/镜头、节奏、风险与自由。
-- `guides/`：按需阅读导演决策、复刻流程、专用绘制机制、多镜头制作与像素审阅反例。
+- `guides/`：按需阅读导演决策、复刻流程、Web 3D 直播交付（`web-3d-delivery.md`）、专用绘制机制、多镜头制作与像素审阅反例。
 - `references/`：`repos-18.json`（18 仓库资料库）、`essences.md`（可执行精华）、`language-to-code.md`（形容词换数字）、`sources.md`、`video-studio-kit.md`。
 - `scripts/repos_lookup.py`：查库工具（`--tag timing|captions|particles|copy|encode`、`--query <词>`、`--repo <owner/name>`、`--list-tags`、`--all`）。
 - `scripts/render_project.py`：与 MotionSpec 解耦的单 Canvas2D 导出（显式 `READY`、绝对时间 seek、乱序像素检查、PNG/无声 H.264/元信息）。

@@ -20,7 +20,10 @@
     "language-to-code",
     "repos-library",
     "measured-motion",
-    "caption-contract"
+    "caption-contract",
+    "web-3d",
+    "threejs",
+    "live-playback"
   ],
-  "version": "0.5.0"
+  "version": "0.6.0"
 }
