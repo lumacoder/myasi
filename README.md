@@ -58,7 +58,7 @@ npx skills add lumacoder/myasi --skill mano-asi -g -a codex -y   # Vercel Skills
 
 ## 🧩 内置 Skills 全景
 
-![myasi 7 大内置 Skills 矩阵](docs/assets/mano-skills-matrix.png)
+![myasi 8 大内置 Skills 矩阵](docs/assets/mano-skills-matrix.png)
 
 | Skill | 别名 | 版本 | 大小 | 核心能力与定位 | 入口 |
 |---|---|---|---|---|---|
@@ -68,6 +68,7 @@ npx skills add lumacoder/myasi --skill mano-asi -g -a codex -y   # Vercel Skills
 | **`mano-3dmodel-gen`** | — | `0.3.0` | 21 KB | **Web 3D 玩具比例工作流**：场景简报 → Three.js / WebGL2 纯函数时间轴 `render(t)` 与 1:1 像素/穿模审核门禁 | [SKILL.md](skills/mano-3dmodel-gen/SKILL.md) |
 | **`myasi`** | — | `0.1.0` | 2 KB | **按名解析与跨端同步元 Skill**：自动查重、别名解析与安全 MCP/CLI 同步 | [SKILL.md](skills/myasi/SKILL.md) |
 | **`town-model-gen`** | — | `0.1.0` | 66 KB | **AITown 建筑与园区 JSON**：生成带 Schema 校验的微缩建筑、街景与大型园区模型 | [SKILL.md](skills/town-model-gen/SKILL.md) |
+| **`gen-aitown-model`** | — | `0.1.0` | 29 KB | **AITown 动画园区模块**：一句话场景需求 → 自包含 ES Module，`createModel()` 返回可动画、可昼夜切换、可释放的园区模型，`selfCheck` 门禁 | [SKILL.md](skills/gen-aitown-model/SKILL.md) |
 | **`hello-myasi`** | `hello` | `0.1.0` | 1 KB | **最小参考模板**：演示 `get / update / remove` 闭环及标准 skill 目录结构 | [SKILL.md](skills/hello-myasi/SKILL.md) |
 
 > **网页审美亮点**：`mano-asi` 融合了 [scrolltide/ai-studio-skill](https://github.com/scrolltide/ai-studio-skill)（MIT 部分）精髓，通过 [`rules/web-craft.md`](skills/mano-asi/rules/web-craft.md)、[`patterns/`](skills/mano-asi/patterns/INDEX.md) 与 [`scripts/scrollshot.mjs`](skills/mano-asi/scripts/scrollshot.mjs) 让 AI 开发的网页具备「一句主角时刻 + 克制底色 + 单强调色 + 全滚动轨迹验屏」的开源项目审美水准。

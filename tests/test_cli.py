@@ -157,6 +157,7 @@ class ListSearchInfoTest(Base):
         rows = {r["name"]: r for r in json.loads(out)}
         self.assertEqual(set(rows), {
             "myasi", "hello-myasi", "mano-asi", "mano-design", "mano-code2motion", "town-model-gen", "mano-3dmodel-gen",
+            "gen-aitown-model",
         })
         self.assertEqual(rows["hello-myasi"]["kind"], "own")
         out, _ = self.run_cli("list", "--tag", "example", "--json", "--source", str(ROOT))

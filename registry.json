@@ -11,6 +11,27 @@
     "claude": "~/.claude/skills"
   },
   "skills": {
+    "gen-aitown-model": {
+      "description": "写一个自包含的 ES Module：调用 createModel() 返回 AITown 可用的动画园区模型；只依赖 three@0.186，规范参数与内联工具原样复制，seek 纯函数、selfCheck 门禁。",
+      "tags": [
+        "aitown",
+        "3d-model",
+        "webgl2",
+        "threejs",
+        "web-3d",
+        "toy-scale",
+        "model-generation",
+        "self-check"
+      ],
+      "version": "0.1.0",
+      "path": "skills/gen-aitown-model",
+      "clients": [
+        "*"
+      ],
+      "profiles": [],
+      "license": "MIT",
+      "size_kb": 29
+    },
     "hello-myasi": {
       "description": "示例 / 模板 skill（不是真实工具）。只在用户明确说 hello-myasi、要演示或测试 myasi 的 get / update / remove 流程时使用；新建自己的 skill 时可以照着它的结构写，或直接运行 myasi new <name>。",
       "tags": [
@@ -45,16 +66,17 @@
         "model-only",
         "placement-review",
         "audit-gate",
-        "1to1-copy"
+        "1to1-copy",
+        "cases"
       ],
-      "version": "0.3.0",
+      "version": "0.4.0",
       "path": "skills/mano-3dmodel-gen",
       "clients": [
         "*"
       ],
       "profiles": [],
       "license": "MIT",
-      "size_kb": 21
+      "size_kb": 76
     },
     "mano-asi": {
       "description": "当需要全栈研发、开发具备开源项目审美的网页/官网/落地页/作品集、修复或重构代码、做UI/滚动叙事/动效/视频/3D交付，从PRD/页面/仓库提取产品逻辑，从截图/网站/Figma提取UI规范，解读仓库架构，或要把“流畅、丝滑、美观、高级感”等模糊审美要求翻译成具体技术词、参数与验收标准时使用；以实测网页审美标尺、原生滚动模式、词汇翻译表、成熟方案组合（Glue Code）、全轨迹验屏与资源卫生，降低对高级模型的依赖。",

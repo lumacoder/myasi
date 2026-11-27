@@ -9,6 +9,16 @@
   },
   "plugins": [
     {
+      "name": "gen-aitown-model",
+      "description": "写一个自包含的 ES Module：调用 createModel() 返回 AITown 可用的动画园区模型；只依赖 three@0.186，规范参数与内联工具原样复制，seek 纯函数、selfCheck 门禁。",
+      "version": "0.1.0",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/gen-aitown-model"
+      ]
+    },
+    {
       "name": "hello-myasi",
       "description": "示例 / 模板 skill（不是真实工具）。只在用户明确说 hello-myasi、要演示或测试 myasi 的 get / update / remove 流程时使用；新建自己的 skill 时可以照着它的结构写，或直接运行 myasi new <name>。",
       "version": "0.1.0",
@@ -21,7 +31,7 @@
     {
       "name": "mano-3dmodel-gen",
       "description": "充当自然语言与大模型之间的 3D 模型工作流：把一句话扩成场景简报、场景规格、逐机细节提示词，按玩具比例系统建成 Web 3D 场景与动画。视觉与技术完全取自 Nyxera0x/simulator（MIT），只提炼逻辑，不锁定任何具体物品。",
-      "version": "0.3.0",
+      "version": "0.4.0",
       "source": "./",
       "strict": false,
       "skills": [

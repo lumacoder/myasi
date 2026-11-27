@@ -1,0 +1,6 @@
+# 可选界面元数据；不是多agent调度器。
+interface:
+  display_name: "gen-aitown-model"
+  short_description: "一句话场景需求 → 自包含 ES Module：createModel() 返回 AITown 动画园区模型，three@0.186，seek 纯函数与 selfCheck 门禁"
+policy:
+  allow_implicit_invocation: true
